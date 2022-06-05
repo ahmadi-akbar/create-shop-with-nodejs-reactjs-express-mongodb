@@ -1,0 +1,100 @@
+html, body {
+    margin: 0;
+    padding: 0;
+}
+
+.grid-box {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    grid-auto-rows: 12.5rem;
+    gap: 1rem;
+    width: 100%;
+    padding: 0.5rem;
+    margin: 0 auto;
+    box-sizing: border-box;
+
+}
+.darkModeB , .darkModeB *{
+    color: #fff;
+}
+.media_ImageListItem {
+    border-radius: 15px;
+    background-color: #faf7fa;
+    background-image: linear-gradient(#fdeae3, #fdeae3), linear-gradient(#b6c5c0, #b0b0b0), linear-gradient(#f1d6c3, #f1d6c3), linear-gradient(90deg, transparent 20px, #f9e5c7 0, #f9e5c7 calc(100% - 20px), transparent 0);
+    background-size: 100% 50px, 50px 10px, 60px 10px, auto 50px;
+    background-position: 0 0, 20px 80px, 20px 100px, left 0 bottom 20px;
+    background-repeat: no-repeat;
+    border: 1px solid #eee;
+    box-shadow: 0px 0px 1px #000;
+    overflow: hidden;
+    cursor: pointer;
+
+}
+.media_ImageListItem:after{
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.2);
+    z-index: 999;
+    left: 0;
+    top:0;
+    transition: .1s;
+    transform: translate(0, 200px);
+}
+.media_ImageListItem:hover:after{
+    transition: .1s;
+
+    transform: translate(0, 0);
+
+
+}
+.media_ImageListItem img, .media_ImageListItem .MuiImageListItem-img {
+    background-color: #fff;
+}
+.thumbnail {
+    width: 80px;
+    border-radius: 50%;
+    overflow: hidden;
+    height: 80px;
+    border: 2px solid #000;
+    background-color: #fff;
+}
+.thumbnail img {
+    max-width: 100%;
+    height: auto;
+    max-height: 80px;
+}
+.hoverparent {
+    position: relative;
+}
+.hoverparent .thehover {
+    display: none;
+}
+.hoverparent:hover .thehover {
+    display: block;
+    z-index: 999;
+    position: absolute;
+    background-color: #9f9f9f;
+    left: 0;
+    box-shadow: 1px 1px 5px #000;
+}
+
+.cobm.flex-d {
+    border-bottom: 1px solid #eee;
+}
+
+.flex-d {
+    -webkit-align-items: center;
+    align-items: center;
+    display: -webkit-flex;
+    display: flex;
+}
+.flex-d .flex-1 {
+    -webkit-flex-basis: 20%;
+    flex-basis: 20%;
+    -webkit-align-items: center;
+    align-items: center;
+    white-space: nowrap;
+    padding: 20px;
+}
