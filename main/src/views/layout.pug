@@ -1,0 +1,58 @@
+doctype html
+html(lang='fa')
+    head
+        meta(charset='utf-8')
+        link(rel='shortcut icon' href='/favicon.ico')
+        meta(name='viewport' content='width=device-width,initial-scale=1,shrink-to-fit=no,maximum-scale=5')
+        meta(name='theme-color' content='#000000')
+        link(rel='apple-touch-icon' href='/assets/apple-touch-icon.png')
+        link(rel='manifest' href='/manifest.json')
+        title #{title}
+        meta(name='description' content=`${description}`)
+        meta(name='robots' content='max-snippet:-1, max-image-preview:large, max-video-preview:-1')
+        link(rel='canonical' href='.')
+        meta(property='og:locale' content='fa_IR')
+        meta(property='og:type' content='website')
+        meta(property='og:title' content=`${title}`)
+        meta(property='og:description' content=`${description}`)
+        meta(property='og:url' content='.')
+        meta(property='og:site_name' content='ArvandShop')
+        meta(property='og:image' content=`${image}`)
+        meta(property='og:image:secure_url' content=`${image}`)
+        meta(property='og:image:width' content='1200')
+        meta(property='og:image:height' content='675')
+        meta(name='twitter:card' content='summary_large_image')
+        meta(name='twitter:description' content=`${description}`)
+        meta(name='twitter:title' content=`${title}`)
+        meta(name='twitter:image' content=`${image}`)
+        script(type='application/ld+json').
+            {
+            "@context": "https://schema.org/",
+            "@type": "WebSite",
+            "name": "ArvandShop",
+            "url": "https://arvandguarantee.shop",
+            "potentialAction": {
+            "@type": "SearchAction",
+            "target": "https://arvandguarantee.shop/?search={search_term_string}",
+            "query-input": "required name=search_term_string"
+            }
+            }
+        link(href='/static/css/2.086fa99f.chunk.css' rel='stylesheet')
+        link(href='/static/css/main.e2014d0d.chunk.css' rel='stylesheet')
+        script(async='' src='https://www.googletagmanager.com/gtag/js?id=UA-106648977-6')
+        script.
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'UA-106648977-6');
+    body
+        noscript You need to enable JavaScript to run this app.
+        #root
+        block content
+        script.
+            !function(e){function r(r){for(var n,a,l=r[0],p=r[1],f=r[2],c=0,s=[];c<l.length;c++)a=l[c],Object.prototype.hasOwnProperty.call(o,a)&&o[a]&&s.push(o[a][0]),o[a]=0;for(n in p)Object.prototype.hasOwnProperty.call(p,n)&&(e[n]=p[n]);for(i&&i(r);s.length;)s.shift()();return u.push.apply(u,f||[]),t()}function t(){for(var e,r=0;r<u.length;r++){for(var t=u[r],n=!0,l=1;l<t.length;l++){var p=t[l];0!==o[p]&&(n=!1)}n&&(u.splice(r--,1),e=a(a.s=t[0]))}return e}var n={},o={1:0},u=[];function a(r){if(n[r])return n[r].exports;var t=n[r]={i:r,l:!1,exports:{}};return e[r].call(t.exports,t,t.exports,a),t.l=!0,t.exports}a.m=e,a.c=n,a.d=function(e,r,t){a.o(e,r)||Object.defineProperty(e,r,{enumerable:!0,get:t})},a.r=function(e){"undefined"!=typeof Symbol&&Symbol.toStringTag&&Object.defineProperty(e,Symbol.toStringTag,{value:"Module"}),Object.defineProperty(e,"__esModule",{value:!0})},a.t=function(e,r){if(1&r&&(e=a(e)),8&r)return e;if(4&r&&"object"==typeof e&&e&&e.__esModule)return e;var t=Object.create(null);if(a.r(t),Object.defineProperty(t,"default",{enumerable:!0,value:e}),2&r&&"string"!=typeof e)for(var n in e)a.d(t,n,function(r){return e[r]}.bind(null,n));return t},a.n=function(e){var r=e&&e.__esModule?function(){return e.default}:function(){return e};return a.d(r,"a",r),r},a.o=function(e,r){return Object.prototype.hasOwnProperty.call(e,r)},a.p="/";var l=this.webpackJsonparvandshop=this.webpackJsonparvandshop||[],p=l.push.bind(l);l.push=r,l=l.slice();for(var f=0;f<l.length;f++)r(l[f]);var i=p;t()}([])
+
+        //script.
+            !function (e, t, a) { "use strict"; var s = t.head || t.getElementsByTagName("head")[0], p = t.createElement("script"); e.iwmfBadge = a, p.async = true, p.src = "https://cdn.iwmf.ir/js/people-votes/people-vote-4-2.js", s.appendChild(p) }(window, document, "b-bottom-left");
+        script(src='/static/js/2.fb3df5d3.chunk.js')
+        script(src='/static/js/main.c6ef2641.chunk.js')

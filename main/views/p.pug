@@ -1,0 +1,61 @@
+doctype html
+html(lang='fa')
+    head
+        meta(charset='utf-8')
+        link(rel='shortcut icon' href='/favicon.ico')
+        meta(name='viewport' content='width=device-width,initial-scale=1,shrink-to-fit=no,maximum-scale=5')
+        meta(name='theme-color' content='#000000')
+        link(rel='apple-touch-icon' href='/assets/apple-touch-icon.png')
+        link(rel='manifest' href='/manifest.json')
+        title #{title}
+        meta(name='description' content=`${description}`)
+        meta(name='robots' content='max-snippet:-1, max-image-preview:large, max-video-preview:-1')
+        link(rel='canonical' href='.')
+        meta(name='product_id' content=`${_id}`)
+        meta(name='product_name' content=`${product_name}`)
+        meta(name='product_price' content=`${product_price}`)
+        meta(name='product_old_price' content=`${product_old_price}`)
+        meta(name='product_image' content=`${image}`)
+        meta(name='image' content=`${image}`)
+        meta(name='availability' content=`${availability}`)
+        meta(property='og:locale' content='fa_IR')
+        meta(property='og:type' content='website')
+        meta(property='og:title' content=`${title}`)
+        meta(property='og:description' content=`${description}`)
+        meta(property='og:url' content='.')
+        meta(property='og:site_name' content='ArvandShop')
+        meta(property='og:image' content=`${image}`)
+        meta(property='og:image:secure_url' content=`${image}`)
+        meta(property='og:image:width' content='1200')
+        meta(property='og:image:height' content='675')
+        meta(name='twitter:card' content='summary_large_image')
+        meta(name='twitter:description' content=`${description}`)
+        meta(name='twitter:title' content=`${title}`)
+        meta(name='twitter:image' content=`${image}`)
+        script(type='application/ld+json').
+            {
+            "@context": "https://schema.org/",
+            "@type": "WebSite",
+            "name": "ArvandShop",
+            "url": "https://arvandguarantee.shop",
+            "potentialAction": {
+            "@type": "SearchAction",
+            "target": "https://arvandguarantee.shop/?search={search_term_string}",
+            "query-input": "required name=search_term_string"
+            }
+            }
+        link(href='/static/css/main.chunk.css' rel='stylesheet')
+        script(async='' src='https://www.googletagmanager.com/gtag/js?id=UA-106648977-6')
+        script.
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'UA-106648977-6');
+
+    body
+        noscript You need to enable JavaScript to run this app.
+        #root
+        script.
+            window.$crisp=[];window.CRISP_WEBSITE_ID="2e87fe3c-45a5-4e25-a6d1-dcb3c4f312a7";(function(){d=document;s=d.createElement("script");s.src="https://client.crisp.chat/l.js";s.async=1;d.getElementsByTagName("head")[0].appendChild(s);})();
+        script(src='/static/js/bundle.js')
+        script(src='/static/js/main.chunk.js')

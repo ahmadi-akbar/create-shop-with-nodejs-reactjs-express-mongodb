@@ -1,0 +1,46 @@
+import React  from 'react';
+import {Navbar} from 'shards-react';
+import {withTranslation} from 'react-i18next';
+
+import {toggleCardbar} from '#c/functions/index';
+
+import {useSelector} from 'react-redux';
+
+import {logoImg} from '#c/assets/index';
+
+
+function CardbarMainNavbar({t, hideLogoText = false}) {
+  const cardVisible = useSelector((st) => !!st.store.cardVisible);
+  const card = useSelector((st) => st.store.card);
+
+
+  const handleToggleCardbar = () => toggleCardbar(cardVisible);
+  let count = 0;
+  if (card && card.length) {
+    count = card.length;
+  }
+  return (
+    <div className="main-navbar">
+      <Navbar
+        className="align-items-stretch bg-white flex-md-nowrap border-bottom p-0"
+        type="light">
+        <div
+          className="d-sm-inline "
+        >
+          <div className={'jhgfdfg'}>
+            <i className="material-icons ddds">shopping_cart</i>
+            {count}<span className={'ml-1 mr-2'}>{t('item')}</span>
+          </div>
+        </div>
+        {/* eslint-disable-next-line */}
+        <div
+          className="toggle-sidebar d-sm-inline"
+          onClick={handleToggleCardbar}>
+          <i className="material-icons">close</i>
+        </div>
+      </Navbar>
+    </div>
+  );
+}
+
+export default withTranslation()(CardbarMainNavbar);
