@@ -44,9 +44,9 @@ const PostFilter = (props) => {
             <SearchInput source="Search" placeholder={translate('resources.category.name')} alwaysOn/>
             {/*<SearchInput source="firstCategory" placeholder={'نام'} alwaysOn/>*/}
             {/*<SearchInput source="lastName" placeholder={'نام خانوادگی'} alwaysOn/>*/}
-            {/*<SelectInput source="firstCategory" label={'دسته بندی اول'} allowEmpty emptyValue={null} choices={typeChoices4}/>*/}
-            {/*<SelectInput source="secondCategory" label={'دسته بندی دوم'} allowEmpty emptyValue={null} choices={typeChoices3}/>*/}
-            {/*<SelectInput source="thirdCategory" label={'دسته بندی سوم'} allowEmpty emptyValue={null} choices={typeChoices3}/>*/}
+            {/*<SelectInput source="firstCategory" label={'دسته بندی اول'}  emptyValue={null} choices={typeChoices4}/>*/}
+            {/*<SelectInput source="secondCategory" label={'دسته بندی دوم'}  emptyValue={null} choices={typeChoices3}/>*/}
+            {/*<SelectInput source="thirdCategory" label={'دسته بندی سوم'}  emptyValue={null} choices={typeChoices3}/>*/}
 
         </Filter>
     );
@@ -102,7 +102,7 @@ const Form = ({children, ...rest}) => {
                 label={translate('resources.category.parent')}
                 source="parent"
                 reference="category"
-                allowEmpty
+
                 perPage={1000}
                 formClassName={cls.f2}>
                 <SelectInput optionText={"name."+translate('lan')} optionValue="id"/>

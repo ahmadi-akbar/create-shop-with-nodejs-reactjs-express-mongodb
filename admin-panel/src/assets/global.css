@@ -14,6 +14,9 @@ html, body {
     box-sizing: border-box;
 
 }
+.lang-button{
+    margin: 0 5px !important;
+}
 .darkModeB , .darkModeB *{
     color: #fff;
 }

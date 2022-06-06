@@ -274,13 +274,22 @@ const customEnglishMessages = {
     settings: {
       siteStatus: "siteStatus"
     },
+
     action: {
       user: "user",
       title: "title",
       customer: "customer",
+      product: "product",
+      phoneNumber: "phone number",
+      firstName: "first name",
+      lastName: "lastName",
+      nickname: "nickname",
+      username: "username",
+      difference: "differences",
       createdAt: "created at"
 
     },
+
     sms: {
       user: "user",
       message: "message",

@@ -25,7 +25,7 @@ const ConfigurationMenu = forwardRef((props, ref) => {
         <MenuItemLink
             ref={ref}
             to="/configuration"
-            primaryText={translate('pos.configuration')}
+            // primaryText={translate('pos.configuration')}
             leftIcon={<SettingsIcon />}
             onClick={props.onClick}
             sidebarIsOpen

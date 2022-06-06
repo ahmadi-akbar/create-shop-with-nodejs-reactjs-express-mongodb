@@ -9,7 +9,7 @@ export default ({source}) => {
   const translate = useTranslate();
   console.log("Chip", record,"source",source);
   if (record)
-    return <Chip className={record.color} label={translate("pos.OrderStatus."+record.name)}></Chip>;
+    return <Chip className={record.color} label={translate("pos.OrderPaymentStatus."+record.name)}></Chip>;
   else
     return <></>;
 }

@@ -58,7 +58,7 @@ const Form = ({children, ...rest}) => {
                 label={translate('resources.category.parent')}
                 source="parent"
                 reference="category"
-                allowEmpty
+
                 perPage={1000}
                 formClassName={cls.f2}>
                 <SelectInput optionText={"name."+translate('lan')} optionValue="id"/>

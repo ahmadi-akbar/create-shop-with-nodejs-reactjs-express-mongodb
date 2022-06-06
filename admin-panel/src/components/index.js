@@ -22,6 +22,7 @@ export { default as ShowObject } from './ShowObject';
 export { default as Configuration } from './Configuration';
 export { default as StatusField } from './StatusField';
 export { default as PaymentStatus } from './PaymentStatus';
+export { default as PaymentStatusField } from './PaymentStatusField';
 export { default as OrderPaymentStatus } from './OrderPaymentStatus';
 export { default as OrderStatus } from './OrderStatus';
 export { default as OrderTabs } from './OrderTabs';

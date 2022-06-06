@@ -293,7 +293,7 @@ export default (props) => {
                             <span>شرکت آروند - </span>
                             <span>تلفن: </span>{'02188649930'}
                             -
-                            <span>سایت: </span>{'www.gameboss.shop'}
+                            <span>سایت: </span>{'#your-site-link'}
                         </div>
 
                         <div>

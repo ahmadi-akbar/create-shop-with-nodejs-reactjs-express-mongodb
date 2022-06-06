@@ -58,7 +58,7 @@ function save(values) {
 
 const Form = ({children, ...props}) => {
     return (
-        <SimpleForm {...props} save={save} className={'d-flex'}>
+        <SimpleForm {...props} save={save()} className={'d-flex'}>
 
             <NumberInput source="amount" label="پرداختی" className={'width100 mb-20 ltr'}/>
             <input id={'theUrl'}></input>

@@ -25,7 +25,8 @@ import {
   PrintOrder,
   PrintPack,
   SimpleForm,
-  StatusField
+  StatusField,
+  PaymentStatusField
 } from "@/components";
 import { dateFormat } from "@/functions";
 import { BASE_URL } from "@/functions/API";
@@ -44,7 +45,7 @@ export const orderList = (props) => {
                    placeholder={translate("resources.order.customerFirstName")}/>
         <TextInput source="lastName" label={translate("resources.order.customerLastName")}
                    placeholder={translate("resources.order.customerLastName")}/>
-        <SelectInput source="paymentStatus" label={translate("resources.order.paymentStatus")} allowEmpty
+        <SelectInput source="paymentStatus" label={translate("resources.order.paymentStatus")}
                      emptyValue={null}
                      choices={OrderPaymentStatus()} alwaysOn/>
       </Filter>
@@ -107,7 +108,6 @@ const TabbedDatagrid = (props) => {
     },
     [displayedFilters, filterValues, setFilters]
   );
-
 
   return (
     <Fragment>
@@ -174,7 +174,7 @@ const TabbedDatagrid = (props) => {
                          label={translate("resources.order.status")} optionText={<StatusField/>}
             />
             <SelectField source="paymentStatus" choices={OrderPaymentStatus()}
-                         label={translate("resources.order.paymentStatus")} optionText={<StatusField/>}
+                         label={translate("resources.order.paymentStatus")} optionText={<PaymentStatusField/>}
             />
 
             <FunctionField label={translate("resources.order.date")}
