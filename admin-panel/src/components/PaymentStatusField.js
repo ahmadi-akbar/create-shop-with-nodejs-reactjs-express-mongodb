@@ -7,9 +7,9 @@ import { useRecordContext,useTranslate } from 'react-admin';
 export default ({source}) => {
   const record = useRecordContext();
   const translate = useTranslate();
-  console.log("Chip", record,"source",source);
+  // console.log("Chip", record,"source",source);
   if (record)
-    return <Chip className={record.color} label={translate("pos.OrderPaymentStatus."+record.name)}></Chip>;
+    return <Chip className={record.color} label={translate("pos.OrderPaymentStatus."+record.name)}/>;
   else
     return <></>;
 }

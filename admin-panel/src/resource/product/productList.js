@@ -351,7 +351,7 @@ const list = (props) => {
                                                }
                                            });
                                            return (
-                                               <div className={'stockandprice ' + thecl}>
+                                               <div className={'stockandprice ' + thecl} key={key}>
 
                                                    <div className='theDate hoverparent'>
                                                        <Chip className={thecl} label={tt}></Chip>

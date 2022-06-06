@@ -4,7 +4,7 @@ import moment from 'jalali-moment';
 import data from './dataProvider';
 import {useTranslate} from 'react-admin';
 
-const ADMIN_ROUTE = window.REACT_APP_ADMIN_ROUTE;
+const ADMIN_ROUTE = window.ADMIN_ROUTE;
 const dataProvider = data(ADMIN_ROUTE);
 
 export {dataProvider, authProvider, theme};

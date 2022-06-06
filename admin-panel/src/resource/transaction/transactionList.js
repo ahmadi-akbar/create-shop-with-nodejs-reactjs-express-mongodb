@@ -12,7 +12,8 @@ import {
 } from "react-admin";
 
 import { dateFormat } from "@/functions";
-import { List, StatusField,PaymentStatus } from "@/components";
+import { List, StatusField,PaymentStatus ,TransactionPaymentStatusField} from "@/components";
+// import Transactions from "../../../../main/src/client/views/Transactions";
 
 
 export const transactionList = (props) => {
@@ -44,7 +45,7 @@ export const transactionList = (props) => {
                        )}/>
 
         <SelectField source="statusCode" choices={PaymentStatuses}
-        label={translate("resources.transaction.statusCode")} optionText={<StatusField />}
+        label={translate("resources.transaction.statusCode")} optionText={<TransactionPaymentStatusField />}
         />
         <BooleanField source="status" label={translate("resources.transaction.status")}/>
         <FunctionField label={translate("resources.transaction.date")}

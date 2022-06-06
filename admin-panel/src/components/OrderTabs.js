@@ -6,7 +6,7 @@ import {
 export default () => {
   const translate=useTranslate();
   return [
-    {id: '', name: translate("resources.order.allOrders")},
+    {id: 'all', name: translate("resources.order.allOrders")},
     {id: 'processing', name: translate("resources.order.processing")},
     {id: 'indoing', name: translate("resources.order.confirmed")},
     {id: 'makingready', name: translate("resources.order.makingready")},

@@ -64,7 +64,8 @@ import {
     ShowPictures,
     SimpleForm,
     SimpleImageField,
-    UploaderField
+    UploaderField,
+  ProductType
 } from '@/components';
 import {Box, Chip, Divider, Tab, Tabs} from '@mui/material';
 import { makeStyles} from '@mui/styles';
@@ -128,16 +129,6 @@ const typeChoices3 = [
         color: 'succ'
 
     },
-];
-const typeChoices4 = [
-    {
-        id: 'normal',
-        name: 'عادی',
-    },
-    {
-        id: 'variable',
-        name: 'متغیر',
-    }
 ];
 
 function CustomTextInput({record}) {
@@ -1004,7 +995,7 @@ const TabbedDatagrid = (props) => {
                     fullWidth
                     className={'mb-20'}
                     source="type"
-                    choices={typeChoices4}
+                    choices={ProductType()}
 
                 />
 
@@ -1172,7 +1163,7 @@ const Form = ({children, ...props}) => {
                 fullWidth
                 className={'mb-20'}
                 source="type"
-                choices={typeChoices4}
+                choices={ProductType()}
 
             />
 
