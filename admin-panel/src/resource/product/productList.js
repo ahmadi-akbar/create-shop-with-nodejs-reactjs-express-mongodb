@@ -351,13 +351,13 @@ const list = (props) => {
                                                }
                                            });
                                            return (
-                                               <div className={'stockandprice ' + thecl} key={key}>
+                                               <div className={'stockandprice ' + thecl} >
 
                                                    <div className='theDate hoverparent'>
-                                                       <Chip className={thecl} label={tt}></Chip>
+                                                       <Chip className={thecl} label={tt}/>
                                                        <div className='theDate thehover'>
                                                            {record.combinations.map((comb, key) => {
-                                                               return (<div className={'cobm flex-d cobm' + key}>
+                                                               return (<div className={'cobm flex-d cobm' + key} key={key}>
                                                                    <div className={'flex-1'}>
                                                                        {comb.options && <div
                                                                            className={''}>{Object.keys(comb.options).map((item, index) => {

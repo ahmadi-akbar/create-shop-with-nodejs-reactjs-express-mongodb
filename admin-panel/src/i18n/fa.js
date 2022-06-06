@@ -42,7 +42,7 @@ const customFarsiMessages = {
     menu: {
       attributes: "ویژگی ها",
       categories: "دسته ها",
-      createPost: "post ساخت",
+      createPost: "ساخت نوشته/برگه",
       settings: "تنظیمات",
       actions: "فعالیت ها",
       dashboard: "داشبرد",
@@ -71,7 +71,7 @@ const customFarsiMessages = {
       sms: "پیامک",
       post: "نوشته/برگه",
       posts: "نوشته ها/برگه ها",
-      allPost: "همه نوشت/برگه ها",
+      allPost: "همه نوشته/برگه ها",
       more: "بیشتر",
       users: "کاربران",
       allUsers: "همه کاربران",
@@ -187,8 +187,10 @@ const customFarsiMessages = {
       minusxprice: "x مبلغ کم کن"
     },
     customers: {
+      _id:"شناسه",
       phoneNumber:"شماره تماس",
       activationCode:"کد فعال سازی",
+      countryCode:"کد کشور",
       firstName:"نام",
       lastName:"نام خانوادگی",
       email:"ایمیل",
@@ -215,7 +217,10 @@ const customFarsiMessages = {
     order: {
       orderNumber:"شماره سفارش",
       customerData:"اطلاعات مشتری",
+      amountToPay:"مبلغی را وارد کنید",
       total:"مجموع پرداختی",
+      sum:"جمع کل موارد",
+      amount:"مجموع پرداختی",
       paid:"پرداخت شده",
       status:"وضعیت سفارش",
       paymentStatus:"وضعیت پرداخت",
@@ -330,6 +335,14 @@ const customFarsiMessages = {
       priceLessThanCondition: "قیمت کمتر از شرط",
       condition: "شرط",
       priceMoreThanCondition: "قیمت بیشتر از شرط",
+      welcome: "خوش آمدید",
+      register: "ثبت نام",
+      submitOrderNotPaying: "ثبت سفارش (پرداخت نشده)",
+      submitOrderSuccessPaying: "ثبت سفارش (پرداخت موفق)",
+      onSendProduct: "ارسال محصول",
+      onGetProductByCustomer: "دریافت توسط مشتری",
+      submitReview: "ثبت نظر",
+      onCancel: "لغو سفارش",
     },
     sms: {
       user: "کاربر",
@@ -338,7 +351,9 @@ const customFarsiMessages = {
       sender: "ارسال کننده",
       receiver: "دریافت کننده",
       updatedAt: "بروزرسانی در",
-      createdAt: "ساخته شده در"
+      createdAt: "ساخته شده در",
+      phoneNumber:"شماره موبایل"
+
 
     },
     transaction: {

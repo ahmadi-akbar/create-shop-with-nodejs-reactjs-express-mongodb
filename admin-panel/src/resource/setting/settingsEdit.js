@@ -171,6 +171,15 @@ const Form = ({ children, ...props }) => {
         </SimpleFormIterator>
       </ArrayInput>
 
+      <TextInput multiline fullWidth source="sms_welcome" label={translate('resources.settings.welcome')} />
+      <TextInput multiline fullWidth source="sms_register" label={translate('resources.settings.register')} />
+      <TextInput multiline fullWidth source="sms_submitOrderNotPaying" label={translate('resources.settings.submitOrderNotPaying')} />
+      <TextInput multiline fullWidth source="sms_submitOrderSuccessPaying" label={translate('resources.settings.submitOrderSuccessPaying')} />
+      {/*<TextInput multiline fullWidth source="sms_status_link" label={translate('product.description')} />*/}
+      <TextInput multiline fullWidth source="sms_onSendProduct" label={translate('resources.settings.onSendProduct')} />
+      <TextInput multiline fullWidth source="sms_onGetProductByCustomer" label={translate('resources.settings.onGetProductByCustomer')} />
+      <TextInput multiline fullWidth source="sms_submitReview" label={translate('resources.settings.submitReview')} />
+      <TextInput multiline fullWidth source="sms_onCancel" label={translate('resources.settings.onCancel')} />
 
       {children}
     </SimpleForm>

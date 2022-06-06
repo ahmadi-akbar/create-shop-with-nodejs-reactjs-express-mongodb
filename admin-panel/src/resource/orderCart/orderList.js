@@ -11,6 +11,7 @@ import {
   SelectInput,
   TextField,
   TextInput,
+  useTranslate,
   useListContext
 } from "react-admin";
 import { Divider, Tab, Tabs } from "@mui/material";
@@ -28,6 +29,7 @@ const TabbedDatagrid = (props) => {
   const listContext = useListContext();
   const { ids, filterValues, setFilters, displayedFilters } = listContext;
   const classes = useDatagridStyles();
+  const translate = useTranslate();
 
   const [cart, setCart] = useState([]);
   const [checkout, setCheckout] = useState([]
@@ -103,9 +105,9 @@ if(!filterValues.status){
         >
           <Datagrid {...props} optimized rowClick="edit">
             {/*<TextField source="id"/>*/}
-            <TextField source="orderNumber" label={"شماره سفارش"}/>
+            <TextField source="orderNumber" label={translate("resources.order.orderNumber")}/>
 
-            <FunctionField label="اطلاعات مشتری"
+            <FunctionField label={translate("resources.order.customerData")}
                            render={record => (
                              <div className='theDate'>
                                {record.customer && <div>{record.customer.firstName && <div>
@@ -129,28 +131,25 @@ if(!filterValues.status){
 
                                </div>}</div>
                            )}/>
-            <NumberField source="sum" label={"مجموع سفارش"}/>
-            <NumberField source="amount" label={"پرداختی"}/>
+            <NumberField source="sum" label={translate("resources.order.sum")}/>
+            <NumberField source="amount" label={translate("resources.order.amount")}/>
 
             <SelectField source="status" choices={OrderStatus()}
-                         label="وضعیت سفارش" optionText={<StatusField/>}
+                         label={translate("resources.order.status")} optionText={<StatusField/>}
             />
             <SelectField source="paymentStatus" choices={OrderPaymentStatus()}
-                         label="وضعیت پرداخت" optionText={<PaymentStatusField/>}
+                         label={translate("resources.order.paymentStatus")} optionText={<PaymentStatusField/>}
             />
 
-            {/*<TextField source="status" label={'وضعیت سفارش'}/>*/}
-            <FunctionField label="منتشر شده در"
+            <FunctionField label={translate("resources.order.createdAt")}
                            render={record => `${dateFormat(record.createdAt)}`}/>
-            <FunctionField label="بروزرسانی شده در"
+            <FunctionField label={translate("resources.order.updatedAt")}
                            render={record => `${dateFormat(record.updatedAt)}`}/>
 
-            {/*<BooleanField source="active" />*/}
             <EditButton/>
           </Datagrid>
 
         </ListContextProvider>
-        {/*)}*/}
 
       </div>
 
@@ -167,23 +166,24 @@ const tabs = [
   { id: "checkout", name: "در حال ثبت سفارش" }
 ];
 
-const orderList = (props) => (
-  <List
-    {...props}
-    filters={
-      <Filter {...props}>
-        <SearchInput source="search" placeholder={"شماره سفارش یا موبایل"} alwaysOn/>
-        <TextInput source="firstName" label={"نام مشتری"} placeholder={"نام"}/>
-        <TextInput source="lastName" label={"نام خانوادگی"} placeholder={"نام خانوادگی"}/>
-        <SelectInput source="status" label={"وضعیت سفارش"} emptyValue={null} choices={OrderStatus()}
-                     alwaysOn/>
-        {/*<SelectInput source="paymentStatus" label={'وضعیت پرداخت'}  emptyValue={null}*/}
-        {/*choices={typeChoices3} alwaysOn/>*/}
-        {/*<BooleanInput source="is_published" alwaysOn />*/}
-      </Filter>
-    } pagination={<PostPagination/>}
-  >
-    <TabbedDatagrid/>
-  </List>
-);
+const orderList = (props) => {
+  const translate = useTranslate();
+
+  return(
+    <List
+      {...props}
+      filters={
+        <Filter {...props}>
+          <SearchInput source="search" placeholder={translate("resources.order.orderNumber")} alwaysOn/>
+          <TextInput source="firstName" label={translate("resources.order.orderNumber")} placeholder={translate("resources.order.orderNumber")}/>
+          <TextInput source="lastName" label={translate("resources.order.orderNumber")} placeholder={translate("resources.order.orderNumber")}/>
+          <SelectInput source="status" label={translate("resources.order.orderNumber")} emptyValue={null} choices={OrderStatus()}
+                       alwaysOn/>
+        </Filter>
+      } pagination={<PostPagination/>}
+    >
+      <TabbedDatagrid/>
+    </List>
+  );
+}
 export default orderList;
