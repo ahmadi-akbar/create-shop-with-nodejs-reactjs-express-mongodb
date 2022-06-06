@@ -103,7 +103,7 @@ export default (props) => {
         // console.log('handleClick');
 
 
-        // QRCode.toCanvas(canvas, 'https://gameboss.shop', function (error) {
+        // QRCode.toCanvas(canvas, '#your-site-link', function (error) {
         // QRCode.toDataURL('https://gameboss.shop')
         //     .then(url => {
         //         var canvas = document.getElementById('canvas');
@@ -365,7 +365,7 @@ export default (props) => {
                             <span>شرکت آروند - </span>
                             <span>تلفن: </span><input className={'d-inline-block width100'} value={tel} onChange={(e) => changeInput('tel', e)}/>
 
-                            <span>سایت: </span>{'www.gameboss.shop'}
+                            <span>سایت: </span>{'#your-site-link'}
                         </div>
 
                         <div>

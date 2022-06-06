@@ -43,11 +43,25 @@ body .layout.rtl * {
     direction: rtl;
     text-align: right;
 }
+body .layout.rtl a{
+    font-family: IRANSans, 'Roboto', sans-serif !important;
 
+}
 body .layout.rtl .MuiInputLabel-root {
     transform-origin: top right !important;
 }
 
+body .layout.rtl .MuiSelect-select{
+    padding-left:32px;
+    padding-right:0px;
+    text-align: right;
+    direction: rtl;
+}
+body .layout.rtl .MuiInputLabel-root {
+    transform-origin: top right !important;
+    right:0;
+    left:auto;
+}
 body .layout.rtl .rtl-right {
     direction: rtl;
     text-align: right;

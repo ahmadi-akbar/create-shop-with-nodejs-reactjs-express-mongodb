@@ -61,9 +61,9 @@ export const orderList = (props) => {
                 <SearchInput source="search" placeholder={'شماره سفارش یا موبایل'} alwaysOn/>
                 <TextInput source="firstName" label={'نام مشتری'} placeholder={'نام'}/>
                 <TextInput source="lastName" label={'نام خانوادگی'} placeholder={'نام خانوادگی'}/>
-                <SelectInput source="status" label={'وضعیت سفارش'} allowEmpty emptyValue={null} choices={OrderStatus()}
+                <SelectInput source="status" label={'وضعیت سفارش'}  emptyValue={null} choices={OrderStatus()}
                              alwaysOn/>
-                <SelectInput source="paymentStatus" label={'وضعیت پرداخت'} allowEmpty emptyValue={null}
+                <SelectInput source="paymentStatus" label={'وضعیت پرداخت'}  emptyValue={null}
                              choices={OrderPaymentStatus()} alwaysOn/>
                 {/*<BooleanInput source="is_published" alwaysOn />*/}
             </Filter>
@@ -558,9 +558,9 @@ const orderList2 = (props) => (
                 <SearchInput source="search" placeholder={'شماره سفارش یا موبایل'} alwaysOn/>
                 <TextInput source="firstName" label={'نام مشتری'} placeholder={'نام'}/>
                 <TextInput source="lastName" label={'نام خانوادگی'} placeholder={'نام خانوادگی'}/>
-                <SelectInput source="status" label={'وضعیت سفارش'} allowEmpty emptyValue={null} choices={OrderStatus()}
+                <SelectInput source="status" label={'وضعیت سفارش'}  emptyValue={null} choices={OrderStatus()}
                              alwaysOn/>
-                {/*<SelectInput source="paymentStatus" label={'وضعیت پرداخت'} allowEmpty emptyValue={null}*/}
+                {/*<SelectInput source="paymentStatus" label={'وضعیت پرداخت'}  emptyValue={null}*/}
                 {/*choices={typeChoices3} alwaysOn/>*/}
                 {/*<BooleanInput source="is_published" alwaysOn />*/}
             </Filter>

@@ -19,7 +19,7 @@ import {Textsms as Icon,Send} from '@mui/icons-material';
 import Button from '@mui/material/Button';
 import axios from 'axios';
 import {List, SimpleForm} from '@/components';
-const url = 'https://admin.gameboss.shop';
+const url = window.ADMIN_;
 // import TelegramPushSmsButton from './../components/TelegramPushSmsButton';
 //
 // const smsFilter = props => (
@@ -29,7 +29,7 @@ const url = 'https://admin.gameboss.shop';
 //             label="User"
 //             source="userId"
 //             reference="users"
-//             allowEmpty
+//
 //         >
 //             <SelectInput optionText="name"/>
 //         </ReferenceInput>
@@ -112,10 +112,10 @@ export const smsEdit = (props) => (
             {/*<ReferenceInput label="دسته اول" source="firstCategory" reference="category">*/}
             {/*<SelectInput optionText="name" optionValue="id"/>*/}
             {/*</ReferenceInput>*/}
-            {/*<ReferenceInput label="دسته دوم" source="secondCategory" reference="category" allowEmpty>*/}
+            {/*<ReferenceInput label="دسته دوم" source="secondCategory" reference="category" >*/}
             {/*<SelectInput optionText="name" optionValue="id"/>*/}
             {/*</ReferenceInput>*/}
-            {/*<ReferenceInput label="دسته سوم" source="thirdCategory" reference="category" allowEmpty>*/}
+            {/*<ReferenceInput label="دسته سوم" source="thirdCategory" reference="category" >*/}
             {/*<SelectInput optionText="name" optionValue="id"/>*/}
             {/*</ReferenceInput>*/}
             {/*<ReferenceInput label="مشتری" source="customer" reference="customer">*/}

@@ -30,7 +30,6 @@ const list = (props) => {
           reference="user"
           sort={{ field: "_id", order: "ASC" }}
           filterToQuery={searchText => ({ _id: searchText })}
-          allowEmpty={true}
           alwaysOn
         >
           <AutocompleteInput optionText="username"/>
@@ -41,7 +40,7 @@ const list = (props) => {
           reference="product"
           sort={{ field: "_id", order: "ASC" }}
           filterToQuery={searchText => ({ _id: searchText })}
-          allowEmpty={true}
+
           alwaysOn
         >
           <AutocompleteInput optionText="title.fa"/>
@@ -53,7 +52,7 @@ const list = (props) => {
           reference="customer"
           sort={{ field: "_id", order: "ASC" }}
           filterToQuery={searchText => ({ q: searchText })}
-          allowEmpty={true}
+
           alwaysOn
         >
           <AutocompleteInput optionText="phoneNumber"/>

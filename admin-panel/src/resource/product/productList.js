@@ -57,9 +57,9 @@ const PostFilter = (props) => {
             <SearchInput source="category" placeholder={translate('resources.product.category')} alwaysOn/>
             {/*<SearchInput source="firstCategory" placeholder={'نام'} alwaysOn/>*/}
             {/*<SearchInput source="lastName" placeholder={'نام خانوادگی'} alwaysOn/>*/}
-            {/*<SelectInput source="firstCategory" label={'دسته بندی اول'} allowEmpty emptyValue={null} choices={typeChoices4}/>*/}
-            {/*<SelectInput source="secondCategory" label={'دسته بندی دوم'} allowEmpty emptyValue={null} choices={typeChoices3}/>*/}
-            {/*<SelectInput source="thirdCategory" label={'دسته بندی سوم'} allowEmpty emptyValue={null} choices={typeChoices3}/>*/}
+            {/*<SelectInput source="firstCategory" label={'دسته بندی اول'}  emptyValue={null} choices={typeChoices4}/>*/}
+            {/*<SelectInput source="secondCategory" label={'دسته بندی دوم'}  emptyValue={null} choices={typeChoices3}/>*/}
+            {/*<SelectInput source="thirdCategory" label={'دسته بندی سوم'}  emptyValue={null} choices={typeChoices3}/>*/}
 
         </Filter>
     );

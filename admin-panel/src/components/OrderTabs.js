@@ -3,7 +3,7 @@ import {
   useTranslate
 } from "react-admin";
 
-export default ({}) => {
+export default () => {
   const translate=useTranslate();
   return [
     {id: '', name: translate("resources.order.allOrders")},
