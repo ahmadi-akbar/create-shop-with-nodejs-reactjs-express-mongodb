@@ -53,6 +53,9 @@ body .layout.rtl .rtl-right {
     text-align: right;
 }
 
+body .layout.rtl .MuiButton-startIcon{
+
+}
 body .layout.rtl .MuiTableCell-root,
 body .layout.rtl .MuiInputBase-inputMultiline {
     text-align: right !important;
