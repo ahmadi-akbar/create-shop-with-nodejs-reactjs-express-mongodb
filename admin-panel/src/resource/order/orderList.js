@@ -108,7 +108,7 @@ const TabbedDatagrid = (props) => {
     },
     [displayedFilters, filterValues, setFilters]
   );
-
+console.log('filterValues.status',filterValues.status);
   return (
     <Fragment>
       <Tabs

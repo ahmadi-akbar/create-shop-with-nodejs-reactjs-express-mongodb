@@ -117,7 +117,7 @@ var self = ( {
       search['status'] = {
         $nin: ['cart', 'checkout', ''],
       };
-      if (req.query['status']) {
+      if (req.query['status'] && req.query['status']!='all') {
         if (!search['status']) {
 
           search['status'] = {};

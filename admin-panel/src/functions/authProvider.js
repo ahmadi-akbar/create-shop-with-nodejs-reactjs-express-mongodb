@@ -1,4 +1,4 @@
-const url = window.REACT_APP_ADMIN_ROUTE ;
+const url = window.ADMIN_ROUTE ;
 
 export default {
   // called when the user attempts to log in
