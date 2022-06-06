@@ -127,6 +127,8 @@ const customEnglishMessages = {
       countPayedLast30Days: "Number of successful payments in the last 30 days"
     },
     customers: {
+      _id:"_id",
+      countryCode:"countryCode",
       phoneNumber:"phone number",
       activationCode:"activation code",
       firstName:"first name",
@@ -136,6 +138,22 @@ const customEnglishMessages = {
       createdAt:"created at",
       updatedAt:"updated at",
       active:"active/deactive",
+    },
+    user: {
+      _id:"_id",
+      countryCode:"countryCode",
+      phoneNumber:"phone number",
+      activationCode:"activation code",
+      firstName:"first name",
+      lastName:"last name",
+      email:"email",
+      internationalCode:"international code",
+      createdAt:"created at",
+      updatedAt:"updated at",
+      active:"active/deactive",
+      nickname:"nickname",
+      password:"password",
+      username:"username",
     },
 
     attributes: {
@@ -161,6 +179,9 @@ const customEnglishMessages = {
       total:"total",
       paid:"paid",
       status:"status",
+      sum:"total items",
+      amount:"total",
+      amountToPay:"amount you want to pay",
       paymentStatus:"payment status",
       date:"date",
       createdAt:"created at",
@@ -264,7 +285,8 @@ const customEnglishMessages = {
       updated: "updated",
       created: "created",
       categories: "categories",
-      inStock: "in stock"
+      inStock: "in stock",
+      outOfStock:"out of stock"
     },
 
     reviews: {
@@ -272,7 +294,26 @@ const customEnglishMessages = {
     },
 
     settings: {
-      siteStatus: "siteStatus"
+      siteStatus: "site status",
+      activeCategory: "active categories",
+      siteActiveMessage: "Message for showing user that site is active/deactive",
+      siteActive: "site status",
+      title: "Title",
+      theid: "_id",
+      description: "description",
+      city: "city",
+      is_isnt: "is / is not",
+      priceLessThanCondition: "price less than condition",
+      condition: "condition",
+      priceMoreThanCondition: "price more than condition",
+      welcome: "welcome",
+      register: "register",
+      submitOrderNotPaying: "submit order not paying",
+      submitOrderSuccessPaying: "submit order success paying",
+      onSendProduct: "on send product",
+      onGetProductByCustomer: "on get product by customer",
+      submitReview: "submit review",
+      onCancel: "on cancel",
     },
 
     action: {
@@ -297,7 +338,8 @@ const customEnglishMessages = {
       sender: "sender",
       receiver: "receiver",
       updatedAt: "updated at",
-      createdAt: "created at"
+      createdAt: "created at",
+      phoneNumber:"phoneNumber"
 
     },
     transaction: {

@@ -35,6 +35,7 @@ import {dateFormat} from '@/functions';
 import API, {BASE_URL} from '@/functions/API';
 import {makeStyles} from '@mui/styles';
 import React, {Fragment, useCallback, useEffect, useState} from 'react';
+import { useTranslate } from "react-admin/dist/index";
 
 
 function save(values) {
@@ -57,10 +58,12 @@ function save(values) {
 }
 
 const Form = ({children, ...props}) => {
-    return (
+  const translate = useTranslate();
+
+  return (
         <SimpleForm {...props} save={save()} className={'d-flex'}>
 
-            <NumberInput source="amount" label="پرداختی" className={'width100 mb-20 ltr'}/>
+            <NumberInput source="amount" label={translate("resources.order.amountToPay")} className={'width100 mb-20 ltr'} fullWidth/>
             <input id={'theUrl'}></input>
             {children}
         </SimpleForm>
