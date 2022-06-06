@@ -14,10 +14,9 @@ import {google} from "googleapis";
 // }
 
 const googleConfig = {
-    clientId: '855392712766-7sdce3dkbdum5q3liarpj9bv8nqbe31n.apps.googleusercontent.com', // e.g. asdfghjkljhgfdsghjk.apps.googleusercontent.com
-    clientSecret: 'ifWY2xo98V94QtLyQBpVHBEX', // e.g. _ASDFA%DFASDFASDFASD#FAD-
-    // redirect: 'https://shansebartar.com/google-auth' // this must match your google api settings
-    redirect: 'http://shansebartar.com:3002/player/player/validateWithGoogle' // this must match your google api settings
+    clientId: '',
+    clientSecret: '',
+    redirect: ''
 };
 
 const defaultScope = [
