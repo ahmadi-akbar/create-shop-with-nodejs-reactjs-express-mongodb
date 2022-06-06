@@ -1,6 +1,5 @@
 // import {SimpleForm} from 'react-admin';
 import React from 'react';
-import logo from '../assets/img/logo.svg';
 import IRANSansWeb_font_eot from '../assets/fonts/eot/IRANSansWeb.eot';
 import IRANSansWeb_font_woff2 from '../assets/fonts/woff2/IRANSansWeb.woff2';
 import IRANSansWeb_font_woff from '../assets/fonts/woff/IRANSansWeb.woff';
@@ -322,7 +321,7 @@ export default (props) => {
                             {/*echo $this->get_title();*/}
                             {/*}*/}
                             {/*?>*/}
-                            <img style={{width: '130px'}} src={logo}/>
+                            {/*<img style={{width: '130px'}} src={logo}/>*/}
                         </div>
                     </td>
                     <td className="shop-info">
