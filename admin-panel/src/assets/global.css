@@ -14,15 +14,82 @@ html, body {
     box-sizing: border-box;
 
 }
-#theUrl{
- width:100%;
+.hytrdf.active {
+    border-color: #2700ff;
+    border-width: 8px;
 }
-.lang-button{
+
+.hytrdf {
+    cursor: pointer;
+    width: 20%;
+    float: right;
+    box-sizing: border-box;
+    border: 1px solid #000;
+
+}
+
+.hytrdf img {
+    max-width: 100%;
+    height: auto;
+}
+
+.d-flex section {
+    display: flex;
+}
+
+.row {
+    display: flex;
+    margin: 30px 0;
+    width: 100% !important;
+}
+
+.col-md-6 {
+    flex-basis: 50%;
+    padding: 0 15px;
+}
+
+.col-md-3 {
+    flex-basis: 25%;
+    padding: 0 15px;
+}
+.mb-20 {
+    margin-bottom: 20px !important;
+    display: flex;
+    width: 100%;
+
+}
+.col-md-4 {
+    flex-basis: 33.3333%;
+    padding: 0 15px;
+}
+
+.width100 {
+    width: 100% !important;
+}
+
+#placeholder[pseudo="-webkit-input-placeholder"] {
+}
+body label[data-shrink=false]+.MuiInputBase-formControl .css-1by8xkp-MuiInputBase-input-MuiFilledInput-input::-webkit-input-placeholder{
+    opacity: 0.4 !important;
+
+}
+.MuiFilledInput-input::placeholder,
+.MuiInputBase-input::placeholder {
+    /*color: #000;*/
+}
+
+#theUrl {
+    width: 100%;
+}
+
+.lang-button {
     margin: 0 5px !important;
 }
-.darkModeB , .darkModeB *{
+
+.darkModeB, .darkModeB * {
     color: #fff;
 }
+
 .media_ImageListItem {
     border-radius: 15px;
     background-color: #faf7fa;
@@ -36,28 +103,31 @@ html, body {
     cursor: pointer;
 
 }
-.media_ImageListItem:after{
+
+.media_ImageListItem:after {
     content: '';
     position: absolute;
     width: 100%;
     height: 100%;
-    background-color: rgba(0,0,0,0.2);
+    background-color: rgba(0, 0, 0, 0.2);
     z-index: 999;
     left: 0;
-    top:0;
+    top: 0;
     transition: .1s;
     transform: translate(0, 200px);
 }
-.media_ImageListItem:hover:after{
+
+.media_ImageListItem:hover:after {
     transition: .1s;
 
     transform: translate(0, 0);
 
-
 }
+
 .media_ImageListItem img, .media_ImageListItem .MuiImageListItem-img {
     background-color: #fff;
 }
+
 .thumbnail {
     width: 80px;
     border-radius: 50%;
@@ -66,17 +136,21 @@ html, body {
     border: 2px solid #000;
     background-color: #fff;
 }
+
 .thumbnail img {
     max-width: 100%;
     height: auto;
     max-height: 80px;
 }
+
 .hoverparent {
     position: relative;
 }
+
 .hoverparent .thehover {
     display: none;
 }
+
 .hoverparent:hover .thehover {
     display: block;
     z-index: 999;
@@ -96,6 +170,7 @@ html, body {
     display: -webkit-flex;
     display: flex;
 }
+
 .flex-d .flex-1 {
     -webkit-flex-basis: 20%;
     flex-basis: 20%;

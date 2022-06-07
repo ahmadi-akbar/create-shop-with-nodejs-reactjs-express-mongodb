@@ -1,5 +1,5 @@
 import User from '#models/user';
-
+import global from '#root/global';
 var self = ( {
     all: function (req, res, next) {
         let offset = 0;

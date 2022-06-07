@@ -315,7 +315,9 @@ const customFarsiMessages = {
       secondCategory:"دسته دوم",
       thirdCategory:"دسته سوم",
       inStock: "در انبار",
-      outOfStock:"موجود نیست"
+      outOfStock:"موجود نیست",
+      normal:"عادی",
+      variable:"متغیر"
     },
 
     reviews: {

@@ -24,7 +24,8 @@ import {
     TextField,
     TextInput,
     TopToolbar,
-    useListContext
+    useListContext,
+  useTranslate
 } from 'react-admin';
 import {Box, Chip, Divider, Tab, Tabs} from '@mui/material';
 
@@ -35,7 +36,7 @@ import {dateFormat} from '@/functions';
 import API, {BASE_URL} from '@/functions/API';
 import {makeStyles} from '@mui/styles';
 import React, {Fragment, useCallback, useEffect, useState} from 'react';
-import { useTranslate } from "react-admin/dist/index";
+// import { useTranslate } from "react-admin/dist/index";
 
 
 function save(values) {

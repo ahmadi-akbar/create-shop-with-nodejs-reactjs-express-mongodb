@@ -4,7 +4,7 @@ import Media from "#models/media";
 import requestIp from "request-ip";
 import _ from "lodash";
 import moment from "moment-jalaali";
-
+import global from '#root/global';
 var self = ({
   importproductsfromcsv: function(req, res, next) {
     res.json(req.body);
