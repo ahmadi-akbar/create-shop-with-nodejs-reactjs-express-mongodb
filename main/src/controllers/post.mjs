@@ -1,6 +1,6 @@
 import Post from "#models/post";
 import Media from "#models/media";
-
+import global from '#root/global';
 import requestIp from "request-ip";
 import _ from "lodash";
 

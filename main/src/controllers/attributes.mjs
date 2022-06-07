@@ -13,23 +13,16 @@ var self = ( {
         }
 
         let search = {};
-        // search["name." + req.headers.lan] = {
-        //   $exists: true
-        // };
-        // console.log('search', search);
         Attributes.find(search, function (err, attributess) {
-            // console.log('err', err);
-            // console.log('attributess', attributess);
             if (err || !attributess) {
                 res.json({
                     success: false,
-                    message: 'error!',
+                    message: 'error attributess!',
                     attributess: attributess
                 });
                 return 0;
             }
             Attributes.countDocuments({}, function (err, count) {
-                // console.log('countDocuments', count);
                 if (err || !count) {
                     res.json({
                         success: false,
@@ -47,7 +40,7 @@ var self = ( {
 
             });
 
-        }).skip(offset).sort({_id: -1}).limit(parseInt(req.params.limit));
+        }).skip(offset).sort({_id: -1}).limit((req.params.limit));
     },
     f: function (req, res, next) {
         console.log('fetch all f...');

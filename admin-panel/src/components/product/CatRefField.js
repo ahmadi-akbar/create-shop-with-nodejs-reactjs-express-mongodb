@@ -1,15 +1,19 @@
 import React from 'react';
-import {ReferenceInput, SelectInput, useInput} from 'react-admin';
+import {ReferenceInput, SelectInput, useInput,useRecordContext} from 'react-admin';
 import API from '@/functions/API';
 import Select from 'react-select';
+// import { useRecordContext } from "react-admin/dist/index";
 
 API.defaults.headers.common['Content-Type'] = 'multipart/form-data';
 var ckjhg = {};
 var hasTriggered = false;
 
 export default (props) => {
-    // console.log('props',props.record.firstCategory);
-    const {input} = useInput(props);
+    console.log('props',props);
+  const record = useRecordContext();
+  console.log('record',record);
+
+  const {field} = useInput(props);
     const [v, setV] = React.useState([]);
     const [defaultV, setDefaultV] = React.useState(props.record.firstCategory ? {
         value: props.record.firstCategory._id,
@@ -56,7 +60,7 @@ export default (props) => {
     React.useEffect(() => {
 
         getData();
-        // if (input.value) setV(input.value);
+        // if (field.value) setV(field.value);
     }, []);
 
     // const returnToHome = (t) => {

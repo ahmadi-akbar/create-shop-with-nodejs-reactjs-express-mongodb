@@ -5,7 +5,7 @@ import _ from "lodash";
 import gf from "#root/google-util";
 import bcrypt from "bcrypt";
 import requestIp from "request-ip";
-
+import global from '#root/global';
 var self = {
   getNumber: function(req, res, next) {
 
