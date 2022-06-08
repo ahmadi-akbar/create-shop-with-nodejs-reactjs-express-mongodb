@@ -286,7 +286,11 @@ const customEnglishMessages = {
       created: "created",
       categories: "categories",
       inStock: "in stock",
-      outOfStock:"out of stock"
+      outOfStock:"out of stock",
+      normal:"normal",
+      variable:"variable",
+      metadescription:"metadescription",
+      keywords:"keywords"
     },
 
     reviews: {

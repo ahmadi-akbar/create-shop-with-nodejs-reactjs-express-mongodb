@@ -24,7 +24,7 @@ export default (props) => {
     //
     // const getData = () => {
     //
-    //     API.get('/admin' + props.url, {}, {
+    //     API.get('' + props.url, {}, {
     //         onUploadProgress: (e) => {
     //             // let p = Math.floor((e.loaded * 100) / e.total);
     //             // setProgress(p);

@@ -1,6 +1,6 @@
 import farsiMessages from "ra-language-farsi";
 
-console.log("running english language...");
+console.log("running farsi language...");
 
 const customFarsiMessages = {
   ...farsiMessages,
@@ -317,7 +317,9 @@ const customFarsiMessages = {
       inStock: "در انبار",
       outOfStock:"موجود نیست",
       normal:"عادی",
-      variable:"متغیر"
+      variable:"متغیر",
+      metadescription:"توضیحات متا",
+      keywords:"کلمات کلیدی"
     },
 
     reviews: {

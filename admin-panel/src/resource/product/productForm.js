@@ -13,7 +13,7 @@ import {
   useRecordContext,
   useTranslate
 } from "react-admin";
-import API, { BASE_URL } from "@/functions/API";
+import API from "@/functions/API";
 import { dateFormat } from "@/functions";
 import {
   CatRefField,
@@ -32,9 +32,11 @@ import {
 } from "@/components";
 import { Val } from "@/Utils";
 import React from "react";
+import { RichTextInput } from "ra-input-rich-text";
+
 // import { RichTextInput } from 'ra-input-rich-text';
 // import {ImportButton} from "react-admin-import-csv";
-
+let combs=[];
 
 let valuess = { "photos": [], "files": [], thumbnail: "" };
 
@@ -92,6 +94,7 @@ function onCreateCombinations(options) {
   });
   // (id, path, rowRecord) => form.change('combinations', combinations)
   // console.log('combinations', combinations);
+  combs=combinations;
   return combinations;
 
 }
@@ -124,9 +127,15 @@ function returnCatsValues() {
 }
 
 function thel(values) {
-  console.log("change photos field", values);
+  return new Promise(resolve => {
+    console.log("change photos field", values);
 
-  valuess["photos"] = values;
+    valuess["photos"] = values;
+    resolve(values);
+  },reject=>{
+    reject(null);
+  })
+
   // console.log(values);
 
 }
@@ -151,7 +160,8 @@ function thelF(values) {
 
 function save(values) {
   // const translate = useTranslate();
-
+// console.clear();
+// console.log('save');
   // let {values} = useFormState();
 // console.clear();
 //     console.log('product values', values);
@@ -198,13 +208,13 @@ function save(values) {
     delete values.files;
     console.log("last values (edit): ", values);
 
-    API.put("/admin/product/" + values._id, JSON.stringify({ ...values }))
+    API.put("/product/" + values._id, JSON.stringify({ ...values }))
       .then(({ data = {} }) => {
         // const refresh = useRefresh();
         // refresh();
         // alert('it is ok');
         // showNotification(translate('product.updated'));
-        window.location.reload();
+        // window.location.reload();
         if (data.success) {
           values = [];
           valuess = [];
@@ -220,7 +230,7 @@ function save(values) {
     if (valuess.files) {
       values.files = valuess.files;
     }
-    API.post("/admin/product/", JSON.stringify({ ...values }))
+    API.post("/product/", JSON.stringify({ ...values }))
       .then(({ data = {} }) => {
         // showNotification(translate('product.created'));
         if (data._id) {
@@ -238,26 +248,29 @@ function save(values) {
 
 const CustomToolbar = props => (
   <Toolbar {...props} className={"dfghjk"}>
-    <SaveButton/>
+    <SaveButton alwaysEnable/>
     <DeleteButton mutationMode="pessimistic"/>
   </Toolbar>
 );
 
 const Form = ({ children, ...props }) => {
-  console.log("vprops", props);
+  // console.log("vprops", props);
   const record = useRecordContext();
   const translate = useTranslate();
-  console.log("record", record);
+  // console.log("record", record);
   // valuess['photos'] = props.record.photos || [];
   valuess["photos"] = [];
+  console.log('productForm...');
   return (
-    <SimpleForm {...props} toolbar={<CustomToolbar/>} save={save} className={"d-flex"}>
+    <SimpleForm {...props} toolbar={<CustomToolbar/>} onSubmit={save} className={"d-flex"}>
       <TextInput source={"title." + translate("lan")} label={translate("resources.product.title")}
                  className={"width100 mb-20"} validate={Val.req} fullWidth/>
       <TextInput source="slug" label={translate("resources.product.slug")} className={"width100 mb-20 ltr"} fullWidth/>
+      <TextInput fullWidth source="keywords" label={translate("resources.product.keywords")}/>
+      <TextInput multiline fullWidth source="metadescription" label={translate("resources.product.metadescription")}/>
 
       <TextInput multiline fullWidth source="excerpt" label={translate("resources.product.excerpt")}/>
-      <TextInput multiline fullWidth source="description" label={translate("resources.product.description")}/>
+      <RichTextInput multiline fullWidth source="description" label={translate("resources.product.description")}/>
 
       <div className={"mb-20"}/>
       <BooleanInput source="story" label={translate("resources.product.story")}/>
@@ -282,27 +295,33 @@ const Form = ({ children, ...props }) => {
       />
 
 
-      <div className={"mb-20"}></div>
+      <div className={"mb-20"}/>
       <FormDataConsumer>
-        {({ formData = {} }) =>
-          (<EditOptions record={props.record} onCreateCombinations={onCreateCombinations}
-                        formData={formData}
-                        type={formData.type}/>)
+        {({ formData = {} }) => {
+          console.log('rendering???',formData);
+          // let rc=props.record;
+          // rc.combinations=combs;
+          // console.log(' ',rc);
+          formData.combinations=[];
+          return (<EditOptions record={record} onCreateCombinations={onCreateCombinations}
+                               formData={formData}
+                               type={formData.type}/>);
+        }
 
         }
       </FormDataConsumer>
       {/*<ShowPictures source="photos" thep={theP} setPhotos={setPhotos}/>*/}
 
 
-      {/*<UploaderField*/}
-        {/*label={translate("resources.product.photo")}*/}
-        {/*accept="image/*"*/}
-        {/*source="photos"*/}
-        {/*multiple={true}*/}
-        {/*thep={theP}*/}
-        {/*setPhotos={setPhotos}*/}
-        {/*inReturn={thel}*/}
-      {/*/>*/}
+      <UploaderField
+        label={translate("resources.product.photo")}
+        accept="image/*"
+        source="photos"
+        multiple={true}
+        thep={theP}
+        setPhotos={setPhotos}
+        inReturn={thel}
+      />
 
       <div className={"mb-20"}/>
 

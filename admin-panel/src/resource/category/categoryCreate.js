@@ -97,7 +97,7 @@ function save(record) {
 
     }
     if (theID)
-        API.put('/admin/product/modifyPriceByCat/' + theID, JSON.stringify({type: type, number: number}))
+        API.put('/product/modifyPriceByCat/' + theID, JSON.stringify({type: type, number: number}))
             .then(({data = {}}) => {
                 // const refresh = useRefresh();
                 // refresh();

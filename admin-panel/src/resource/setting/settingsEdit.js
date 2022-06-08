@@ -48,7 +48,7 @@ function save(values) {
   // console.log('product valuess', valuess);
   // console.log('last values: ', values);
   if (values._id) {
-    API.put("/admin/settings/" + values._id, JSON.stringify({ ...values }))
+    API.put("/settings/" + values._id, JSON.stringify({ ...values }))
       .then(({ data = {} }) => {
         alert("it is ok");
         if (data.success) {
@@ -61,7 +61,7 @@ function save(values) {
       });
   } else {
 
-    API.post("/admin/settings/", JSON.stringify({ ...values }))
+    API.post("/settings/", JSON.stringify({ ...values }))
       .then(({ data = {} }) => {
         alert("it is ok");
 
@@ -81,7 +81,7 @@ const Form = ({ children, ...props }) => {
   const translate = useTranslate();
 
   return (
-    <SimpleForm {...props} save={save}>
+    <SimpleForm {...props} onSubmit={save}>
       <BooleanInput source="siteActive" label={translate("resources.settings.siteActive")}/>
       <SelectArrayInput label={translate("resources.settings.activeCategory")} source="activeCategory" optionValue="_id" choices={[{
         "_id": "61d58e37d931414fd78c7fb7",

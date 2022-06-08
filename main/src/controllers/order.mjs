@@ -215,7 +215,7 @@ var self = ( {
             }, function(err, updatedOrder) {
             });
 
-          console.log('req.headers', req.headers);
+          // console.log('req.headers', req.headers);
           // if (req.headers.user && req.headers.token) {
           //     let action = {
           //         user: req.headers.user._id,
@@ -772,7 +772,7 @@ var self = ( {
             });
             return 0;
           }
-          console.log('req.headers', req.headers);
+          //console.log('req.headers', req.headers);
           if (req.headers.user && req.headers.token) {
             let action = {
               user: req.headers.user._id,
@@ -802,7 +802,7 @@ var self = ( {
           });
           return 0;
         }
-        console.log('req.headers', req.headers);
+        //console.log('req.headers', req.headers);
         if (req.headers.user && req.headers.token) {
           let action = {
             user: req.headers.user._id,
@@ -872,7 +872,7 @@ var self = ( {
             });
             return 0;
           }
-          console.log('req.headers', req.headers);
+          //console.log('req.headers', req.headers);
           if (req.headers.customer && req.headers.token) {
             let action = {
               customer: req.headers.customer._id,
@@ -910,7 +910,7 @@ var self = ( {
             });
             return 0;
           }
-          console.log('req.headers', req.headers);
+          //console.log('req.headers', req.headers);
           if (req.headers.customer && req.headers.token) {
             let action = {
               customer: req.headers.customer._id,

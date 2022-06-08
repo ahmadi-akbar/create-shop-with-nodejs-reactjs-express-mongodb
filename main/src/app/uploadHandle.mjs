@@ -1,10 +1,12 @@
 import fs from "fs";
 import path from 'path';
 const __dirname = path.resolve();
+import global from '#root/global';
 
-var uploadHandle = (err,req, res, next) => {
+const uploadHandle = (err,req, res, next) => {
+    console.log("uploadHandle uploadHandle")
     // app.use(function (err,req, res, next) {
-        // console.log('req.busboy',req);
+        console.log('req.busboy',req);
         if (req.busboy) {
             req.pipe(req.busboy);
 
@@ -19,7 +21,7 @@ var uploadHandle = (err,req, res, next) => {
                 // console.log('on file app', mimetype,filename);
 
                 let fstream;
-                let name = (getFormattedTime() + filename).replace(/\s/g, '');
+                let name = (global.getFormattedTime() + filename).replace(/\s/g, '');
 
                 if (mimetype.includes('image')) {
                     // name+=".jpg"

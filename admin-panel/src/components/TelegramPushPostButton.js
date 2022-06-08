@@ -18,7 +18,7 @@ export default (props) => {
             option['headers']['token'] = localStorage.getItem('token');
 
             axios
-                .post(BASE_URL + '/admin/product/telegram/' + props.record._id, {}, option)
+                .post(BASE_URL + '/product/telegram/' + props.record._id, {}, option)
                 .then(function (response) {
                     // console.log('fetched!');
                     // resolve(response);
