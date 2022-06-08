@@ -15,7 +15,7 @@ import API from "@/functions/API";
 import { numberWithCommas } from "@/functions";
 import Select from "react-select";
 import { useWatch } from "react-hook-form";
-
+import RemoveCircleOutlineIcon from '@mui/icons-material/RemoveCircleOutline';
 import {
   CatRefField,
   FileChips,
@@ -62,6 +62,7 @@ const typeChoices3 = [
 ];
 
 export default (props) => {
+  console.log('EditOptions...');
   // console.clear()/;
   const values = {};
   // let {values} = useFormState();
@@ -72,7 +73,7 @@ export default (props) => {
   let translate = useTranslate();
   let lan = translate("lan");
 
-  console.log("edit options props", valuesoptions);
+  // console.log("edit options props", valuesoptions);
   // const {input} = useInput(props);
   // const [display, setDisplay] = React.useState(true);
   const [options, setOptions] = React.useState(valuesoptions || [{ _id: 0, name: "", values: [] }]);
@@ -82,48 +83,27 @@ export default (props) => {
   // const [selectS, setSelectS] = React.useState([true, true]);
   const [name, setName] = React.useState("");
   const [changes, setChanges] = React.useState(false);
+  const [counter, setCounter] = React.useState(0);
   const [child, setChild] = React.useState([]);
   const [attributes, setAttributes] = React.useState({});
   const [attributesList, setAttributesList] = React.useState([]);
+
   // console.log('propsvalues', props, values);
   // const [g, setG] = React.useState([]);
   // const [d, setD] = React.useState([]);
   // const [progress, setProgress] = React.useState(0);
   const handleVariables = (e) => {
     e.preventDefault();
-    // console.clear();
-
-    // console.log('options', options);
-    // console.log('attributes', attributes);
-    // console.log('child', child);
     let cds = [];
-    // if (options)
-    //     options.forEach((attr, s) => {
-    //         let vals = [];
-    //         // if (attr.values)
-    //         //     attr.values.forEach((val, s2) => {
-    //         //         vals.push({
-    //         //             id: s2,
-    //         //             name: val.name.fa
-    //         //         })
-    //         //     });
-    //         cds.push({
-    //             values: vals,
-    //             name: attr.label,
-    //             id: s
-    //         })
-    //s
-    //     });
-    // console.log('cds', cds);
-    // setOptions(cds);
-    // console.log(props);
-    var y = props.onCreateCombinations(options);
+
+    let y = props.onCreateCombinations(options);
     valuescombinations = y;
     valuesoptions = options;
-    // valuesformData.combinations = y;
-    // props.record.options = options;
+    console.log('valuesoptions',valuesoptions);
+    console.log('valuescombinations',valuescombinations);
+    setOptions(options);
     setChanges(!changes);
-    // console.log(props);
+    setCounter(counter+1);
   };
   const handleAdd = (e) => {
     e.preventDefault();
@@ -171,15 +151,15 @@ export default (props) => {
   };
   const chooseOptionName = (ff, op) => {
     // return;
-    console.log("== >  chooseOptionName", op, options, ff, attributes);
+    // console.log("== >  chooseOptionName", op, options, ff, attributes);
     options[op]._id = ff.value;
     options[op].name = ff.label;
     options[op].values = ff.values;
     options[op].isDisabled = true;
-    console.log("options", options);
+    // console.log("options", options);
     setOptions(options);
     setChanger(!change);
-    // API.get('/admin/attributes/' + op.value, {}, {})
+    // API.get('/attributes/' + op.value, {}, {})
     //     .then(({data = []}) => {
     //         console.log('data', data);
     //         var cds = [];
@@ -200,7 +180,7 @@ export default (props) => {
   };
   const getData = () => {
 
-    API.get("/admin/attributes/", {}, true)
+    API.get("/attributes/", {}, true)
       .then(({ data = [] }) => {
         var cds = [];
         data.forEach((uf, s) => {
@@ -242,18 +222,20 @@ export default (props) => {
   // }, [options]);
 
   // console.log('childattributes', options, attributes, child, type, TheformData, props.type);
-  console.log("\n\n= = > now rendering () ...");
+  // console.log("\n\n= = > now rendering () ...");
   // {
 
   // if (attributes) {
-  console.log("#attributes ", attributes);
+  // console.log("#attributes ", attributes);
 
   if (valuestype === "variable") {
     return ([
-      <div key="0">{options.map((option, op) => {
+      <div key="0" className={"width100"}>
+        {counter}
+        {options.map((option, op) => {
       let tchild = [], tchildname;
       let DefaultValues = [];
-      console.log("#op:", op, " option", option, option.name);
+      // console.log("#op:", op, " option", option, option.name);
       if (attributes[option.name] && attributes[option.name].values) {
         // console.log('attributes[op].values', attributes[op].values);
 
@@ -276,14 +258,14 @@ export default (props) => {
           });
         });
       }
-      console.log("#tchildname ", tchildname);
+      // console.log("#tchildname ", tchildname);
       // console.log('#tchild ',   tchild,);
-      console.log("#DefaultValues ", DefaultValues);
+      // console.log("#DefaultValues ", DefaultValues);
 
       return (
         [<div key={op} className={"row mb-20 width100"}>
           <div style={{ direction: "rtl" }}>#{op}</div>
-          <div className={"col-md-4"}>
+          <div className={"col-md-5"}>
 
             <Select isRtl={true}
               // isLoading={selectS[op]}
@@ -293,7 +275,7 @@ export default (props) => {
                     defaultValue={{ value: option["name"], label: option["name"] }}
                     options={attributesList}/>
           </div>
-          {tchild && <div className={"col-md-4"}>
+          {tchild && <div className={"col-md-5"}>
             <Select isRtl={true}
                     isMulti
               // isLoading={selectS[op]}
@@ -303,11 +285,11 @@ export default (props) => {
                     defaultValue={DefaultValues}
                     options={tchild}/>
           </div>}
-          <div className={"col-md-4"}>
-            <button onClick={(e) => {
+          <div className={"col-md-2"}>
+            <Button onClick={(e) => {
               handleRemove(e, op);
-            }}>-
-            </button>
+            }}><RemoveCircleOutlineIcon/>
+            </Button>
           </div>
         </div>
         ]);
@@ -317,11 +299,13 @@ export default (props) => {
         <Button onClick={(e) => {handleVariables(e);}}><AddRoadIcon/>{translate("resources.product.createComb")}</Button>
       </ButtonGroup>,
       <div className={"mb-20"}  key="2"/>,
-      <ArrayInput source="combinations" label={translate("resources.product.combinations")}  key="3">
-        <SimpleFormIterator {...values} disableRemove disableAdd>
+      // source="combinations"
+      <ArrayInput source="combinations"  label={translate("resources.product.combinations")}  key="3">
+        <SimpleFormIterator {...valuescombinations} disableRemove disableAdd>
           <FormDataConsumer>
-            {({ getSource, scopedFormData }) => {
-              // console.log('scopedFormData', scopedFormData);
+            {({formData,getSource ,scopedFormData }) => {
+              // console.log('scopedFormData', formData,rest);
+              // return <></>;
               return (
                 <div className={"row"}>
                   <div className={"col-md-3"}>
@@ -336,7 +320,6 @@ export default (props) => {
                       source={getSource("in_stock")}
                       choices={typeChoices2}
                       record={scopedFormData}
-
                     />
                   </div>
                   <div className={"col-md-3"}>
@@ -345,17 +328,11 @@ export default (props) => {
                       fullWidth
                       source={getSource("quantity")}
                       record={scopedFormData}
-
                       label={translate("resources.product.quantity")}
                     />
                   </div>
                   <div className={"col-md-3 ltr"}>
-                    {/*<FunctionField label="قیمتس"*/}
-                    {/*render={record => {*/}
-                    {/*console.log('record',record);*/}
-                    {/*return ( )*/}
-                    {/*}*/}
-                    {/*}/>*/}
+
                     <TextInput
                       fullWidth
                       record={scopedFormData}
@@ -373,10 +350,6 @@ export default (props) => {
                         return v.toString().replace(/,/g, "");
 
                       }}
-                      // parse={e=>{
-                      //     console.log('e',e);
-                      //     return e.replace(/\B(?=(\d{3})+(?!\d))/g, ",")}}
-                      // validate={[required()]}
                       label={translate("resources.product.price")}
                     />
                   </div>

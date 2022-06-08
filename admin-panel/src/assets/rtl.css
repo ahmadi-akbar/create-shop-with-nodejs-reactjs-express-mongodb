@@ -54,7 +54,8 @@ body .layout.rtl .MuiSelect-select{
     text-align: right;
     direction: rtl;
 }
-body .layout.rtl .RaRichTextInputToolbar-root {
+body .layout.rtl .RaRichTextInputToolbar-root,
+body .layout.rtl .RaRichTextInputToolbar-root *{
     direction: ltr;
     text-align: left;
 }
@@ -62,6 +63,7 @@ body .layout.rtl .MuiInputLabel-root {
     transform-origin: top right !important;
     right:20px;
     left:auto;
+    z-index: 0;
 }
 body .layout.rtl .rtl-right {
     direction: rtl;

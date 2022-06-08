@@ -1,15 +1,16 @@
-import React,{useState,useEffect} from "react";
+import React, { useEffect, useState } from "react";
 import { LinearProgress } from "@mui/material";
-import Button from "@mui/material/Button";
 import { ImageField, ImageInput, useInput } from "react-admin";
 import API, { BASE_URL } from "@/functions/API";
-import { showFiles } from "@/components";
+import { Images, showFiles } from "@/components";
 import { useWatch } from "react-hook-form";
 
 API.defaults.headers.common["Content-Type"] = "multipart/form-data";
 
 export default (props) => {
-  // console.clear();
+
+
+  console.log("UploaderField...");
   // console.log("props", props);
   let valuesphotos = useWatch({ name: "photos" });
   let valuesthumbnail = useWatch({ name: "thumbnail" });
@@ -19,19 +20,21 @@ export default (props) => {
   // console.log("input", field);
 
   const [gallery, setGallery] = useState(valuesphotos || []);
+  const [counter, setCounter] = useState(0);
   const [progress, setProgress] = useState(0);
-  console.log('props.photos',valuesthumbnail);
+  // console.log('props.photos',valuesthumbnail);
 
   const [v, setV] = useState(valuesthumbnail || "");
-  console.log('props.v',v);
+  // console.log("props.v", v, valuesthumbnail);
 
-  useEffect(() => {
-    console.log('React.useEffect UploaderField');
-    if (field.value) setV(field.value);
-  }, []);
+  // useEffect(() => {
+  //   console.log("React.useEffect UploaderField");
+  //   if (field.value) setV(field.value);
+  // }, []);
 
   const handleUpload = (files) => {
-    // console.log('hanfleUpload');
+    let GalleryTemp = gallery;
+    console.log("hanfleUpload");
     let file = files[0];
 
     if (!file) return;
@@ -39,7 +42,7 @@ export default (props) => {
     let formData = new FormData();
     formData.append("file", file);
     formData.append("type", file.type);
-    API.post("/admin/product/fileUpload", formData, {
+    API.post("/product/fileUpload", formData, {
       onUploadProgress: (e) => {
         let p = Math.floor((e.loaded * 100) / e.total);
         setProgress(p);
@@ -48,15 +51,21 @@ export default (props) => {
       .then(({ data = {} }) => {
         if (data.success) {
           let { url, type, _id } = data.media;
-          let a = [...valuesphotos, { url, type, _id }];
-
+          // let a = [...valuesphotos, { url, type, _id }];
+          console.log("a", { url, type, _id }, valuesphotos);
           setProgress(0);
-          gallery.push(url);
+          GalleryTemp.push(url);
+          console.log("GalleryTemp", GalleryTemp);
           console.log("gallery", gallery);
           if (data.media && data.media.url) {
-            setGallery(gallery);
-            valuesphotos = gallery;
-            props.inReturn(gallery);
+            console.log("setGallery...");
+            setGallery(null);
+            valuesphotos = GalleryTemp;
+            props.inReturn(GalleryTemp).then(res => {
+              setGallery(GalleryTemp);
+              setCounter(counter+1);
+              console.log('res ',res);
+            });
           }
           // console.log('props',props);
         }
@@ -66,8 +75,7 @@ export default (props) => {
         setProgress(0);
       });
   };
-  const deletFromObject = (e, photo, key) => {
-    e.preventDefault();
+  const deletFromObject = (photo, key) => {
     // console.log('deletFromObject');
     let cc = [];
     // console.log('valuesphotos',valuesphotos);
@@ -83,6 +91,10 @@ export default (props) => {
 
     // console.log('valuesphotos',valuesphotos);
 
+  };
+  const onImageClick = (photo) => {
+    props.thep(photo);
+    setV(photo);
   };
   const removeK = (g) => {
     // e.preventDefault();
@@ -101,11 +113,14 @@ export default (props) => {
   // }, [v]);
   // console.log('props', props);
   // console.log('input', input);
-  // console.log('valuesphotos', valuesphotos);
+  // useEffect(() => {
+  //   console.log("set localStorage");
+  //   // localStorage.files = JSON.stringify(v);
+  // }, []);
+  console.log("gallery", gallery);
   return (
     <>
       <ImageInput
-        {...props}
         {...field}
         options={{
           onDrop: handleUpload
@@ -117,29 +132,11 @@ export default (props) => {
           rel="noreferrer noopener"
         />
       </ImageInput>
-      <div className={"galley"}>
-        {(gallery && gallery.length > 0) && gallery.map((photo, key) => {
-          console.log('photo', valuesthumbnail);
-          console.log('v', v);
-          return <div key={key} className={"hytrdf " + (v === photo ? "active" : "")}><img onClick={() => {
-            props.thep(photo);
-            setV(photo);
-          }} src={BASE_URL + "/" + photo}/>
-            <div className={"bottom-actions"}><Button
-              onClick={(e) => deletFromObject(e, photo, key)}>delete</Button></div>
-          </div>;
-        })}
-
-      </div>
+      <Images gallery={gallery} v={v} onImageClick={onImageClick} deletFromObject={deletFromObject}/>
       {progress ? (
         <LinearProgress variant="determinate" value={progress}/>
       ) : null}
-      {/*{gallery && gallery.map((gal, g) => {*/}
-      {/*return (<div key={g} className={'hgfdsdf'}><Button color="primary" size="small" onClick={() => {*/}
-      {/*removeK(g)*/}
-      {/*}}><DeleteIcon/></Button><img*/}
-      {/*src={BASE_URL + "/" + gal}/></div>);*/}
-      {/*})}*/}
+
 
     </>
   );

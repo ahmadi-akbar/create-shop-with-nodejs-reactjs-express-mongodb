@@ -141,7 +141,7 @@ function save(record) {
 
     }
     if (theID)
-        API.put('/admin/product/modifyPriceByCat/' + theID, JSON.stringify({type: type, number: number}))
+        API.put('/product/modifyPriceByCat/' + theID, JSON.stringify({type: type, number: number}))
             .then(({data = {}}) => {
                 // const refresh = useRefresh();
                 // refresh();
@@ -165,7 +165,7 @@ const ChangesForm = ({children, ...rest}) => {
     const translate = useTranslate();
 
     return (
-        <SimpleForm {...rest} save={save}>
+        <SimpleForm {...rest} onSubmit={save}>
             {children}
             <NumberInput
                 min={0}

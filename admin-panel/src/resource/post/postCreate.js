@@ -74,7 +74,7 @@ function save(values) {
     delete values.files;
     console.log("last values (edit): ", values);
 
-    API.put("/admin/post/" + values._id, JSON.stringify({ ...values }))
+    API.put("/post/" + values._id, JSON.stringify({ ...values }))
       .then(({ data = {} }) => {
         // const refresh = useRefresh();
         // refresh();
@@ -96,7 +96,7 @@ function save(values) {
     if (valuess.files) {
       values.files = valuess.files;
     }
-    API.post("/admin/post/", JSON.stringify({ ...values }))
+    API.post("/post/", JSON.stringify({ ...values }))
       .then(({ data = {} }) => {
         // showNotification(translate('post.created'));
         if (data._id) {
@@ -125,7 +125,7 @@ const Form = ({ children, ...props }) => {
   // if (record)
   //   valuess["photos"] = record.photos || [];
   return (
-    <SimpleForm {...props} toolbar={<CustomToolbar/>} save={save} className={"d-flex"}>
+    <SimpleForm {...props} toolbar={<CustomToolbar/>} onSubmit={save} className={"d-flex"}>
       {/*<TabbedDatagrid/>*/}
       <TextInput source={"title." + translate("lan")} fullWidth label={translate("resources.post.title")}
                  className={"width100 mb-20"}

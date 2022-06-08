@@ -4,7 +4,7 @@ import _ from 'lodash';
 import request from '#root/request';
 
 var self = ( {
-    طimportcats: async function (req, res, next) {
+    importcats: async function (req, res, next) {
         return;
         // console.log('importcats');
         await request({
@@ -332,13 +332,15 @@ var self = ( {
         search["name." + req.headers.lan] = {
             $exists: true
         };
-        // console.log('jhgfghj', search);
+        console.log('jhgfghj', search);
         Category.find(search, function (err, categorys) {
             if (err) {
-                res.json({
-                    success: false,
-                    message: 'error!'
-                });
+                // res.json({
+                //   err:err,
+                //     success: false,
+                //     message: 'error!'
+                // });
+                res.json([]);
                 return 0;
             }
             if (!categorys) {

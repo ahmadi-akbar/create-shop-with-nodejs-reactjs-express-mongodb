@@ -71,7 +71,7 @@ function save(values) {
   // console.log('product valuess', valuess);
   // console.log('last values: ', values);
   if (values._id) {
-    API.put("/admin/settings/" + values._id, JSON.stringify({ ...values }))
+    API.put("/settings/" + values._id, JSON.stringify({ ...values }))
       .then(({ data = {} }) => {
         alert("it is ok");
         if (data.success) {
@@ -84,7 +84,7 @@ function save(values) {
       });
   } else {
 
-    API.post("/admin/settings/", JSON.stringify({ ...values }))
+    API.post("/settings/", JSON.stringify({ ...values }))
       .then(({ data = {} }) => {
         alert("it is ok");
 
@@ -126,7 +126,7 @@ const Form = ({ children, ...props }) => {
   // console.log('vprops', props);
   const cls = useStyles();
   return (
-    <SimpleForm {...props} save={save}>
+    <SimpleForm {...props} onSubmit={save}>
       <BooleanInput source="siteActive" label="وضعیت سایت"/>
       {/*<ReferenceArrayInput label="دسته های فعال" source="category" reference="category" filter={{f:true}} >*/}
       {/*<SelectArrayInput optionText="name" optionValue="_id">*/}

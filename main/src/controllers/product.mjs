@@ -3,9 +3,11 @@ import Category from "#models/category";
 import Media from "#models/media";
 import requestIp from "request-ip";
 import _ from "lodash";
+import path from "path";
+import fs from "fs";
 import moment from "moment-jalaali";
 import global from '#root/global';
-var self = ({
+let self = ({
   importproductsfromcsv: function(req, res, next) {
     res.json(req.body);
   },
@@ -1834,7 +1836,7 @@ var self = ({
         });
         return 0;
       }
-      console.log("req.headers", req.headers);
+      // console.log("req.headers", req.headers);
       if (req.headers.user && req.headers.token) {
         let action = {
           user: req.headers.user._id,
@@ -1860,7 +1862,7 @@ var self = ({
           });
           return 0;
         }
-        console.log("req.headers", req.headers);
+        // console.log("req.headers", req.headers);
         if (req.headers.user && req.headers.token) {
           let action = {
             user: req.headers.user._id,
@@ -1950,7 +1952,7 @@ var self = ({
         });
         return 0;
       }
-      console.log("req.headers", req.headers);
+      // console.log("req.headers", req.headers);
 
       if (req.headers.user && req.headers.token) {
         delete req.body.views;
@@ -1993,7 +1995,7 @@ var self = ({
           });
           return 0;
         }
-        console.log("req.headers", req.headers);
+        // console.log("req.headers", req.headers);
         if (req.headers.user && req.headers.token) {
           let action = {
             user: req.headers.user._id,
@@ -2127,6 +2129,84 @@ var self = ({
   }
   ,
   fileUpload: function(req, res, next) {
+    if (req.busboy) {
+      req.pipe(req.busboy);
+
+      req.busboy.on("file", function (
+        fieldname,
+        file,
+        filename,
+        encoding,
+        mimetype
+      ) {
+        // ...
+        // console.log('on file app fieldname', fieldname);
+        // console.log('on file app file', file);
+        // console.log('on file app filename', filename);
+        // console.log('on file app encoding', typeof filename['mimeType']);
+
+        let fstream;
+        console.log('global.getFormattedTime() + filename',global.getFormattedTime() , filename['filename']);
+        let name = (global.getFormattedTime() + filename.filename).replace(/\s/g, '');
+
+        // if (filename.mimetype.toString().includes('image')) {
+        //   // name+=".jpg"
+        // }
+        // if (filename.mimetype.toString().includes('video')) {
+        //   // name+="mp4";
+        // }
+        let filePath = path.join(__dirname, "/../../public_media/customer/", name);
+        console.log('on file app filePath',filePath);
+
+        fstream = fs.createWriteStream(filePath);
+        // console.log('on file app mimetype', typeof filename.mimeType);
+
+        file.pipe(fstream);
+        fstream.on("close", function () {
+          // console.log('Files saved');
+          let url = "customer/" + name;
+          let obj = [{name: name, url: url, type: mimetype}];
+          req.photo_all = obj;
+          let photos=obj;
+          if (photos && photos[0]) {
+            Media.create({
+              name: photos[0].name,
+              url: photos[0].url,
+              type: photos[0].type
+
+            }, function(err, media) {
+
+
+              if (err && !media) {
+
+
+                res.json({
+                  err: err,
+                  success: false,
+                  message: "error"
+                });
+
+              }
+              res.json({
+                success: true,
+                media: media
+
+              });
+
+            });
+          } else {
+            res.json({
+              success: false,
+              message: "upload faild!"
+            });
+          }
+        });
+      });
+    } else {
+      next();
+    }
+  },
+  fileUpload2: function(req, res, next) {
     // console.log(req.files);
     // console.log('we are here')
     //
@@ -2139,8 +2219,8 @@ var self = ({
     //     console.log('on filed')
     //
     // });
-    // console.log('req.body',req.body);
-    // console.log('req.params',req.params);
+    console.log('req.body',req.body);
+    console.log('req.params',req.params);
     // let fstream;
     // req.pipe(req.busboy);
     // // var busboy = new Busboy({ headers: req.headers });
@@ -2167,7 +2247,7 @@ var self = ({
       global.submitAction(action);
     }
     let photos = req.photo_all;
-    // console.log(photos, req.body);
+    console.log('photos',photos, req.body);
 
     if (photos && photos[0]) {
       Media.create({
@@ -2178,8 +2258,7 @@ var self = ({
       }, function(err, media) {
 
 
-        if (err) {
-          // console.log('==> pushSalonPhotos() got response err');
+        if (err && !media) {
 
 
           res.json({
@@ -2188,13 +2267,13 @@ var self = ({
             message: "error"
           });
 
-        } else {
+        }
           res.json({
             success: true,
             media: media
 
           });
-        }
+
       });
     } else {
       res.json({

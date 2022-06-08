@@ -19,12 +19,12 @@ const messages = {
   en: englishMessages
 };
 
-var dl = Types()["default_locale"];
+let dl = Types()["default_locale"];
 // console.clear();
 
-console.log("default_locale", dl, messages[dl]);
+// console.log("default_locale", dl, messages[dl]);
 const localeMain = localStorage.getItem("locale");
-console.log("localeMain", localeMain);
+// console.log("localeMain", localeMain);
 const i18nProvider = polyglotI18nProvider(
   locale => {
     if (localeMain) {
@@ -46,7 +46,7 @@ const i18nProvider = polyglotI18nProvider(
 //         // return string
 //     },
 // };
-console.log("i18nProvider", i18nProvider);
+// console.log("i18nProvider", i18nProvider);
 // const i18nProvider = polyglotI18nProvider(locale => {
 //     console.log('locale', dl,englishMessages);
 //

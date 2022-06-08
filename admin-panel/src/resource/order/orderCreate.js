@@ -41,7 +41,7 @@ import React, {Fragment, useCallback, useEffect, useState} from 'react';
 
 function save(values) {
 
-    API.post('/admin/order/', JSON.stringify({...values}))
+    API.post('/order/', JSON.stringify({...values}))
         .then(({data = {}}) => {
             // alert('it is ok');
 
@@ -62,7 +62,7 @@ const Form = ({children, ...props}) => {
   const translate = useTranslate();
 
   return (
-        <SimpleForm {...props} save={save()} className={'d-flex'}>
+        <SimpleForm {...props} onSubmit={save()} className={'d-flex'}>
 
             <NumberInput source="amount" label={translate("resources.order.amountToPay")} className={'width100 mb-20 ltr'} fullWidth/>
             <input id={'theUrl'}></input>

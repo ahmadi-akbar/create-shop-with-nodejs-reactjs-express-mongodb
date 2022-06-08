@@ -239,7 +239,7 @@ const ListActions = (props) => {
                 return row;
             });
             console.log('ForImport', postsForExport);
-            // API.post('/admin/product/importproductsfromcsv', JSON.stringify(postsForExport))
+            // API.post('/product/importproductsfromcsv', JSON.stringify(postsForExport))
             //     .then(({data = {}}) => {
             // const refresh = useRefresh();
             // refresh();
@@ -450,7 +450,7 @@ const list = (props) => {
                                        size="small"
                                        onClick={() => {
                                            // console.log('data', record._id);
-                                           API.post('/admin/product/copy/' + record._id, null)
+                                           API.post('/product/copy/' + record._id, null)
                                                .then(({data = {}}) => {
                                                    // console.log('data', data._id);
                                                    props.history.push('/product/' + data._id);
@@ -469,7 +469,7 @@ const list = (props) => {
                                        size="small"
                                        onClick={() => {
                                            // console.log('data', record._id);
-                                           // API.post('/admin/action?filter=%7B%22product"%3A"'+record._id+'"%7D&order=ASC&page=1&perPage=10&sort=id/', null)
+                                           // API.post('/action?filter=%7B%22product"%3A"'+record._id+'"%7D&order=ASC&page=1&perPage=10&sort=id/', null)
                                            //     .then(({data = {}}) => {
                                            //         // console.log('data', data._id);
                                            //         props.history.push('/product/' + data._id);
