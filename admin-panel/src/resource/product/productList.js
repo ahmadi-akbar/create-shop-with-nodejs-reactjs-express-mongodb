@@ -42,7 +42,7 @@ const postRowStyle = (record, index) => {
     // const classes = useStyles();
     // console.log('useStyles',classes.productItem);
     return ({
-        backgroundColor: record.type === 'variable' ? '#9f9f9f' : '#ee811d',
+        backgroundColor: record.type === 'variable' ? '#9f9f9f' : '#fbe4ff',
     })
 };
 

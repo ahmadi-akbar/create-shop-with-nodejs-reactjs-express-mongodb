@@ -2,7 +2,7 @@ import Category from '#models/category';
 import Post from '#models/post';
 import _ from 'lodash';
 import request from '#root/request';
-
+import Mongoose from 'mongoose';
 var self = ( {
     importcats: async function (req, res, next) {
         return;
@@ -324,23 +324,25 @@ var self = ( {
         }
 
         let search = {};
-        if (!req.params.catId) {
+        if (!req.params._id) {
             search['parent'] = null;
         } else {
-            search['parent'] = req.params.catId;
+            search['parent'] = req.params._id;
         }
-        search["name." + req.headers.lan] = {
-            $exists: true
-        };
+        // search["name." + req.headers.lan] = {
+        //     $exists: true
+        // };
+
         console.log('jhgfghj', search);
         Category.find(search, function (err, categorys) {
             if (err) {
-                // res.json({
-                //   err:err,
-                //     success: false,
-                //     message: 'error!'
-                // });
-                res.json([]);
+                res.json({
+                  err:err,
+                    success: false,
+                    message: 'error!',
+                  categorys
+                });
+                // res.json([]);
                 return 0;
             }
             if (!categorys) {
@@ -370,8 +372,8 @@ var self = ( {
                     "X-Total-Count",
                     count
                 );
-                if (req.params.catId)
-                    Category.findById(req.params.catId, function (err, mainCat) {
+                if (req.params._id)
+                    Category.findById(req.params._id, function (err, mainCat) {
                         // console.log('here');
                         // if (categorys && categorys.length >= 0) {
                         //   if (mainCat) {
@@ -391,7 +393,7 @@ var self = ( {
 
             });
 
-        }).skip(offset).sort({_id: -1}).limit(parseInt(req.params.limit)).lean();
+        }).skip(offset).sort({_id: -1}).limit(req.params.limit).lean();
     },
     sidebar: function (req, res, next) {
         // console.log('sidebar()...');

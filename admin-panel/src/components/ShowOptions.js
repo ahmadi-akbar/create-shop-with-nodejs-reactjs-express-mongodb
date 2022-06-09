@@ -6,8 +6,10 @@ API.defaults.headers.common['Content-Type'] = 'multipart/form-data';
 var ckjhg = {};
 var hasTriggered = false;
 export default (props) => {
-    // console.log('props.record.options', props.record.options);
-    // const {input} = useInput(props);
+    const {options}=props.record;
+  // console.log('Show Options... ',options);
+
+  // const {input} = useInput(props);
     // const [v, setV] = React.useState([]);
     // const [g, setG] = React.useState([]);
     // const [d, setD] = React.useState([]);
@@ -18,13 +20,11 @@ export default (props) => {
     //     getData();
     //     // if (input.value) setV(input.value);
     // }, []);
-
-    // console.log('Object.keys(props.record.options)', Object.keys(props.record.options));
+    // console.log('Object.keys(options)', Object.keys(options));
     return (
         <>
-
-            {props.record && props.record.options && Object.keys(props.record.options).map((item, index) => {
-                return <div key={index}>{(item) + " : " + props.record.options[item] + "\n"}</div>;
+            {options && Object.keys(options).map((item, index) => {
+                return <div key={index}>{(item) + " : " + options[item] + "\n"}</div>;
             })}
         </>
     );

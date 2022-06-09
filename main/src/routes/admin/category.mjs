@@ -23,7 +23,7 @@ function loggingMiddleware(req, res, next) {
 router.use(loggingMiddleware);
 
 router.get('/', categoryController.all);
-router.get('/s/:catId', categoryController.s);
+router.get('/s/:_id', categoryController.s);
 
 router.get('/:offset/:limit', categoryController.all);
 router.get('/all/:offset/:limit', categoryController.all);

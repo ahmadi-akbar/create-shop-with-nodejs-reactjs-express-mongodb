@@ -11,7 +11,7 @@ API.defaults.headers.common["Content-Type"] = "multipart/form-data";
 
 export default (props) => {
   let {gallery,v,onImageClick,deletFromObject}=props;
-  console.log("Images... ",gallery);
+  // console.log("Images... ",gallery);
 
   return <div className={"galley"}>
     {(gallery && gallery.length > 0) && gallery.map((photo, key) => {

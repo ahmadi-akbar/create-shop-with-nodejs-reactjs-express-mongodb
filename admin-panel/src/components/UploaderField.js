@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { LinearProgress } from "@mui/material";
 import { ImageField, ImageInput, useInput } from "react-admin";
 import API, { BASE_URL } from "@/functions/API";
-import { Images, showFiles } from "@/components";
+import { TheImages, showFiles } from "@/components";
 import { useWatch } from "react-hook-form";
 
 API.defaults.headers.common["Content-Type"] = "multipart/form-data";
@@ -10,7 +10,7 @@ API.defaults.headers.common["Content-Type"] = "multipart/form-data";
 export default (props) => {
 
 
-  console.log("UploaderField...");
+  // console.log("UploaderField...");
   // console.log("props", props);
   let valuesphotos = useWatch({ name: "photos" });
   let valuesthumbnail = useWatch({ name: "thumbnail" });
@@ -34,7 +34,7 @@ export default (props) => {
 
   const handleUpload = (files) => {
     let GalleryTemp = gallery;
-    console.log("hanfleUpload");
+    // console.log("hanfleUpload");
     let file = files[0];
 
     if (!file) return;
@@ -107,32 +107,24 @@ export default (props) => {
     setGallery(c);
   };
 
-  // React.useEffect(() => {
-  //     // console.log('set localStorage');
-  //     // localStorage.files = JSON.stringify(v);
-  // }, [v]);
-  // console.log('props', props);
-  // console.log('input', input);
-  // useEffect(() => {
-  //   console.log("set localStorage");
-  //   // localStorage.files = JSON.stringify(v);
-  // }, []);
-  console.log("gallery", gallery);
+// console.cle/sar();
+//   console.log("gallery", props);
   return (
     <>
       <ImageInput
-        {...field}
+        name={field.name}
+        onChange={field.onChange}
+        onBlur={field.onBlur}
+        accept={props.accept}
         options={{
           onDrop: handleUpload
         }}>
         <ImageField
           source="src"
           title="title"
-          target="_blank"
-          rel="noreferrer noopener"
         />
       </ImageInput>
-      <Images gallery={gallery} v={v} onImageClick={onImageClick} deletFromObject={deletFromObject}/>
+      <TheImages gallery={gallery} v={v} onImageClick={onImageClick} deletFromObject={deletFromObject} counter={counter}/>
       {progress ? (
         <LinearProgress variant="determinate" value={progress}/>
       ) : null}

@@ -16,10 +16,12 @@ import transaction from "#routes/public/transaction";
 import instagram from "#routes/public/instagram";
 import order from "#routes/public/order";
 import seo from "#routes/public/seo";
+import _404 from "#routes/public/_404";
 
 export default {
     order,
     '':posts,
+    '404':_404,
     addNewPost,
     category,
     p,

@@ -43,11 +43,15 @@ body .layout.rtl * {
     direction: rtl;
     text-align: right;
 }
-body .layout.rtl a{
+body .layout.rtl a,
+.MuiMenuItem-root.MuiMenuItem-gutters.MuiButtonBase-root{
     font-family: IRANSans, 'Roboto', sans-serif !important;
 
 }
-
+.MuiMenuItem-root.MuiMenuItem-gutters.MuiButtonBase-root{
+    text-align: right;
+    direction: rtl;
+}
 body .layout.rtl .MuiSelect-select{
     padding-left:32px;
     padding-right:10px;
@@ -64,6 +68,10 @@ body .layout.rtl .MuiInputLabel-root {
     right:20px;
     left:auto;
     z-index: 0;
+}
+body .layout.rtl .ltr,body .layout.rtl .ltr * {
+    direction: ltr;
+    text-align: left;
 }
 body .layout.rtl .rtl-right {
     direction: rtl;

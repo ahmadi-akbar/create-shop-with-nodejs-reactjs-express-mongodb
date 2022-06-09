@@ -28,7 +28,9 @@ export { default as TransactionPaymentStatusField } from './TransactionPaymentSt
 export { default as OrderStatus } from './OrderStatus';
 export { default as OrderTabs } from './OrderTabs';
 export { default as ProductType } from './product/ProductType';
-export { default as Images } from './product/Images';
+export { default as TheImages } from './product/TheImages';
 export { default as ShowImageField } from './product/ShowImageField';
+export { default as Combinations } from './product/Combinations';
+export { default as StockStatus } from './StockStatus';
 // export { default as PostFilterButton } from './PostFilterButton';
 // export { default as PostFilterForm } from './PostFilterForm';

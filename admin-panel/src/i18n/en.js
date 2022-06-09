@@ -8,6 +8,7 @@ const customEnglishMessages = {
   lan: "en",
   dir: "ltr",
   comma:',',
+  undefined:"undefined",
   pos: {
     title: "title",
     search: "search",
@@ -290,7 +291,12 @@ const customEnglishMessages = {
       normal:"normal",
       variable:"variable",
       metadescription:"metadescription",
-      keywords:"keywords"
+      keywords:"keywords",
+      is:"exist",
+      isnt:"not exist",
+      weight:"weight",
+      sku:"SKU",
+      count:"count"
     },
 
     reviews: {
