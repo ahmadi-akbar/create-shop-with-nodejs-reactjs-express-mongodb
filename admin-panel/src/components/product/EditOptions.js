@@ -14,7 +14,7 @@ import AddRoadIcon from "@mui/icons-material/AddRoad";
 import API from "@/functions/API";
 import { numberWithCommas } from "@/functions";
 import Select from "react-select";
-import { useWatch } from "react-hook-form";
+import { useWatch,useFormContext } from "react-hook-form";
 import RemoveCircleOutlineIcon from '@mui/icons-material/RemoveCircleOutline';
 import {
   CatRefField,
@@ -27,7 +27,8 @@ import {
   ShowPictures,
   SimpleForm,
   SimpleImageField,
-  UploaderField
+  UploaderField,
+  Combinations
 } from "@/components";
 
 // API.defaults.headers.common['Content-Type'] = 'multipart/form-data';
@@ -70,16 +71,18 @@ export default (props) => {
   let valuestype = useWatch({ name: "type" });
   let valuesformData = useWatch({ name: "formData" });
   let valuescombinations = useWatch({ name: "combinations" });
+  const {setValue} = useFormContext();
   let translate = useTranslate();
   let lan = translate("lan");
-
+  // console.log('valuescombinations',valuescombinations)
   // console.log("edit options props", valuesoptions);
   // const {input} = useInput(props);
   // const [display, setDisplay] = React.useState(true);
   const [options, setOptions] = React.useState(valuesoptions || [{ _id: 0, name: "", values: [] }]);
-  const [type, setType] = React.useState(valuestype);
+  // const [combinations, setCombinations] = React.useState(valuescombinations || []);
+  // const [type, setType] = React.useState(valuestype);
   const [change, setChanger] = React.useState(true);
-  const [TheformData, setTheformData] = React.useState(valuesformData);
+  // const [TheformData, setTheformData] = React.useState(valuesformData);
   // const [selectS, setSelectS] = React.useState([true, true]);
   const [name, setName] = React.useState("");
   const [changes, setChanges] = React.useState(false);
@@ -101,6 +104,13 @@ export default (props) => {
     valuesoptions = options;
     console.log('valuesoptions',valuesoptions);
     console.log('valuescombinations',valuescombinations);
+    setValue('combinations',valuescombinations);
+
+    // setCombinations(valuescombinations);
+    // console.log('form',form.watch('combinations'));
+    // form.setValue('combinations',valuescombinations);
+    // console.log('form',form.watch('combinations'));
+    props.updater(options);
     setOptions(options);
     setChanges(!changes);
     setCounter(counter+1);
@@ -231,7 +241,7 @@ export default (props) => {
   if (valuestype === "variable") {
     return ([
       <div key="0" className={"width100"}>
-        {counter}
+
         {options.map((option, op) => {
       let tchild = [], tchildname;
       let DefaultValues = [];
@@ -260,7 +270,7 @@ export default (props) => {
       }
       // console.log("#tchildname ", tchildname);
       // console.log('#tchild ',   tchild,);
-      // console.log("#DefaultValues ", DefaultValues);
+      // console.log("#combinations ", combinations);
 
       return (
         [<div key={op} className={"row mb-20 width100"}>
@@ -298,91 +308,8 @@ export default (props) => {
       <Button onClick={(e) => {handleAdd(e);}}><AddCircleIcon/>{translate("resources.product.addAttr")}</Button>
         <Button onClick={(e) => {handleVariables(e);}}><AddRoadIcon/>{translate("resources.product.createComb")}</Button>
       </ButtonGroup>,
-      <div className={"mb-20"}  key="2"/>,
-      // source="combinations"
-      <ArrayInput source="combinations"  label={translate("resources.product.combinations")}  key="3">
-        <SimpleFormIterator {...valuescombinations} disableRemove disableAdd>
-          <FormDataConsumer>
-            {({formData,getSource ,scopedFormData }) => {
-              // console.log('scopedFormData', formData,rest);
-              // return <></>;
-              return (
-                <div className={"row"}>
-                  <div className={"col-md-3"}>
-                    <ShowOptions source={getSource("options")} label="" sortable={false}
-                                 record={scopedFormData}
-                    />
-                  </div>
-                  <div className={"col-md-3"}>
+      <div className={"mb-20"}  key="2"/>
 
-                    <SelectInput
-                      label={translate("resources.product.stock")}
-                      source={getSource("in_stock")}
-                      choices={typeChoices2}
-                      record={scopedFormData}
-                    />
-                  </div>
-                  <div className={"col-md-3"}>
-
-                    <NumberInput
-                      fullWidth
-                      source={getSource("quantity")}
-                      record={scopedFormData}
-                      label={translate("resources.product.quantity")}
-                    />
-                  </div>
-                  <div className={"col-md-3 ltr"}>
-
-                    <TextInput
-                      fullWidth
-                      record={scopedFormData}
-                      className={"ltr"}
-                      value={"fds"}
-                      source={getSource("price")}
-                      format={v => {
-                        if (!v) return;
-
-                        return v.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
-                      }}
-                      parse={v => {
-                        if (!v) return;
-
-                        return v.toString().replace(/,/g, "");
-
-                      }}
-                      label={translate("resources.product.price")}
-                    />
-                  </div>
-
-
-                  <div className={"col-md-3"}>
-
-                    <TextInput
-                      fullWidth
-                      className={"ltr"}
-
-                      source={getSource("salePrice")}
-                      record={scopedFormData}
-                      format={v => {
-                        if (!v) return;
-                        return v.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
-                      }}
-                      parse={v => {
-                        if (!v) return;
-
-                        return v.toString().replace(/,/g, "");
-
-                      }}
-                      label={translate("resources.product.salePrice")}
-                    />
-                  </div>
-                </div>
-              );
-            }
-            }
-          </FormDataConsumer>
-        </SimpleFormIterator>
-      </ArrayInput>
     ]);
   } else if (valuestype === "normal") {
     return [<div className={"row mb-20"} key={0}>

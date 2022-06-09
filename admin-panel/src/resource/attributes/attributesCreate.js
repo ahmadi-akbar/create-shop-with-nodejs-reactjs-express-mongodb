@@ -23,7 +23,7 @@ import {List, SimpleForm, UploaderField} from '@/components';
 import useStyles from '@/styles';
 import {Val} from '@/Utils';
 
-const initialvalues = {
+const defaultValues = {
     values: [
         {
             name: {
@@ -40,7 +40,7 @@ const Form = ({children, ...rest}) => {
     const translate = useTranslate();
 
     return (
-        <SimpleForm {...rest} initialValues={initialvalues}>
+        <SimpleForm {...rest} defaultValues={defaultValues}>
             <TextInput source="name.fa" label={translate('resources.attributes.name')}/>
             <TextInput source="slug" label={translate('resources.attributes.slug')}/>
 

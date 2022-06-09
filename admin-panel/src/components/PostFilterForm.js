@@ -28,7 +28,7 @@ export default () => {
 
     return (
         <div>
-            <Form onSubmit={onSubmit} initialValues={filterValues}>
+            <Form onSubmit={onSubmit} defaultValues={filterValues}>
                 {({ handleSubmit }) => (
                     <form onSubmit={handleSubmit}>
                         <Box display="flex" alignItems="flex-end" mb={1}>

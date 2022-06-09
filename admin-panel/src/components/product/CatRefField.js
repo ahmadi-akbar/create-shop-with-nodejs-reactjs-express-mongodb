@@ -10,22 +10,24 @@ let hasTriggered = false;
 
 export default (props) => {
   // console.log('props',props);
-  console.log('CatRefField...',props.record);
+  // console.log('CatRefField...',props);
 
   const record = useRecordContext();
+  console.log('record',record);
+  return null;
   const { field } = useInput(props);
   const [v, setV] = React.useState([]);
-  const [defaultV, setDefaultV] = React.useState(props.record.firstCategory ? {
+  const [defaultV, setDefaultV] = React.useState((props && props.record && props.record.firstCategory) ? {
     value: props.record.firstCategory._id,
     label: props.record.firstCategory.name.fa
   } : {});
   const [g, setG] = React.useState([]);
-  const [defaultG, setDefaultG] = React.useState(props.record.secondCategory ? {
+  const [defaultG, setDefaultG] = React.useState((props && props.record && props.record.secondCategory) ? {
     value: props.record.secondCategory._id,
     label: props.record.secondCategory.name.fa
   } : {});
   const [d, setD] = React.useState([]);
-  const [defaultD, setDefaultD] = React.useState(props.record.thirdCategory ? {
+  const [defaultD, setDefaultD] = React.useState((props && props.record && props.record.thirdCategory) ? {
     value: props.record.thirdCategory._id,
     label: props.record.thirdCategory.name.fa
   } : {});

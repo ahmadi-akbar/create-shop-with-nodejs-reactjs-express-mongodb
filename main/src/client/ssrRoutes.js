@@ -45,5 +45,13 @@ export default [
     element: Post,
     server: PostServer,
     params: PostServerArgument
+  },
+  {
+    path: "/:_id",
+    layout: DefaultLayout,
+    exact: true,
+    element: Post,
+    server: PostServer,
+    params: PostServerArgument
   }
 ];

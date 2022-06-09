@@ -11,7 +11,7 @@ API.defaults.headers.common["Content-Type"] = "multipart/form-data";
 
 export default (props) => {
   let {photo,v,onImageClick,deletFromObject,unicKey}=props;
-  console.log("ShowImageField...",photo,unicKey);
+  // console.log("Show///ImageField...",photo,unicKey);
 
   return <div className={"hytrdf " + (v === photo ? "active" : "")}>
     <img onClick={()=>onImageClick(photo)} src={BASE_URL + "/" + photo}/>

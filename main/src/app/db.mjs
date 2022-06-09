@@ -8,6 +8,7 @@ let options = {
     // useFindAndModify: false,
     // dbName: "gameboss"
     dbName: "arvandshop"
+    // dbName: "arvandshop"
 };
 export default async () => await mongoose
     .connect(connection, options)

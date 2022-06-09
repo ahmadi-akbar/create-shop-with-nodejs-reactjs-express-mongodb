@@ -1,4 +1,4 @@
-import { Edit, RefreshButton, ShowButton } from "react-admin";
+import { Edit, RefreshButton, ShowButton,useRecordContext } from "react-admin";
 import CardActions from "@mui/material/CardActions";
 import Form from "./productForm";
 
@@ -12,13 +12,15 @@ const PostEditActions = ({ basePath, data, resource }) => (
 
   </CardActions>
 );
-const edit = (props) => (
-  <Edit actions={<PostEditActions/>} {...props}>
-    <Form>
+const edit = (props) => {
+  return(
+    <Edit actions={<PostEditActions/>} {...props}>
+      <Form>
 
-    </Form>
-  </Edit>
-);
+      </Form>
+    </Edit>
+  );
+}
 
 
 export default edit;

@@ -10,13 +10,13 @@ import {
   TextInput,
   Toolbar,
   useForm,
-  useRecordContext,
   useTranslate
 } from "react-admin";
 import API from "@/functions/API";
 import { dateFormat } from "@/functions";
 import {
   CatRefField,
+  Combinations,
   EditOptions,
   FileChips,
   List,
@@ -36,9 +36,9 @@ import { RichTextInput } from "ra-input-rich-text";
 
 // import { RichTextInput } from 'ra-input-rich-text';
 // import {ImportButton} from "react-admin-import-csv";
-let combs=[];
+let combs = [];
 
-let valuess = { "photos": [], "files": [], thumbnail: "" };
+let valuess = { "photos": [], "files": [], thumbnail: "", combinations: [] };
 
 function setPhotos(values) {
 
@@ -94,7 +94,7 @@ function onCreateCombinations(options) {
   });
   // (id, path, rowRecord) => form.change('combinations', combinations)
   // console.log('combinations', combinations);
-  combs=combinations;
+  combs = combinations;
   return combinations;
 
 }
@@ -132,9 +132,9 @@ function thel(values) {
 
     valuess["photos"] = values;
     resolve(values);
-  },reject=>{
+  }, reject => {
     reject(null);
-  })
+  });
 
   // console.log(values);
 
@@ -157,6 +157,16 @@ function thelF(values) {
 
 }
 
+
+function CombUpdater(datas) {
+  console.log("datas", datas);
+  valuess["combinations"] = datas;
+}
+
+function OptsUpdater(datas) {
+  console.log("datas", datas);
+  valuess["options"] = datas;
+}
 
 function save(values) {
   // const translate = useTranslate();
@@ -196,9 +206,13 @@ function save(values) {
     values.photos = valuess.photos;
     // valuess['photos']
   }
+  // if (valuess.combinations) {
+  //   values.combinations = valuess.combinations;
+  //   // valuess['photos']
+  // }
 
   console.log("last values: ", values);
-  // return;
+  return;
   if (values._id) {
     // delete values.photos;
     delete values.questions;
@@ -255,12 +269,16 @@ const CustomToolbar = props => (
 
 const Form = ({ children, ...props }) => {
   // console.log("vprops", props);
-  const record = useRecordContext();
+  // const record = useRecordContext();
+  // if (!record) return null;
   const translate = useTranslate();
   // console.log("record", record);
   // valuess['photos'] = props.record.photos || [];
   valuess["photos"] = [];
-  console.log('productForm...');
+  // if(valuess['options']!=record.options){
+  //   record.options=valuess['options'];
+  // }
+  // console.log('productForm...',record);
   return (
     <SimpleForm {...props} toolbar={<CustomToolbar/>} onSubmit={save} className={"d-flex"}>
       <TextInput source={"title." + translate("lan")} label={translate("resources.product.title")}
@@ -278,7 +296,8 @@ const Form = ({ children, ...props }) => {
 
       <CatRefField label={translate("resources.product.firstCategory")} returnToHome={returnToHome}
                    returnCatsValues={returnCatsValues}
-                   record={record} source="firstCategory"
+        // record={record}
+                   source="firstCategory"
                    reference="category"
                    url={"/category/f/0/1000"} surl={"/category/s"}/>
 
@@ -297,20 +316,34 @@ const Form = ({ children, ...props }) => {
 
       <div className={"mb-20"}/>
       <FormDataConsumer>
-        {({ formData = {} }) => {
-          console.log('rendering???',formData);
-          // let rc=props.record;
-          // rc.combinations=combs;
-          // console.log(' ',rc);
-          formData.combinations=[];
-          return (<EditOptions record={record} onCreateCombinations={onCreateCombinations}
+        {({ formData = {}, ...rest }) => {
+          console.log('rest',rest,formData);
+          // {/*// console.log('rendering???',formData);*/}
+          {/*// let rc=props.record;*/
+          }
+          {/*// rc.combinations=combs;*/
+          }
+          {/*// console.log(' ',rc);*/
+          }
+          {/*formData.combinations=[];*/
+          }
+          return ([<EditOptions key={0} record={formData} onCreateCombinations={onCreateCombinations}
                                formData={formData}
-                               type={formData.type}/>);
-        }
-
-        }
+                               type={formData.type} updater={OptsUpdater}/>,
+            <Combinations
+              key={1}
+            record={formData}
+            source="combinations" updater={() => {
+          }}/>]);
+        }}
       </FormDataConsumer>
-      {/*<ShowPictures source="photos" thep={theP} setPhotos={setPhotos}/>*/}
+
+      {/*<EditOptions*/}
+      {/*// record={record}*/}
+      {/*onCreateCombinations={onCreateCombinations} updater={OptsUpdater}/>*/}
+
+
+      {/*<ShowPictu  <EditOptions ros" thep={theP} setPhotos={setPhotos}/>*/}
 
 
       <UploaderField

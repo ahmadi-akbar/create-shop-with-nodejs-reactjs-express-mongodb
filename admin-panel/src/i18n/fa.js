@@ -8,6 +8,7 @@ const customFarsiMessages = {
   lan: "fa",
   dir: "rtl",
   comma: ",",
+  undefined:"مشخص نشده",
   pos: {
     search: "جستجو",
     configuration: "تنظیمات",
@@ -319,7 +320,12 @@ const customFarsiMessages = {
       normal:"عادی",
       variable:"متغیر",
       metadescription:"توضیحات متا",
-      keywords:"کلمات کلیدی"
+      keywords:"کلمات کلیدی",
+      is:"هست",
+      isnt:"نیست",
+      weight:"وزن",
+      sku:"SKU",
+      count:"تعداد"
     },
 
     reviews: {
