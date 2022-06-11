@@ -10,7 +10,8 @@ import {
   TextInput,
   Toolbar,
   useForm,
-  useTranslate
+  useTranslate,
+  useRecordContext
 } from "react-admin";
 import API from "@/functions/API";
 import { dateFormat } from "@/functions";
@@ -212,7 +213,6 @@ function save(values) {
   // }
 
   console.log("last values: ", values);
-  return;
   if (values._id) {
     // delete values.photos;
     delete values.questions;
