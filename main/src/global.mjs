@@ -9,7 +9,7 @@ import Settings from "#models/settings";
 import VARIABLE from "#v/variables";
 
 // global.ip='https://api.shansebartar.com';
-let version = "1.0.0";
+let version = VARIABLE.VERSION_NUM;
 // global.ip='http://shansebartar.com:3002';
 // var Kavenegar from 'kavenegar');
 // var api = Kavenegar.KavenegarApi({

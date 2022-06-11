@@ -6,6 +6,7 @@ import categoryController from '#controllers/category';
 import useragent from 'useragent';
 
 router.get('/:catId/:name', (req, res, next) => {
+  console.log('get category....')
 
     var agent = useragent.parse(req.headers['user-agent']);
     console.log('agent',agent)
@@ -32,7 +33,9 @@ router.get('/:catId/:name', (req, res, next) => {
 
 });
 router.get('/:catId/:catName', (req, res, next) => {
-    if (!req.headers.lan) {
+  console.log('get category2....')
+
+  if (!req.headers.lan) {
         let lngs = req.acceptsLanguages();
         if (lngs.includes('ar')) {
             req.headers.lan = 'ar';

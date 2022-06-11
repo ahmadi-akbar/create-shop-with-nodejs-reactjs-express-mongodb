@@ -1,4 +1,4 @@
-import { Admin, Resource, useTranslate } from "react-admin";
+import { Admin, Resource, useTranslate,CustomRoutes} from "react-admin";
 import resources from "@/resource";
 import { authProvider, dataProvider, theme } from "@/functions";
 import englishMessages from "@/i18n/en";
@@ -6,6 +6,7 @@ import farsiMessages from "@/i18n/fa";
 import themeReducer from "./themeReducer";
 import languageReducer from "./languageReducer";
 import Types from "@/functions/types";
+import {Route} from "react-router-dom";
 
 import polyglotI18nProvider from "ra-i18n-polyglot";
 import "@/assets/global.css";
@@ -20,11 +21,8 @@ const messages = {
 };
 
 let dl = Types()["default_locale"];
-// console.clear();
 
-// console.log("default_locale", dl, messages[dl]);
 const localeMain = localStorage.getItem("locale");
-// console.log("localeMain", localeMain);
 const i18nProvider = polyglotI18nProvider(
   locale => {
     if (localeMain) {
@@ -34,41 +32,10 @@ const i18nProvider = polyglotI18nProvider(
   },
   dl
 );
-// const i18nProvider={
-//     changeLocale: locale => {
-//         console.log('changeLocale',locale)
-//
-//         //return promis
-//     },
-//     getLocale: (x) => {
-//         console.log('getLocale',x)
-//
-//         // return string
-//     },
-// };
-// console.log("i18nProvider", i18nProvider);
-// const i18nProvider = polyglotI18nProvider(locale => {
-//     console.log('locale', dl,englishMessages);
-//
-//     if (locale === 'fa') {
-//         return import('./i18n/fa').then(messages => messages.default);
-//         // let x=import('@/i18n/' + locale+'.js').then(messages => messages.default);
-//         // console.log('x',x);
-//         // return [
-//         // return await x;
-//         //     import('@/assets/rtl.css').then(messages => console.log(messages.default))
-//         // ];
-//     }
-//     return englishMessages;
-//
-//     // Always fallback on default_language
-// }, dl);
-
 
 export default function App() {
   const translate = useTranslate();
-  const { Action,Attributes,Category,Customer,MainDashboard,Media,Order,OrderCart,Post,Product,Settings,Sms,Transaction,User } = resources;
-// console.log('OrderCart',OrderCart);
+  const { Action,Attributes,Category,Configuration,Customer,MainDashboard,Media,Order,OrderCart,Post,Product,Settings,Sms,Transaction,User } = resources;
   return (
     <Admin
       title={translate('websiteName')}
@@ -80,15 +47,6 @@ export default function App() {
       layout={MainLayout}
       customReducers={{ theme: themeReducer, locale: languageReducer }}
       i18nProvider={i18nProvider}
-
-      // customSagas={[ bitcoinSaga ]}
-      // customRoutes={[
-      //     <Route
-      //         path="/settings"
-      //         component={Settings.edit}
-      //         noLayout
-      //     />
-      // ]}
     >
       <Resource name="attributes" {...Attributes} options={{label: translate('pos.menu.attributes')}}/>
       <Resource name="category" {...Category} options={{label: translate('pos.menu.categories')}}/>
@@ -103,7 +61,10 @@ export default function App() {
       <Resource name="sms" options={{ label: translate("pos.menu.sms") }} {...Sms} />
       <Resource name="settings" options={{ label: translate("pos.menu.settings") }} {...Settings} />
       <Resource name="action" options={{ label: translate("pos.menu.actions") }} {...Action} />
-
+      <CustomRoutes>
+        <Route path="/configuration" element={<Configuration />} />
+      {/*<Resource name="configuration" options={{ label: translate("pos.menu.actions") }} {...Configuration} />*/}
+      </CustomRoutes>
     </Admin>
   );
 }

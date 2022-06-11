@@ -4,11 +4,12 @@ import PublicRT from "#routes/public/index";
 import BoyRT from "#routes/boy/index";
 import createError from "http-errors";
 
-var routeHandle = (app) => {
+let routeHandle = (app) => {
     console.log('==> routeHandle');
     // res.status(200);
-    var keys = Object.keys(PublicRT);
+    let keys = Object.keys(PublicRT);
     keys.forEach((x) => {
+        // console.log('/'+x)
         app.use("/" + x, PublicRT[x]);
 
     });
