@@ -1,5 +1,5 @@
 {
-  "name": "akbarplusplus",
+  "name": "create-shop-with-nodejs-reactjs-express-mongodb",
   "version": "0.0.0",
   "private": true,
   "scripts": {
@@ -8,15 +8,8 @@
     "build:client": "craco build",
     "start:server": "NODE_ENV=development npm-run-all server",
     "server": "BABEL_CACHE_PATH=babel-cache.json babel-node ./src/bin/www",
-    "server:prod": "node ./dist/bin/www",
     "dev": "NODE_ENV=development npm-run-all server",
-    "clean": "rimraf dist",
-    "build_old": "babel ./src --out-dir dist",
-    "build": "craco build",
-    "staylive": "pm2 start ",
-    "prod": "NODE_ENV=production npm-run-all clean build server:prod",
-    "watch": "nodemon",
-    "start2": "node --experimental-modules  ./src/bin/www"
+    "watch": "nodemon"
   },
   "dependencies": {
     "@babel/preset-react": "^7.17.12",

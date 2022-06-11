@@ -4,7 +4,7 @@ import busboy from "connect-busboy";
 import path from "path";
 
 const __dirname = path.resolve();
-const viewsFolder = path.join(__dirname, "./src/views");
+// const viewsFolder = path.join(__dirname, "./src/views");
 const publicFolder = path.join(__dirname, "./public");
 const buildFolder = path.join(__dirname, "./build");
 const assetsFolder = path.join(__dirname, "./src/client/assets/img");

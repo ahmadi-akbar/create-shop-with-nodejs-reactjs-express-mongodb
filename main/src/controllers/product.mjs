@@ -1618,6 +1618,7 @@ let self = ({
   }
   ,
   viewOneS: function(req, res, next) {
+    console.log('===> viewOneS() ')
     return new Promise(function(resolve, reject) {
       // console.log('req.params._id', req.params._id);
       const arrayMin = (arr) => {
@@ -1637,7 +1638,7 @@ let self = ({
           let product_old_price = 0;
           let product_prices = [];
           let product_sale_prices = [];
-          if (product.type == "variable") {
+          if (product.type === "variable") {
             if (product.combinations)
               _.forEach(product.combinations, (c) => {
                 if (c.in_stock) {
@@ -1647,20 +1648,20 @@ let self = ({
                 }
 
               });
-            console.log("gfdsdf");
-            console.log(product_prices);
-            console.log(product_sale_prices);
+            // console.log("gfdsdf");
+            // console.log(product_prices);
+            // console.log(product_sale_prices);
             let min_price = arrayMin(product_prices);
             let min_sale_price = arrayMin(product_sale_prices);
-            console.log("min_price", min_price);
-            console.log("min_sale_price", min_sale_price);
+            // console.log("min_price", min_price);
+            // console.log("min_sale_price", min_sale_price);
             product_price = min_price;
             if (min_sale_price > 0 && min_sale_price < min_price) {
               product_price = min_sale_price;
               product_old_price = min_price;
             }
           }
-          if (product.type == "normal") {
+          if (product.type === "normal") {
             if (product.in_stock) {
               in_stock = "instock";
             }
