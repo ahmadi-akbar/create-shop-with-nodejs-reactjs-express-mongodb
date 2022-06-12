@@ -6,7 +6,7 @@ import path from "path";
 // import app from "./index";
 
 const __dirname = path.resolve();
-const viewsFolder = path.join(__dirname, "./src/views");
+const viewsFolder = path.join(__dirname, "./views");
 
 
 
