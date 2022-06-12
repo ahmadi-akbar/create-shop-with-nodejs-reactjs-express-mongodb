@@ -1,8 +1,11 @@
 import mongoose from 'mongoose';
 const SettingsSchema = new mongoose.Schema({
+    title: {},
+    description: {},
     data: [],
     siteActive:{type: Boolean, default: true},
     siteActiveMessage:String,
+    logo:String,
     createdAt: {type: Date, default: Date.now},
     updatedAt: {type: Date, default: Date.now},
     activeCategory: [{type: mongoose.Schema.Types.ObjectId, ref: 'Category'}],

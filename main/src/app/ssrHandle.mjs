@@ -11,6 +11,7 @@ import AppSSR from "#c/AppSSR";
 import routes from "#c/ssrRoutes";
 
 import { Provider } from "react-redux";
+import seo from "#root/seo";
 
 import { persistor, store } from "#c/functions/store";
 
@@ -23,15 +24,15 @@ const ssrHandle = (app) => {
   app.get("/", (req, res, next) => {
     ssrParse(req, res, next);
   });
-  app.get("/p/:_id/:title", (req, res,next) => {
+  app.get("/p/:_id/:title", (req, res, next) => {
     ssrParse(req, res, next);
   });
 
-  app.get("/post/:_id/:title", (req, res,next) => {
+  app.get("/post/:_id/:title", (req, res, next) => {
     ssrParse(req, res, next);
   });
 
-  app.get("/page/:_id/:title", (req, res,next) => {
+  app.get("/page/:_id/:title", (req, res, next) => {
     ssrParse(req, res, next);
   });
 };
@@ -65,10 +66,10 @@ const ssrParse = (req, res, next) => {
             console.log("typeof comp.server", typeof comp.server);
             if (typeof comp.server === "object") {
               comp.server.forEach(s => {
-                console.log('s.params',s.params);
-                cccc.push(store.dispatch(s.func(s.params)))
+                console.log("s.params", s.params);
+                cccc.push(store.dispatch(s.func(s.params)));
               });
-              return cccc
+              return cccc;
             } else {
               cccc.push(store.dispatch(comp.server(comp.params)));
               return store.dispatch(comp.server(comp.params));
@@ -92,7 +93,23 @@ const ssrParse = (req, res, next) => {
     });
   } else {
     console.log("no need to ssr...");
-    next();
+    app.set("views", viewsFolder);
+
+    seo.readFilePromise().then(data => {
+      console.log("data ssr handle", data.setting);
+
+      return res.render("index", {
+        title: data.setting.title || seo["home"]["title"][req.headers.lan],
+        description: seo["home"]["description"][req.headers.lan],
+        image: seo["home"]["image"][req.headers.lan],
+        url: seo["home"]["url"][req.headers.lan],
+        width: "512",
+        height: "512",
+        name: seo["home"]["name"][req.headers.lan],
+        lng: req.headers.lan
+      });
+    });
+    // next();
   }
 };
 export default ssrHandle;

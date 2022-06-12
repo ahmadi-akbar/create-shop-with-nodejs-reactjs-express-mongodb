@@ -26,7 +26,7 @@ export default function MainMobileNavbar({layout, stickyTop = true, onChange}) {
           <SearchToggle/>
 
           <div className={"nav d-table m-auto oiuytrt tm-ksa-logo-parent2 nonestf " + searchform}>
-            <Link to="/"><img style={{maxWidth: 58}} src={logoImg} alt="logo"/></Link>
+            <Link to="/"><img style={{maxWidth: 58}} src={logoImg} alt="mainNavBar logo"/></Link>
           </div>
 
           <NavbarMobileButton/>
