@@ -1,10 +1,10 @@
-import VARIABLE from '#v/variables';
+import VARIABLE from "#v/variables";
 
 
 export const defaultImg = VARIABLE.SHOP_URL + ("not-found.png");
 
 export const SnapChatIcon = VARIABLE.SHOP_URL + ("snapchat.svg");
-export const logoImg = VARIABLE.SHOP_URL + ("logo.png");
+export const logoImg = VARIABLE.SHOP_URL + "site_setting/" + ("logo.png") || VARIABLE.SHOP_URL + "site_setting/" + ("logo.jpg");
 export const payImg = VARIABLE.SHOP_URL + ("pay.png");
 export const enamadImg = VARIABLE.SHOP_URL + ("enamad.png");
 export const etmeImg = VARIABLE.SHOP_URL + ("etme.jpeg");

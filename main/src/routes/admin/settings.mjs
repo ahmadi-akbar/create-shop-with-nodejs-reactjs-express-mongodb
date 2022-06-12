@@ -25,6 +25,7 @@ router.use(loggingMiddleware);
 router.get('/update', settingsController.update);
 router.get('/dollar', settingsController.dollar);
 router.get('/count', settingsController.count);
+router.get('/configuration', settingsController.configuration);
 
 router.get('/', settingsController.all);
 router.get('/:offset/:limit', settingsController.all);
@@ -36,6 +37,9 @@ router.post('/', settingsController.create);
 router.post('/submitDollarPrice/:price', settingsController.submitDollarPrice);
 router.post('/submitDerhamPrice/:price', settingsController.submitDerhamPrice);
 // router.post('/register', settingsController.register);
+router.post('/fileUpload', settingsController.fileUpload);
+router.put('/configuration', settingsController.updateConfiguration);
+
 router.put('/:id', settingsController.edit);
 router.delete('/:id', settingsController.destroy);
 export default router;

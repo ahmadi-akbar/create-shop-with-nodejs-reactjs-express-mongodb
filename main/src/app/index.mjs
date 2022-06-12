@@ -5,11 +5,11 @@ import ssrHandle from "#root/app/ssrHandle";
 import configHandle from "#root/app/configHandle";
 import routeHandle from "#root/app/routeHandle";
 import headerHandle from "#root/app/headerHandle";
-import uploadHandle from "#root/app/uploadHandle";
+// import uploadHandle from "#root/app/uploadHandle";
 
 console.log("new date", new Date());
 
-var app = express();
+let app = express();
 
 db();
 
@@ -18,7 +18,7 @@ configHandle(express, app);
 headerHandle(app);
 
 app.use(function(err, req, res, next) {
-  console.log('here....');
+  //console.log('here....');
   if (req.busboy) {
     req.pipe(req.busboy);
 

@@ -9,7 +9,7 @@ let routeHandle = (app) => {
     // res.status(200);
     let keys = Object.keys(PublicRT);
     keys.forEach((x) => {
-        // console.log('/'+x)
+        console.log('/'+x)
         app.use("/" + x, PublicRT[x]);
 
     });
