@@ -20,7 +20,7 @@ export default () => {
 
       </div>
       <div className={"d-table m-auto oiuytrt tm-ksa-logo-parent2 nonestf" + searchform}>
-        <Link to="/"><img style={{maxWidth: 58}} src={logoImg} alt="logo"/></Link>
+        <Link to="/"><img style={{maxWidth: 58}} src={logoImg} alt="mobile logo"/></Link>
       </div>
       {/*<MainCats/>*/}
 

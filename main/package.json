@@ -3,7 +3,8 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start": "npm run prod",
+    "start": "BABEL_CACHE_PATH=babel-cache.json babel-node ./src/bin/www",
+    "prod": "npm run prod",
     "start:client": "craco start",
     "build:client": "craco build",
     "start:server": "NODE_ENV=development npm-run-all server",
