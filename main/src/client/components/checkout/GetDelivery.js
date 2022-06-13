@@ -88,7 +88,7 @@ class GetDelivery extends React.Component {
         }
       }
       if (setting && setting.theid == 'chapar') {
-        console.log('chapar');
+        console.log('chapar',setting.theid);
         if (address.City_no)
           getTheChaparPrice(address.City_no, sum, 1).then((res) => {
             if (res.result) {
@@ -221,7 +221,7 @@ class GetDelivery extends React.Component {
   }
 
   calculateAddress(settings, hoverD = this.state.hoverD, address = this.state.address) {
-    // console.log('calculateAddress...', settings, hoverD, address);
+    console.log('calculateAddress...', settings, hoverD, address);
     // let ref=this;
     // let {hoverD, hoverD, address} = this.state;
     if (!address)
@@ -234,7 +234,7 @@ class GetDelivery extends React.Component {
         settings.forEach((adr, ad) => {
           if (adr.is === 'is') {
 
-            if ((address.State == adr.city) && (supportedcity.includes(address.City))) {
+            if ((address.State == adr.city) && (supportedcity.indexOf(address.City)>-1)) {
               console.log('add...');
 
               renTimes.push(adr);
@@ -248,7 +248,7 @@ class GetDelivery extends React.Component {
               console.log('add 0 ...');
 
               renTimes.push(adr);
-            } else if ((address && address.State) && (address.State == adr.city) && (!supportedcity.includes(address.City))) {
+            } else if ((address && address.State) && (address.State == adr.city) && (!(supportedcity.indexOf(address.City)>-1))) {
               console.log('add 1 ...');
 
               // console.log('we are here');

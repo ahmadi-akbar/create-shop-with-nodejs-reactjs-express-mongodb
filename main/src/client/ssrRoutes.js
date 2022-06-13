@@ -18,7 +18,7 @@ export default [
     path: "/p/:_id/:title",
     layout: DefaultLayout,
     exact: true,
-    element: Post,
+    element: Product,
     server: ProductServer,
     params: ProductServerArgument
   },
@@ -53,5 +53,13 @@ export default [
     element: Post,
     server: PostServer,
     params: PostServerArgument
-  }
+  },
+  {
+    path: '/:_firstCategory/:_product_slug',
+    layout: DefaultLayout,
+    exact: true,
+    element: Product,
+    server: ProductServer,
+    params: ProductServerArgument
+  },
 ];

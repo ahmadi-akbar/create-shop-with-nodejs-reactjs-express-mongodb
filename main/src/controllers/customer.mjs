@@ -692,11 +692,11 @@ var self = {
 
   },
   updateAddress: function(req, res, next) {
-    // console.log('\n\n\n\n\n =====> editing updateAddress:');
+    console.log('\n\n\n\n\n =====> editing updateAddress:');
     // console.log('body: ', req.body);
     // console.log('id: ', req.headers.customer_id);
     // console.log("token: ", req.headers.token);
-    search = {
+    let search = {
       "$or": [
         { "email": { "$regex": req.body.email, "$options": "i" } },
         { "phoneNumber": { "$regex": req.body.phoneNumber, "$options": "i" } }

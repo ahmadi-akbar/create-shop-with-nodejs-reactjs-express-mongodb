@@ -12,10 +12,10 @@ console.log("new date", new Date());
 let app = express();
 
 db();
+headerHandle(app);
 
 ssrHandle(app);
-configHandle(express, app);
-headerHandle(app);
+
 
 app.use(function(err, req, res, next) {
   //console.log('here....');
@@ -56,7 +56,7 @@ app.use(function(err, req, res, next) {
     next();
   }
 });
-
+configHandle(express, app);
 routeHandle(app);
 
 export default app;

@@ -10,8 +10,7 @@ import {
   TextInput,
   Toolbar,
   useForm,
-  useTranslate,
-  useRecordContext
+  useTranslate
 } from "react-admin";
 import API from "@/functions/API";
 import { dateFormat } from "@/functions";
@@ -29,11 +28,14 @@ import {
   ShowPictures,
   SimpleForm,
   SimpleImageField,
-  UploaderField
+  UploaderField,
+  FormTabs
 } from "@/components";
 import { Val } from "@/Utils";
-import React from "react";
+import React ,{useEffect,useState,Fragment, useCallback} from "react";
 import { RichTextInput } from "ra-input-rich-text";
+import { useListContext } from "react-admin/dist/index";
+import { Divider, Tab, Tabs } from "@mui/material";
 
 // import { RichTextInput } from 'ra-input-rich-text';
 // import {ImportButton} from "react-admin-import-csv";
@@ -203,10 +205,10 @@ function save(values) {
     values.thumbnail = valuess.thumbnail;
 
   }
-  if (valuess.photos) {
-    values.photos = valuess.photos;
-    // valuess['photos']
-  }
+  // if (valuess.photos) {
+  //   values.photos = valuess.photos;
+  //   // valuess['photos']
+  // }
   // if (valuess.combinations) {
   //   values.combinations = valuess.combinations;
   //   // valuess['photos']
@@ -271,28 +273,36 @@ const Form = ({ children, ...props }) => {
   // console.log("vprops", props);
   // const record = useRecordContext();
   // if (!record) return null;
+
   const translate = useTranslate();
   // console.log("record", record);
   // valuess['photos'] = props.record.photos || [];
-  valuess["photos"] = [];
   // if(valuess['options']!=record.options){
   //   record.options=valuess['options'];
   // }
   // console.log('productForm...',record);
+  const totals = 0;
+
+
   return (
     <SimpleForm {...props} toolbar={<CustomToolbar/>} onSubmit={save} className={"d-flex"}>
+
       <TextInput source={"title." + translate("lan")} label={translate("resources.product.title")}
                  className={"width100 mb-20"} validate={Val.req} fullWidth/>
-      <TextInput source="slug" label={translate("resources.product.slug")} className={"width100 mb-20 ltr"} fullWidth/>
-      <TextInput fullWidth source="keywords" label={translate("resources.product.keywords")}/>
-      <TextInput multiline fullWidth source="metadescription" label={translate("resources.product.metadescription")}/>
+      <TextInput
 
-      <TextInput multiline fullWidth source="excerpt" label={translate("resources.product.excerpt")}/>
-      <RichTextInput multiline fullWidth source="description" label={translate("resources.product.description")}/>
+        source="slug" label={translate("resources.product.slug")} className={"width100 mb-20 ltr"} fullWidth/>
+      <TextInput fullWidth source={"keywords." + translate("lan")} label={translate("resources.product.keywords")}/>
+      <TextInput multiline fullWidth source={"metadescription." + translate("lan")} label={translate("resources.product.metadescription")}/>
+
+      <TextInput multiline fullWidth source={"excerpt." + translate("lan")}
+                 label={translate("resources.product.excerpt")}/>
+      <RichTextInput multiline fullWidth source={"description." + translate("lan")}
+                     label={translate("resources.product.description")}/>
 
       <div className={"mb-20"}/>
       <BooleanInput source="story" label={translate("resources.product.story")}/>
-      <TextInput source="miniTitle" label={translate("resources.product.miniTitle")}/>
+      <TextInput source={"miniTitle." + translate("lan")} label={translate("resources.product.miniTitle")}/>
 
       <CatRefField label={translate("resources.product.firstCategory")} returnToHome={returnToHome}
                    returnCatsValues={returnCatsValues}
@@ -317,7 +327,7 @@ const Form = ({ children, ...props }) => {
       <div className={"mb-20"}/>
       <FormDataConsumer>
         {({ formData = {}, ...rest }) => {
-          console.log('rest',rest,formData);
+          console.log("rest", rest, formData);
           // {/*// console.log('rendering???',formData);*/}
           {/*// let rc=props.record;*/
           }
@@ -328,13 +338,13 @@ const Form = ({ children, ...props }) => {
           {/*formData.combinations=[];*/
           }
           return ([<EditOptions key={0} record={formData} onCreateCombinations={onCreateCombinations}
-                               formData={formData}
-                               type={formData.type} updater={OptsUpdater}/>,
+                                formData={formData}
+                                type={formData.type} updater={OptsUpdater}/>,
             <Combinations
               key={1}
-            record={formData}
-            source="combinations" updater={() => {
-          }}/>]);
+              record={formData}
+              source="combinations" updater={() => {
+            }}/>]);
         }}
       </FormDataConsumer>
 

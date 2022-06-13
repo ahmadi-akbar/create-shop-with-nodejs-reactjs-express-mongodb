@@ -16,7 +16,8 @@ let version = VARIABLE.VERSION_NUM;
 //     // apikey: '45346A5273684F7951487067476C4B506D504E4A5A6939675A2B2F526D65686E6A754369754B59377158303D'
 //     apikey: ''
 // });
-var global = {
+let global = {
+  body:"",
   ip: VARIABLE.BASE_URL,
   domain: VARIABLE.BASE_URL,
   sendSms: function(to, text, From = "50004000004", customerId = null, countryCode = "98", findKey = false) {

@@ -24,9 +24,9 @@ import City from '#c/data/city.json';
 let supportedcity = ['اميريه-تهران', 'تهران', 'منطقه 11 پستي تهران', 'منطقه 13 پستي تهران', 'منطقه 14 پستي تهران', 'منطقه 15 پستي تهران', 'منطقه 16 پستي تهران', 'تجريش'];
 
 function setCity(s) {
-  console.log('setCity', s);
+  console.log('setCity', s,City);
   let tttt = [];
-  City.forEach((item) => {
+  City().forEach((item) => {
     if (item.state_no == s) {
       tttt.push(item);
     }
