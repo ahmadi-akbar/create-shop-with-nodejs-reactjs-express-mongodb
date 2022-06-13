@@ -17,7 +17,6 @@ import Transaction from '#c/views/Transaction';
 import Transactions from '#c/views/Transactions';
 import Checkout from '#c/views/Checkout';
 import Order from '#c/views/Order';
-import Instagram from '#c/views/Instagram';
 import Test from '#c/views/Test';
 import Best from '#c/views/Best';
 import Wishlist from "./views/Wishlist";
@@ -176,15 +175,15 @@ export default [
     element: Checkout
   },
   {
-    path: "/instagram",
-    exact: true,
-    layout: Nohf,
-    element: Instagram
-  },
-  {
     path: "/:_x",
     exact: true,
     layout: DefaultLayout,
     element: _404
+  },
+  {
+    path: '/:_firstCategory/:_product_slug/',
+    layout: DefaultLayout,
+    exact: true,
+    element: Product,
   },
 ];

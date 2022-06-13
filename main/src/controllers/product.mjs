@@ -6,7 +6,9 @@ import _ from "lodash";
 import path from "path";
 import fs from "fs";
 import moment from "moment-jalaali";
-import global from '#root/global';
+import global from "#root/global";
+import mongoose from "mongoose";
+
 let self = ({
   importproductsfromcsv: function(req, res, next) {
     res.json(req.body);
@@ -26,7 +28,7 @@ let self = ({
       res.json(products);
     });
   },
-  modifyproductsstock: async function(req, res, next) {
+  modifydes: async function(req, res, next) {
     // Product.findAndUpdate({
     //     firstCategory: null,
     //     theCategories: {
@@ -35,46 +37,65 @@ let self = ({
     //     }
     // },
 
+    let j = 0, v = 0;
+    let tt = [];
+    Product.find({
+      "miniTitle.fa": null,
+      story: true
+    }, function(err, response) {
+      console.log("response", response.length);
+      // return;
+      _.forEach(response, resx => {
+        let t = "", c = [];
+        j++;
+        // if (res.slug) {
+        //   if (tt.indexOf(res.slug)>-1) {
+        //     tt.push({ _id: res._id, slug: res.slug, shallBeUpdated: false });
+        //   } else{
+        //     console.log('it exist...');
+        //     v++;
+        //     tt.push({ _id: res._id, slug: res.slug, shallBeUpdated: true, newSlug: res.slug + "-" + v });
+        //
+        //   }
+        // }
+        //   let x = res.slug.split("-");
+        //   _.forEach(x, resd => {
+        //     if (resd != "-" && resd != "")
+        //       c.push(resd);
+        //   });
+        // } else if (res.title && res.title.fa) {
+        //   let x = res.title.fa.split(" ");
+        //   _.forEach(x, resd => {
+        //     if (resd != "-" && resd != "")
+        //       c.push(resd);
+        //   });
+        // }
+        // if (c[0])
+        //   t = c.join("-");
+// if(j==1013)
+//         console.log("_id ", res.slug, " updated (" + j + ")");
 
-    // Product.find({
-    //         "combinations.sale_price": {
-    //             $ne: "",
-    //             $exists: true
-    //         }
-    //     },
-    //     '_id combinations',
-    //     function (err, response) {
-    //         var rrrr = [];
-    //         var t = 0;
-    //         _.map(response, (doc, it) => {
-    //             // console.log('doc', doc, it);
-    //
-    //             _.map(doc.combinations, (comb, it) => {
-    //                 doc.combinations[it]['salePrice'] = doc.combinations[it]['sale_price'];
-    //                 console.log('it',it,'length',doc.combinations.length);
-    //                 if (it == (doc.combinations.length-1))
-    //                     Product.findByIdAndUpdate(doc._id,
-    //                         {
-    //                             "$set": {
-    //                                 "combinations": doc.combinations
-    //                             }
-    //                         },
-    //                         {
-    //                             "fields": {"_id": 1, "combinations": 1}
-    //                         },
-    //                         function (err, response) {
-    //                             t++;
-    //                             rrrr.push(response);
-    //
-    //                         });
-    //             });
-    //
-    //         });
-    //         if (t == response.length)
-    //             res.json(rrrr);
-    //
-    //     }).lean()
 
+        Product.findByIdAndUpdate(resx._id,
+          {
+            $set: {
+              story: false
+            }
+          },
+          function(err, response) {
+            if (!response || err) {
+              console.log("err");
+              return res.json(err);
+
+            }
+            j++;
+
+            console.log("_id ", resx._id, " updated  ", "(" + j + ")");
+          });
+
+      });
+
+    });
   },
   modifyproducts: async function(req, res, next) {
     return;
@@ -694,8 +715,11 @@ let self = ({
         thirdCategory: req.query.id
       }];
     }
+    search["slug"] = {
+      $exists: true
+    };
     console.log("search", search);
-    Product.find(search, "_id , views , combinations , options , price , salePrice , createdAt , updatedAt , firstCategory , title , thumbnail , type , thirdCategory , secondCategory , in_stock , quantity , status", function(err, products) {
+    Product.find(search, "_id , views , combinations , options , price , salePrice , createdAt , updatedAt , firstCategory , title , thumbnail , type , thirdCategory , secondCategory , in_stock , quantity , status , slug", function(err, products) {
       if (err || !products) {
         res.json([]);
         return 0;
@@ -734,7 +758,7 @@ let self = ({
       updatedAt: -1
 
       // "in_stock": 1,
-    }).limit(parseInt(req.params.limit)).populate("firstCategory", "_id name").populate("secondCategory", "_id name").populate("thirdCategory", "_id name").lean();
+    }).limit(parseInt(req.params.limit)).populate("firstCategory", "_id name slug").populate("secondCategory", "_id name slug").populate("thirdCategory", "_id name slug").lean();
   }
   ,
   allW: function(req, res, next) {
@@ -746,7 +770,9 @@ let self = ({
 
     let search = {};
     search["status"] = "published";
-
+    search["slug"] = {
+      $exists: true
+    };
     search["title." + req.headers.lan] = {
       $exists: true
       // "$regex": req.query.search,
@@ -786,9 +812,9 @@ let self = ({
     }
     // console.log(search);
 
-    Product.find(search, "_id title options firstCategory photos price salePrice quantity in_stock type thumbnail combinations labels")
+    Product.find(search, "_id title options firstCategory photos price salePrice quantity in_stock type thumbnail combinations labels slug")
       .sort({ "combinations.in_stock": -1, "in_stock": -1, updatedAt: -1 })
-      .skip(offset).limit(parseInt(req.params.limit))
+      .skip(offset).limit(parseInt(req.params.limit)).populate("firstCategory", "_id name slug").populate("secondCategory", "_id name slug").populate("thirdCategory", "_id name slug")
       .exec(function(err, products) {
         if (err || !products) {
           res.json([]);
@@ -842,10 +868,10 @@ let self = ({
   }
   ,
   allStory: function(req, res, next) {
-    // console.log('jhgfdghjk allW', req.params.search);
+    console.log('jhgfdghjk allW', req.params);
     let offset = 0;
     if (req.params.offset) {
-      offset = parseInt(req.params.offset);
+      offset = (req.params.offset);
     }
 
     let search = {};
@@ -855,6 +881,9 @@ let self = ({
       $exists: true
       // "$regex": req.query.search,
       // "$options": "i"
+    };
+    search["slug"] = {
+      $exists: true
     };
     // search["description." + req.headers.lan] = {
     //     $exists: true
@@ -875,11 +904,7 @@ let self = ({
 
 
     }
-    if (req.query.country) {
 
-      search["country"] = req.query.country;
-
-    }
     if (req.query.type) {
       search["type"] = req.query.type;
     }
@@ -890,12 +915,12 @@ let self = ({
     }
     // console.log(search);
     search["story"] = true;
-    search["miniTitle"] = {
+    search["miniTitle." + req.headers.lan] = {
       $exists: true
     };
-    console.log('search',search);
-    Product.find(search, "_id miniTitle slug thumbnail")
-      .skip(offset).limit(parseInt(req.params.limit))
+    console.log("search", search);
+    Product.find(search, "_id miniTitle slug thumbnail firstCategory secondCategory thirdCategory")
+      .skip(offset).limit(parseInt(req.params.limit)).populate("firstCategory", "_id name slug").populate("secondCategory", "_id name slug").populate("thirdCategory", "_id name slug")
       .exec(function(err, products) {
         if (err || !products) {
           res.json([]);
@@ -1184,12 +1209,15 @@ let self = ({
     //     });
     //   }
     // }
-     console.log(search)
+    search["slug"] = {
+      $exists: true
+    };
+    console.log(search);
 
 // console.log('req.params',req.query.include);
-    Product.find(search, "_id title options firstCategory secondCategory thirdCategory photos price salePrice type quantity in_stock thumbnail combinations labels views")
+    Product.find(search, "_id title options firstCategory secondCategory thirdCategory photos price salePrice type quantity in_stock thumbnail combinations labels views slug")
       .sort({ "combinations.in_stock": -1, "in_stock": -1, "updatedAt": 1 })
-      .skip(offset).limit((req.params.limit))
+      .skip(offset).limit((req.params.limit)).populate("firstCategory", "_id name slug").populate("secondCategory", "_id name slug").populate("thirdCategory", "_id name slug")
       .exec(function(err, products) {
         if (err) {
           res.json([]);
@@ -1377,17 +1405,24 @@ let self = ({
 
       });
 
-    }).populate("firstCategory", "name").populate("customer", "nickname photos").skip(offset).sort({ createdAt: -1 }).limit(parseInt(req.params.limit)).lean();
+    }).populate("firstCategory", "name slug").populate("customer", "nickname photos").skip(offset).sort({ createdAt: -1 }).limit(parseInt(req.params.limit)).lean();
   }
   ,
   viewOne: function(req, res, next) {
+    let obj = {};
+    if (mongoose.isValidObjectId(req.params.id)) {
+      obj["_id"] = req.params.id;
+    } else {
+      obj["slug"] = req.params.id;
 
-    Product.findById(req.params.id,
+    }
+    Product.findOne(obj,
       function(err, product) {
         if (err || !product) {
           res.json({
             success: false,
-            message: "error!"
+            message: "error!",
+            err: err
           });
           return 0;
         }
@@ -1422,13 +1457,13 @@ let self = ({
         // delete product.views;
         if (product.views) {
           product.views = product.views.length;
-        }else{
-          product.views=0;
+        } else {
+          product.views = 0;
         }
         if (product.like) {
           product.like = product.like.length;
-        }else{
-          product.like=0;
+        } else {
+          product.like = 0;
         }
         delete product.getContactData;
         delete product.transaction;
@@ -1440,7 +1475,7 @@ let self = ({
         }).sort({ _id: 1 }).limit(1);
 
 
-      }).populate("firstCategory", "_id name").populate("secondCategory", "_id name").populate("thirdCategory", "_id name").populate("customer", "nickname photos").lean();
+      }).populate("firstCategory", "_id name slug").populate("secondCategory", "_id name slug").populate("thirdCategory", "_id name slug").populate("customer", "nickname photos").lean();
   },
   like: function(req, res, next) {
     console.log("like product...");
@@ -1463,7 +1498,7 @@ let self = ({
           if (l.customer.toString() === req.headers.customer._id.toString()) {
             // console.log('set doWeNeedPush to false...');
 
-            doWeNeedPush=false;
+            doWeNeedPush = false;
           }
         });
         if (doWeNeedPush) {
@@ -1472,7 +1507,7 @@ let self = ({
             userIp: requestIp.getClientIp(req),
             customer: req.headers.customer._id
           });
-        }else{
+        } else {
           res.json({
             success: false,
             message: "You have liked this before!"
@@ -1500,8 +1535,8 @@ let self = ({
             }
             if (likes) {
               product.like = likes.length;
-            }else{
-              product.like =0;
+            } else {
+              product.like = 0;
             }
             res.json({
               success: true,
@@ -1618,16 +1653,23 @@ let self = ({
   }
   ,
   viewOneS: function(req, res, next) {
-    console.log('===> viewOneS() ')
+    console.log("===> viewOneS() ");
     return new Promise(function(resolve, reject) {
-      // console.log('req.params._id', req.params._id);
+      console.log('req.params._id', req.params);
       const arrayMin = (arr) => {
         if (arr && arr.length > 0)
           return arr.reduce(function(p, v) {
             return (p < v ? p : v);
           });
       };
-      Product.findById(req.params._id, "title description type price in_stock salePrice combinations thumbnail photos slug labels",
+      let obj = {};
+      if (mongoose.isValidObjectId(req.params._slug)) {
+        obj["_id"] = req.params._slug;
+      } else {
+        obj["slug"] = req.params._slug;
+
+      }
+      Product.findOne(obj, "title metadescription keywords excerpt type price in_stock salePrice combinations thumbnail photos slug labels _id",
         function(err, product) {
           if (err || !product) {
             resolve({});
@@ -1684,20 +1726,22 @@ let self = ({
             product_price: product_price || "",
             product_old_price: product_old_price || "",
             availability: in_stock || "",
-            image: product.thumbnail || product.photos[0] || ""
+            image: product.thumbnail || product.photos[0] || "",
+            keywords: product.keywords[req.headers.lan],
+            metadescription: product.metadescription[req.headers.lan],
           };
-          if (product["title"] && product["title"][req.headers.lan]) {
-            obj["title"] = product["title"][req.headers.lan];
+          if (product["title"]) {
+            obj["title"] = product["title"][req.headers.lan] || product["title"];
           } else {
             obj["title"] = "";
           }
-          if (product["product_name"] && product["product_name"][req.headers.lan]) {
-            obj["product_name"] = product["product_name"][req.headers.lan];
+          if (product["product_name"]) {
+            obj["product_name"] = product["product_name"][req.headers.lan] || product["product_name"];
           } else {
             obj["product_name"] = "";
           }
-          if (product["description"] && product["description"][req.headers.lan]) {
-            obj["description"] = product["description"][req.headers.lan];
+          if (product["description"]) {
+            obj["description"] = product["description"][req.headers.lan] || product["description"];
           } else {
             obj["description"] = "";
           }
@@ -2133,7 +2177,7 @@ let self = ({
     if (req.busboy) {
       req.pipe(req.busboy);
 
-      req.busboy.on("file", function (
+      req.busboy.on("file", function(
         fieldname,
         file,
         filename,
@@ -2147,8 +2191,8 @@ let self = ({
         // console.log('on file app encoding', typeof filename['mimeType']);
 
         let fstream;
-        console.log('global.getFormattedTime() + filename',global.getFormattedTime() , filename['filename']);
-        let name = (global.getFormattedTime() + filename.filename).replace(/\s/g, '');
+        console.log("global.getFormattedTime() + filename", global.getFormattedTime(), filename["filename"]);
+        let name = (global.getFormattedTime() + filename.filename).replace(/\s/g, "");
 
         // if (filename.mimetype.toString().includes('image')) {
         //   // name+=".jpg"
@@ -2157,18 +2201,18 @@ let self = ({
         //   // name+="mp4";
         // }
         let filePath = path.join(__dirname, "/../../public_media/customer/", name);
-        console.log('on file app filePath',filePath);
+        console.log("on file app filePath", filePath);
 
         fstream = fs.createWriteStream(filePath);
         // console.log('on file app mimetype', typeof filename.mimeType);
 
         file.pipe(fstream);
-        fstream.on("close", function () {
+        fstream.on("close", function() {
           // console.log('Files saved');
           let url = "customer/" + name;
-          let obj = [{name: name, url: url, type: mimetype}];
+          let obj = [{ name: name, url: url, type: mimetype }];
           req.photo_all = obj;
-          let photos=obj;
+          let photos = obj;
           if (photos && photos[0]) {
             Media.create({
               name: photos[0].name,
@@ -2206,7 +2250,7 @@ let self = ({
     } else {
       next();
     }
-  },
+  }
 
 });
 export default self;

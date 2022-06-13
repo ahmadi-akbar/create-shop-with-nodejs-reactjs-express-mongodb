@@ -18,6 +18,7 @@ import VARIABLE from "#v/variables";
 import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import ShareIcon from "@mui/icons-material/Share";
+import EditIcon from "@mui/icons-material/Edit";
 import BookmarkAddIcon from "@mui/icons-material/BookmarkAdd";
 // import { Link, useNavigate, useParams } from "react-router-dom";
 import RemoveRedEyeIcon from "@mui/icons-material/RemoveRedEye";
@@ -26,13 +27,12 @@ import { toast } from "react-toastify";
 // let the_id='';
 import { RWebShare } from "react-web-share";
 
-
 import DescriptionIcon from "@mui/icons-material/Description";
 import EditAttributesIcon from "@mui/icons-material/EditAttributes";
 import ReviewsIcon from "@mui/icons-material/Reviews";
 
 const Product = (props) => {
-  // console.log("props", props);
+
   let { match, location, history, t, url } = props;
 
   let product = useSelector((st) => {
@@ -41,7 +41,9 @@ const Product = (props) => {
   });
   // window.scrollTo(0, 0);
   let params = useParams();
-  let the_id = params._id;
+  // console.log("params", params);
+  // return;
+  let the_id = params._id || params._product_slug;
   // let search = false;
   // let history = useNavigate();
 
@@ -50,6 +52,7 @@ const Product = (props) => {
   const [tab, setTab] = useState("description");
   const [state, setState] = useState(isClient ? [] : (product || []));
   const [lan, setLan] = useState(store.getState().store.lan || "fa");
+  const [enableAdmin] = useState(store.getState().store.enableAdmin || false);
 
 
   const getThePost = (_id) => {
@@ -156,12 +159,11 @@ const Product = (props) => {
     extra_attr,
     excerpt,
     like,
-    enableAdmin = false,
     views = null
   } = state;
   if (redirect && isClient) return <Navigate to={redirect}/>;
   if (!load && isClient) return <Loading/>;
-  console.log("product", title, lan, encodeURIComponent(title[lan]));
+  // console.log("product", title, lan, encodeURIComponent(title[lan]));
 
   return (
 
@@ -174,21 +176,22 @@ const Product = (props) => {
                     onClick={() => {
                       loveIt(_id).then(res => {
                         console.log("res", res);
-                        if(res.like){
-                          like=res.like;
-                          setState({...state,like:like});
+                        if (res.like) {
+                          like = res.like;
+                          setState({ ...state, like: like });
                         }
                         toast(t(res.message), {
                           type: "success"
                         });
-                      }).catch(err =>{
-                        console.log('err',err);
+                      }).catch(err => {
+                        console.log("err", err);
                         toast(t(err.message), {
                           type: "warning"
-                        })
+                        });
                       });
                     }}>
-              <FavoriteBorderIcon className={"beforehov"}/><FavoriteIcon className={"hov"}/><Badge theme="info">{like}</Badge></Button>
+              <FavoriteBorderIcon className={"beforehov"}/><FavoriteIcon className={"hov"}/><Badge
+              theme="info">{like}</Badge></Button>
 
             {isClient && <RWebShare
               data={{
@@ -207,23 +210,31 @@ const Product = (props) => {
             {views && <Button><RemoveRedEyeIcon/><Badge theme="info">{views}</Badge></Button>}
             <Button onClick={() => {
               addBookmark(_id).then(res => {
-                console.log('res',res);
+                console.log("res", res);
                 toast(t(res.message), {
                   type: "success"
                 });
-              }).catch(err =>{
-                  console.log('err',err);
+              }).catch(err => {
+                  console.log("err", err);
 
                   toast(t(err.message), {
-                  type: "warning"
-                })
-              }
+                    type: "warning"
+                  });
+                }
               );
 
             }}><BookmarkAddIcon/></Button>
 
-            {enableAdmin && <a href={VARIABLE.ADMIN_URL + "/#/product/" + _id} target={"_blank"}><i
-              className="material-icons">edit</i></a>}
+            {enableAdmin &&
+            <Button onClick={() => {
+              // console.log('item',_id);
+              if (isClient) {
+                // let filePath = path.join(__dirname, "/site_setting/config.js", name);
+
+                window.open(VARIABLE.ADMIN_URL + "#/product/"+_id, "_blank").focus();
+              }
+            }}>
+              <EditIcon/></Button>}
           </ButtonGroup>
         </div>
         <Col lg="6" md="12">
@@ -275,16 +286,16 @@ const Product = (props) => {
             <Col lg="12" md="12" className={"single-product"}>
 
               <h1 className="kjhghjk hgfd ">
-                {title && title.fa}
+                {title && title[lan]}
               </h1>
               {labels && <div className={"the-labeled"}>{labels.map((lab, k) => {
                 return <div className={"the-label"} key={k}>{lab.title}</div>;
               })}</div>}
 
 
-              {excerpt && <div
+              {(excerpt && excerpt[lan]) && <div
                 className="d-inline-block item-icon-wrapper mt-3 ki765rfg hgfd"
-                dangerouslySetInnerHTML={{ __html: excerpt }}
+                dangerouslySetInnerHTML={{ __html: excerpt[lan] }}
               />}
 
 
@@ -404,26 +415,16 @@ const Product = (props) => {
         <Col lg={12} md={12} sm={12} xs={12}>
 
           {tab === "description" && <div className={"pt-5"} id={"description"}>
-            {description && <div
+            {(description && description[lan]) && <div
               className="d-inline-block item-icon-wrapper ki765rfg  hgfd mb-5"
-              dangerouslySetInnerHTML={{ __html: description }}
+              dangerouslySetInnerHTML={{ __html: description[lan] }}
             />}
-            {sections && sections.map((item, key) => {
-              if (item && item.title && item.title == "شرح محصول")
-                return <div key={key}
-                            className="d-inline-block item-icon-wrapper ki765rfg hgfd"
-                            dangerouslySetInnerHTML={{ __html: item.content }}/>;
-            })}
+
           </div>}
 
 
           {tab === "attributes" && <div className={"pt-5"} id={"attributes"}>
-            {sections && sections.map((item, key) => {
-              if (item && item.title && item.title == "مشخصات محصول")
-                return <div key={key}
-                            className="d-inline-block item-icon-wrapper ki765rfg hgfd"
-                            dangerouslySetInnerHTML={{ __html: item.content }}/>;
-            })}
+
             {extra_attr && <div className={"d-inline-block item-icon-wrapper ki765rfg hgfd"}>
               <table className="product-attributes">
                 <tbody>
@@ -467,7 +468,7 @@ const Product = (props) => {
 export const ProductServer = [
   {
     func: loadProduct,
-    params: "6217502008d0e437d6b4ad97"
+    params: ""
   }
 ];
 export default withTranslation()(Product);

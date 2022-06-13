@@ -22,7 +22,7 @@ function loggingMiddleware(req, res, next) {
 // router.get('/myPost/:id', productController.viewOneMyPost);
 // router.get('/importproducts/:offset/:limit', productController.importproducts);
 // router.get('/modifyproducts/:offset/:limit', productController.modifyproducts);
-router.get('/modifyproductsstock', productController.modifyproductsstock);
+router.get('/modifydes', productController.modifydes);
 
 router.get('/f/:id', productController.viewOneF);
 router.get('/', productController.allW);
@@ -33,7 +33,6 @@ router.get('/all/:offset/:limit/:search', productController.allW);
 router.get('/torob/:offset/:limit', productController.torob);
 
 router.get('/view/:id', productController.viewOne);
-router.get('/getContactData/:id', productController.getContactData);
 router.get('/story/:offset/:limit/', productController.allStory);
 router.get('/:offset/:limit/', productController.allW);
 router.get('/:offset/:limit/:search', productController.allW);

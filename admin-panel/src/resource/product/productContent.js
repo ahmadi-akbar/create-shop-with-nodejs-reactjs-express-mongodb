@@ -3,10 +3,12 @@ import {
   BooleanInput,
   DeleteButton,
   FormDataConsumer,
+  FormTab,
   SaveButton,
   SelectInput,
   showNotification,
   SimpleFormIterator,
+  TabbedForm,
   TextInput,
   Toolbar,
   useForm,
@@ -19,6 +21,7 @@ import {
   Combinations,
   EditOptions,
   FileChips,
+  FormTabs,
   List,
   ProductType,
   ShowDescription,
@@ -28,14 +31,11 @@ import {
   ShowPictures,
   SimpleForm,
   SimpleImageField,
-  UploaderField,
-  FormTabs
+  UploaderField
 } from "@/components";
 import { Val } from "@/Utils";
-import React ,{useEffect,useState,Fragment, useCallback} from "react";
+import React, { Fragment, useCallback, useEffect, useState } from "react";
 import { RichTextInput } from "ra-input-rich-text";
-import { useListContext } from "react-admin/dist/index";
-import { Divider, Tab, Tabs } from "@mui/material";
 
 // import { RichTextInput } from 'ra-input-rich-text';
 // import {ImportButton} from "react-admin-import-csv";
@@ -205,10 +205,10 @@ function save(values) {
     values.thumbnail = valuess.thumbnail;
 
   }
-  // if (valuess.photos) {
-  //   values.photos = valuess.photos;
-  //   // valuess['photos']
-  // }
+  if (valuess.photos) {
+    values.photos = valuess.photos;
+    // valuess['photos']
+  }
   // if (valuess.combinations) {
   //   values.combinations = valuess.combinations;
   //   // valuess['photos']
@@ -274,9 +274,11 @@ const Form = ({ children, ...props }) => {
   // const record = useRecordContext();
   // if (!record) return null;
 
+
   const translate = useTranslate();
   // console.log("record", record);
   // valuess['photos'] = props.record.photos || [];
+  valuess["photos"] = [];
   // if(valuess['options']!=record.options){
   //   record.options=valuess['options'];
   // }
@@ -285,172 +287,79 @@ const Form = ({ children, ...props }) => {
 
 
   return (
-    <SimpleForm {...props} toolbar={<CustomToolbar/>} onSubmit={save} className={"d-flex"}>
+    <TabbedForm {...props} toolbar={<CustomToolbar/>} onSubmit={save} className={"d-flex"}>
 
-      <TextInput source={"title." + translate("lan")} label={translate("resources.product.title")}
-                 className={"width100 mb-20"} validate={Val.req} fullWidth/>
-      <TextInput
+        <TextInput
 
-        source="slug" label={translate("resources.product.slug")} className={"width100 mb-20 ltr"} fullWidth/>
-      <TextInput fullWidth source={"keywords." + translate("lan")} label={translate("resources.product.keywords")}/>
-      <TextInput multiline fullWidth source={"metadescription." + translate("lan")} label={translate("resources.product.metadescription")}/>
+          source="slug" label={translate("resources.product.slug")} className={"width100 mb-20 ltr"} fullWidth/>
+        <TextInput fullWidth source={"keywords." + translate("lan")} label={translate("resources.product.keywords")}/>
+        <TextInput multiline fullWidth source={"metadescription." + translate("lan")}
+                   label={translate("resources.product.metadescription")}/>
+        <TextInput multiline fullWidth source={"excerpt." + translate("lan")}
+                   label={translate("resources.product.excerpt")}/>
+        <RichTextInput multiline fullWidth source={"description." + translate("lan")}
+                       label={translate("resources.product.description")}/>
+        <div className={"mb-20"}/>
+        <BooleanInput source="story" label={translate("resources.product.story")}/>
+        <TextInput source={"miniTitle." + translate("lan")} label={translate("resources.product.miniTitle")}/>
 
-      <TextInput multiline fullWidth source={"excerpt." + translate("lan")}
-                 label={translate("resources.product.excerpt")}/>
-      <RichTextInput multiline fullWidth source={"description." + translate("lan")}
-                     label={translate("resources.product.description")}/>
+        <CatRefField label={translate("resources.product.firstCategory")} returnToHome={returnToHome}
+                     returnCatsValues={returnCatsValues}
+          // record={record}
+                     source="firstCategory"
+                     reference="category"
+                     url={"/category/f/0/1000"} surl={"/category/s"}/>
+        <ArrayInput source="extra_attr"
+                    label={translate("resources.product.extra_attr")}
+        >
+          <SimpleFormIterator {...props}>
 
-      <div className={"mb-20"}/>
-      <BooleanInput source="story" label={translate("resources.product.story")}/>
-      <TextInput source={"miniTitle." + translate("lan")} label={translate("resources.product.miniTitle")}/>
+            <FormDataConsumer>
+              {({ getSource, scopedFormData }) =>
+                ([
+                    <div className={"mb-20"}/>,
 
-      <CatRefField label={translate("resources.product.firstCategory")} returnToHome={returnToHome}
-                   returnCatsValues={returnCatsValues}
-        // record={record}
-                   source="firstCategory"
-                   reference="category"
-                   url={"/category/f/0/1000"} surl={"/category/s"}/>
+                    <TextInput
+                      fullWidth
+                      source={getSource("title")}
+                      label={translate("resources.product.title")}
 
-
-      <div className={"mb-20"}/>
-
-      <SelectInput
-        label={translate("resources.product.type")}
-        fullWidth
-        className={"mb-20"}
-        source="type"
-        choices={ProductType()}
-
-      />
-
-
-      <div className={"mb-20"}/>
-      <FormDataConsumer>
-        {({ formData = {}, ...rest }) => {
-          console.log("rest", rest, formData);
-          // {/*// console.log('rendering???',formData);*/}
-          {/*// let rc=props.record;*/
-          }
-          {/*// rc.combinations=combs;*/
-          }
-          {/*// console.log(' ',rc);*/
-          }
-          {/*formData.combinations=[];*/
-          }
-          return ([<EditOptions key={0} record={formData} onCreateCombinations={onCreateCombinations}
-                                formData={formData}
-                                type={formData.type} updater={OptsUpdater}/>,
-            <Combinations
-              key={1}
-              record={formData}
-              source="combinations" updater={() => {
-            }}/>]);
-        }}
-      </FormDataConsumer>
-
-      {/*<EditOptions*/}
-      {/*// record={record}*/}
-      {/*onCreateCombinations={onCreateCombinations} updater={OptsUpdater}/>*/}
+                      record={scopedFormData}
+                    />,
+                    <TextInput
+                      fullWidth
+                      source={getSource("des")}
+                      label={translate("resources.product.description")}
 
 
-      {/*<ShowPictu  <EditOptions ros" thep={theP} setPhotos={setPhotos}/>*/}
+                      record={scopedFormData}
+                    />]
+                )
+              }
+            </FormDataConsumer>
+          </SimpleFormIterator>
+        </ArrayInput>
+        <ArrayInput source="labels" label={translate("resources.product.labels")}>
+          <SimpleFormIterator {...props}>
 
-
-      <UploaderField
-        label={translate("resources.product.photo")}
-        accept="image/*"
-        source="photos"
-        multiple={true}
-        thep={theP}
-        setPhotos={setPhotos}
-        inReturn={thel}
-      />
-
-      <div className={"mb-20"}/>
-
-      <ArrayInput source="extra_attr"
-                  label={translate("resources.product.extra_attr")}
-      >
-        <SimpleFormIterator {...props}>
-
-          <FormDataConsumer>
-            {({ getSource, scopedFormData }) =>
-              ([
-                  <div className={"mb-20"}/>,
-
+            <FormDataConsumer>
+              {({ getSource, scopedFormData }) =>
+                (
                   <TextInput
                     fullWidth
                     source={getSource("title")}
+
                     label={translate("resources.product.title")}
 
                     record={scopedFormData}
-                  />,
-                  <TextInput
-                    fullWidth
-                    source={getSource("des")}
-                    label={translate("resources.product.description")}
+                  />
+                )
+              }
+            </FormDataConsumer>
+          </SimpleFormIterator>
+        </ArrayInput>
 
-
-                    record={scopedFormData}
-                  />]
-              )
-            }
-          </FormDataConsumer>
-        </SimpleFormIterator>
-      </ArrayInput>
-      <ArrayInput source="labels" label={translate("resources.product.labels")}>
-        <SimpleFormIterator {...props}>
-
-          <FormDataConsumer>
-            {({ getSource, scopedFormData }) =>
-              (
-                <TextInput
-                  fullWidth
-                  source={getSource("title")}
-
-                  label={translate("resources.product.title")}
-
-                  record={scopedFormData}
-                />
-              )
-            }
-          </FormDataConsumer>
-        </SimpleFormIterator>
-      </ArrayInput>
-
-
-      <ArrayInput source="sources" label={translate("resources.product.sources")} fullWidth>
-        <SimpleFormIterator {...props} fullWidth>
-
-          <FormDataConsumer fullWidth>
-            {({ getSource, scopedFormData }) =>
-              (
-                <TextInput
-                  fullWidth
-                  source={getSource("url")}
-
-                  label={translate("resources.product.url")}
-
-                  record={scopedFormData}
-                />
-              )
-            }
-          </FormDataConsumer>
-        </SimpleFormIterator>
-      </ArrayInput>
-      <SelectInput
-        label={translate("resources.product.status")}
-
-        source="status"
-        choices={[
-          { id: "published", name: translate("resources.product.published") },
-          { id: "processing", name: translate("resources.product.processing") },
-          { id: "deleted", name: translate("resources.product.deleted") }
-        ]}
-      />
-
-      {children}
-    </SimpleForm>
+    </TabbedForm>
   );
 };
 

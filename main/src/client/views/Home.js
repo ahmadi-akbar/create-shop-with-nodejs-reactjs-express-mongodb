@@ -75,9 +75,13 @@ const Home = (props) => {
   // console.log("theAttr", theAttr, "theValue", theValue);
   if (isClient)
     useEffect(() => {
+
       let url = new URL(window.location.href);
       let eAd = url.searchParams.get("enableAdmin") || "";
-      if (eAd) enableAdmin(true);
+      if (eAd) {
+        console.log('enableAdmin');
+        enableAdmin(true);
+      }
 
 
     }, []);
@@ -88,7 +92,7 @@ const Home = (props) => {
 
     // if(!loadingMoreItems){
     let newOffset = (await offset) + 24;
-    if (!catId) {
+    if (!catId && !showSlide) {
       let trackss = [...tracks];
 
       await setoffset(newOffset);
@@ -208,90 +212,117 @@ const Home = (props) => {
           className={"p-0 m-0"}
         >
 
-
-
-
-          <div className={""}>
-            <div className={"relative w-full h-screen"}>
-              <div className={"jhgfdfgtyhu"} style={{
-                backgroundImage: `url('${slide1Img}')`
+          <div className={''}>
+            <div className={'relative w-full h-screen'}>
+              <div className={'jhgfdfgtyhu'} style={{
+                backgroundImage: `url('${valentineDays}')`,
               }}>
-                <div className={"gfdsasdf"}>
+                <div className={'gfdsasdf'}>
                   <h1
                     className="text-2xl lg:text-4xl xl:text-5xl tracking-tight text-heading font-bold juygtfgh">
-                    ایکس باکس ، پلی استیشن ، نینتندو
+                    خرید آیفون، سرفیس در آروندگارانتی
                   </h1>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div className={''}>
+            <div className={'relative w-full h-screen'}>
+              <div className={'jhgfdfgtyhu'} style={{
+                backgroundImage: `url('${eid}')`,
+              }}>
+                <div className={'gfdsasdf'}>
+                  <h3
+                    className="text-2xl lg:text-4xl xl:text-5xl tracking-tight text-heading font-bold juygtfgh">
+                    خرید انواع گیفت کارت اپل و...
+                  </h3>
+
+                </div>
+              </div>
+            </div>
+          </div>
+
+
+
+          <div className={''}>
+            <div className={'relative w-full h-screen'}>
+              <div className={'jhgfdfgtyhu'} style={{
+                backgroundImage: `url('${slide1Img}')`,
+              }}>
+                <div className={'gfdsasdf'}>
+                  <h3
+                    className="text-2xl lg:text-4xl xl:text-5xl tracking-tight text-heading font-bold juygtfgh">
+                    رایانه های رومیزی، لپتاپ</h3>
                   <p className="text-sm lg:text-base xl:text-lg text-heading kuytfgyhui">
-Nintendo , PlayStation , Xbox
+                    آیمک، سرفیس استدیو، مک بوک، سرفیس بوک
                   </p>
                 </div>
               </div>
             </div>
           </div>
 
-          <div className={""}>
-            <div className={"relative w-full h-screen"}>
-              <div className={"jhgfdfgtyhu"} style={{
-                backgroundImage: `url('${slide2Img}')`
+          <div className={''}>
+            <div className={'relative w-full h-screen'}>
+              <div className={'jhgfdfgtyhu'} style={{
+                backgroundImage: `url('${slide2Img}')`,
               }}>
-                <div className={"gfdsasdf"}>
+                <div className={'gfdsasdf'}>
                   <h3
                     className="text-2xl lg:text-4xl xl:text-5xl tracking-tight text-heading font-bold juygtfgh">
-                  نصب بازی پلی استیشن
-                  </h3>
+                    گوشی هوشمند و تبلت</h3>
                   <p className="text-sm lg:text-base xl:text-lg text-heading kuytfgyhui">
-                   Install PlayStation games
+                    آیفون، آیپد، سرفیس، سامسونگ، شیائومی
                   </p>
                 </div>
               </div>
             </div>
           </div>
-          <div className={""}>
-            <div className={"relative w-full h-screen"}>
-              <div className={"jhgfdfgtyhu"} style={{
-                backgroundImage: `url('${slide3Img}')`
+          <div className={''}>
+            <div className={'relative w-full h-screen'}>
+              <div className={'jhgfdfgtyhu'} style={{
+                backgroundImage: `url('${slide3Img}')`,
               }}>
-                <div className={"gfdsasdf"}>
+                <div className={'gfdsasdf'}>
                   <h3
                     className="text-2xl lg:text-4xl xl:text-5xl tracking-tight text-heading font-bold juygtfgh">
-                    نصب بازی ایکس باکس
-                  </h3>
+                    کنسول های بازی</h3>
                   <p className="text-sm lg:text-base xl:text-lg text-heading kuytfgyhui">
-                   Install Xbox games
-                    </p>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div className={""}>
-            <div className={"relative w-full h-screen"}>
-              <div className={"jhgfdfgtyhu"} style={{
-                backgroundImage: `url('${slide4Img}')`
-              }}>
-                <div className={"gfdsasdf"}>
-                  <h3
-                    className="text-2xl lg:text-4xl xl:text-5xl tracking-tight text-heading font-bold juygtfgh">
-                  هرجا رسیدی، در بیار بازی کن😁
-                  </h3>
-                  <p className="text-sm lg:text-base xl:text-lg text-heading kuytfgyhui">
-                    You can play every where with <span style={{color:"#fe0100"}}>Nintendo</span>
+                    پلی استیشن، ایکس باکس، نینتندو، نصب بازی ها
                   </p>
                 </div>
               </div>
             </div>
           </div>
-          <div className={""}>
-            <div className={"relative w-full h-screen"}>
-              <div className={"jhgfdfgtyhu"} style={{
-                backgroundImage: `url('${slide5Img}')`
+          <div className={''}>
+            <div className={'relative w-full h-screen'}>
+              <div className={'jhgfdfgtyhu'} style={{
+                backgroundImage: `url('${slide4Img}')`,
               }}>
-                <div className={"gfdsasdf"}>
+                <div className={'gfdsasdf'}>
                   <h3
                     className="text-2xl lg:text-4xl xl:text-5xl tracking-tight text-heading font-bold juygtfgh">
-گیفت کارت Xbox و PlayStation
-                  </h3>
+                    ساعت و مچ بند هوشمند</h3>
                   <p className="text-sm lg:text-base xl:text-lg text-heading kuytfgyhui">
-Buy Gift Cards (Xbox - PlayStation)
+                    ساعت هوشمند اپل (iWatch)
+                    ،
+                    سامسونگ
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div className={''}>
+            <div className={'relative w-full h-screen'}>
+              <div className={'jhgfdfgtyhu'} style={{
+                backgroundImage: `url('${slide5Img}')`,
+              }}>
+                <div className={'gfdsasdf'}>
+                  <h3
+                    className="text-2xl lg:text-4xl xl:text-5xl tracking-tight text-heading font-bold juygtfgh">
+                    لوازم جانبی</h3>
+                  <p className="text-sm lg:text-base xl:text-lg text-heading kuytfgyhui">
+                    هدفون و هندزفری، کیف و کاور، موس و کیبورد، کابل و شارژر
                   </p>
                 </div>
               </div>
@@ -321,123 +352,149 @@ Buy Gift Cards (Xbox - PlayStation)
           sm="12"
           tag="main">
 
-          <Row className={"mt-3 juytrfvbh pr-15"}>
+
+          <Row className={'mt-3 juytrfvbh pr-15'}>
             <Col
               className="ghjhtgfrdsfg bg-color-full bg-right"
-              lg={{ size: 4 }}
-              md={{ size: 3 }}
+              lg={{size: 4}}
+              md={{size: 3}}
               sm="12">
-              <Link to={"category/629692c48153533551655409/پلی%20استیشن"}>
-                <h2 className={" fgfdfv title mb-3"}>
-                  {"خرید پلی استیشن، دسته بازی و..."}
+              <Link to={'category/61d58e37d931414fd78c7fbb/لپ%20تاپ'}>
+                <h2 className={' fgfdfv title mb-3'}>
+                  {'خرید لپ تاپ، مک بوک، سرفیس و...'}
                 </h2>
-                <div className={"the-circle-inside"}></div>
-                <div className={"the-circle-inside second"}></div>
-                <img src={slideOffer1Img} className={"mb-3"}/>
+                <div className={'the-circle-inside'}></div>
+                <div className={'the-circle-inside second'}></div>
+                <img src={slideOffer1Img} className={'mb-3'}/>
               </Link>
             </Col>
             <Col
               className="ghjhtgfrdsfg "
-              lg={{ size: 8 }}
-              md={{ size: 9 }}
+              lg={{size: 8}}
+              md={{size: 9}}
               sm="12">
-              <ProductsSlider cat_id={"629692c48153533551655409"} delay={1100}/>
+              <ProductsSlider cat_id={'61d58e38d931414fd78c7fca'} delay={1100}/>
             </Col>
           </Row>
-          <Row className={"mt-3 juytrfvbh pl-15"}>
+          <Row className={'mt-3 juytrfvbh pl-15'}>
 
             <Col
               className="ghjhtgfrdsfg"
-              lg={{ size: 8 }}
-              md={{ size: 9 }}
+              lg={{size: 8}}
+              md={{size: 9}}
               sm="12">
-              <ProductsSlider cat_id={"6296fa08815353355165546d"} delay={1200}/>
+              <ProductsSlider cat_id={'61d58e37d931414fd78c7fbd'} delay={1200}/>
             </Col>
             <Col
               className="ghjhtgfrdsfg bg-color-full bg-left"
-              lg={{ size: 4 }}
-              md={{ size: 3 }}
+              lg={{size: 4}}
+              md={{size: 3}}
               sm="12">
-              <Link to={"category/6296fa08815353355165546d/ایکس%20باکس"}>
-                <h2 className={" fgfdfv title mb-3"}>
-                  {"خرید ایکس باکس و..."}
+              <Link to={'category/61d58e37d931414fd78c7fbd/گوشی%20هوشمند'}>
+                <h2 className={' fgfdfv title mb-3'}>
+                  {'خرید گوشی هوشمند، آیفون و...'}
                 </h2>
-                <div className={"the-circle-inside"}></div>
-                <div className={"the-circle-inside second"}></div>
+                <div className={'the-circle-inside'}></div>
+                <div className={'the-circle-inside second'}></div>
                 <img src={slideOffer2Img}/>
               </Link>
             </Col>
           </Row>
-          <Row className={"mt-3 juytrfvbh pr-15"}>
+          <Row className={'mt-3 juytrfvbh pr-15'}>
             <Col
               className="ghjhtgfrdsfg bg-color-full bg-right"
-              lg={{ size: 4 }}
-              md={{ size: 3 }}
+              lg={{size: 4}}
+              md={{size: 3}}
               sm="12">
-              <Link to={"category/6296fa468153533551655481/نینتندو"}>
-                <h2 className={" fgfdfv title mb-3"}>
-                  {"خرید نینتندو و..."}
+              <Link to={'category/61d58e37d931414fd78c7fb7/تبلت'}>
+                <h2 className={' fgfdfv title mb-3'}>
+                  {'خرید تبلت، آیپد و...'}
                 </h2>
-                <div className={"the-circle-inside"}></div>
-                <div className={"the-circle-inside second"}></div>
+                <div className={'the-circle-inside'}></div>
+                <div className={'the-circle-inside second'}></div>
                 <img src={slideOffer3Img}/>
               </Link>
             </Col>
 
             <Col
               className="ghjhtgfrdsfg"
-              lg={{ size: 8 }}
-              md={{ size: 9 }}
+              lg={{size: 8}}
+              md={{size: 9}}
               sm="12">
-              <ProductsSlider cat_id={"6296fa468153533551655481"} delay={2500}/>
+              <ProductsSlider cat_id={'61d58e37d931414fd78c7fb7'} delay={2500}/>
             </Col>
           </Row>
-          <Row className={"mt-3 juytrfvbh pl-15"}>
+          <Row className={'mt-3 juytrfvbh pl-15'}>
             <Col
               className="ghjhtgfrdsfg "
-              lg={{ size: 8 }}
-              md={{ size: 9 }}
+              lg={{size: 8}}
+              md={{size: 9}}
               sm="12">
-              <ProductsSlider cat_id={"6296fa618153533551655495"} delay={2300}/>
+              <ProductsSlider cat_id={'61d58e37d931414fd78c7fb9'} delay={2300}/>
             </Col>
 
             <Col
               className="ghjhtgfrdsfg bg-color-full bg-left"
-              lg={{ size: 4 }}
-              md={{ size: 3 }}
+              lg={{size: 4}}
+              md={{size: 3}}
               sm="12">
-              <Link to={"category/6296fa618153533551655495/لوازم%20جانبی"}>
-                <h2 className={" fgfdfv title mb-3"}>
-                  {"خرید لوازم جانبی کنسول بازی و..."}
+              <Link to={'category/61d58e37d931414fd78c7fb9/ساعت%20و%20مچ%E2%80%8Cبند%20هوشمند'}>
+                <h2 className={' fgfdfv title mb-3'}>
+                  {'خرید ساعت هوشمند، اپل واچ، گلکسی واچ و...'}
                 </h2>
-                <div className={"the-circle-inside"}></div>
-                <div className={"the-circle-inside second"}></div>
+                <div className={'the-circle-inside'}></div>
+                <div className={'the-circle-inside second'}></div>
                 <img src={slideOffer4Img}/>
               </Link>
             </Col>
           </Row>
-          <Row className={"mt-3 juytrfvbh pr-15"}>
+          <Row className={'mt-3 juytrfvbh pr-15'}>
             <Col
               className="ghjhtgfrdsfg bg-color-full bg-right"
-              lg={{ size: 4 }}
-              md={{ size: 3 }}
+              lg={{size: 4}}
+              md={{size: 3}}
               sm="12">
-              <Link to={"category/6296fa8081535335516554a3/گیفت%20کارت"}>
-                <h2 className={" fgfdfv title mb-3"}>
-                  {"خرید گیفت کارت"}
+              <Link to={'category/61d58e37d931414fd78c7fbc/کنسول%20های%20بازی'}>
+                <h2 className={' fgfdfv title mb-3'}>
+                  {'خرید کنسول بازی'}
                 </h2>
-                <div className={"the-circle-inside"}></div>
-                <div className={"the-circle-inside second"}></div>
+                <div className={'the-circle-inside'}></div>
+                <div className={'the-circle-inside second'}></div>
                 <img src={slideOffer5Img}/>
               </Link>
             </Col>
 
             <Col
               className="ghjhtgfrdsfg"
-              lg={{ size: 8 }}
-              md={{ size: 9 }}
+              lg={{size: 8}}
+              md={{size: 9}}
               sm="12">
-              <ProductsSlider cat_id={"6296fa8081535335516554a3"} delay={2100}/>
+              <ProductsSlider cat_id={'61d58e37d931414fd78c7fbc'} delay={2100}/>
+            </Col>
+          </Row>
+          <Row className={'mt-3 juytrfvbh pl-15'}>
+
+            <Col
+              className="ghjhtgfrdsfg"
+              lg={{size: 8}}
+              md={{size: 9}}
+              sm="12">
+              <ProductsSlider cat_id={'61d58e37d931414fd78c7fba'} delay={3000}
+                              include={['61d71de1365a2313a16147e2', '61d71c94365a2313a161449d', '61d71de8365a2313a1614806', '61d71de6365a2313a16147f2', '61d71d68365a2313a1614675', '61d71d00365a2313a161458c', '61d71c60365a2313a161443b']}/>
+            </Col>
+            <Col
+              className="ghjhtgfrdsfg bg-color-full bg-left"
+              lg={{size: 4}}
+              md={{size: 3}}
+              sm="12">
+              <Link to={'category/61d58e37d931414fd78c7fba/لوازم%20جانبی'}>
+                <h2 className={' fgfdfv title mb-3'}>
+                  {'خرید لوازم جانبی'}
+                </h2>
+                <div className={'the-circle-inside'}></div>
+                <div className={'the-circle-inside second'}></div>
+                <img src={slideOffer6Img}/>
+              </Link>
             </Col>
           </Row>
           <Row className={"mt-3 juytrfvbh pl-15"}>
@@ -453,6 +510,7 @@ Buy Gift Cards (Xbox - PlayStation)
               <PostSlider delay={2000}/>
             </Col>
           </Row>
+
 
 
         </Col>}

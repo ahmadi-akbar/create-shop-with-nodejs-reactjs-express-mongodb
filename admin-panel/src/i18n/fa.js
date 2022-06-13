@@ -325,7 +325,12 @@ const customFarsiMessages = {
       isnt:"نیست",
       weight:"وزن",
       sku:"SKU",
-      count:"تعداد"
+      count:"تعداد",
+      sell:"فروش",
+      content:"محتوا",
+      analytics:"آمار و گزارشات",
+      settings:"تنظیمات محصول",
+      edit:"ویرایش"
     },
 
     reviews: {
@@ -353,6 +358,15 @@ const customFarsiMessages = {
       onGetProductByCustomer: "دریافت توسط مشتری",
       submitReview: "ثبت نظر",
       onCancel: "لغو سفارش",
+      save:"ذخیره",
+      primaryColor:"رنگ اولیه",
+      secondaryColor:"رنگ ثانویه",
+      textColor:"رنگ متن",
+      bgColor:"رنگ پس زمینه",
+      currentLogo:"لوگو فعلی",
+      uploadLogo:"جایگزینی لوگو",
+      logoUploadedSuccessfully:"لوگو با موفقیت آپلود شد.",
+
     },
     sms: {
       user: "کاربر",
