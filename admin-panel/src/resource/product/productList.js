@@ -10,7 +10,8 @@ import {
     Pagination,
     SearchInput,
     TopToolbar,
-    useTranslate
+    useTranslate,
+  ShowButton
 } from 'react-admin';
 import jsonExport from 'jsonexport/dist';
 
@@ -442,7 +443,13 @@ const list = (props) => {
                                    </div>
                                )}/>
 
-                <EditButton/>
+                <FunctionField label={translate('resources.product.edit')}
+                               render={record => (
+                                 [<EditButton label={"resources.product.sell"}/>,
+                                 <EditButton label={"resources.product.content"}/>,
+                                 <ShowButton label={"resources.product.analytics"}/>,
+                                   ]
+                               )}/>
                 <FunctionField label={translate('resources.product.copy')}
                                render={record => (
                                    <Button

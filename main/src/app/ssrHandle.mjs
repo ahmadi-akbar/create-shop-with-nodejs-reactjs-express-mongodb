@@ -9,9 +9,9 @@ import { StaticRouter } from "react-router-dom/server";
 import { matchPath } from "react-router-dom";
 import AppSSR from "#c/AppSSR";
 import routes from "#c/ssrRoutes";
+import global from "#root/global";
 
 import { Provider } from "react-redux";
-import seo from "#root/seo";
 
 import { persistor, store } from "#c/functions/store";
 
@@ -22,22 +22,36 @@ const viewsFolder = path.join(__dirname, "./views");
 const ssrHandle = (app) => {
 
   app.get("/", (req, res, next) => {
+    console.log('here1');
+
     ssrParse(req, res, next);
   });
   app.get("/p/:_id/:title", (req, res, next) => {
+    console.log('here2');
+
     ssrParse(req, res, next);
   });
 
   app.get("/post/:_id/:title", (req, res, next) => {
+    console.log('here3');
+
     ssrParse(req, res, next);
   });
 
   app.get("/page/:_id/:title", (req, res, next) => {
+    console.log('here4');
+
+    ssrParse(req, res, next);
+  });
+  app.get("/:_firstCategory/:_id", (req, res, next) => {
+    console.log('here5');
     ssrParse(req, res, next);
   });
 };
 const ssrParse = (req, res, next) => {
   let ua = req.get("user-agent");
+  if (!req.headers.lan)
+    req.headers.lan = "fa";
   console.log("in home...");
 
   if (isbot(ua)) {
@@ -57,6 +71,9 @@ const ssrParse = (req, res, next) => {
             return (matchPath(route, req.url));
           })
           .map(route => {
+            if(req.params._firstCategory && req.params._id){
+              route.server[0].params=req.params._id;
+            }
             return route;
           })
           .filter(comp => {
@@ -83,33 +100,23 @@ const ssrParse = (req, res, next) => {
           <StaticRouter context={context} location={req.url}>
             <AppSSR url={req.url}/></StaticRouter></Provider>);
         console.log("res.send ==============>");
-        return res.send(
-          data.replace(
-            "<div id=\"root\"></div>",
-            `<div id="root">${renderedData}</div>`
-          )
+        res.locals.renderedData=renderedData;
+        res.locals.body=data.replace(
+          "<div id=\"root\"></div>",
+          `<div id="root">${renderedData}</div>`
         );
+        // res.locals.body=data;
+        // console.log("res.locals.body",res.locals.body);
+        // req.headers.htmlSend='xxxs';
+        next();
+        //   return res.send(
+        //   ssrData
+        // );
       });
     });
   } else {
     console.log("no need to ssr...");
-    app.set("views", viewsFolder);
-
-    seo.readFilePromise().then(data => {
-      console.log("data ssr handle", data.setting);
-
-      return res.render("index", {
-        title: data.setting.title || seo["home"]["title"][req.headers.lan],
-        description: seo["home"]["description"][req.headers.lan],
-        image: seo["home"]["image"][req.headers.lan],
-        url: seo["home"]["url"][req.headers.lan],
-        width: "512",
-        height: "512",
-        name: seo["home"]["name"][req.headers.lan],
-        lng: req.headers.lan
-      });
-    });
-    // next();
+    next();
   }
 };
 export default ssrHandle;

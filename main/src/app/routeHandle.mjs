@@ -7,13 +7,8 @@ import createError from "http-errors";
 let routeHandle = (app) => {
     console.log('==> routeHandle');
     // res.status(200);
-    let keys = Object.keys(PublicRT);
-    keys.forEach((x) => {
-        console.log('/'+x)
-        app.use("/" + x, PublicRT[x]);
 
-    });
-    keys = Object.keys(BoyRT);
+    let keys = Object.keys(BoyRT);
     keys.forEach((x) => {
         app.use("/boy/" + x, BoyRT[x]);
     });
@@ -25,6 +20,12 @@ let routeHandle = (app) => {
     keys.forEach((x) => {
         app.use("/customer/" + x, CustomerRT[x]);
     });
+  keys = Object.keys(PublicRT);
+  keys.forEach((x) => {
+    console.log('/'+x)
+    app.use("/" + x, PublicRT[x]);
+
+  });
     // app.use("/customer/settings", CustomerRT.settings);
 
 // catch 404 and forward to error handler

@@ -9,12 +9,127 @@ const MainFooter = ({contained, menuItems, menuItems2, menuItems3, copyright, t}
   <footer className="main-footer p-2 px-3 border-top">
     <Container fluid={contained}>
       <Row>
+        <Col lg={3} md={3} sm={6} xs={12}>
+          <Nav className={'footer-vab'}>
+            {menuItems.map((item, idx) => (
+              <NavItem key={idx}>
+                {item.to && (
+                  <NavLink tag={Link} to={item.to}>
+                    {item.icon && <i className="material-icons">{item.icon}</i>}
+                    <span>{t(item.title)}</span>
+
+                  </NavLink>
+                )}
+                {item.link && (
+                  <a className="nav-link" href={item.link} target={'_blank'}>
+                    {item.icon && <i className="material-icons">{item.icon}</i>}
+
+
+                    <span>{t(item.title)}</span>
+
+                  </a>
+                )}
+                {item.action && (
+                  <Button outline size="sm" theme="primary" onClick={item.action}>
+                    {item.icon && <i className="material-icons">{item.icon}</i>}
+
+
+                    <span>{t(item.title)}</span>
+
+                  </Button>
+                )}
+              </NavItem>
+            ))}
+          </Nav>
+        </Col>
+        <Col lg={3} md={3} sm={6} xs={12}>
+          <Nav className={'footer-vab'}>
+            {menuItems3.map((item, idx) => (
+              <NavItem key={idx}>
+                {item.to && (
+                  <NavLink tag={Link} to={item.to}>
+                    {item.icon && <i className="material-icons">{item.icon}</i>}
+
+                    <span>{t(item.title)}</span>
+                  </NavLink>
+                )}
+                {item.link && (
+                  <a className="nav-link" href={item.link} target={'_blank'}>
+                    {item.icon && <i className="material-icons">{item.icon}</i>}
+
+                    <span style={item.style}>{t(item.title)}</span>
+
+                  </a>
+                )}
+                {item.action && (
+                  <Button outline size="sm" theme="primary" onClick={item.action}>
+                    {item.icon && <i className="material-icons">{item.icon}</i>}
+
+                    <span>{t(item.title)}</span>
+
+                  </Button>
+                )}
+              </NavItem>
+            ))}
+          </Nav>
+
+        </Col>
+        <Col lg={3} md={3} sm={6} xs={12}>
+          <Nav className={'footer-vab'}>
+            {menuItems2.map((item, idx) => (
+              <NavItem key={idx}>
+                {item.to && (
+                  <NavLink tag={Link} to={item.to}>
+                    {item.icon && <i className="material-icons">{item.icon}</i>}
+
+                    <span>{t(item.title)}</span>
+                  </NavLink>
+                )}
+                {item.link && (
+                  <a className="nav-link" href={item.link} target={'_blank'}>
+                    {item.icon && <i className="material-icons">{item.icon}</i>}
+
+                    <span style={item.style}>{t(item.title)}</span>
+
+                  </a>
+                )}
+                {item.action && (
+                  <Button outline size="sm" theme="primary" onClick={item.action}>
+                    {item.icon && <i className="material-icons">{item.icon}</i>}
+
+                    <span>{t(item.title)}</span>
+
+                  </Button>
+                )}
+              </NavItem>
+            ))}
+          </Nav>
+
+        </Col>
+
+        <Col lg={3} md={3} sm={6} xs={12}>
+          {/*<a referrerPolicy="origin" target="_blank"*/}
+          <a href="https://trustseal.enamad.ir/?id=241851&amp;Code=hrxu9BF17RpeBTUTcX9o" target="_blank" rel={'nofollow'}>
+            <img className={'hgfdesw'} src={enamadImg} alt="enamad"/>
+          </a>
+          <a href="https://www.itunion.ir/" target="_blank" rel={'nofollow'}>
+            <img className={'hgfdesw'} src={etehadImg} alt="etehadie"/>
+          </a>
+          <a href="http://ttu.ir/" target="_blank" rel={'nofollow'}>
+            <img className={'hgfdesw'} src={etmeImg} alt="etehadie"/>
+          </a>
+          <img src={payImg} style={{margin: 'auto', marginTop: '10px', display: 'block'}} alt="payment"/>
+
+        </Col>
+
+      </Row>
+      <Row>
         <hr/>
       </Row>
       <Row>
         <Col lg={6} md={6} sm={6} xs={12}>
-          <strong>فروشگاه گیم باس</strong> <i className="material-icons">copyright</i> 1401 | تمامی حقوق متعلق به گیم باس
-           می باشد.
+          <strong>فروشگاه آروند</strong> <i className="material-icons">copyright</i> 1400 | تمامی حقوق متعلق به آروند
+          گارانتی می باشد.
 
         </Col>
         <Col lg={6} md={6} sm={6} xs={12} style={{textAlign: 'left'}}>

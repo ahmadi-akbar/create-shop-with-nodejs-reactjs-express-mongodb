@@ -191,7 +191,7 @@ class MyOrders extends React.Component {
   render() {
     let {t} = this.props;
     let {data, headCells, newText, buttonText} = this.state;
-    console.log('data', data);
+    // console.log('data', data);
     // if (redirect) {
     //   return <Navigate to='/add-new-post'/>;
     // } else {

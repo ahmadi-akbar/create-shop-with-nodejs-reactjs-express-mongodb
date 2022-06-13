@@ -52,26 +52,26 @@ export default (props) => {
         if (data.success) {
           let { url, type, _id } = data.media;
           // let a = [...valuesphotos, { url, type, _id }];
-          console.log("a", { url, type, _id }, valuesphotos);
+          // console.log("a", { url, type, _id }, valuesphotos);
           setProgress(0);
           GalleryTemp.push(url);
-          console.log("GalleryTemp", GalleryTemp);
-          console.log("gallery", gallery);
+          // console.log("GalleryTemp", GalleryTemp);
+          // console.log("gallery", gallery);
           if (data.media && data.media.url) {
-            console.log("setGallery...");
+            // console.log("setGallery...");
             setGallery(null);
             valuesphotos = GalleryTemp;
             props.inReturn(GalleryTemp).then(res => {
               setGallery(GalleryTemp);
               setCounter(counter+1);
-              console.log('res ',res);
+              // console.log('res ',res);
             });
           }
           // console.log('props',props);
         }
       })
       .catch((err) => {
-        console.log("error", err);
+        // console.log("error", err);
         setProgress(0);
       });
   };

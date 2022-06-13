@@ -12,6 +12,7 @@ export default {
   // SHOP_URL: "http://194.147.142.65:3001/",
   // SHOP_URL: "https://gameboss.shop/",
   SHOP_URL: "http://localhost:3001/",
+  ADMIN_URL: "http://localhost:3000/",
   // SHOP_URL: "http://192.168.0.139:3001/",
   // ADMIN_URL: "http://localhost:3002",
   // ADMIN_URL: "http://192.168.0.139:3002",

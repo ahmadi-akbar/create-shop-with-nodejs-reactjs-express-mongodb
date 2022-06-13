@@ -11,7 +11,7 @@ import { defaultImg } from "#c/assets/index";
 // import store from "#c/functions/store";
 import AddToCardButton from "#c/components/components-overview/AddToCardButton";
 
-function PostCard({ onClick, item,method, t }) {
+function PostCard({ onClick, item, method, t }) {
   // let card = store.getState().store.card || [];
   let date = dFormat(item.updatedAt, t);
   let price = null;
@@ -23,7 +23,13 @@ function PostCard({ onClick, item,method, t }) {
     backgroundImage = MainUrl + "/" + item.photos[0];
   if (item.thumbnail)
     backgroundImage = MainUrl + "/" + item.thumbnail;
-  let title = encodeURIComponent(item.title.fa.replace(/\\|\//g, ""));
+  // let title = encodeURIComponent(item.title.fa.replace(/\\|\//g, ""));
+  let slug = item.slug;
+  let cat_inLink = item.firstCategory.slug;
+  if (item.secondCategory && item.secondCategory.slug)
+    cat_inLink = item.secondCategory.slug;
+  if (item.thirdCategory && item.thirdCategory.slug)
+    cat_inLink = item.thirdCategory.slug;
   // console.log('item.labels', item.labels);
   return (
     <div
@@ -38,7 +44,7 @@ function PostCard({ onClick, item,method, t }) {
         <div
           className="card-post__image"
           onClick={onClick}
-        ><Link to={"/p/" + item._id + "/" + title}><img alt={item.title["fa"]} loading={"lazy"} src={
+        ><Link to={"/" + cat_inLink + "/" + slug}><img alt={item.title["fa"]} loading={"lazy"} src={
           backgroundImage || defaultImg
         }/></Link></div>
         <div className={"post-content-style"}>
@@ -58,40 +64,41 @@ function PostCard({ onClick, item,method, t }) {
 
             </div>
             <span className="a-card-title">
-            <Link to={"/p/" + item._id + "/" + title}>{_truncate(item.title["fa"], { length: 120 })}</Link>
+            <Link to={"/" + cat_inLink + "/" + slug}>{_truncate(item.title["fa"], { length: 120 })}</Link>
           </span>
 
           </div>
-          {method==='list' && <>
+          {method === "list" && <>
             {item.type === "variable" &&
-              <div className={"single-product mb-3"}>
-                <SidebarActions className={"mobilenone "}
-                                add={false}
-                                edit={true}
-                                _id={item._id}
-                                customer={item.customer}
-                                updatedAt={item.updatedAt}
-                                countryChoosed={item.countryChoosed}
-                                type={item.type}
-                                price={item.price}
-                                firstCategory={item.firstCategory}
-                                secondCategory={item.secondCategory}
-                                photos={item.photos}
-                                title={item.title}
-                                combinations={item.combinations}
-                                options={item.options}
-                                in_stock={item.in_stock}
-                                quantity={item.quantity}
-                                thirdCategory={item.thirdCategory}
-                                method={method}
-                                single={false}
-                />
+            <div className={"single-product mb-3"}>
+              <SidebarActions className={"mobilenone "}
+                              add={false}
+                              edit={true}
+                              _id={item._id}
+                              customer={item.customer}
+                              updatedAt={item.updatedAt}
+                              countryChoosed={item.countryChoosed}
+                              type={item.type}
+                              price={item.price}
+                              firstCategory={item.firstCategory}
+                              secondCategory={item.secondCategory}
+                              photos={item.photos}
+                              title={item.title}
+                              combinations={item.combinations}
+                              options={item.options}
+                              in_stock={item.in_stock}
+                              quantity={item.quantity}
+                              thirdCategory={item.thirdCategory}
+                              method={method}
+                              single={false}
+              />
 
-              </div>}
+            </div>}
           </>}
-          {method!=='list' && <>{item.type === "variable" && <AddToCardButton item={item} text={t("options")} variable={true}>
+          {method !== "list" && <>{item.type === "variable" &&
+          <AddToCardButton item={item} text={t("options")} variable={true}>
             {(item.options && item.options.length > 0) &&
-            <div className={"show-options"}><Link to={"/p/" + item._id + "/" + title}>
+            <div className={"show-options"}><Link to={"/" + cat_inLink + "/" + slug}>
               <ul>
                 {item.options.map((comb, c) => {
                   let string = [];
@@ -111,7 +118,7 @@ function PostCard({ onClick, item,method, t }) {
               <div className={"underbar-triangle"}></div>
             </div>}
           </AddToCardButton>}
-          {item.type === "normal" && <AddToCardButton item={item}/>}</>}
+                                  {item.type === "normal" && <AddToCardButton item={item}/>}</>}
         </div>
       </div>
     </div>
