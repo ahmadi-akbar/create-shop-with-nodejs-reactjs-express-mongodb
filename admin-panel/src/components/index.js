@@ -33,5 +33,6 @@ export { default as ShowImageField } from './product/ShowImageField';
 export { default as Combinations } from './product/Combinations';
 export { default as FormTabs } from './product/FormTabs';
 export { default as StockStatus } from './StockStatus';
+export { default as ColorPicker } from './ColorPicker';
 // export { default as PostFilterButton } from './PostFilterButton';
 // export { default as PostFilterForm } from './PostFilterForm';
