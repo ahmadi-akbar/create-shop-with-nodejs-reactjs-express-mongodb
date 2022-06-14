@@ -114,7 +114,7 @@
     "sass": "^1.52.3"
   },
   "imports": {
-    "#v/*": "./src/*.js",
+    "#v/*": "./*.js",
     "#root/*": "./src/*.mjs",
     "#models/*": "./src/models/*.mjs",
     "#controllers/*": "./src/controllers/*.mjs",
