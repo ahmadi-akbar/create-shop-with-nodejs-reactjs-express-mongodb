@@ -107,3 +107,4 @@ dist
 main/public_media/customer/*
 main/public_media/site_setting/*
 babel-cache.json
+main/.env
