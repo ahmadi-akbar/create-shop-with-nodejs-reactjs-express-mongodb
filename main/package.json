@@ -108,8 +108,10 @@
     "eslint-config-react-app": "^7.0.1",
     "eslint-plugin-prettier": "^4.0.0",
     "eslint-plugin-react": "^7.29.4",
+    "fs": "^0.0.1-security",
     "ftp-deploy": "^2.4.2",
-    "nodemon": "^2.0.16"
+    "nodemon": "^2.0.16",
+    "sass": "^1.52.3"
   },
   "imports": {
     "#v/*": "./src/*.js",

@@ -7,15 +7,15 @@ import DeleteIcon from "@mui/icons-material/Delete";
 API.defaults.headers.common["Content-Type"] = "multipart/form-data";
 
 export default (props) => {
-  let { photo, v, onImageClick, deletFromObject, unicKey, className='' } = props;
+  let { photo, v, onImageClick, deletFromObject, unicKey, className='',deleteFunction=true } = props;
   // console.log("Show///ImageField...",photo,unicKey);
 
   return <div className={className + " hytrdf " + (v === photo ? "active" : "")}>
     <img onClick={() => onImageClick(photo)} src={BASE_URL + "/" + photo}/>
     <div className={"bottom-actions"}>
-      <Button onClick={() => deletFromObject(photo, unicKey)}>
+      {deleteFunction && <Button onClick={() => deletFromObject(photo, unicKey)}>
         <DeleteIcon/>
-      </Button>
+      </Button>}
     </div>
   </div>;
 };
