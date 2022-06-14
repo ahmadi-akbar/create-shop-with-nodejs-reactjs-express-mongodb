@@ -363,9 +363,12 @@ const customFarsiMessages = {
       secondaryColor:"رنگ ثانویه",
       textColor:"رنگ متن",
       bgColor:"رنگ پس زمینه",
+      footerBgColor:"رنگ پس زمینه پانوشت",
       currentLogo:"لوگو فعلی",
       uploadLogo:"جایگزینی لوگو",
       logoUploadedSuccessfully:"لوگو با موفقیت آپلود شد.",
+      UpdatedSuccessfully:"با موفقیت ذخیره شد.",
+      sthWrong:"خطا!",
 
     },
     sms: {

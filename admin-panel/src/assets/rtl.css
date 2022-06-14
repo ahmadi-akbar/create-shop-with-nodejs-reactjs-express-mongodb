@@ -43,7 +43,17 @@ body .layout.rtl * {
     direction: rtl;
     text-align: right;
 }
+.MuiPaper-root{
+    text-align: right;
+    direction: rtl;
 
+}
+.MuiSnackbarContent-message{
+    font-family: IRANSans, 'Roboto', sans-serif !important;
+    text-align: right;
+    direction: rtl;
+
+}
 body .layout.rtl a,
 .MuiMenuItem-root.MuiMenuItem-gutters.MuiButtonBase-root {
     font-family: IRANSans, 'Roboto', sans-serif !important;
