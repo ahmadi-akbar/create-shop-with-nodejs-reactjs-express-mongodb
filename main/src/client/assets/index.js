@@ -29,4 +29,5 @@ export const slideOffer6Img = VARIABLE.SHOP_URL + ("im/offer-6.png");
 export const slideOffer7Img = VARIABLE.SHOP_URL + ("im/offer-7.png");
 export const slideOffer8Img = VARIABLE.SHOP_URL + ("im/offer-8.png");
 export const spriteImg = VARIABLE.SHOP_URL + ("icons-sprite_2x.png");
+export const config = VARIABLE.SHOP_URL + "site_setting/"+ ("config.js");
 // export const slideOffer5Img = VARIABLE.SHOP_URL+('im/offer-5.png');

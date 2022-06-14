@@ -377,7 +377,7 @@ let self = ({
               }
               Settings.findOneAndUpdate({}, {
                 logo: photos[0].url
-              }, function(err, setting) {
+              },{new:true}, function(err, setting) {
 
 
                 if (err && !setting) {
@@ -390,10 +390,9 @@ let self = ({
                   });
 
                 }
-                res.json({
-                  ...setting,
-                  media: media
-                });
+                // console.log('setting',setting);
+                // console.log('media',media);
+                res.json(setting);
 
               });
 
@@ -431,24 +430,39 @@ let self = ({
       const writedata = {
         setting: {
           logo: setting.logo,
-          title: setting.title
+          title: setting.title,
+          siteName: setting.siteName,
+          seprator: setting.seprator,
+          ADMIN_ROUTE: setting.ADMIN_ROUTE,
+          ADMIN_URL: setting.ADMIN_URL,
+          SHOP_URL: setting.SHOP_URL,
+          BASE_URL: setting.BASE_URL,
+          primaryColor: setting.primaryColor,
+          secondaryColor: setting.secondaryColor,
         }
       };
 
       // writeFile(filename, writedata)
       try {
-        fs.promises.writeFile(filePacth, "()=> (" + JSON.stringify(writedata, null, 4) + ")", "utf8");
+        fs.promises.writeFile(filePath, "export default ()=> (" + JSON.stringify(writedata, null, 4) + ")", "utf8");
         console.log("data is written successfully in the file");
+        return res.json({
+          success:true
+        });
+
       }
       catch (err) {
-        console.log("not able to write data in the file ");
+        console.log("not able to write data in the file ",err);
+        return res.json({
+          success:false,
+          err:err
+        });
       }
 
       // file.pipe(fstream);
       // fstream.on("close", function() {
       //
       // });
-      res.json(setting);
 
     });
 
