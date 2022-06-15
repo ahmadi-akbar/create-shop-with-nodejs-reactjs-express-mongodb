@@ -1,3 +1,4 @@
+console.log('#f reducer');
 import { combineReducers } from "redux";
 import Types from "./types";
 // import {getAllSidebarCategoriesData} from '#c/functions/index';
