@@ -34,10 +34,10 @@ export default () => {
 
   // const [selectedCats, setSelectedCats] = useState(appAllCategories || []);
   let searchform = '';
-  console.log('index');
+  console.log('index logo');
   return (<Nav navbar className={"flex-row top-bar-menu stfwrap " + searchform}>
       <NavItem className={"d-table m-auto oiuytrt tm-ksa-logo-parent2 nonestf" + searchform}>
-        <Link to="/"><img style={{maxWidth: 58}} src={logoImg} alt="navbar logo"/></Link>
+        <Link to="/">{logoImg && <img style={{maxWidth: 58}} src={logoImg} alt="navbar logo"/>}</Link>
       </NavItem>
       {/*<MainCats/>*/}
       {/*className={'mobilenone'}*/}

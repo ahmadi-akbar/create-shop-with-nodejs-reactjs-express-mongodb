@@ -9,44 +9,59 @@ import { StaticRouter } from "react-router-dom/server";
 import { matchPath } from "react-router-dom";
 import AppSSR from "#c/AppSSR";
 import routes from "#c/ssrRoutes";
-import global from "#root/global";
 
 import { Provider } from "react-redux";
 
 import { persistor, store } from "#c/functions/store";
+import config from "./../../public_media/site_setting/config";
 
 const __dirname = path.resolve();
 const viewsFolder = path.join(__dirname, "./views");
 
 
 const ssrHandle = (app) => {
+  const vars=config();
+  // const tars=JSON.parse(vars);
+  // console.log("tars",vars);
+  if (vars.BASE_URL) {
+    console.log("base url found");
+    app.get("/", (req, res, next) => {
+      // console.log("here1", config());
+      //   console.log('let us get to wizard3');
+      //   console.log("we need to wizard3...");
+      //   next("/wizard");
 
-  app.get("/", (req, res, next) => {
-    console.log('here1');
+      ssrParse(req, res, next);
 
-    ssrParse(req, res, next);
-  });
-  app.get("/p/:_id/:title", (req, res, next) => {
-    console.log('here2');
+    });
+    app.get("/p/:_id/:title", (req, res, next) => {
+      console.log("here2");
 
-    ssrParse(req, res, next);
-  });
+      ssrParse(req, res, next);
+    });
 
-  app.get("/post/:_id/:title", (req, res, next) => {
-    console.log('here3');
+    app.get("/post/:_id/:title", (req, res, next) => {
+      console.log("here3");
 
-    ssrParse(req, res, next);
-  });
+      ssrParse(req, res, next);
+    });
 
-  app.get("/page/:_id/:title", (req, res, next) => {
-    console.log('here4');
+    app.get("/page/:_id/:title", (req, res, next) => {
+      console.log("here4");
 
-    ssrParse(req, res, next);
-  });
-  app.get("/:_firstCategory/:_id", (req, res, next) => {
-    console.log('here5');
-    ssrParse(req, res, next);
-  });
+      ssrParse(req, res, next);
+    });
+    app.get("/:_firstCategory/:_id", (req, res, next) => {
+      console.log("here5");
+      ssrParse(req, res, next);
+    });
+  } else {
+    console.log("base url NOT found, we should go through wizard...");
+
+    app.get("/", (req, res, next) => {
+      return res.json({"error":"app is not installed!"});
+    });
+  }
 };
 const ssrParse = (req, res, next) => {
   let ua = req.get("user-agent");
@@ -71,8 +86,8 @@ const ssrParse = (req, res, next) => {
             return (matchPath(route, req.url));
           })
           .map(route => {
-            if(req.params._firstCategory && req.params._id){
-              route.server[0].params=req.params._id;
+            if (req.params._firstCategory && req.params._id) {
+              route.server[0].params = req.params._id;
             }
             return route;
           })
@@ -100,8 +115,8 @@ const ssrParse = (req, res, next) => {
           <StaticRouter context={context} location={req.url}>
             <AppSSR url={req.url}/></StaticRouter></Provider>);
         console.log("res.send ==============>");
-        res.locals.renderedData=renderedData;
-        res.locals.body=data.replace(
+        res.locals.renderedData = renderedData;
+        res.locals.body = data.replace(
           "<div id=\"root\"></div>",
           `<div id="root">${renderedData}</div>`
         );

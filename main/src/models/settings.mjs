@@ -12,6 +12,8 @@ const SettingsSchema = new mongoose.Schema({
   ADMIN_URL: String,
   SHOP_URL: String,
   BASE_URL: String,
+  ZIBAL_TOKEN: String,
+  ZARINPAL_TOKEN: String,
   primaryColor: String,
   secondaryColor: String,
   textColor: String,
