@@ -1,3 +1,5 @@
+console.log('#f main/src/client/functions/utils.js')
+
 import store from "./store";
 import moment from "jalali-moment";
 import axios from "axios";

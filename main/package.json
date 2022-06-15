@@ -3,6 +3,7 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
+    "wizard": "node wizard",
     "start": "BABEL_CACHE_PATH=babel-cache.json babel-node ./src/bin/www",
     "prod": "npm run prod",
     "start:client": "craco start",
@@ -114,6 +115,7 @@
     "sass": "^1.52.3"
   },
   "imports": {
+    "#json/*": "./src/*.json",
     "#v/*": "./*.js",
     "#root/*": "./src/*.mjs",
     "#models/*": "./src/models/*.mjs",
