@@ -152,7 +152,8 @@ const Configuration = (props) => {
       secondaryColor,
       bgColor,
       textColor,
-      footerBgColor
+      footerBgColor,
+      ZIBAL_TOKEN
     } = getValues();
     return (
       <Form onSubmit={handleSubmit(onSubmit)} noValidate {...props}>
@@ -256,6 +257,22 @@ const Configuration = (props) => {
                   fullWidth
                   defaultValue={window.ADMIN_ROUTE || ADMIN_ROUTE}
 
+                />
+              </Box>
+              <Box>
+                <TextInput
+                  autoFocus
+                  source="ZIBAL_TOKEN"
+                  className={"ltr"}
+
+                  label={("ZIBAL_TOKEN")}
+                  disabled={loading}
+                  // validate={required()}
+                  fullWidth
+                  defaultValue={ZIBAL_TOKEN}
+                  onChange={(event) => {
+                    handleChange("title", event.target.value);
+                  }}
                 />
               </Box>
               <Box>

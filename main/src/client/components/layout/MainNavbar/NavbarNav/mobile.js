@@ -13,14 +13,14 @@ export default () => {
   // let [width, height] = useWindowSize();
 
   let searchform = '';
-  console.log('index');
+  console.log('index logo',logoImg);
   return (<Nav navbar className={"flex-row stfwrap" + searchform}>
       <div className={'search-button'}>
         <i className="material-icons black">search</i>
 
       </div>
       <div className={"d-table m-auto oiuytrt tm-ksa-logo-parent2 nonestf" + searchform}>
-        <Link to="/"><img style={{maxWidth: 58}} src={logoImg} alt="mobile logo"/></Link>
+        <Link to="/">{logoImg && <img style={{maxWidth: 58}} src={logoImg} alt="mobile logo"/>}</Link>
       </div>
       {/*<MainCats/>*/}
 

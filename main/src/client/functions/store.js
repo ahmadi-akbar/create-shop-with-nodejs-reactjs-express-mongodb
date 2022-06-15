@@ -1,3 +1,4 @@
+console.log('#f store');
 import { applyMiddleware, createStore } from "redux";
 import thunk from "redux-thunk";
 import reducer from "#c/functions/reducer";
