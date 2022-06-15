@@ -139,7 +139,7 @@ function setter(obj,res=false) {
   //   obj=req.body;
   // }
   let private_obj=obj;
-  let variables_path = path.join(__dirname, "../../", "variables.js");
+  let variables_path = path.join(__dirname, "./", "variables.js");
   try {
     fs.promises.writeFile(variables_path, "export default " + JSON.stringify(private_obj, null, 4) , "utf8");
     console.log("variables.js created...");
