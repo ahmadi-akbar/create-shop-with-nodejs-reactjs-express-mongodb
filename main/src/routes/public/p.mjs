@@ -1,3 +1,5 @@
+// console.log('#f main/src/seo.mjs')
+
 import express from "express";
 import seo from "#root/seo";
 import productController from "#controllers/product";
@@ -17,7 +19,7 @@ router.get("/:_theCategory/:_slug", (req, res, next) => {
       console.log('d',d);
       let obj={
         _id: d._id,
-        title: d.title + " " + data.setting.seprator + " (" + m.format("jD jMMMM") + ") " + data.setting.siteName,
+        title: d.title + " " + data.setting.separator + " (" + m.format("jD jMMMM") + ") " + data.setting.siteName,
         description: d.description || "",
         image: global.domain + "/" + d.image || data.setting.logo,
         product_name: d.title,

@@ -427,20 +427,7 @@ let self = ({
 
       // let fstream = fs.createWriteStream(filePath);
       // console.log('on file app mimetype', typeof filename.mimeType);
-      const writedata = {
-        setting: {
-          logo: setting.logo,
-          title: setting.title,
-          siteName: setting.siteName,
-          seprator: setting.seprator,
-          ADMIN_ROUTE: setting.ADMIN_ROUTE,
-          ADMIN_URL: setting.ADMIN_URL,
-          SHOP_URL: setting.SHOP_URL,
-          BASE_URL: setting.BASE_URL,
-          primaryColor: setting.primaryColor,
-          secondaryColor: setting.secondaryColor,
-        }
-      };
+      const writedata = global.config();
 
       // writeFile(filename, writedata)
       try {
