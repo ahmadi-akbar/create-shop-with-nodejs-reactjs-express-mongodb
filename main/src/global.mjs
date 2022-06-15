@@ -7,6 +7,7 @@ import Action from "#controllers/action";
 import Customer from "#models/customer";
 import Settings from "#models/settings";
 import VARIABLE from "#v/variables";
+import config from "#json/variables/config";
 
 // global.ip='https://api.shansebartar.com';
 let version = VARIABLE.VERSION_NUM;
@@ -20,6 +21,7 @@ let global = {
   body:"",
   ip: VARIABLE.BASE_URL,
   domain: VARIABLE.BASE_URL,
+  config: (setting)=>(config),
   sendSms: function(to, text, From = "50004000004", customerId = null, countryCode = "98", findKey = false) {
     return new Promise(function(resolve, reject) {
 
@@ -290,11 +292,16 @@ let global = {
               success: true,
               activeCategory: setting.activeCategory
             });
-          } else {
+          } else if(setting && setting.siteActiveMessage && setting.activeCategory) {
             reject({
               success: false,
-              message: setting.siteActiveMessage,
+              message: setting.siteActiveMessage || "",
               activeCategory: setting.activeCategory
+            });
+
+          }else{
+            reject({
+              success: false,
             });
 
           }

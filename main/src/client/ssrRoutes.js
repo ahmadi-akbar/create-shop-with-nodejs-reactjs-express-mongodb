@@ -1,5 +1,5 @@
 // Layout Types
-import { DefaultLayout } from "#c/layouts/index";
+import { DefaultLayout,Nohf } from "#c/layouts/index";
 
 import Home, { HomeServer, HomeServerArgument } from "#c/views/Home";
 import Post, { PostServer, PostServerArgument } from "#c/views/Post";
@@ -41,6 +41,14 @@ export default [
   {
     path: "/post/:_id/:title/:bowl",
     layout: DefaultLayout,
+    exact: true,
+    element: Post,
+    server: PostServer,
+    params: PostServerArgument
+  },
+  {
+    path: "/wizard",
+    layout: Nohf,
     exact: true,
     element: Post,
     server: PostServer,
