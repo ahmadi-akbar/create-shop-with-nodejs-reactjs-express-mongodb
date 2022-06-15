@@ -1,12 +1,14 @@
-const logger = require( "morgan");
+const logger = require("morgan");
 // const busboy = require( "connect-busboy");
 // const cookieParser = require( "cookie-parser");
-
+const { MongoClient } = require("mongodb");
 console.log("#f main/src/bin/installer.js");
 const path = require("path");
 const fs = require("fs");
 const http = require("http");
 const config = require("./src/variables/config.json");
+const bcrypt = require("bcrypt");
+
 let Wizard = {
 
   filePath: path.join(__dirname, "/../../public_media/site_setting/", "config.js"),
@@ -127,80 +129,129 @@ app.get("/", (req, res, next) => {
 });
 app.post("/", (req, res, next) => {
   console.log("*** POST");
-  setter(req.body,res);
+  setter(req.body, res);
 });
 
-function setter(obj,res=false) {
-  if(!obj)
-    obj={};
-  console.log("==>() create config.js ",obj);
+function setter(obj, res = false) {
+  if (!obj)
+    obj = {};
+  console.log("==>() create config.js ", obj);
 
   // if(req && req.body){
   //   obj=req.body;
   // }
-  let private_obj=obj;
-  let variables_path = path.join(__dirname, "./", "variables.js");
-  try {
-    fs.promises.writeFile(variables_path, "export default " + JSON.stringify(private_obj, null, 4) , "utf8");
-    console.log("variables.js created...");
-    // if(res)
-    //   return res.render("wizard", {
-    //     success: true
-    //   });
+  const private_obj = obj;
+  if (private_obj.ADMIN_USERNAME &&
+    private_obj.ADMIN_PASSWORD) {
+    // MongoClient.
+    MongoClient.connect(private_obj.mongodbConnectionUrl,
+      { useNewUrlParser: true },
+      function(err, client) {
+        if (!err) {
+          // console.log("db", private_obj);
+          console.log("We are connected to mongo:", private_obj.dbName);
+          bcrypt.hash(private_obj.ADMIN_PASSWORD, 10, function(err, hash) {
+            if (err) {
+              console.log("error hash pass...");
+            }
+            let db = client.db(private_obj.dbName);
+            const collection = db.collection('users');
+            let password = hash;
+            // db.collection("user", function(err, collection) {
 
-  }
-  catch (err) {
-    console.log("variables.js IS NOT created...", err);
-    // if(res)
-    //   return res.render("wizard", {
-    //     success: false,
-    //     err: err
-    //   });
-  }
-  if (obj.ADMIN_URL)
-    delete obj.ADMIN_URL;
-  if (obj.mongodbConnectionUrl)
-    delete obj.mongodbConnectionUrl;
-  if (obj.dbName)
-    delete obj.dbName;
-  if (obj.SERVER_PORT)
-    delete obj.SERVER_PORT;
-  if (obj.CLIENT_PORT)
-    delete obj.CLIENT_PORT;
-  if (obj.CLIENT_PORT)
-    delete obj.CLIENT_PORT;
-  if (obj.ADMIN_USERNAME)
-    delete obj.ADMIN_USERNAME;
-  if (obj.ADMIN_PASSWORD)
-    delete obj.ADMIN_PASSWORD;
-  let writedata = config;
-  // console.log(writedata)
-  writedata = ({ ...writedata, ...obj});
-  if(obj.BASE_URL){
-    writedata["FRONT_ROUTE"]= obj.BASE_URL+"/customer";
 
-  }
-  console.log("writeData:",writedata);
-  // const writedata = global.config({ ...obj, FRONT_ROUTE: obj.BASE_URL + "/customer" });
-  let configPath = path.join(__dirname, "public_media/site_setting/", "config.js");
-  try {
-    fs.promises.writeFile(configPath, "export default ()=> (" + JSON.stringify(writedata, null, 4) + ")", "utf8");
-    console.log("data is written successfully in the file");
-    if(res)
-    return res.render("wizard", {
-      success: true
-    });
+              let userData = {};
+              userData.type = "user";
+            collection.insertOne({
+                email: private_obj.ADMIN_USERNAME + "@" + private_obj.ADMIN_USERNAME + ".com",
+                username: private_obj.ADMIN_USERNAME,
+                nickname: private_obj.ADMIN_USERNAME,
+                password: password
+              }, function(error, user) {
+                if (error) {
 
-  }
-  catch (err) {
-    console.log("not able to write data in the file ", err);
-    if(res)
-      return res.render("wizard", {
-      success: false,
-      err: err
-    });
+                  console.log("error creating user...");
+                  res.json(error);
+                } else {
+                  console.log("user created...", user);
+
+
+                  let variables_path = path.join(__dirname, "./", "variables.js");
+                  try {
+                    fs.promises.writeFile(variables_path, "export default " + JSON.stringify(private_obj, null, 4), "utf8");
+
+                    console.log("variables.js created...");
+                    // if(res)
+                    //   return res.render("wizard", {
+                    //     success: true
+                    //   });
+
+                  }
+                  catch (err) {
+                    console.log("variables.js IS NOT created...", err);
+                    // if(res)
+                    //   return res.render("wizard", {
+                    //     success: false,
+                    //     err: err
+                    //   });
+                  }
+                  if (obj.ADMIN_URL)
+                    delete obj.ADMIN_URL;
+                  if (obj.mongodbConnectionUrl)
+                    delete obj.mongodbConnectionUrl;
+                  if (obj.dbName)
+                    delete obj.dbName;
+                  if (obj.SERVER_PORT)
+                    delete obj.SERVER_PORT;
+                  if (obj.CLIENT_PORT)
+                    delete obj.CLIENT_PORT;
+                  if (obj.CLIENT_PORT)
+                    delete obj.CLIENT_PORT;
+                  if (obj.ADMIN_USERNAME)
+                    delete obj.ADMIN_USERNAME;
+                  if (obj.ADMIN_PASSWORD)
+                    delete obj.ADMIN_PASSWORD;
+                  let writedata = config;
+
+                  writedata = ({ ...writedata, ...obj });
+                  if (obj.BASE_URL) {
+                    writedata["FRONT_ROUTE"] = obj.BASE_URL + "/customer";
+
+                  }
+                  console.log("writeData:", writedata);
+                  // const writedata = global.config({ ...obj, FRONT_ROUTE: obj.BASE_URL + "/customer" });
+                  let configPath = path.join(__dirname, "public_media/site_setting/", "config.js");
+                  try {
+                    fs.promises.writeFile(configPath, "export default ()=> (" + JSON.stringify(writedata, null, 4) + ")", "utf8");
+                    console.log("data is written successfully in the file");
+                    if (res)
+                      return res.render("wizard", {
+                        success: true
+                      });
+
+                  } catch (err) {
+                    console.log("not able to write data in the file ", err);
+                    if (res)
+                      return res.render("wizard", {
+                        success: false,
+                        err: err
+                      });
+                  }
+                }
+              });
+
+
+            });
+          // });/
+
+        } else {
+          console.log("we can not connect to db:", private_obj.dbName);
+        }
+
+      });
   }
 }
+
 function getter() {
 
   // if(req && req.body){
