@@ -14,7 +14,7 @@ import { SnapChatIcon } from "#c/assets/index";
 import Loading from "#c/components/Loading";
 import store from "../functions/store";
 import { useSelector } from "react-redux";
-import VARIABLE from "#v/variables";
+import CONFIG from "#config/config";
 import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import ShareIcon from "@mui/icons-material/Share";
