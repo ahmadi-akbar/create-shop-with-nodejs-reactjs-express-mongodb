@@ -4,7 +4,6 @@ import { Route, Routes,Router } from 'react-router-dom';
 import { SaveData } from "#c/functions/index";
 import "#c/i18n";
 import routes from '#c/ssrRoutes';
-
 const AppSSR = ((props) => {
   const { t, url } = props;
   return (
