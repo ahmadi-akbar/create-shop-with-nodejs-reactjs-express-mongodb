@@ -171,14 +171,20 @@ function setter(obj, res = false) {
                 if (error) {
 
                   console.log("error creating user...");
-                  res.json(error);
-                } else {
+                  // res.json(error);
+                } if(true) {
                   console.log("user created...", user);
 
 
                   let variables_path = path.join(__dirname, "./", "variables.js");
+                  let public_path = path.join(__dirname, "../admin-panel/public/", "variables.js");
                   try {
                     fs.promises.writeFile(variables_path, "export default " + JSON.stringify(private_obj, null, 4), "utf8");
+                    fs.promises.writeFile(public_path, "window.BASE_URL='"+private_obj.BASE_URL+"';\n"+
+                      "window.SHOP_URL='"+private_obj.SHOP_URL+"';\n"+
+                      "window.ADMIN_ROUTE='"+private_obj.BASE_URL+"/admin';\n"+
+                      "window.ADMIN_URL='"+private_obj.ADMIN_URL+"';\n"
+                      , "utf8");
 
                     console.log("variables.js created...");
                     // if(res)
