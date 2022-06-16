@@ -111,3 +111,5 @@ main/public_media/site_setting/*
 babel-cache.json
 main/.env
 main/.env.local
+admin-panel/public/variables.js
+admin-panel/build/variables.js
