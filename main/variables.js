@@ -4,9 +4,9 @@ export default {
     "SERVER_PORT": "3001",
     "CLIENT_PORT": "3002",
     "site_name": "SITE NAME",
-    "BASE_URL": "http://localhost:3001",
-    "SHOP_URL": "http://localhost:3001/",
-    "ADMIN_URL": "http://localhost:3000",
+    "BASE_URL": "https://yasiman.shop",
+    "SHOP_URL": "https://yasiman.shop/",
+    "ADMIN_URL": "https://admin.yasiman.shop",
     "ADMIN_USERNAME": "admin",
-    "ADMIN_PASSWORD": "admin"
+    "ADMIN_PASSWORD": "as12de3648"
 }

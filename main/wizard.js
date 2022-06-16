@@ -160,94 +160,103 @@ function setter(obj, res = false) {
             // db.collection("user", function(err, collection) {
 
 
-              let userData = {};
-              userData.type = "user";
+            let userData = {};
+            userData.type = "user";
             collection.insertOne({
-                email: private_obj.ADMIN_USERNAME + "@" + private_obj.ADMIN_USERNAME + ".com",
-                username: private_obj.ADMIN_USERNAME,
-                nickname: private_obj.ADMIN_USERNAME,
-                password: password
-              }, function(error, user) {
-                if (error) {
+              email: private_obj.ADMIN_USERNAME + "@" + private_obj.ADMIN_USERNAME + ".com",
+              username: private_obj.ADMIN_USERNAME,
+              nickname: private_obj.ADMIN_USERNAME,
+              password: password
+            }, function(error, user) {
+              if (error) {
 
-                  console.log("error creating user...");
-                  // res.json(error);
-                } if(true) {
-                  console.log("user created...", user);
+                console.log("error creating user...");
+                // res.json(error);
+              } if(true) {
+                console.log("user created...", user);
 
 
-                  let variables_path = path.join(__dirname, "./", "variables.js");
-                  let public_path = path.join(__dirname, "../admin-panel/public/", "variables.js");
-                  try {
-                    fs.promises.writeFile(variables_path, "export default " + JSON.stringify(private_obj, null, 4), "utf8");
-                    fs.promises.writeFile(public_path, "window.BASE_URL='"+private_obj.BASE_URL+"';\n"+
-                      "window.SHOP_URL='"+private_obj.SHOP_URL+"';\n"+
-                      "window.ADMIN_ROUTE='"+private_obj.BASE_URL+"/admin';\n"+
-                      "window.ADMIN_URL='"+private_obj.ADMIN_URL+"';\n"
-                      , "utf8");
-
-                    console.log("variables.js created...");
-                    // if(res)
-                    //   return res.render("wizard", {
-                    //     success: true
-                    //   });
-
-                  }
-                  catch (err) {
-                    console.log("variables.js IS NOT created...", err);
-                    // if(res)
-                    //   return res.render("wizard", {
-                    //     success: false,
-                    //     err: err
-                    //   });
-                  }
-                  if (obj.ADMIN_URL)
-                    delete obj.ADMIN_URL;
-                  if (obj.mongodbConnectionUrl)
-                    delete obj.mongodbConnectionUrl;
-                  if (obj.dbName)
-                    delete obj.dbName;
-                  if (obj.SERVER_PORT)
-                    delete obj.SERVER_PORT;
-                  if (obj.CLIENT_PORT)
-                    delete obj.CLIENT_PORT;
-                  if (obj.CLIENT_PORT)
-                    delete obj.CLIENT_PORT;
-                  if (obj.ADMIN_USERNAME)
-                    delete obj.ADMIN_USERNAME;
-                  if (obj.ADMIN_PASSWORD)
-                    delete obj.ADMIN_PASSWORD;
-                  let writedata = config;
-
-                  writedata = ({ ...writedata, ...obj });
-                  if (obj.BASE_URL) {
-                    writedata["FRONT_ROUTE"] = obj.BASE_URL + "/customer";
-
-                  }
-                  console.log("writeData:", writedata);
-                  // const writedata = global.config({ ...obj, FRONT_ROUTE: obj.BASE_URL + "/customer" });
-                  let configPath = path.join(__dirname, "public_media/site_setting/", "config.js");
-                  try {
-                    fs.promises.writeFile(configPath, "export default ()=> (" + JSON.stringify(writedata, null, 4) + ")", "utf8");
-                    console.log("data is written successfully in the file");
-                    if (res)
-                      return res.render("wizard", {
-                        success: true
-                      });
-
-                  } catch (err) {
-                    console.log("not able to write data in the file ", err);
-                    if (res)
-                      return res.render("wizard", {
-                        success: false,
-                        err: err
-                      });
-                  }
+                let variables_path = path.join(__dirname, "./", "variables.js");
+                let public_path = path.join(__dirname, "../admin-panel/public/", "variables.js");
+                let build_path = path.join(__dirname, "../admin/", "variables.js");
+                var admin_var="window.BASE_URL='"+private_obj.BASE_URL+"';\n"+
+                  "window.SHOP_URL='"+private_obj.SHOP_URL+"';\n"+
+                  "window.ADMIN_ROUTE='"+private_obj.BASE_URL+"/admin';\n"+
+                  "window.ADMIN_URL='"+private_obj.ADMIN_URL+"';\n";
+                try {
+                  fs.promises.writeFile(variables_path, "export default " + JSON.stringify(private_obj, null, 4), "utf8");
+                  console.log("variables.js created for server...");
                 }
-              });
+                catch (err) {
+                  console.log("variables.js IS NOT created for server...", err);
+                }
+                try {
+
+                  fs.promises.writeFile(public_path, admin_var, "utf8");
+                  console.log("variables.js created for admin public path...");
 
 
+                }
+                catch (err) {
+                  console.log("variables.js IS NOT created...", err);
+                }
+                try {
+
+                  fs.promises.writeFile(build_path, admin_var, "utf8");
+                  console.log("variables.js created for admin build path...");
+
+
+                }
+                catch (err) {
+                  console.log("variables.js IS NOT created...", err);
+                }
+                if (obj.ADMIN_URL)
+                  delete obj.ADMIN_URL;
+                if (obj.mongodbConnectionUrl)
+                  delete obj.mongodbConnectionUrl;
+                if (obj.dbName)
+                  delete obj.dbName;
+                if (obj.SERVER_PORT)
+                  delete obj.SERVER_PORT;
+                if (obj.CLIENT_PORT)
+                  delete obj.CLIENT_PORT;
+                if (obj.CLIENT_PORT)
+                  delete obj.CLIENT_PORT;
+                if (obj.ADMIN_USERNAME)
+                  delete obj.ADMIN_USERNAME;
+                if (obj.ADMIN_PASSWORD)
+                  delete obj.ADMIN_PASSWORD;
+                let writedata = config;
+
+                writedata = ({ ...writedata, ...obj });
+                if (obj.BASE_URL) {
+                  writedata["FRONT_ROUTE"] = obj.BASE_URL + "/customer";
+
+                }
+                console.log("writeData:", writedata);
+                // const writedata = global.config({ ...obj, FRONT_ROUTE: obj.BASE_URL + "/customer" });
+                let configPath = path.join(__dirname, "public_media/site_setting/", "config.js");
+                try {
+                  fs.promises.writeFile(configPath, "export default ()=> (" + JSON.stringify(writedata, null, 4) + ")", "utf8");
+                  console.log("data is written successfully in the file");
+                  if (res)
+                    return res.render("wizard", {
+                      success: true
+                    });
+
+                } catch (err) {
+                  console.log("not able to write data in the file ", err);
+                  if (res)
+                    return res.render("wizard", {
+                      success: false,
+                      err: err
+                    });
+                }
+              }
             });
+
+
+          });
           // });/
 
         } else {

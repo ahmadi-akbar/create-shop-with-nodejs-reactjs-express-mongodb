@@ -8,7 +8,7 @@ var config = {
   password: process.env.FTP_PASS,
   host: process.env.FTP_HOST,
   port: process.env.FTP_PORT || 21,
-  localRoot: __dirname + '/build',
+  localRoot: __dirname + '/../admin',
   remoteRoot: process.env.FTP_REMOTE_ROOT,
   // this would upload everything
   include: ['*'],
