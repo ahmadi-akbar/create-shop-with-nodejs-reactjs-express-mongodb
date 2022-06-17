@@ -1,9 +1,9 @@
-import CONFIG from "#config/config";
+import CONFIG from "#c/config";
 import {isClient} from "../functions/index"
 
 // export const config = "../../..public_media/site_setting/"+ ("config.js");
 // export const url ="/site_setting/img/";
-export let url =CONFIG().SHOP_URL;
+export let url =CONFIG.SHOP_URL;
 if(isClient){
   url="/site_setting/img/";
 }

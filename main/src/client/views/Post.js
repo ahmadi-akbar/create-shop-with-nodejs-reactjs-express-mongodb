@@ -19,7 +19,7 @@ import { SnapChatIcon } from "#c/assets/index";
 import Loading from "#c/components/Loading";
 import store from "../functions/store";
 import { useSelector } from "react-redux";
-import CONFIG from "#config/config";
+import CONFIG from "#c/config";
 import ShareIcon from "@mui/icons-material/Share";
 // import { Link, useNavigate, useParams } from "react-router-dom";
 import RemoveRedEyeIcon from "@mui/icons-material/RemoveRedEye";

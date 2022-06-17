@@ -1,21 +1,21 @@
 import axios from "axios";
 import Types from "#c/functions/types";
 import store, { storeProducts, storeProduct,storePosts,storeAttrValue } from "#c/functions/store";
-import CONFIG from "#config/config";
+import CONFIG from "#c/config";
 import { createContext } from "react";
 import { clearState, deleteData, getData, postData, putData } from "#c/functions/utils";
 
 const DataContext = createContext(null);
 export const isClient = (typeof window !== "undefined");
 // clearState
-console.log('CONFIG',CONFIG());
-export const MainUrl = CONFIG().BASE_URL;
+console.log('CONFIG',CONFIG);
+export const MainUrl = CONFIG.BASE_URL;
 if(isClient){
 // import { createContext } from "react";
 
 }
 // export const MainUrl = "http://localhost:3003";
-export const ApiUrl = CONFIG().FRONT_ROUTE;
+export const ApiUrl = CONFIG.FRONT_ROUTE;
 // console.log("REACT_APP_FRONT_ROUTE",process.env);
 // export const ApiUrl = "http://localhost:3003/customer";
 export const token = (typeof window === "undefined") ? null : store.getState().store.user.token;

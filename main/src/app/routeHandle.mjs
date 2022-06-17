@@ -3,7 +3,6 @@ import CustomerRT from "#routes/customer/index";
 import PublicRT from "#routes/public/index";
 import BoyRT from "#routes/boy/index";
 import createError from "http-errors";
-import config from "./../../public_media/site_setting/config";
 
 let routeHandle = (app) => {
   console.log("==> routeHandle");
