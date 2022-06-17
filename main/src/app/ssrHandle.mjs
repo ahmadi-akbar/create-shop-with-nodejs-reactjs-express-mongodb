@@ -13,14 +13,14 @@ import routes from "#c/ssrRoutes";
 import { Provider } from "react-redux";
 
 import { persistor, store } from "#c/functions/store";
-import config from "./../../public_media/site_setting/config";
+import config from "#c/config";
 
 const __dirname = path.resolve();
 const viewsFolder = path.join(__dirname, "./views");
 
 
 const ssrHandle = (app) => {
-  const vars=config();
+  const vars=config;
   // const tars=JSON.parse(vars);
   // console.log("tars",vars);
   if (vars.BASE_URL) {
