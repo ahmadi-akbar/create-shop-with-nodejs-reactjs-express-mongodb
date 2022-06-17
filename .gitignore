@@ -112,3 +112,5 @@ main/.env.local
 admin-panel/public/variables.js
 admin-panel/build/variables.js
 admin/variables.js
+
+/**/*.map
