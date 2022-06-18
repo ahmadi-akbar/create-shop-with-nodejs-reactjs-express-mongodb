@@ -104,6 +104,8 @@
     "@babel/polyfill": "^7.12.1",
     "@babel/preset-env": "^7.17.12",
     "@craco/craco": "^6.4.3",
+    "compression-webpack-plugin": "^10.0.0",
+    "define-variable-webpack-plugin": "^1.0.1",
     "dotenv": "^16.0.1",
     "eslint": "^8.15.0",
     "eslint-config-prettier": "^8.5.0",
