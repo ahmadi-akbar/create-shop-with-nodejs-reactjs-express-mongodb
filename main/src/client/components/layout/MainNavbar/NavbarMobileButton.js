@@ -1,13 +1,16 @@
-import {Logout, toggleCardbar, toggleSearch} from '#c/functions/index';
-import {useSelector} from 'react-redux';
+import { Logout, toggleCardbar, toggleSearch } from "#c/functions/index";
+import { useSelector } from "react-redux";
 
-import React, {useEffect, useState} from 'react';
-import {Link} from "react-router-dom";
-import {Collapse, DropdownMenu, DropdownToggle, NavLink} from "shards-react";
-import {withTranslation} from 'react-i18next';
+import React, { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
+import { Collapse, DropdownMenu, DropdownToggle, NavLink } from "shards-react";
+import { withTranslation } from "react-i18next";
 import store from "../../../functions/store";
+import ShoppingBagIcon from "@mui/icons-material/ShoppingBag";
+import { logoImg } from "#c/assets/index";
+import PersonIcon from "@mui/icons-material/Person";
 
-function NavbarMobileButton({t}) {
+function NavbarMobileButton({ t }) {
   // const searchform = useSelector((st) => !!st.store.searchvisible);
   const cardVisible = useSelector((st) => !!st.store.cardVisible);
   let [user, setuser] = useState(store.getState().store.user);
@@ -28,64 +31,64 @@ function NavbarMobileButton({t}) {
     window.onscroll = () => {
       setOffset(window.pageYOffset);
       // console.log('setOffset', offset);
-    }
+    };
   }, []);
   const toggleProfileActions = () => {
     // console.log('toggleProfileActions');
     setVisible(!visible);
 
-  }
+  };
   // const handleClick = () => toggleSearch(searchform);
   const handleCard = () => toggleCardbar(cardVisible);
-  {/*<nav className={"nav posabt  xtazin nonestf"}>*/}
+  {/*<nav className={"nav posabt  xtazin nonestf"}>*/
+  }
   // </nav>
   return (
-      [
+    [
       <div
-        className="nav-link posrel nav-link-icon  d-sm-inline d-md-inline text-center" key={0}>
+        className="nav-link NavbarMobileButton posrel nav-link-icon  d-sm-inline d-md-inline text-center" key={0}>
         {(user && user.phoneNumber && user.token) && [
-          <DropdownToggle caret={false} tag={NavLink} dropup={"true"} className="text-nowrap px-3 helldone dfghjiouyt"
+          <DropdownToggle caret={false} tag={NavLink} dropup={"true"} className="text-nowrap px-3 mbu-navbar dfghjiouyt"
                           onClick={() => {
-                            toggleProfileActions()
+                            toggleProfileActions();
                           }} key={0}>
-            <i className="material-icons">person</i>
-
+            <PersonIcon/>
           </DropdownToggle>
           ,
           <Collapse tag={DropdownMenu} center={true} small={true} open={visible} key={1}>
             <Link
 
-              className={'dropdown-item'}
-              to={'/profile/'}>
-              {t('profile')}
+              className={"dropdown-item"}
+              to={"/profile/"}>
+              {t("profile")}
 
             </Link>
             <Link
 
-              className={'dropdown-item'}
-              to={'/my-orders/'}>
-              {t('my orders')}
+              className={"dropdown-item"}
+              to={"/my-orders/"}>
+              {t("my orders")}
 
 
             </Link>
             <Link
 
-              className={'dropdown-item'}
-              to={'/wishlist/'}>
-              {t('Wishlist')}
+              className={"dropdown-item"}
+              to={"/wishlist/"}>
+              {t("Wishlist")}
 
 
             </Link>
-            <hr className={'logoutred'}/>
+            <hr className={"logoutred"}/>
             <Link
 
-              className={'dropdown-item logoutred'}
-              to={'/'}
+              className={"dropdown-item logoutred"}
+              to={"/"}
               onClick={() => {
                 Logout();
               }}
             >
-              {t('logout')}
+              {t("logout")}
 
 
             </Link>
@@ -94,21 +97,31 @@ function NavbarMobileButton({t}) {
         {(!user || !user.phoneNumber || !user.token) &&
 
         <Link
-           to={'/login/'} className={'p-0 text-nowrap px-3 helldone dfghjiouyt marginauto'}>
-          <i className="material-icons">person</i>
+          to={"/login/"} className={"p-0 text-nowrap px-3 mbu-navbar dfghjiouyt marginauto"}>
+          <PersonIcon/>
         </Link>
 
         }
       </div>,
-        <div
+      <div
 
-          onClick={handleCard}
-          className="nav-link posrel nav-link-icon  d-sm-inline d-md-inline  text-center"
-          key={1}
-        >
-          <i className="material-icons">shopping_cart</i>
-          {count != 0 && <span className={'badge'}>{count}</span>}
-        </div>]
+        onClick={handleCard}
+        className="nav-link posrel nav-link-icon  d-sm-inline d-md-inline  text-center"
+        key={1}
+      >
+        <div className={"p-0 text-nowrap px-3 mbu-navbar dfghjiouyt marginauto"}>
+          <ShoppingBagIcon/>
+          {count != 0 && <span className={"badge"}>{count}</span>}
+        </div>
+      </div>,
+      <Link to="/">
+        <div className={"p-0 text-nowrap px-3 mbu-navbar dfghjiouyt marginauto"}>
+          {logoImg && <div className={"logo-wrapper-mobile-menu"}><img
+            style={{ maxWidth: "45px", width: "44px", height: "35px"}} src={logoImg}
+            alt="mainNavBar logo"/></div>}
+        </div>
+      </Link>
+    ]
   );
 }
 
