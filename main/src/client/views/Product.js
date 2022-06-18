@@ -196,7 +196,7 @@ const Product = (props) => {
             {isClient && <RWebShare
               data={{
                 text: excerpt,
-                url: VARIABLE.SHOP_URL + "p/" + _id + "/" + encodeURIComponent(title[lan]),
+                url: CONFIG.SHOP_URL + "p/" + _id + "/" + encodeURIComponent(title[lan]),
                 title: title[lan]
               }}
               sites={["whatsapp", "telegram", "linkedin", "copy"]}
