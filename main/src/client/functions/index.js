@@ -15,7 +15,7 @@ if(isClient){
 
 }
 // export const MainUrl = "http://localhost:3003";
-export const ApiUrl = CONFIG.FRONT_ROUTE;
+export const ApiUrl = CONFIG.BASE_URL+'/customer';
 // console.log("REACT_APP_FRONT_ROUTE",process.env);
 // export const ApiUrl = "http://localhost:3003/customer";
 export const token = (typeof window === "undefined") ? null : store.getState().store.user.token;

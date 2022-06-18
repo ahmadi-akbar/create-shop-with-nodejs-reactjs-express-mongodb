@@ -25,6 +25,7 @@ export const the_public_route=(req, res, next)=> {
   }
 }
 // });
+
 router.get("/:_theCategory/:_slug", (req, res, next) => {
   console.log("go through product...");
   seo.readFilePromise().then(data => {
@@ -63,6 +64,8 @@ router.get("/:_theCategory/:_slug", (req, res, next) => {
     });
   });
 });
-
+router.get("/:slug/", (req, res, next) => {
+  the_public_route(req, res, next);
+});
 
 export default router;
