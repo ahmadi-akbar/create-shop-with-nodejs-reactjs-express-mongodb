@@ -23,9 +23,7 @@
     "static/media/IRANSansWebUltraLight.woff2": "/static/media/IRANSansWebUltraLight.f781adf3ac1352b3bffa.woff2",
     "static/media/IRANSansWebMedium.woff2": "/static/media/IRANSansWebMedium.c400362906c0fefcc862.woff2",
     "static/media/IRANSansWebBold.woff2": "/static/media/IRANSansWebBold.62df0689da0baf986fba.woff2",
-    "index.html": "/index.html",
-    "bundle.css.map": "/static/css/bundle.css.map",
-    "bundle.js.map": "/static/js/bundle.js.map"
+    "index.html": "/index.html"
   },
   "entrypoints": [
     "static/css/bundle.css",

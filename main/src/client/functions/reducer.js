@@ -88,7 +88,7 @@ const reducer = (state = initialState, { type, data, payload }) => {
     }
     case "STORE_POSTS": {
       if (payload.data)
-        console.log('xxxx',payload.data.length,payload.id);
+        // console.log('xxxx',payload.data.length,payload.id);
       initialState.postSliderData[payload.id] = payload.data;
 
       return { ...state, postSliderData: initialState.postSliderData };

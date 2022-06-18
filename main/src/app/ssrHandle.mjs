@@ -1,3 +1,5 @@
+console.log("#f ssrHandle");
+
 import path from "path";
 import isbot from "isbot";
 // import app from "./index";
@@ -14,9 +16,10 @@ import { Provider } from "react-redux";
 
 import { persistor, store } from "#c/functions/store";
 import config from "#c/config";
+import {the_public_route} from "#routes/public/p";
 
-const __dirname = path.resolve();
-const viewsFolder = path.join(__dirname, "./views");
+// const __dirname = path.resolve();
+// const viewsFolder = path.join(__dirname, "./views");
 
 
 const ssrHandle = (app) => {
@@ -120,12 +123,15 @@ const ssrParse = (req, res, next) => {
           "<div id=\"root\"></div>",
           `<div id="root">${renderedData}</div>`
         );
+        return the_public_route(req,res,next);
         // res.locals.body=data;
         // console.log("res.locals.body",res.locals.body);
         // req.headers.htmlSend='xxxs';
-        next();
-        //   return res.send(
-        //   ssrData
+        // console.log('req',req);
+        // return res.json(req);
+        // next();
+          // return res.send(
+          //   res.locals.body
         // );
       });
     });
