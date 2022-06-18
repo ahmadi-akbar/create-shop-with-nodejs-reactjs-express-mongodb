@@ -4,9 +4,9 @@ import {isClient} from "../functions/index"
 // export const config = "../../..public_media/site_setting/"+ ("config.js");
 // export const url ="/site_setting/img/";
 export let url =CONFIG.SHOP_URL;
-if(isClient){
-  url="/site_setting/img/";
-}
+// if(isClient){
+//   url="/site_setting/img/";
+// }
 // if (env === 'development') {
 //   url =VARIABLE.SHOP_URL;
 //   console.log("VARIABLE",VARIABLE);
