@@ -1722,14 +1722,23 @@ let self = ({
           // });
           delete product.data;
           delete product.transaction;
+          console.log(" product.keywords" ,  product.keywords);
           let obj = {
             product_price: product_price || "",
             product_old_price: product_old_price || "",
             availability: in_stock || "",
             image: product.thumbnail || product.photos[0] || "",
-            keywords: product.keywords[req.headers.lan] || product.keywords || "",
-            metadescription: product.metadescription[req.headers.lan],
+            keywords: "",
+            metadescription: "",
           };
+          if (product["keywords"]) {
+            obj["keywords"] = product["keywords"][req.headers.lan] || product["keywords"];
+
+          }
+          if (product["metadescription"]) {
+            obj["metadescription"] = product["metadescription"][req.headers.lan] || product["metadescription"];
+
+          }
           if (product["title"]) {
             obj["title"] = product["title"][req.headers.lan] || product["title"];
           } else {
