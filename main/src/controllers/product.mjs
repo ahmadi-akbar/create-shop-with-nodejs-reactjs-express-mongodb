@@ -1212,7 +1212,7 @@ let self = ({
     search["slug"] = {
       $exists: true
     };
-    console.log(search);
+    // console.log(search);
 
 // console.log('req.params',req.query.include);
     Product.find(search, "_id title options firstCategory secondCategory thirdCategory photos price salePrice type quantity in_stock thumbnail combinations labels views slug")

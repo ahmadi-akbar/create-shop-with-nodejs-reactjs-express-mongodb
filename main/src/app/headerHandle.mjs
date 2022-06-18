@@ -1,3 +1,5 @@
+console.log("#f headerHandle");
+
 import path from "path";
 // import isbot from "isbot";
 // import ERV from "express-react-views";
@@ -74,7 +76,7 @@ const headerHandle = (app) => {
     //intercepts OPTIONS method
     if ("OPTIONS" === req.method) {
       //respond with 200
-      res.sendStatus(200);
+      return res.sendStatus(200);
     } else {
       //move on
       next();
