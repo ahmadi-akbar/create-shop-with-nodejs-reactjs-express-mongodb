@@ -790,23 +790,23 @@ div.title {
     margin-top: -10px !important;
     position: relative;
   }
-  body .rtl .main-navbar.main-mobile.bg-white.sticky-top .bgblurbefore:before{
-    position: absolute;
-    content: '';
-    top: -20px;
-    width: calc(100vw / 3);
-    height: 20px;
-    backdrop-filter: blur(7px);
-    background-color: rgba(255,255,255,.7)!important;
-    z-index: -1;
-    box-sizing: border-box;
-    left: 50%;
-    overflow: hidden;
-    transform: translate(-50%, 0);
-    border-radius:  50% / 100%;
-    border-bottom-left-radius: 0;
-    border-bottom-right-radius: 0;
-  }
+  /*body .rtl .main-navbar.main-mobile.bg-white.sticky-top .bgblurbefore:before{*/
+    /*position: absolute;*/
+    /*content: '';*/
+    /*top: -20px;*/
+    /*width: calc(100vw / 3);*/
+    /*height: 20px;*/
+    /*backdrop-filter: blur(7px);*/
+    /*background-color: rgba(255,255,255,.7)!important;*/
+    /*z-index: -1;*/
+    /*box-sizing: border-box;*/
+    /*left: 50%;*/
+    /*overflow: hidden;*/
+    /*transform: translate(-50%, 0);*/
+    /*border-radius:  50% / 100%;*/
+    /*border-bottom-left-radius: 0;*/
+    /*border-bottom-right-radius: 0;*/
+  /*}*/
   .logoutred{
     display: none;
   }
@@ -1404,13 +1404,16 @@ body .rtl .editedit:before {
   direction: rtl;
   font-size: 13px !important;
 }
-body .rtl .single-product .AddToCardButton .kjhgfgh i {
+body .rtl .single-product .AddToCardButton .kjhgfgh svg {
   height: 38px;
   line-height: 37px;
   background-color: #1ed67d;
 color:#fff;
 }
 
+body .rtl .logo-wrapper-mobile-menu {
+  margin-left: 10px;
+}
 body .rtl .nocardstyle .flex-8 .ttl {
   padding-left: 10px;
 }
@@ -1419,7 +1422,7 @@ body .rtl .textAlignRight {
   text-align: left;
 }
 
-body .rtl .single-product .AddToCardButton .kjhgfgh i.left {
+body .rtl .single-product .AddToCardButton .kjhgfgh svg.left {
   float: left;
 }
 

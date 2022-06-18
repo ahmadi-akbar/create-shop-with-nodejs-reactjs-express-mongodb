@@ -31,6 +31,8 @@ import { toast } from "react-toastify";
 
 import { fNum } from "#c/functions/utils";
 
+import CircularProgress from "@mui/material/CircularProgress";
+const globalTimerSet=60
 class LoginForm extends React.Component {
   constructor(props) {
     super(props);
@@ -43,6 +45,7 @@ class LoginForm extends React.Component {
 
     this.state = {
       phoneNumber: null,
+      thePhoneNumber: null,
       activationCode: null,
       enterActivationCodeMode: false,
       showSecondForm: false,
@@ -60,7 +63,8 @@ class LoginForm extends React.Component {
       token: st.user.token,
       CameFromPost: st.CameFromPost,
       goToProduct: st.goToProduct,
-      goToCheckout: st.goToCheckout
+      goToCheckout: st.goToCheckout,
+      timer: globalTimerSet
     };
     window.scrollTo(0, 0);
   }
@@ -72,23 +76,41 @@ class LoginForm extends React.Component {
   fc(d) {
     goToProduct(d);
   }
-
+  handleSendCodeAgain=(e)=>{
+    console.log('==> handleSendCodeAgain()')
+    this.handleRegister = (e)
+  }
   handleRegister = (e) => {
     e.preventDefault();
+    console.log('==> handleRegister()')
+
     let fd = this.state.countryCode || "98";
     let number = this.state.phoneNumber || "0";
     if (!number || number == "" || number == 0) {
       alert("enter phone number!");
       return;
     }
+    number = number.substring(number.length - 10);
     console.log("number", number);
+    this.setState({
+      thePhoneNumber: number,
+      countryCode: fd,
+      phoneNumber: number
+    });
     let phoneNumber = fd + fNum(number);
 
     register(phoneNumber, fd, this.state.loginMethod).then((r) => {
       // new user
       if (r.shallWeSetPass) {
+        this.state.timer = globalTimerSet;
+        this.myInterval = setInterval(() => {
+          this.setState(({ timer }) => ({
+            timer: timer > 0 ? timer - 1 : (this.handleClearInterval())
+          }));
+        }, 1000);
         this.setState({
           enterActivationCodeMode: true,
+          activationCode:null,
           isDisplay: false
         });
       } else if (!r.shallWeSetPass && r.userWasInDbBefore) {
@@ -98,6 +120,10 @@ class LoginForm extends React.Component {
         });
       }
     });
+  };
+  handleClearInterval = () => {
+    clearInterval(this.myInterval);
+    return 0;
   };
   handlePassword = (e) => {
     e.preventDefault();
@@ -146,6 +172,21 @@ class LoginForm extends React.Component {
       //     getPassword: true,
       //   });
       // }
+    });
+  };
+  handleWrongPhoneNumber = (e) => {
+    this.handleClearInterval();
+    e.preventDefault();
+    this.setState({
+      phoneNumber: null,
+      activationCode: null,
+      enterActivationCodeMode: false,
+      showSecondForm: false,
+      isDisplay: true,
+      setPassword: false,
+      getPassword: false,
+      goToProfile: false,
+      timer: globalTimerSet
     });
   };
   savePasswordAndData = (e) => {
@@ -309,6 +350,14 @@ class LoginForm extends React.Component {
     });
   };
 
+  componentDidMount() {
+
+  }
+
+  componentWillUnmount() {
+    clearInterval(this.myInterval);
+  }
+
   render() {
     const {
       isDisplay,
@@ -324,11 +373,12 @@ class LoginForm extends React.Component {
       enterActivationCodeMode,
       internationalCodeClass,
       goToCheckout,
-      loginMethod
+      loginMethod,
+      timer
     } = this.state;
     const { t } = this.props;
     console.log("render Login form...", token, firstName, lastName, internationalCode, setPassword);
-    console.log("did we come from a post while publishing?", CameFromPost);
+    console.log("did we come from a post while publishing?", CameFromPost, timer);
     if (token && !firstName && !lastName && !internationalCode) {
       // this.setState({setPassword: true});
       // return <Navigate to={'/login/'} />;
@@ -443,18 +493,39 @@ class LoginForm extends React.Component {
                   <Form onSubmit={this.handleActivation}>
                     <Row form>
                       <Col md="12" className="form-group">
+                        <div className={"your-phone-number d-flex justify-content-sb"}>
+                          <div className={"flex-item "}>
+                            {t("your phone number") + ":"}
+                          </div>
+                          <div className={"flex-item ltr"}>
+                            {"+" + this.state.countryCode + this.state.thePhoneNumber}
+
+                          </div>
+                        </div>
+                        <div className={"your-timer"}>
+                          <div className={"flex-item "}>
+                            {Boolean(timer) && <div className={"flex-item-relative center "}>
+                              <CircularProgress className={'red-progress'} thickness={2} size={60} variant="determinate" value={parseInt((timer * 100) / globalTimerSet)}/>
+                              <div className={"flex-item-absolute "}>
+                                {timer}
+                              </div>
+                            </div>}
+
+                          </div>
+
+                        </div>
                         <div
                           style={{
                             display: "flex",
                             flexDirection: "column",
-                            justifyContent: "center",
-                            alignItems: "center"
+                            justifyContent: "start"
                           }}>
-                          <label htmlFor="feEmailAddress">
-                            {t("get enter code")}
-                          </label>
+
+                          {/*<label htmlFor="feEmailAddress">*/}
+                          {/*{t("get enter code")}*/}
+                          {/*</label>*/}
                           <label
-                            style={{ fontSize: 9 }}
+                            style={{ fontSize: 12 }}
                             htmlFor="feEmailAddress">
                             {t("enter sent code")}
                           </label>
@@ -486,6 +557,22 @@ class LoginForm extends React.Component {
                       onClick={this.handleActivation}>
                       {t("login")}
                     </Button>
+                    <Button
+                      outline={true}
+                      type="button"
+                      className="center btn-block outline the-less-important"
+                      onClick={this.handleWrongPhoneNumber}>
+                      {t("Wrong phone number?")}
+                    </Button>
+                    {Boolean(!timer) && <div className={"flex-item-relative center "}>
+                      <Button
+                        outline={true}
+                        type="button"
+                        className="center btn-block outline the-less-important the-no-border"
+                        onClick={(e)=>this.handleRegister(e)}>
+                        {t("Send code again?")}
+                      </Button>
+                    </div>}
                   </Form>
                 </Col>
               </Row>
@@ -598,6 +685,14 @@ class LoginForm extends React.Component {
                   <Form onSubmit={this.handlePassword}>
                     <Row form>
                       <Col md="12" className="form-group">
+                        <div className={"your-phone-number d-flex justify-content-sb"}>
+                          <div className={"flex-item "}>
+                            {t("your phone number") + ":"}
+                          </div>
+                          <div className={"flex-item ltr"}>
+                            {"+" + this.state.countryCode + this.state.thePhoneNumber}
+                          </div>
+                        </div>
                         <label htmlFor="oiuytgpaswword">
                           {t("Enter password")}
                         </label>
@@ -631,6 +726,13 @@ class LoginForm extends React.Component {
                       className="center btn-block"
                       onClick={this.handleForgotPass}>
                       {t("Forgot Password")}
+                    </Button>
+                    <Button
+                      outline={true}
+                      type="button"
+                      className="center btn-block outline the-less-important"
+                      onClick={this.handleWrongPhoneNumber}>
+                      {t("Wrong phone number?")}
                     </Button>
                   </Form>
                 </Col>

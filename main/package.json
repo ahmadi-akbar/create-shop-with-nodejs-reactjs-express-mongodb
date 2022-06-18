@@ -4,12 +4,12 @@
   "private": true,
   "scripts": {
     "wizard": "node wizard",
-    "start": "BABEL_CACHE_PATH=babel-cache.json babel-node ./src/bin/www",
+    "start": "set BABEL_CACHE_PATH=./node_modules/babel-cache.json && babel-node ./src/bin/www",
     "prod": "npm run prod",
     "start:client": "craco start",
     "build:client": "craco build",
     "start:server": "NODE_ENV=development npm-run-all server",
-    "server": "BABEL_CACHE_PATH=babel-cache.json babel-node ./src/bin/www",
+    "server": "set BABEL_CACHE_PATH=./node_modules/babel-cache.json && babel-node ./src/bin/www",
     "dev": "NODE_ENV=development npm-run-all server",
     "watch": "nodemon"
   },
@@ -59,6 +59,7 @@
     "ra-i18n-polyglot": "^4.0.3",
     "ra-input-rich-text": "^4.1.0",
     "ra-language-farsi": "^4.0.0",
+    "rand-token": "^1.0.1",
     "react": "^18.1.0",
     "react-admin": "^4.0.3",
     "react-chartjs-2": "^4.1.0",
@@ -103,6 +104,8 @@
     "@babel/polyfill": "^7.12.1",
     "@babel/preset-env": "^7.17.12",
     "@craco/craco": "^6.4.3",
+    "compression-webpack-plugin": "^10.0.0",
+    "define-variable-webpack-plugin": "^1.0.1",
     "dotenv": "^16.0.1",
     "eslint": "^8.15.0",
     "eslint-config-prettier": "^8.5.0",
@@ -117,7 +120,6 @@
   "imports": {
     "#json/*": "./src/*.json",
     "#v/*": "./*.js",
-    "#config/*": "./public_media/site_setting/*.js",
     "#root/*": "./src/*.mjs",
     "#models/*": "./src/models/*.mjs",
     "#controllers/*": "./src/controllers/*.mjs",
@@ -173,5 +175,6 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
-  }
+  },
+  "homepage": "/"
 }

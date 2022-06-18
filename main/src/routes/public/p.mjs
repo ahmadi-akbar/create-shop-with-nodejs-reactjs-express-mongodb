@@ -10,12 +10,26 @@ const router = express.Router();
 const m = moment();
 m.locale("fa");
 
+// router.get("/", (req, res, next) => {
+export const the_public_route=(req, res, next)=> {
+  console.log("go through home...");
+  let body = res.locals.body;
+  if (body) {
+    body = body.replace('</head>', `<title>${'ttl'}</title></head>`);
+    body = body.replace('</head>', `<meta name="description" content="${'metadescription'}" /></head>`);
+    console.log('d.description', ' send... ');
+    return res.status(200).send(body);
+  } else {
+    console.log('render...');
+    return res.status(200).render('index');
+  }
+}
+// });
+
 router.get("/:_theCategory/:_slug", (req, res, next) => {
   console.log("go through product...");
   seo.readFilePromise().then(data => {
     productController.viewOneS(req, res, next).then((d) => {
-      // console.log('res.locals.body 2',res.locals.body);
-      // let theHtml=req.headers.htmlSend;
       console.log('d',d);
       let obj={
         _id: d._id,
@@ -50,6 +64,8 @@ router.get("/:_theCategory/:_slug", (req, res, next) => {
     });
   });
 });
-
+router.get("/:slug/", (req, res, next) => {
+  the_public_route(req, res, next);
+});
 
 export default router;
