@@ -4,7 +4,7 @@ mongoose.Promise = global.Promise;
 let connection = VARIABLE.mongodbConnectionUrl;
 let options = {
     useNewUrlParser: true,
-    dbName: VARIABLE.dbName
+    dbName: 'arvandshop'
 };
 export default async () => await mongoose
     .connect(connection, options)

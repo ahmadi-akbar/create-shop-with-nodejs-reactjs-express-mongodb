@@ -7,7 +7,8 @@ import {toggleCardbar} from '#c/functions/index';
 import {useSelector} from 'react-redux';
 
 import {logoImg} from '#c/assets/index';
-
+import CloseIcon from '@mui/icons-material/Close';
+import ShoppingBagIcon from '@mui/icons-material/ShoppingBag';
 
 function CardbarMainNavbar({t, hideLogoText = false}) {
   const cardVisible = useSelector((st) => !!st.store.cardVisible);
@@ -28,7 +29,7 @@ function CardbarMainNavbar({t, hideLogoText = false}) {
           className="d-sm-inline "
         >
           <div className={'jhgfdfg'}>
-            <i className="material-icons ddds">shopping_cart</i>
+            <ShoppingBagIcon/>
             {count}<span className={'ml-1 mr-2'}>{t('item')}</span>
           </div>
         </div>
@@ -36,7 +37,7 @@ function CardbarMainNavbar({t, hideLogoText = false}) {
         <div
           className="toggle-sidebar d-sm-inline"
           onClick={handleToggleCardbar}>
-          <i className="material-icons">close</i>
+          <CloseIcon/>
         </div>
       </Navbar>
     </div>

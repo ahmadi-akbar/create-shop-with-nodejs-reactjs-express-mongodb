@@ -45,21 +45,21 @@ class Theprice extends React.PureComponent {
         price = PriceFormat(min);
       }
     }
-    if(price==0 ){
+    if(price==0 || price==null ){
       return <></>;
     }
     return (
       <div className={'thePrice rtl ' + className}>
-        {(price && !salePrice) && (
-          <div className={'wer  mt-2'}>
+        <div className={'only-price'}> {Boolean(!salePrice && price!=null) &&
+          <div className={'wer  mt-2 pandnotsp'}>
                 <span className="card-non-title-item">
                           {(type === 'variable' && 'از ')}
                   {price + t(' UZS')}
                 </span>
           </div>
-        )}
-        {(price && salePrice) && (
-          <div className={'wer  mt-2'}>
+        }</div>
+        <div className={'with-sale-price'}>{Boolean(salePrice && salePrice!==null) && (
+          <div className={'wer  mt-2 pandsp'}>
                 <span className="card-non-title-item">
                   {salePrice + t(' UZS')}
                 </span>
@@ -68,6 +68,7 @@ class Theprice extends React.PureComponent {
                 </span>
           </div>
         )}
+        </div>
       </div>
     );
   }

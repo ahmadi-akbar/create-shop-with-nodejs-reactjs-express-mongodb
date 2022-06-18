@@ -1,11 +1,11 @@
-import CONFIG from "#config/config";
+import CONFIG from "#c/config";
 import {isClient} from "../functions/index"
 
 // export const config = "../../..public_media/site_setting/"+ ("config.js");
 // export const url ="/site_setting/img/";
-export let url =CONFIG().SHOP_URL;
+export let url =CONFIG.SHOP_URL;
 if(isClient){
-  url="/site_setting/img/";
+  url+="site_setting/img/";
 }
 // if (env === 'development') {
 //   url =VARIABLE.SHOP_URL;
@@ -13,11 +13,11 @@ if(isClient){
 //
 // }
 
-// console.log("VARIABLE",VARIABLE//);
+console.log("VARIABLE",CONFIG);
 export const defaultImg = url + ("not-found.png");
 
 export const SnapChatIcon = url + ("snapchat.svg");
-export const logoImg = url + "site_setting/" + ("logo.png") || url + "site_setting/" + ("logo.jpg");
+export const logoImg = url + ("logo.png");
 export const payImg = url + ("pay.png");
 export const enamadImg = url + ("enamad.png");
 export const etmeImg = url + ("etme.jpeg");

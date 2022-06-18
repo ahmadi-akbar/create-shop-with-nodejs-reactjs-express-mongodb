@@ -165,7 +165,7 @@ export const getData = (
     axios
       .get(url, option)
       .then(function(response) {
-        console.log("response");
+        // console.log("response");
 
         resolve(response);
       })
