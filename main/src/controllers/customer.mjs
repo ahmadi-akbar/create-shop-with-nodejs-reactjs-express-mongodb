@@ -605,7 +605,7 @@ var self = {
     // console.log('body: ', req.body);
     // console.log('id: ', req.headers.customer_id);
     // console.log("token: ", req.headers.token);
-    search = {
+    let search = {
       "$or": [
         { "email": { "$regex": req.body.email, "$options": "i" } },
         { "phoneNumber": { "$regex": req.body.phoneNumber, "$options": "i" } }
@@ -1365,6 +1365,7 @@ var self = {
           } else {
             invitation_code = user.invitation_code;
           }
+          console.log('Token generated:',Token)
           Customer.findByIdAndUpdate(user._id, {
             activationCode: null,
             invitation_code: invitation_code,

@@ -8,6 +8,7 @@ import Customer from "#models/customer";
 import Settings from "#models/settings";
 import VARIABLE from "#v/variables";
 import config from "#json/variables/config";
+// import randtoken from "rand-token";
 
 // global.ip='https://api.shansebartar.com';
 let version = VARIABLE.VERSION_NUM;
@@ -49,13 +50,13 @@ let global = {
                 });
 
               }
-              sendmessage(countryCode, "300088103373", to, smstext, resolve, reject);
+              global.sendmessage(countryCode, "300088103373", to, smstext, resolve, reject);
 
             }
           }
         );
       } else {
-        sendmessage(countryCode, "300088103373", to, text, resolve, reject);
+        global.sendmessage(countryCode, "300088103373", to, text, resolve, reject);
       }
 
 
@@ -75,7 +76,7 @@ let global = {
         phoneNumber: to,
         from: From
       }).then((sms) => {
-        console.log("sss", sms);
+        // console.log("sss", sms);
 
 
         let options = {
@@ -104,23 +105,18 @@ let global = {
             Sms.editByAdmin(sms._id, { status: "sent" });
 
           }
-          resolve({
+          return resolve({
             success: true,
             message: "کد برای شما ارسال شد!"
           });
-        })
-          .catch(function(err) {
+        }).catch(function(err) {
             console.log("err global sms:", err);
-            reject({
+            return reject({
               success: true,
+              err:err,
               message: "مشکل در ارسال اس ام اس!"
             });
           });
-      }).catch(err => {
-        console.log("sss err", err);
-
-        // reject(err);
-
       });
 
     } else {
@@ -248,6 +244,19 @@ let global = {
         });
 
     });
+
+  },
+  generateUnid: function(arr, userIp) {
+
+      let abc = "abcdefghijklmnopqrstuvwxyz1234567890".split("");
+      var token="";
+      for(let i=0;i<32;i++){
+        token += abc[Math.floor(Math.random()*abc.length)];
+      }
+      // console.log('token is',token);
+      return token; //Will return a 32 bit "hash"
+
+    // return randtoken.generate(32);
 
   },
 

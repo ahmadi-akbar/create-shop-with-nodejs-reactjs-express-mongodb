@@ -6,6 +6,7 @@ import {toggleSidebar} from '#c/functions/index';
 import {useSelector} from 'react-redux';
 
 import {logoImg} from '#c/assets/index';
+import CloseIcon from '@mui/icons-material/Close';
 
 
 function SidebarFooterNavbar({t, hideLogoText = false}) {
@@ -22,7 +23,7 @@ function SidebarFooterNavbar({t, hideLogoText = false}) {
       <div
         className="toggle-sidebar d-sm-inline"
         onClick={handleToggleSidebar}>
-        <i className="material-icons">close</i>
+        <CloseIcon/>
       </div>
     </Navbar>
 

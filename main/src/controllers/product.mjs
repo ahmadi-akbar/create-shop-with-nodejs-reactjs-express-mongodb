@@ -1727,7 +1727,7 @@ let self = ({
             product_old_price: product_old_price || "",
             availability: in_stock || "",
             image: product.thumbnail || product.photos[0] || "",
-            keywords: product.keywords[req.headers.lan],
+            keywords: product.keywords[req.headers.lan] || product.keywords || "",
             metadescription: product.metadescription[req.headers.lan],
           };
           if (product["title"]) {

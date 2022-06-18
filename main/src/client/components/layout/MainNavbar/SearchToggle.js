@@ -1,7 +1,7 @@
 import React from 'react';
 import { toggleSearch } from '#c/functions/index';
 import { useSelector } from 'react-redux';
-
+import SearchIcon from '@mui/icons-material/Search';
 export default function NavbarToggle(props) {
   const searchform = useSelector((st) => !!st.store.searchvisible);
 
@@ -12,7 +12,7 @@ export default function NavbarToggle(props) {
       <div
         onClick={handleClick}
         className={"nav-link nav-link-icon toggle-sidebar d-sm-inline d-md-inline  text-center "}>
-        <i className="material-icons">search</i>
+        <SearchIcon/>
       </div>
     </div>
   );

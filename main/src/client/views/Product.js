@@ -22,6 +22,10 @@ import EditIcon from "@mui/icons-material/Edit";
 import BookmarkAddIcon from "@mui/icons-material/BookmarkAdd";
 // import { Link, useNavigate, useParams } from "react-router-dom";
 import RemoveRedEyeIcon from "@mui/icons-material/RemoveRedEye";
+import DeliveryDiningIcon from '@mui/icons-material/DeliveryDining';
+import SupportAgentIcon from '@mui/icons-material/SupportAgent';
+import PaymentsIcon from '@mui/icons-material/Payments';
+import VerifiedIcon from '@mui/icons-material/Verified';
 // let obj = ;
 import { toast } from "react-toastify";
 // let the_id='';
@@ -169,7 +173,7 @@ const Product = (props) => {
 
     [<Container className="main-content-container p-0 pb-4 kiuytyuioiu bg-white" key={0}>
 
-      <Row className={"limited posrel"}>
+      <Row className={"limited posrel justify-end"}>
         <div className={"floating-tools"}>
           <ButtonGroup vertical>
             <Button className={"love-it"}
@@ -237,6 +241,8 @@ const Product = (props) => {
               <EditIcon/></Button>}
           </ButtonGroup>
         </div>
+      </Row>,
+      <Row className={"limited posrel"}>
         <Col lg="6" md="12">
           <Row>
             <Col lg="12" md="12">
@@ -346,43 +352,44 @@ const Product = (props) => {
         <Col lg={12} md={12} sm={12} xs={12} className={"mt-3 mb-5"}>
 
           <Row>
-            <Col lg={3} md={3} sm={6} xs={6}>
+            <Col lg={3} md={3} sm={6} xs={6} className={"mb-3"}>
               <div className={"pro-icons-wrapper"}>
                 <div className={"pro-icons"}>
-                  <span className="material-icons">verified</span>
+                  <VerifiedIcon/>
+
                 </div>
                 <div className={"pro-icons-title"}>
                   ضمانت اصالت و سلامت فیزیکی
                 </div>
               </div>
             </Col>
-            <Col lg={3} md={3} sm={6} xs={6}>
+            <Col lg={3} md={3} sm={6} xs={6} className={"mb-3"}>
               <div className={"pro-icons-wrapper"}>
 
                 <div className={"pro-icons"}>
-                  <span className="material-icons">payments</span>
+                  <PaymentsIcon/>
                 </div>
                 <div className={"pro-icons-title"}>
                   پرداخت حضوری و غیرحضوری
                 </div>
               </div>
             </Col>
-            <Col lg={3} md={3} sm={6} xs={6}>
+            <Col lg={3} md={3} sm={6} xs={6} className={"mb-3"}>
               <div className={"pro-icons-wrapper"}>
 
                 <div className={"pro-icons"}>
-                  <span className="material-icons">delivery_dining</span>
+                  <DeliveryDiningIcon/>
                 </div>
                 <div className={"pro-icons-title"}>
                   امکان ارسال فوری
                 </div>
               </div>
             </Col>
-            <Col lg={3} md={3} sm={6} xs={6}>
+            <Col lg={3} md={3} sm={6} xs={6} className={"mb-3"}>
               <div className={"pro-icons-wrapper"}>
 
                 <div className={"pro-icons"}>
-                  <span className="material-icons">support_agent</span>
+                  <SupportAgentIcon/>
                 </div>
                 <div className={"pro-icons-title"}>
                   پشتیبانی ۲۴ ساعته

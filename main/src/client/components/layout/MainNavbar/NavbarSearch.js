@@ -10,6 +10,7 @@ import store from "#c/functions/store";
 import {withTranslation} from 'react-i18next';
 import {toggleSearch} from '#c/functions/index';
 import {useSelector} from 'react-redux';
+import CloseIcon from '@mui/icons-material/Close';
 
 // class NavbarSearch extends React.Component {
 // history = useNavigate();
@@ -129,7 +130,7 @@ function NavbarSearch({className, type = 'prepend', t}) {
         }}>
 
           <InputGroupText>
-            <i className="material-icons">close</i>
+            <CloseIcon/>
           </InputGroupText>
         </InputGroupAddon>}
         <InputGroupAddon className={'frtyuioiuy'} type="append" onClick={event => {
