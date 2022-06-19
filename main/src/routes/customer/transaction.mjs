@@ -38,6 +38,8 @@ router.post('/verify/:bank_token', transaction_controller.verify);
 // router.get('/order/:token/:pid', transaction_controller.buyt);
 router.get('/buy/:_id', transaction_controller.buyZibal);
 router.post('/buy/:_id', transaction_controller.buyZibal);
+router.get('/buy/:_id/:_price', transaction_controller.buyZibal);
+router.post('/buy/:_id/:_price', transaction_controller.buyZibal);
 
 // router.get('/prepare/', transaction_controller.preparePay);
 // app.post('/customer/transaction/prepare/',upload.none(), transaction_controller.preparePay);

@@ -6,7 +6,7 @@ export default makeStyles((theme) => ({
   },
   paper: {
     width: '100%',
-    marginBottom: theme.spacing(2),
+    marginBottom: '10px',
   },
   table: {
     minWidth: 750,

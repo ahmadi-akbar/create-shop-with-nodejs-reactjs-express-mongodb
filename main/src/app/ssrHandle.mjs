@@ -29,7 +29,7 @@ const ssrHandle = (app) => {
   if (vars.BASE_URL) {
     console.log("base url found");
     app.get("/", (req, res, next) => {
-      // console.log("here1", config());
+      console.log("here1");
       //   console.log('let us get to wizard3');
       //   console.log("we need to wizard3...");
       //   next("/wizard");

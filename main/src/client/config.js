@@ -4,9 +4,9 @@ if (isSSR) var window = {};
 
 export default isSSR
   ? {
-    BASE_URL: "http://localhost:3001",
-    SHOP_URL: "http://localhost:3001/",
-    FRONT_ROUTE: "http://localhost:3001/customer",
+    BASE_URL: "https://arvandguarantee.shop",
+    SHOP_URL: "https://arvandguarantee.shop/",
+    FRONT_ROUTE: "https://arvandguarantee.shop/customer",
     setting: {
       separator: "|",
       siteName: "arvandshop"
@@ -15,8 +15,7 @@ export default isSSR
   }
   : {
     SHOP_URL: window.SHOP_URL,
-    defaultImg: "https://www.shop.com/not-found.png",
-    SnapChatIcon: "https://www.shop.com/snapchat.svg",
+    defaultImg: "https://arvandguarantee.shop/site_setting/img/not-found.png",
     BASE_URL: window.BASE_URL,
     FRONT_ROUTE: window.FRONT_ROUTE,
     setting: {

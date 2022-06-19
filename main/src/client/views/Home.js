@@ -333,7 +333,7 @@ const Home = (props) => {
 
       </div>}
 
-      {(showSlide) && <div className="relative mt-3 mb-3 p-3">
+      {(showSlide) && <div className="relative mt-3 p-3">
         <Story/>
       </div>}
       <Row className={"m-0"}>

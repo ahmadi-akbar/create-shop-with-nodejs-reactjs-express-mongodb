@@ -685,8 +685,8 @@ body {
 }
 
 .kjhgfgh:hover {
-    background-color: #ef483e;
-    border-color: #ef483e;
+    background-color: #ef811d;
+    border-color: #ef811d;
 
 }
 
@@ -778,7 +778,7 @@ body .rtl .thePrice.rtl {
 
 body .ltr .sizeless.nav.sidecategories > .nav-item.active > a {
     background-color: #f5f5f5;
-    border-top: 2px solid #ef483e;
+    border-top: 2px solid #ef811d;
     border-bottom: 1px solid #eee;
 }
 
@@ -1175,7 +1175,7 @@ body .ltr .mobilenone .sizeless.nav.sidecategories .nav-item {
 }
 
 .bg-color-full {
-    background-color: #ef483e;
+    background-color: #ef811d;
     border-radius: 5px;
     z-index: 0;
 }
@@ -1208,7 +1208,7 @@ body .ltr .mobilenone .sizeless.nav.sidecategories .nav-item {
 }
 
 .the-label:nth-child(3) {
-    background-color: #ef483e;
+    background-color: #ef811d;
 
 }
 
@@ -1521,7 +1521,7 @@ body .ltr .mobilenone .sizeless.nav.sidecategories .nav-item {
     justify-content: center;
 }
 .thered {
-    background-color: #ef483e;
+    background-color: #ef811d;
 }
 
 .main-mobile .dropdown-menu {
@@ -1781,9 +1781,9 @@ i.locationab {
     cursor: pointer;
     left: 50%;
     top: 50%;
-    color: #ef483e;
+    color: #ef811d;
     margin-top: -20px;
-    text-shadow: 0 0 1px #ef483e;
+    text-shadow: 0 0 1px #ef811d;
     z-index: 99999;
     font-size: 40px;
     transform: translate(-50%, -50%);
@@ -1891,7 +1891,7 @@ body .ltr .kjhgfgh i.left {
     padding: 5px;
     border-bottom-left-radius: 10px;
     border-top-left-radius: 10px;
-    background-color: #ef483e;
+    background-color: #ef811d;
     font-size: 15px;
     text-align: center;
 
@@ -1935,7 +1935,7 @@ input.iuygfghuji::-webkit-outer-spin-button {
 .sticky-card button:focus {
     font-size: 15px;
     padding: 10px 5px;
-    background-color: #ef483e !important;
+    background-color: #ef811d !important;
     border: none;
 }
 
@@ -2008,7 +2008,7 @@ input.iuygfghuji::-webkit-outer-spin-button {
 }
 
 .juytrftyu {
-    color: #ef483e;
+    color: #ef811d;
     margin-top: 10px;
     background-color: #fff;
     padding: 5px;
@@ -2107,7 +2107,7 @@ div.title {
 
 .pro-icons > svg {
     font-size: 40px;
-    color: #ef483e;
+    color: #ef811d;
 }
 
 .pro-icons-title {
@@ -2148,10 +2148,36 @@ div.title {
     margin-top: 4px !important;
     display: block;
 }
+.clear{
+    clear: both;
+}
+.bold{
+    font-weight: bold;
+}
+.width100darsad{
+width:100%
+}
+.sz-15{
+    font-size: 15px;
+}
+.sz-14{
+    font-size: 14px;
+}
+.sz-13{
+    font-size: 13px;
+}
+.sz-12{
+    font-size: 13px;
+}
+.border-bottom-1px{
+    border-bottom: 1px solid #e0e0e0;
 
+    padding-bottom: 5px;
+    margin-bottom: 5px;
+}
 .the-order-purple {
-    background-color: #f5e9fe;
-    border: 2px solid #550778;
+    background-color: #edeeff;
+    border: 2px solid #2d3488;
     border-radius: 10px;
 }
 
@@ -2187,14 +2213,23 @@ input[type=number] {
 .the-order-status {
     float: right;
 }
-
-.the-order-status .gfdsdf {
+.gfdsdf{
+    display: inline;
+}
+.the-order-status .gfdsdf,
+.the-order-body-line .gfdsdf {
     padding: 0px 5px;
     border-radius: 5px;
-    display: block;
+    display: inline;
     overflow: hidden;
 }
-
+.the-order-body-table{
+    margin-top: 20px;
+    /*display: flex;*/
+    /*flex-direction: column;*/
+    /*height: 100%;*/
+    /*width: 100%;*/
+}
 .the-option-price .thePrice.rtl.single {
     margin-bottom: 0;
 }
@@ -2416,7 +2451,7 @@ del {
 }
 
 .orangeBack {
-    background-color: #ef483e !important;
+    background-color: #ef811d !important;
     color: #fff !important;
     padding-right: 30px !important;
     padding-left: 30px !important;
@@ -2725,7 +2760,7 @@ img[alt="payment"] {
 
     .floating-tools .btn {
         margin: 0 10px;
-        color:#ef483e;
+        color:#ef811d;
 
         background-color: #fff;
         border:none !important;

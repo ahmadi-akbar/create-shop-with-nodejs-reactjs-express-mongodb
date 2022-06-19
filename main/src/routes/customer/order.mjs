@@ -35,6 +35,7 @@ router.get('/chapar', orderController.chapar);
 
 router.get('/view/:id', orderController.viewOneF);
 router.get('/myOrders/mine/:offset/:limit', orderController.allWOrders);
+router.get('/myOrder/mine/:id', orderController.myOrder);
 router.get('/mySells/mine/:offset/:limit', orderController.allWSells);
 
 // router.put('/:id', orderController.edit);

@@ -5,6 +5,7 @@ import CustomerRT from "#routes/customer/index";
 import PublicRT from "#routes/public/index";
 import BoyRT from "#routes/boy/index";
 import createError from "http-errors";
+import {the_public_route} from "#routes/public/p";
 
 let routeHandle = (app) => {
   console.log("==> routeHandle");
@@ -28,9 +29,13 @@ let routeHandle = (app) => {
     keys = Object.keys(PublicRT);
     keys.forEach((x) => {
       // console.log('/'+x)
+
       app.use("/" + x, PublicRT[x]);
 
     });
+  // app.use("/", (req,res,next)=>{
+  //   the_public_route(req,res,next);
+  // });
     // app.use("/customer/settings", CustomerRT.settings);
 
 // catch 404 and forward to error handler

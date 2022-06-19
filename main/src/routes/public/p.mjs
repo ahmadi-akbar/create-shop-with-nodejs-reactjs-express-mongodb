@@ -65,6 +65,7 @@ router.get("/:_theCategory/:_slug", (req, res, next) => {
   });
 });
 router.get("/:slug/", (req, res, next) => {
+  console.log('one variable...')
   the_public_route(req, res, next);
 });
 

@@ -779,6 +779,10 @@
   font-family: IRANSans;
 
 }
+body .rtl .the-order-body-table *{
+  font-family: IRANSans;
+
+}
 div.title {
   direction: rtl;
 }
@@ -1277,10 +1281,12 @@ body .rtl .fghjkjhgf > .ddd.row > div:first-child {
 }
 
 body .rtl .iii {
-  display: inline !important;
+  display: inline-block !important;
   padding: 1px 10px !important;
 }
-
+body .rtl .the-order-body-line > span.iii{
+  display: inline !important;
+}
 body .rtl .MuiTablePagination-actions button:first-child {
   transform: rotate(-180deg);
 }

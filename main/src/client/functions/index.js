@@ -1001,9 +1001,9 @@ export const sendSms = (obj) => {
       });
   });
 };
-export const buy = (_id, obj = {}) => {
+export const buy = (_id, obj = {},price=0) => {
   return new Promise(function(resolve, reject) {
-    postData(`${ApiUrl}/transaction/buy/${_id}`, obj, true)
+    postData(`${ApiUrl}/transaction/buy/${_id}/`+(price!=0 ? price : ''), obj, true)
       .then((data) => {
         let mainD = data["data"];
 

@@ -50,9 +50,7 @@ const OrderSchema = new mongoose.Schema({
     paymentStatus: {type: String, default: 'notpaid'},
 
     // kind: {type: String, default: 'post'},
-    transaction: [{
-        _id: {type: mongoose.Schema.Types.ObjectId, ref: 'Transaction'}
-    }],
+    transaction: [{type: mongoose.Schema.Types.ObjectId, ref: 'Transaction'}],
     customer: {type: mongoose.Schema.Types.ObjectId, ref: 'Customer'},
     agent: {type: mongoose.Schema.Types.ObjectId, ref: 'Customer'},
 
