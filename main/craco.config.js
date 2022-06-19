@@ -1,9 +1,9 @@
 const path = require('path');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const webpack = require('webpack');
-const CompressionPlugin = require("compression-webpack-plugin");
+// const CompressionPlugin = require("compression-webpack-plugin");
 
-var window={};
+// var window={};
 //
 // const gitHash = require('child_process')
 //   .execSync('git rev-parse HEAD')
@@ -29,10 +29,10 @@ module.exports = {
         filename: 'static/js/bundle.js',
         chunkFilename: 'static/js/[name].chunk.js',
       };
-      webpackConfig.externals= {
-        window: `window`,
-      };
-      // webpackConfig.optimization = {
+      // webpackConfig.externals= {
+      //   window: `window`,
+      // };
+      // // webpackConfig.optimization = {
       //   ...webpackConfig.optimization,
       //
       //   // runtimeChunk:'single',
@@ -57,9 +57,9 @@ module.exports = {
       webpackConfig.plugins.push(new webpack.optimize.LimitChunkCountPlugin({
         maxChunks: 1
       }))
-      webpackConfig.plugins.push(new webpack.DefinePlugin({
-        window: window
-      }))
+      // webpackConfig.plugins.push(new webpack.DefinePlugin({
+      //   window: window
+      // }))
 
       // console.log('akbar => ', webpackConfig.optimization);
       return webpackConfig;

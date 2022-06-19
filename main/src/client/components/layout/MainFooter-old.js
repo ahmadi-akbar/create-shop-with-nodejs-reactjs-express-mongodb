@@ -78,8 +78,8 @@ MainFooter.defaultProps = {
 
 
     {
-      title: 'support@arvandguarantee.shop',
-      link: 'mailto:support@arvandguarantee.shop',
+      title: 'support@yasiman.shop',
+      link: 'mailto:support@yasiman.shop',
       icon: 'mail'
 
     },
@@ -101,7 +101,7 @@ MainFooter.defaultProps = {
     },
     {
       title: 'تهران،خیابان میرداماد،مجتمع کامپیوتر پایتخت،برج A،طبقه۹،واحد ۹۰۱',
-      link: 'mailto:support@arvandguarantee.shop',
+      link: 'mailto:support@yasiman.shop',
       icon: 'room',
       style: {lineHieght: '20px'}
 
