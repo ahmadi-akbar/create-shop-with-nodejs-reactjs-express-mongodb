@@ -11,7 +11,7 @@ import {withTranslation} from 'react-i18next';
 import {toggleSearch} from '#c/functions/index';
 import {useSelector} from 'react-redux';
 import CloseIcon from '@mui/icons-material/Close';
-
+import SearchIcon from '@mui/icons-material/Search';
 // class NavbarSearch extends React.Component {
 // history = useNavigate();
 function NavbarSearch({className, type = 'prepend', t}) {
@@ -137,26 +137,18 @@ function NavbarSearch({className, type = 'prepend', t}) {
           console.log('event',event);
         }}>
           <InputGroupText>
-            <i className="material-icons black">search</i>
+            <SearchIcon/>
           </InputGroupText>
         </InputGroupAddon>
       </InputGroup>
-      {/*<div*/}
-
-      {/*// onClick={handleClick}*/}
-      {/*className="nav-link nav-link-icon  d-sm-inline d-md-inline d-lg-none text-center cursorpointer">*/}
-      {/*<i className="material-icons">close</i>*/}
-      {/*</div>*/}
       {openBox && <div className={'sdfgde'}>
         {!load && loader}
         {load && data.length > 0 && [data.map((da, dai) => {
-          // console.log('da', da);
           return (<div className={'search_item'} key={dai}>
             <NavLink exact tag={RouteNavLink} to={da.url} onClick={()=>{va();onCloseSearch()}}>
 
               {da.photo && <div className={'search_image'}><img src={da.photo}/></div>}
               <div className={'search_title'}> {da.title[lan]}</div>
-              {/*<div className={'search_type'}> {t(da.type[lan])}</div>*/}
             </NavLink>
           </div>);
         }),<div className={'search_item textAlignCenter'}>
@@ -173,9 +165,7 @@ function NavbarSearch({className, type = 'prepend', t}) {
     </Form>
 
 
-  )
-    ;
-  // }
+  );
 }
 
 export default withTranslation()(NavbarSearch);

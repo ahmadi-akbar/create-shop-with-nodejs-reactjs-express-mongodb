@@ -1,12 +1,15 @@
 import React from 'react';
 import {NavLink as RouteNavLink} from 'react-router-dom';
 import {NavItem, NavLink} from 'shards-react';
-
+import KeyboardArrowLeftIcon from '@mui/icons-material/KeyboardArrowLeft';
+import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 const SidebarCatItem = ({item, onClick, onHandle, parent, className, children}) => {
   // console.log('className',className);
-  if (item)
+  // console.log('item.htmlAfter',item.htmlAfter);
+  if (item){
+    const isActive=(className === item._id);
     return (
-      <NavItem className={(className == item._id) ? 'active' : ''}>
+      <NavItem className={(isActive) ? 'active the-active-link' : ''}>
         {/*<div className={'nav-link-wrapper'}>*/}
           <NavLink
             className={!parent ? 'nav-link-child' : !item.parent ? '' : 'active'}
@@ -37,9 +40,12 @@ const SidebarCatItem = ({item, onClick, onHandle, parent, className, children}) 
             {(item.child && item.child.length > 0) && (
               <div
                 className="d-inline-block item-icon-wrapper rightbuttonmenu"
-                dangerouslySetInnerHTML={{__html: item.htmlAfter}}
                 onClick={() => onClick()}
-              />
+              >
+                {!isActive && <KeyboardArrowLeftIcon/>}
+                {isActive && <KeyboardArrowDownIcon/>}
+
+                </div>
             )}
           </NavLink>
 
@@ -59,6 +65,7 @@ const SidebarCatItem = ({item, onClick, onHandle, parent, className, children}) 
         {/*)}*/}
       </NavItem>
     );
+  }
   else return <></>;
 };
 

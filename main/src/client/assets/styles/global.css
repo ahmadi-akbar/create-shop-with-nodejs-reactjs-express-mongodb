@@ -2169,6 +2169,9 @@ width:100%
 .sz-12{
     font-size: 13px;
 }
+.the-active-link > a{
+    background-color: #ddd;
+}
 .border-bottom-1px{
     border-bottom: 1px solid #e0e0e0;
 

@@ -6,22 +6,16 @@ import Sms from "#controllers/sms";
 import Action from "#controllers/action";
 import Customer from "#models/customer";
 import Settings from "#models/settings";
-import VARIABLE from "#v/variables";
+// import VARIABLE from "#v/variables";
 import config from "#json/variables/config";
 // import randtoken from "rand-token";
 
-// global.ip='https://api.shansebartar.com';
-let version = VARIABLE.VERSION_NUM;
-// global.ip='http://shansebartar.com:3002';
-// var Kavenegar from 'kavenegar');
-// var api = Kavenegar.KavenegarApi({
-//     // apikey: '45346A5273684F7951487067476C4B506D504E4A5A6939675A2B2F526D65686E6A754369754B59377158303D'
-//     apikey: ''
-// });
+let version = process.env.VERSION_NUM;
+
 let global = {
   body:"",
-  ip: VARIABLE.BASE_URL,
-  domain: VARIABLE.BASE_URL,
+  ip: process.env.BASE_URL,
+  domain: process.env.BASE_URL,
   config: (setting)=>(config),
   sendSms: function(to, text, From = "50004000004", customerId = null, countryCode = "98", findKey = false) {
     return new Promise(function(resolve, reject) {

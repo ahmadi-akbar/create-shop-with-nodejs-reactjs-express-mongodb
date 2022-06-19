@@ -13,6 +13,7 @@ let app = express();
 
 db();
 headerHandle(app);
+configHandle(express, app);
 
 ssrHandle(app);
 
@@ -56,7 +57,6 @@ app.use(function(err, req, res, next) {
     next();
   }
 });
-configHandle(express, app);
 routeHandle(app);
 
 export default app;

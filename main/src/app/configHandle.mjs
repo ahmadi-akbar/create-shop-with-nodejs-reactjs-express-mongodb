@@ -20,22 +20,8 @@ let configHandle = (express, app) => {
   app.use(busboy());
   app.use(express.static(public_mediaFolder, { maxage: "1y" }));
   app.use(express.static(buildFolder));
-  // app.use(express.static(publicFolder, { maxage: "1y" }));
   app.set("view engine", "pug");
-
-  // app.use(express.static("img"));
   app.use(express.static(assetsFolder));
-  // app.use(function (req,res,next) {
-  //     let ua = req.get('user-agent')
-  // if (isbot(ua)) {
-    //         console.log('BOT => ', ua);
-    //         app.set("views", viewsFolder+'/bot');
-  // } else {
-    //         app.set("views", viewsFolder);
-    //
-  // }
-  //     next();
-  // })
   console.log("==> configHandle");
 };
 export default configHandle;

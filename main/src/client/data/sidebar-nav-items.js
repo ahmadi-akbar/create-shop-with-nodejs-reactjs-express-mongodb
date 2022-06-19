@@ -8,32 +8,6 @@ export default function SidebarItem() {
 
   if (token) {
     return [
-      // {
-      //   title: 'Products',
-      //   htmlBefore: '<i class="material-icons mr-1">vertical_split</i>',
-      //   to: '/',
-      // },
-      //  {
-      //   title: "products",
-      //   htmlBefore: '<i class="material-icons">shopping_cart</i>',
-      //   to: "/products",
-      // },
-      //
-      // {
-      //   title: profile,
-      //   htmlBefore: '<i class="material-icons mr-1">&#xE7FD;</i>',
-      //   to: '/profile',
-      // },
-      // {
-      //   title: 'Cart',
-      //   htmlBefore: '<i class="material-icons mr-1">shopping_basket</i>',
-      //   to: '/submit-order',
-      // },
-      // {
-      //   title: 'my posts',
-      //   htmlBefore: '<i class="material-icons">&#xE8B8;</i>',
-      //   to: '/my-posts',
-      // },
       {
         title: 'my orders',
         htmlBefore: '<i class="material-icons mr-1">list_alt</i>',
@@ -42,21 +16,6 @@ export default function SidebarItem() {
     ];
   } else {
     return [
-      // {
-      //   title: 'Products',
-      //   htmlBefore: '<i class="material-icons mr-1">vertical_split</i>',
-      //   to: '/',
-      // },
-      // {
-      //   title: 'Login / Register',
-      //   htmlBefore: '<i class="material-icons mr-1">person</i>',
-      //   to: '/login',
-      // },
-      // {
-      //   title: 'Cart',
-      //   htmlBefore: '<i class="material-icons mr-1">shopping_cart</i>',
-      //   to: '/submit-order',
-      // },
     ];
   }
 }

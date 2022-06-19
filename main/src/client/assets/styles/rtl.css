@@ -779,6 +779,10 @@
   font-family: IRANSans;
 
 }
+body .rtl .nav-link svg{
+  margin-left: 5px;
+font-size: 20px;
+}
 body .rtl .the-order-body-table *{
   font-family: IRANSans;
 

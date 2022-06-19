@@ -29,33 +29,28 @@ const ssrHandle = (app) => {
   if (vars.BASE_URL) {
     console.log("base url found");
     app.get("/", (req, res, next) => {
-      console.log("here1");
-      //   console.log('let us get to wizard3');
-      //   console.log("we need to wizard3...");
-      //   next("/wizard");
-
+      console.log("/");
       ssrParse(req, res, next);
 
     });
     app.get("/p/:_id/:title", (req, res, next) => {
-      console.log("here2");
-
+      console.log("/p/:_id/:title");
       ssrParse(req, res, next);
     });
 
     app.get("/post/:_id/:title", (req, res, next) => {
-      console.log("here3");
+      console.log("/post/:_id/:title");
 
       ssrParse(req, res, next);
     });
 
     app.get("/page/:_id/:title", (req, res, next) => {
-      console.log("here4");
+      console.log("/page/:_id/:title");
 
       ssrParse(req, res, next);
     });
     app.get("/:_firstCategory/:_id", (req, res, next) => {
-      console.log("here5");
+      console.log("/:_firstCategory/:_id");
       ssrParse(req, res, next);
     });
   } else {
@@ -70,10 +65,10 @@ const ssrParse = (req, res, next) => {
   let ua = req.get("user-agent");
   if (!req.headers.lan)
     req.headers.lan = "fa";
-  console.log("in home...");
+  console.log("==> () ssrParse");
 
   if (isbot(ua)) {
-    console.log("we need SSR...");
+    console.log("it is bot, we need SSR...");
 
     console.log("BOT => ", ua);
     fs.readFile(path.resolve("./build/index.html"), "utf8", (err, data) => {
@@ -135,7 +130,8 @@ const ssrParse = (req, res, next) => {
         // );
       });
     });
-  } else {
+  }
+  else {
     console.log("no need to ssr...");
     next();
   }

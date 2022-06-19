@@ -1,2 +1,2 @@
-window.BASE_URL="https://yasiman.shop";
-window.SHOP_URL="https://yasiman.shop/";
+window.BASE_URL="http://localhost:3001";
+window.SHOP_URL="http://localhost:3001/";

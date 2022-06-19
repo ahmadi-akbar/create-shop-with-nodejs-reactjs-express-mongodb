@@ -17,20 +17,19 @@ export const the_public_route=(req, res, next)=> {
   if (body) {
     body = body.replace('</head>', `<title>${'ttl'}</title></head>`);
     body = body.replace('</head>', `<meta name="description" content="${'metadescription'}" /></head>`);
-    console.log('d.description', ' send... ');
+    console.log(' send... ');
     return res.status(200).send(body);
   } else {
     console.log('render...');
     return res.status(200).render('index');
   }
-}
+};
 // });
 
 router.get("/:_theCategory/:_slug", (req, res, next) => {
-  console.log("go through product...");
+  console.log("/:_theCategory/:_slug");
   seo.readFilePromise().then(data => {
     productController.viewOneS(req, res, next).then((d) => {
-      console.log('d',d);
       let obj={
         _id: d._id,
         title: d.title + " " + data.setting.separator + " (" + m.format("jD jMMMM") + ") " + data.setting.siteName,
@@ -55,16 +54,24 @@ router.get("/:_theCategory/:_slug", (req, res, next) => {
       if(body) {
         body = body.replace('</head>', `<title>${obj.title}</title></head>`);
         body = body.replace('</head>', `<meta name="description" content="${obj.metadescription}" /></head>`);
-        console.log(d.description,' send... ',obj.description);
-        res.status(200).send(body);
+        console.log(' send... ');
+        return res.status(200).send(body);
       }else{
         console.log('render...');
-        res.status(200).render('index',obj);
+        return res.status(200).render('index',obj);
       }
     });
   });
 });
 router.get("/:slug/", (req, res, next) => {
+  console.log('one variable...')
+  the_public_route(req, res, next);
+});
+router.get("/:slug/:slug2/", (req, res, next) => {
+  console.log('one variable...')
+  the_public_route(req, res, next);
+});
+router.get("/:slug/:slug2/:slug3/", (req, res, next) => {
   console.log('one variable...')
   the_public_route(req, res, next);
 });

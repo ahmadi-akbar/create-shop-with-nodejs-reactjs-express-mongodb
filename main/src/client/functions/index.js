@@ -4,6 +4,7 @@ import store, { storeProducts, storeProduct,storePosts,storeAttrValue } from "#c
 import CONFIG from "#c/config";
 import { createContext } from "react";
 import { clearState, deleteData, getData, postData, putData } from "#c/functions/utils";
+import KeyboardArrowLeftIcon from "@mui/icons-material/KeyboardArrowLeft";
 
 const DataContext = createContext(null);
 export const isClient = (typeof window !== "undefined");
@@ -160,9 +161,9 @@ export const getAllSidebarCategoriesData = (i = "") =>
           item.title = item.name;
 
           item.htmlAfter =
-            "<i class='material-icons'>keyboard_arrow_left</i>";
+            <KeyboardArrowLeftIcon/>;
           item.htmlBefore =
-            "<i class='material-icons'>keyboard_arrow_right</i>";
+            <KeyboardArrowLeftIcon/>;
         }
       });
       data.forEach((item1) => {
