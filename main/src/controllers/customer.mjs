@@ -21,7 +21,7 @@ var self = {
       Customer.findByIdAndUpdate(customer._id, { $set: { whatsapp: false } }, function(err, cus) {
         res.json({
           success: true,
-          message: "https://yasiman.shop\n خوش آمدید\n کد تایید شما:\n" + customer.activationCode,
+          message: "http://localhost:3001\n خوش آمدید\n کد تایید شما:\n" + customer.activationCode,
           phoneNumber: customer.phoneNumber,
           method: "whatsapp"
         });

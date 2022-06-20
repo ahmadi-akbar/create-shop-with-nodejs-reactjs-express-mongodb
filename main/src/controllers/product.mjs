@@ -527,7 +527,7 @@ let self = ({
         console.log("price_stock", price_stock);
         modifedProducts.push({
           product_id: c._id,
-          page_url: "https://yasiman.shop/p/" + c._id + "/" + encodeURIComponent(c.title.fa),
+          page_url: "http://localhost:3001/p/" + c._id + "/" + encodeURIComponent(c.title.fa),
           price: last_price,
           old_price: last_sale_price,
           availability: (price_stock.indexOf(true) >= 0 ? "instock" : "outofstock")

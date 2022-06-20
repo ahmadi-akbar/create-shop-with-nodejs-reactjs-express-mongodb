@@ -78,8 +78,8 @@ MainFooter.defaultProps = {
 
 
     {
-      title: 'support@yasiman.shop',
-      link: 'mailto:support@yasiman.shop',
+      title: 'support@localhost:3001',
+      link: 'mailto:support@localhost:3001',
       icon: 'mail'
 
     },
@@ -101,7 +101,7 @@ MainFooter.defaultProps = {
     },
     {
       title: 'تهران،خیابان میرداماد،مجتمع کامپیوتر پایتخت،برج A،طبقه۹،واحد ۹۰۱',
-      link: 'mailto:support@yasiman.shop',
+      link: 'mailto:support@localhost:3001',
       icon: 'room',
       style: {lineHieght: '20px'}
 

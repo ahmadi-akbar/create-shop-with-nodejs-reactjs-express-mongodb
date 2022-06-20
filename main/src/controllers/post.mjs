@@ -462,15 +462,16 @@ var self = ({
       }).lean();
   },
   viewOne: function(req, res, next) {
-
+console.log("viewOne ",req.params.id);
     Post.findById(req.params.id,
       function(err, post) {
         if (err || !post) {
-          res.json({
+          return res.json({
+            post:post,
+            err:err,
             success: false,
             message: "error!"
           });
-          return 0;
         }
 
         let views = post.views;
@@ -482,6 +483,7 @@ var self = ({
           userIp: requestIp.getClientIp(req),
           createdAt: new Date()
         });
+        console.log("findByIdAndUpdate");
         Post.findByIdAndUpdate(req.params.id, {
             "$set": {
               // getContactData: post.getContactData,
@@ -492,8 +494,7 @@ var self = ({
             "fields": { "_id": 1 }
           }, function(err, updatedPost) {
             delete post.views;
-            res.json(post);
-            return 0;
+            return res.json(post);
           });
 
       }).lean();

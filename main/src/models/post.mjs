@@ -12,6 +12,7 @@ const PostSchema = new mongoose.Schema({
   views: [],
   slug: String,
   title: {},
+  elements: {},
   kind: {type: String, default: 'post'},
   status: {type: String, default: 'processing'},
   photos: [],

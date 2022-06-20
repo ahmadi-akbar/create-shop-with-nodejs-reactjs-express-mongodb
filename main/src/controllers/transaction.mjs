@@ -267,7 +267,7 @@ var self = ({
         };
         // console.log(options);
         let $text;
-        $text = "customer is paying " + amount.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",") + " Toman" + "\n" + "order number: # " + order.orderNumber + "\n" + "https://admin.yasiman.shop/#/order/" + order._id + "\n";
+        $text = "customer is paying " + amount.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",") + " Toman" + "\n" + "order number: # " + order.orderNumber + "\n" + "https://admin.localhost:3001/#/order/" + order._id + "\n";
         $text += "customer phone number: " + order.customer.phoneNumber;
 
         // global.sendSms('9120539945', $text,'300088103373');
@@ -841,7 +841,7 @@ var self = ({
                     }
                     // console.log('order', order);
                     let $text;
-                    $text = "customer payed: " + amount.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",") + " Toman" + "\n" + "order number: # " + order.orderNumber + "\n" + "https://admin.yasiman.shop/#/order/" + order._id + "\n";
+                    $text = "customer payed: " + amount.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",") + " Toman" + "\n" + "order number: # " + order.orderNumber + "\n" + "https://admin.localhost:3001/#/order/" + order._id + "\n";
                     $text += "customer phone number: " + order.customer.phoneNumber;
 
                     // global.sendSms('9120539945', $text,'300088103373');
@@ -858,7 +858,7 @@ var self = ({
                     objd.message = $tz;
 
 
-                    //let $text_c = ttt + " عزیز" + "\n" + "سفارش شما با موفقیت ثبت شد و در دست بررسی است، شماره سفارش:" + order.orderNumber + "\n" + "لینک سفارشات:" + "\n" + "https://yasiman.shop/my-account/" + "\n" + "آروند، یک گارانتی دوست داشتنی!";
+                    //let $text_c = ttt + " عزیز" + "\n" + "سفارش شما با موفقیت ثبت شد و در دست بررسی است، شماره سفارش:" + order.orderNumber + "\n" + "لینک سفارشات:" + "\n" + "http://localhost:3001/my-account/" + "\n" + "آروند، یک گارانتی دوست داشتنی!";
                     global.sendSms(order.customer.phoneNumber, [
                       {
                         key: "customer",
@@ -870,7 +870,7 @@ var self = ({
                       },
                       {
                         key: "myOrdersLink",
-                        value: "https://yasiman.shop/my-account/"
+                        value: "http://localhost:3001/my-account/"
                       }], "300088103373", null, "98", "sms_submitOrderSuccessPaying");
 
                     global.publishToTelegram(objd);
@@ -884,13 +884,13 @@ var self = ({
                       });
                       let ddd = new Date();
 
-                      let string = "{\"user\": {\"username\": \"vira.tejarat\",\"password\": \"42528000\"},\"bulk\": [{\"cn\": {\"reference\": " + order.orderNumber + ",\"date\": \"" + ddd.getUTCFullYear() + "-" + ddd.getMonth() + "-" + ddd.getUTCDate() + "\",\"assinged_pieces\": \"" + order.card.length + "\",\"service\": \"1\",\"value\": \"" + theTotal + "\",\"payment_term\": 0,\"weight\": \"1\",\"content\":\"" + sumTitles + "\",\"change_state_url\":\"\"},\"sender\": {\"person\": \"حسین محمدی\",\"company\": \"شرکت گارانتی آروند\",\"city_no\": \"10866\",\"telephone\": \"+982142528000\",\"mobile\": \"989024252802\",\"email\": \"info@yasiman.shop\",\"address\": \"تهران، کاووسیه، بلوار میرداماد، پلاک ۴۹۶، مجتمع پایتخت، بلوک A، طبقه ۹، واحد ۹۰۱\",\"postcode\": \"1969763743\"},\"receiver\": {\"person\": \"" + (order.customer.firstName + " " + order.customer.lastName) + "\",\"company\": \"\",\"city_no\": \"" + order.billingAddress.City_no + "\",\"telephone\": \"" + order.billingAddress.PhoneNumber + "\",\"mobile\": \"" + order.customer.phoneNumber + "\",\"email\": \"test@test.com\",\"address\": \"" + (order.billingAddress.State + " " + order.billingAddress.City + " " + order.billingAddress.StreetAddress) + "\",\"postcode\": \"" + order.billingAddress.PostalCode + "\"}}]}";
+                      let string = "{\"user\": {\"username\": \"vira.tejarat\",\"password\": \"42528000\"},\"bulk\": [{\"cn\": {\"reference\": " + order.orderNumber + ",\"date\": \"" + ddd.getUTCFullYear() + "-" + ddd.getMonth() + "-" + ddd.getUTCDate() + "\",\"assinged_pieces\": \"" + order.card.length + "\",\"service\": \"1\",\"value\": \"" + theTotal + "\",\"payment_term\": 0,\"weight\": \"1\",\"content\":\"" + sumTitles + "\",\"change_state_url\":\"\"},\"sender\": {\"person\": \"حسین محمدی\",\"company\": \"شرکت گارانتی آروند\",\"city_no\": \"10866\",\"telephone\": \"+982142528000\",\"mobile\": \"989024252802\",\"email\": \"info@localhost:3001\",\"address\": \"تهران، کاووسیه، بلوار میرداماد، پلاک ۴۹۶، مجتمع پایتخت، بلوک A، طبقه ۹، واحد ۹۰۱\",\"postcode\": \"1969763743\"},\"receiver\": {\"person\": \"" + (order.customer.firstName + " " + order.customer.lastName) + "\",\"company\": \"\",\"city_no\": \"" + order.billingAddress.City_no + "\",\"telephone\": \"" + order.billingAddress.PhoneNumber + "\",\"mobile\": \"" + order.customer.phoneNumber + "\",\"email\": \"test@test.com\",\"address\": \"" + (order.billingAddress.State + " " + order.billingAddress.City + " " + order.billingAddress.StreetAddress) + "\",\"postcode\": \"" + order.billingAddress.PostalCode + "\"}}]}";
 
                       var options = {
                         method: "POST",
                         url: "https://app.krch.ir/v1/bulk_import",
                         headers: { "content-type": "multipart/form-data; boundary=----WebKitFormBoundary7MA4YWxkTrZu0gW" },
-                        //   formData: {input: '{\n\t"user": {\n\t\t"username": "vira.tejarat",\n\t\t"password": "42528000"\n\t},\n\t"bulk": [{\n\t\t"cn": {\n\t\t\t"reference": '+order.orderNumber+',\n\t\t\t"date": "'+new Date()+'",\n\t\t\t"assinged_pieces": "'+order.card.length+'",\n\t\t\t"service": "1",\n\t\t\t"value": "'+theTotal+'",\n\t\t\t"payment_term": 0,\n\t\t\t"weight": "1",\n                       "content":"'+sumTitles+'",\n                       "change_state_url":"'+"https://yasiman.shop/customer/order/peyk/" + order._id+'"\n\t\t},\n\t\t"sender": {\n\t\t\t"person": "حسین محمدی",\n\t\t\t"company": "شرکت گارانتی آروند",\n\t\t\t"city_no": "10866",\n\t\t\t"telephone": "+982142528000",\n\t\t\t"mobile": "989024252802",\n\t\t\t"email": "info@yasiman.shop",\n\t\t\t"address": "تهران، کاووسیه، بلوار میرداماد، پلاک ۴۹۶، مجتمع پایتخت، بلوک A، طبقه ۹، واحد ۹۰۱",\n\t\t\t"postcode": "1969763743"\n\t\t},\n\t\t"receiver": {\n\t\t\t"person": "'+(order.customer.firstName + ' ' + order.customer.lastName)+'",\n\t\t\t"company": "",\n\t\t\t"city_no": "'+order.billingAddress.City_no+'",\n\t\t\t"telephone": "'+order.billingAddress.PhoneNumber+'",\n\t\t\t"mobile": "'+order.customer.phoneNumber+'",\n\t\t\t"email": "test@test.com",\n\t\t\t"address": "'+(order.billingAddress.State + ' ' + order.billingAddress.City + ' ' + order.billingAddress.StreetAddress)+'",\n\t\t\t"postcode": "'+order.billingAddress.PostalCode+'"\n\t\t}\n\t}]\n}'}
+                        //   formData: {input: '{\n\t"user": {\n\t\t"username": "vira.tejarat",\n\t\t"password": "42528000"\n\t},\n\t"bulk": [{\n\t\t"cn": {\n\t\t\t"reference": '+order.orderNumber+',\n\t\t\t"date": "'+new Date()+'",\n\t\t\t"assinged_pieces": "'+order.card.length+'",\n\t\t\t"service": "1",\n\t\t\t"value": "'+theTotal+'",\n\t\t\t"payment_term": 0,\n\t\t\t"weight": "1",\n                       "content":"'+sumTitles+'",\n                       "change_state_url":"'+"http://localhost:3001/customer/order/peyk/" + order._id+'"\n\t\t},\n\t\t"sender": {\n\t\t\t"person": "حسین محمدی",\n\t\t\t"company": "شرکت گارانتی آروند",\n\t\t\t"city_no": "10866",\n\t\t\t"telephone": "+982142528000",\n\t\t\t"mobile": "989024252802",\n\t\t\t"email": "info@localhost:3001",\n\t\t\t"address": "تهران، کاووسیه، بلوار میرداماد، پلاک ۴۹۶، مجتمع پایتخت، بلوک A، طبقه ۹، واحد ۹۰۱",\n\t\t\t"postcode": "1969763743"\n\t\t},\n\t\t"receiver": {\n\t\t\t"person": "'+(order.customer.firstName + ' ' + order.customer.lastName)+'",\n\t\t\t"company": "",\n\t\t\t"city_no": "'+order.billingAddress.City_no+'",\n\t\t\t"telephone": "'+order.billingAddress.PhoneNumber+'",\n\t\t\t"mobile": "'+order.customer.phoneNumber+'",\n\t\t\t"email": "test@test.com",\n\t\t\t"address": "'+(order.billingAddress.State + ' ' + order.billingAddress.City + ' ' + order.billingAddress.StreetAddress)+'",\n\t\t\t"postcode": "'+order.billingAddress.PostalCode+'"\n\t\t}\n\t}]\n}'}
                         formData: { input: string }
                       };
 

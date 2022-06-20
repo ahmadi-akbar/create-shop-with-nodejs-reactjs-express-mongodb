@@ -17,6 +17,7 @@ import {
 } from "#c/functions/index";
 import { SnapChatIcon } from "#c/assets/index";
 import Loading from "#c/components/Loading";
+import PageBuilder from "#c/components/page-builder/PageBuilder";
 import store from "../functions/store";
 import { useSelector } from "react-redux";
 import CONFIG from "#c/config";
@@ -58,6 +59,7 @@ const Post = (props) => {
           catChoosed: d.catChoosed,
           countryChoosed: d.countryChoosed,
           categories: d.categories,
+          elements: d.elements,
           mainCategory: d.mainCategory
         });
         resolve({
@@ -68,6 +70,7 @@ const Post = (props) => {
           _id: d._id,
           updatedAt: d.updatedAt,
           kind: d.kind,
+          elements: d.elements,
           thumbnail: d.thumbnail,
           excerpt: d.excerpt,
           views: d.views
@@ -115,7 +118,7 @@ const Post = (props) => {
     thumbnail,
     excerpt,
     enableAdmin = false,
-    views = null
+    views = null,elements=null
   } = state;
   if (redirect && isClient) return <Navigate to={redirect}/>;
   if (!load && isClient) return <Loading/>;
@@ -192,7 +195,7 @@ console.log('isClient',isClient);
 
       </Row>
 
-
+      <PageBuilder elements={elements}/>
     </Container>
   );
 };

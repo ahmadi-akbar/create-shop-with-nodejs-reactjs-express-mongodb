@@ -197,7 +197,7 @@ const Product = (props) => {
               <FavoriteBorderIcon className={"beforehov"}/><FavoriteIcon className={"hov"}/><Badge
               theme="info">{like}</Badge></Button>
 
-            {isClient && <RWebShare
+            {Boolean(isClient && title) && <RWebShare
               data={{
                 text: excerpt,
                 url: CONFIG.SHOP_URL + "p/" + _id + "/" + encodeURIComponent(title[lan]),

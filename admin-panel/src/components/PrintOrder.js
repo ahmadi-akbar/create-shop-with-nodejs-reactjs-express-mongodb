@@ -104,7 +104,7 @@ export default (props) => {
 
 
         // QRCode.toCanvas(canvas, '#your-site-link', function (error) {
-        // QRCode.toDataURL('https://gameboss.shop')
+        // QRCode.toDataURL('http://localhost:3001')
         //     .then(url => {
         //         var canvas = document.getElementById('canvas');
         //

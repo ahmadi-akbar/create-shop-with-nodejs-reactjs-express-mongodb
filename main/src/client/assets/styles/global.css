@@ -417,7 +417,7 @@ body {
 }
 .input-group-text {
     background-color: #ee483e;
-    color: #fff;
+    color: #c9cbe0;
     height: 100%;
 }
 
@@ -2735,6 +2735,9 @@ img[alt="payment"] {
     }
 }
 @media (max-width: 1200px) {
+    .main-navbar__search .frtyuioiuy .input-group-text{
+        height: 40px;
+    }
     .floating-tools {
         width: 245px;
         position: relative;
