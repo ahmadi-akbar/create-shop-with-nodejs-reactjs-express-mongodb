@@ -1,10 +1,12 @@
 import express from "express";
 import db from "#root/app/db";
 import path from "path";
-import ssrHandle from "#root/app/ssrHandle";
+// import ssrHandle from "#root/app/ssrHandle";
 import configHandle from "#root/app/configHandle";
 import routeHandle from "#root/app/routeHandle";
 import headerHandle from "#root/app/headerHandle";
+import { the_public_route } from "../routes/public/p";
+import router from "../routes/public/p";
 // import uploadHandle from "#root/app/uploadHandle";
 
 console.log("new date", new Date());
@@ -12,14 +14,17 @@ console.log("new date", new Date());
 let app = express();
 
 db();
+app.get("/", (req, res, next) => {
+  console.log('#r home /')
+  next();
+});
 headerHandle(app);
 configHandle(express, app);
 
-ssrHandle(app);
 
 
 app.use(function(err, req, res, next) {
-  //console.log('here....');
+  console.log('here....');
   if (req.busboy) {
     req.pipe(req.busboy);
 
@@ -57,6 +62,9 @@ app.use(function(err, req, res, next) {
     next();
   }
 });
+// ssrHandle(app);
+
 routeHandle(app);
+// app.set("view engine", "pug");
 
 export default app;

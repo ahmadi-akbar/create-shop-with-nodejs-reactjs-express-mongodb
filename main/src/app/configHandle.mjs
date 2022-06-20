@@ -19,9 +19,9 @@ let configHandle = (express, app) => {
   app.use(cookieParser());
   app.use(busboy());
   app.use(express.static(public_mediaFolder, { maxage: "1y" }));
-  app.use(express.static(buildFolder));
+  app.use(express.static(buildFolder,{  index: false}));
   app.set("view engine", "pug");
-  app.use(express.static(assetsFolder));
+  // app.use(express.static(assetsFolder));
   console.log("==> configHandle");
 };
 export default configHandle;

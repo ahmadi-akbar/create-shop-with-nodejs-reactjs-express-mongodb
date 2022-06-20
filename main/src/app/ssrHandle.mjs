@@ -29,7 +29,7 @@ const ssrHandle = (app) => {
   if (vars.BASE_URL) {
     console.log("base url found");
     app.get("/", (req, res, next) => {
-      console.log("/");
+      console.log("the /");
       ssrParse(req, res, next);
 
     });
@@ -118,13 +118,13 @@ const ssrParse = (req, res, next) => {
           "<div id=\"root\"></div>",
           `<div id="root">${renderedData}</div>`
         );
-        return the_public_route(req,res,next);
+        // return the_public_route(req,res,next);
         // res.locals.body=data;
         // console.log("res.locals.body",res.locals.body);
         // req.headers.htmlSend='xxxs';
         // console.log('req',req);
         // return res.json(req);
-        // next();
+        next();
           // return res.send(
           //   res.locals.body
         // );
