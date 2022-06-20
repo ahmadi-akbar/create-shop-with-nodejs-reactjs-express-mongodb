@@ -8,9 +8,11 @@ import {
 } from 'pure-react-carousel';
 import 'pure-react-carousel/dist/react-carousel.es.css';
 
+import Toolbar from "../Toolbar";
 
 import { Draggable } from 'react-page-maker';
-
+import KeyboardArrowLeftIcon from '@mui/icons-material/KeyboardArrowLeft';
+import ChevronRightIcon from '@mui/icons-material/ChevronRight';
 class DraggableSlider extends React.Component {
   constructor(props) {
     super(props);
@@ -96,6 +98,9 @@ class DraggableSlider extends React.Component {
 
     return (
       <Draggable { ...this.props } >
+        <Toolbar  {...this.props} defaultForm={[
+          {label:"countOfCols",defaultValue:"3",type:"select-options",name:"countOfCols"}
+        ]} />
         <CarouselProvider
           naturalSlideWidth={300}
           naturalSlideHeight={100}
@@ -111,8 +116,8 @@ class DraggableSlider extends React.Component {
                 ))
             }
           </Slider>
-          <ButtonBack onClick={() => this.updateCount(1)}>{"<"}</ButtonBack>
-          <ButtonNext  onClick={() => this.updateCount(-1)}>{">"}</ButtonNext>
+          <ButtonBack onClick={() => this.updateCount(1)}><KeyboardArrowLeftIcon/></ButtonBack>
+          <ButtonNext  onClick={() => this.updateCount(-1)}><ChevronRightIcon/></ButtonNext>
           {/* <div className="text-center">
             <FaPlus onClick={this.addSlide} className="m-1" />
             <FaTrash onClick={this.removeSlide} className="m-1" color="#dc3545" />

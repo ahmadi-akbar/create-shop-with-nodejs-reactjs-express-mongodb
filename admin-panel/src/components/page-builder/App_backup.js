@@ -23,7 +23,7 @@ import DraggableLayoutR3C3 from './elements/DraggableLayoutR3C3';
 import DraggableLayoutR1C2 from './elements/DraggableLayoutR1C2';
 import DraggableDropdown from './elements/DraggableDropdown';
 import DraggableSlider from './elements/DraggableSlider';
-import DraggableHeader from './elements/DraggableHeader';
+import DraggableTitle from './elements/DraggableTitle';
 
 import './App.css';
 
@@ -49,7 +49,7 @@ class App extends Component {
       component: DraggableSlider
     }, {
       type: elements.HEADER,
-      component: DraggableHeader
+      component: DraggableTitle
     }]);
 
     // state.clearState() triggers this event
@@ -112,7 +112,7 @@ class App extends Component {
     id: 's1'
   }, {
     type: elements.HEADER,
-    name: 'Header',
+    name: 'Title',
     id: 'h1'
   }, {
     type: elements.GRID_LAYOUT_3_3,
@@ -124,7 +124,7 @@ class App extends Component {
     id: '1-2-grid'
   }]
 
-  _onDrop = (data, cb) => {
+  _onDrop = (data, cb=()=>{}) => {
     // no need to ask id and name again
     if (data.payload && data.payload.dropped) {
       return cb(data);

@@ -17,7 +17,43 @@ body {
   position: relative;
   cursor: pointer;
 }
+.drag-item.before::before{
 
+  width: 100%;
+  height: 6px;
+  background: #ff0000;
+  left: 0;
+  right: 0;
+  top: -3px;
+transform:none;
+  box-shadow: 0px -1px 10px 1px rgb(255 0 0);
+
+
+
+}
+.page-builder .carousel,
+body .layout.rtl .page-builder .carousel,
+body .layout.rtl .page-builder .carousel *{
+  direction: ltr;
+
+}
+body .layout.rtl .page-builder .carousel{
+  position: relative;
+}
+.carousel__back-button{
+  left:0
+}
+ .drag-item.after::after {
+   width: 100%;
+   height: 6px;
+   background: #ff0000;
+   left: 0;
+   right: 0;
+   top: -3px;
+   transform:none;
+   box-shadow: 0px -1px 10px 1px rgb(255 0 0);
+
+ }
 .nav-tabs .nav-link {
   cursor: pointer;
 }
@@ -32,14 +68,13 @@ svg {
 }
 
 .center-heading {
-  top: 50%;
   width: 100%;
-  transform: translate(0, -50%);
-  position: absolute;
-  color: white;
+  color: #000;
   text-align: center;
 }
-
+.drag-item header{
+  border-radius: 5px;
+}
 .absolute {
   z-index: 10;
   position: absolute;
@@ -51,13 +86,21 @@ svg {
   position: absolute;
 }
 
-
+.page-editor-modal *{
+  direction: ltr;
+  text-align: left;
+}
 .carousel__next-button,
 .carousel__back-button {
   position: absolute;
   top: 50%;
   height: 24px;
   margin-top: -12px;
+  border: 1px solid #000;
+  border-radius: 50%;
+  width: 24px;
+  text-align: center !important;
+  padding: 0;
 }
 
 .carousel__next-button {

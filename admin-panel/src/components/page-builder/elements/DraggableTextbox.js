@@ -3,6 +3,7 @@ import { FormGroup, Label, Input, Col, Row } from 'reactstrap';
 // import { FaTrash } from 'react-icons/fa';
 
 import { Draggable, state } from 'react-page-maker';
+import Toolbar from "../Toolbar";
 
 const DraggableTextbox = (props) => {
   const {
@@ -38,6 +39,9 @@ const DraggableTextbox = (props) => {
 
   return (
     <Draggable { ...props } >
+      <Toolbar  {...props} defaultForm={[
+        {label:"countOfCols",defaultValue:"3",type:"select-options",name:"countOfCols"}
+      ]}/>
       <FormGroup className="m-0">
         <Label className="col-sm-12">
           <span>{name}</span>

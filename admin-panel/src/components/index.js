@@ -35,5 +35,7 @@ export { default as FormTabs } from './product/FormTabs';
 export { default as StockStatus } from './StockStatus';
 export { default as PageBuilder } from './page-builder/App';
 export { default as ColorPicker } from './ColorPicker';
+export { default as CustomModal } from './CustomModal';
+// export { default as DeleteElement } from './DeleteElement';
 // export { default as PostFilterButton } from './PostFilterButton';
 // export { default as PostFilterForm } from './PostFilterForm';

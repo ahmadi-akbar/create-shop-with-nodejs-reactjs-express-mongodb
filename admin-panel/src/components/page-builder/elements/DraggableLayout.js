@@ -1,11 +1,15 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import { Row, Col } from 'reactstrap';
+import React from "react";
+import PropTypes from "prop-types";
+import { Col, Row } from "reactstrap";
 
-import { Draggable, Dropzone } from 'react-page-maker';
-import {elements} from '../const';
+import { Draggable, Dropzone } from "react-page-maker";
+import { elements } from "../const";
+import EditConfigOfElement from "../EditConfigOfElement";
+import DeleteElement from "../DeleteElement";
+import Toolbar from "../Toolbar";
+import { unicID } from "@/functions/index";
 
-const DraggableLayoutR1C2 = (props) => {
+const DraggableLayout = (props) => {
   // make sure you are passing `parentID` prop to dropzone
   // it help to mainatain the state to meta data
   const {
@@ -15,19 +19,28 @@ const DraggableLayoutR1C2 = (props) => {
     showPreview,
     id,
     dropzoneProps,
+    payload,
     initialElements,
     ...rest
   } = props;
-
+  const {countOfCols}=payload;
+  console.clear();
+  console.log("countOfCols", countOfCols,props);
+  var whatever = ['','',''];
+  for(var i=0;i<countOfCols;i++){
+    // whatever.push();
+  }
+console.log('whatever',whatever);
   if (showBasicContent) {
     return (
       <Draggable {...props} >
-        <span>{ rest.name }</span>
+        <span>{rest.name}</span>
       </Draggable>
     );
   }
 
-  const _onDrop = (data, cb) => {
+  const _onDrop = (data, cb = () => {
+  }) => {
     // no need to ask id and name again
     if (data.payload && data.payload.dropped) {
       return cb(data);
@@ -36,9 +49,9 @@ const DraggableLayoutR1C2 = (props) => {
     // This can be an async call or some modal to fetch data
     let name = data.name;
     if (data.type === elements.TEXTBOX || data.type === elements.DROPDOWN) {
-      name = window.prompt('Enter name of field');
+      name = "name";
     }
-    const id = window.prompt('Please enter unique ID');
+    const id = unicID();
 
     const result = cb({
       ...data,
@@ -50,57 +63,51 @@ const DraggableLayoutR1C2 = (props) => {
 
   if (showPreview) {
     return (
-      <div>
-        <div className="mt-3">
-          <Row className="row">
-            <Col sm="6">
-              {rest.childNode['canvas-1-1']}
-            </Col>
-            <Col sm="6">
-              {rest.childNode['canvas-1-2']}
-            </Col>
+
+          <Row className="auto-col">
+            {whatever.map((wh, h) => {
+
+              return <Col key={h} className={'col-the-'+h}>
+                {rest.childNode["canvas-1-" + h]}
+              </Col>;
+
+            })}
           </Row>
-        </div>
-      </div>
-    )
+    );
   }
 
   const filterInitialElements = (dID) => {
     return initialElements.filter(e => e.dropzoneID === dID) || [];
   };
-
+  console.log('wh',whatever)
   return (
-    <Draggable {...props} >
-      <span>{ rest.name }</span>
+    <Draggable {...props}>
+      <Toolbar  {...props} defaultForm={[
+        {label:"countOfCols",defaultValue:"3",type:"text",name:"countOfCols"}
+      ]}/>
       <div className="mt-3">
-        <Row className="row">
-          <Col sm="6">
-            <Dropzone
-              {...dropzoneProps}
-              initialElements={filterInitialElements('canvas-1-1')}
-              id="canvas-1-1"
-              onDrop={_onDrop}
-              placeholder="Drop Here"
-            />
-          </Col>
-          <Col sm="6">
-            <Dropzone
-              {...dropzoneProps}
-              initialElements={filterInitialElements('canvas-1-2')}
-              id="canvas-1-2"
-              onDrop={_onDrop}
-              placeholder="Drop Here"
-            />
-          </Col>
+        <Row className="auto-col">
+          {whatever.map((wh, h) => {
+            return <Col key={h} className={'the-co'+h}>
+              <Dropzone
+                {...dropzoneProps}
+                initialElements={filterInitialElements("canvas-1-" + h)}
+                id={"canvas-1-" + h}
+                onDrop={_onDrop}
+                placeholder="Drop Here"
+              />
+            </Col>;
+          })}
+
         </Row>
       </div>
     </Draggable>
   );
 };
 
-DraggableLayoutR1C2.propTypes = {
+DraggableLayout.propTypes = {
   id: PropTypes.string.isRequired,
   showBasicContent: PropTypes.bool.isRequired
 };
 
-export default DraggableLayoutR1C2;
+export default DraggableLayout;

@@ -30,7 +30,14 @@ export const changeTheme = (theme) => ({
     type: CHANGE_THEME,
     payload: theme,
 });
-
+export const unicID = () => {
+  let abc = "abcdefghijklmnopqrstuvwxyz1234567890".split("");
+  var token = "";
+  for (let i = 0; i < 32; i++) {
+    token += abc[Math.floor(Math.random() * abc.length)];
+  }
+  return token;
+};
 export const changeLocale = (locale) => {
     console.log('changeLocale',locale);
     return({
