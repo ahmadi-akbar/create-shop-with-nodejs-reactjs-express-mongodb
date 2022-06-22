@@ -88,7 +88,7 @@ const Home = (props) => {
 
   const loadProductItems = async (page, catId = catid,filter={}) => {
 
-    console.log("==> loadProductItems():", offset, search, catId,filter);
+    // console.log("==> loadProductItems():", offset, search, catId,filter);
 
     // if(!loadingMoreItems){
     let newOffset = (await offset) + 24;
@@ -124,11 +124,6 @@ const Home = (props) => {
       setAttr(attr);
     if (value !== valueP)
       setValue(value);
-    console.log("attr", attr);
-    console.log("value", value);
-    // loadProductItems(0, catid,{
-    //   attr,value
-    // });
 
   }
   useEffect(() => {
@@ -162,7 +157,7 @@ const Home = (props) => {
   const afterGetData = (resp) => {
     let trackss = [...tracks];
     if (resp.length < 24) sethasMoreItems(false);
-    console.log("resp", resp);
+    // console.log("resp", resp);
     if (resp && resp.length) {
       resp.forEach((item) => {
         trackss.push(item);

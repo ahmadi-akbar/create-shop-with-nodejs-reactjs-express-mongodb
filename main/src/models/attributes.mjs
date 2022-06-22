@@ -6,6 +6,10 @@ const AttributesSchema = new mongoose.Schema({
         required: false,
         trim: true
     },
+    type: {
+      type: String,
+      default: "normal"
+    },
     image: String,
     data: {},
     values:[],

@@ -85,7 +85,26 @@ svg {
   z-index: 10;
   position: absolute;
 }
+.the-toolbar{
+  display: flex;
+}
+.the-label-inline{
+  margin-right: 10px;
+  margin-left: 10px;
+}
+.dropzone.the-col > .dropzone{
+  padding: 0;
+  border: none;
 
+}
+.dropzone-placeholder{
+  position: relative !important;
+  margin: 0 auto !important;
+  top:auto !important;
+}
+.auto-col .the-col{
+  display: block;
+}
 .page-editor-modal *{
   direction: ltr;
   text-align: left;

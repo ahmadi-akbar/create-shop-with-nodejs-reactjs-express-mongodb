@@ -4,8 +4,6 @@ import { Col, Row } from "reactstrap";
 
 import { Draggable, Dropzone } from "react-page-maker";
 import { elements } from "../const";
-import EditConfigOfElement from "../EditConfigOfElement";
-import DeleteElement from "../DeleteElement";
 import Toolbar from "../Toolbar";
 import { unicID } from "@/functions/index";
 
@@ -23,14 +21,14 @@ const DraggableLayout = (props) => {
     initialElements,
     ...rest
   } = props;
-  const {countOfCols}=payload;
-  console.clear();
-  console.log("countOfCols", countOfCols,props);
-  var whatever = ['','',''];
-  for(var i=0;i<countOfCols;i++){
-    // whatever.push();
-  }
-console.log('whatever',whatever);
+  const { countOfCols } = payload;
+  // console.clear();
+  console.log("countOfCols", payload.countOfCols);
+  // var whatever = ['','',''];
+  // for(var i=0;i<countOfCols;i++){
+  //   // whatever.push();
+  // }
+// console.log('whatever',whatever);
   if (showBasicContent) {
     return (
       <Draggable {...props} >
@@ -64,31 +62,65 @@ console.log('whatever',whatever);
   if (showPreview) {
     return (
 
-          <Row className="auto-col">
-            {whatever.map((wh, h) => {
+      <Row className="auto-col">
+        {/*{[...Array(countOfCols)].map((wh, h) => {*/}
 
-              return <Col key={h} className={'col-the-'+h}>
-                {rest.childNode["canvas-1-" + h]}
-              </Col>;
+          {/*return <Col key={h} className={"col-the-" + h}>*/}
+            {/*{rest.childNode["canvas-1-" + h]}*/}
+          {/*</Col>;*/}
 
-            })}
-          </Row>
+        {/*})}*/}
+      </Row>
     );
   }
 
   const filterInitialElements = (dID) => {
     return initialElements.filter(e => e.dropzoneID === dID) || [];
   };
-  console.log('wh',whatever)
+  // console.clear();
+  // if(!countOfCols){
+  //   return <></>
+  // }
+  let countOfColsArray = [];
+  for (var i = 0; i < countOfCols; i++) {
+    countOfColsArray[i] = { "": "" };
+  }
+  // countOfColsArray.push();
+  console.log("countOfColsArray", countOfCols, countOfColsArray, payload);
+  //
+
   return (
     <Draggable {...props}>
       <Toolbar  {...props} defaultForm={[
-        {label:"countOfCols",defaultValue:"3",type:"text",name:"countOfCols"}
+        { label: "countOfCols", defaultValue: countOfCols, type: "text", name: "countOfCols" }
       ]}/>
       <div className="mt-3">
         <Row className="auto-col">
-          {whatever.map((wh, h) => {
-            return <Col key={h} className={'the-co'+h}>
+          {countOfColsArray.map((wh, h) => {
+            return <Col key={h} className={"the-col dropzone the-co" + h}>
+              <Toolbar  {...props} defaultForm={[
+                {
+                  label: "size", defaultValue: "2", type: "select-options", name: "sizeOfCol", children: [{
+                    name: "1/12", value: "1"
+                  }, {
+                    name: "1/6", value: "2"
+                  }, {
+                    name: "1/4", value: "3"
+                  }, {
+                    name: "1/3", value: "4"
+                  }, {
+                    name: "1/2", value: "6"
+                  }, {
+                    name: "2/3", value: "8"
+                  }, {
+                    name: "3/4", value: "9"
+                  }, {
+                    name: "5/6", value: "10"
+                  }, {
+                    name: "1/1", value: "12"
+                  }]
+                }
+              ]}/>
               <Dropzone
                 {...dropzoneProps}
                 initialElements={filterInitialElements("canvas-1-" + h)}

@@ -1,6 +1,6 @@
 import Post from "#models/post";
 import Media from "#models/media";
-import global from '#root/global';
+import global from "#root/global";
 import requestIp from "request-ip";
 import _ from "lodash";
 
@@ -82,9 +82,9 @@ var self = ({
 
     }
 
-    search["kind"]='post';
+    search["kind"] = "post";
     // console.log(search);
-    Post.find(search, "_id title updatedAt createdAt status  excerpt", function(err, posts) {
+    Post.find(search, "_id title updatedAt createdAt status  excerpt thumbnail", function(err, posts) {
       if (err || !posts) {
         res.json([]);
         return 0;
@@ -462,13 +462,13 @@ var self = ({
       }).lean();
   },
   viewOne: function(req, res, next) {
-console.log("viewOne ",req.params.id);
+    console.log("viewOne ", req.params.id);
     Post.findById(req.params.id,
       function(err, post) {
         if (err || !post) {
           return res.json({
-            post:post,
-            err:err,
+            post: post,
+            err: err,
             success: false,
             message: "error!"
           });
@@ -688,15 +688,13 @@ console.log("viewOne ",req.params.id);
     // console.log('creating post...', req.body);
     Post.create(req.body, function(err, post) {
       if (err || !post) {
-        res.json({
+        return res.json({
           err: err,
           success: false,
           message: "error!"
         });
-        return 0;
       }
-      res.json(post);
-      return 0;
+      return res.json(post);
 
     });
   },
@@ -721,52 +719,48 @@ console.log("viewOne ",req.params.id);
     );
   },
   edit: function(req, res, next) {
-    req.body.status = "published";
+    // req.body.status = "published";
     req.body.customer = req.headers.customer._id;
     if (!req.headers.lan) {
       req.headers.lan = "fa";
     }
-    let { description, title } = req.body;
-    delete req.body.description;
-    req.body.description = {
-      [req.headers.lan]: description
-    };
-    delete req.body.title;
+    // let { description, title } = req.body;
+    // delete req.body.description;
+    // req.body.description = {
+    //   [req.headers.lan]: description
+    // };
+    // delete req.body.title;
     // req.body.description[req.headers.lan]=description;
-    req.body.title = {
-      [req.headers.lan]: title
-    };
+    // req.body.title = {
+    //   [req.headers.lan]: title
+    // };
     // req.body.title[req.headers.lan]=title;
     // console.log()
     // console.log("creating post...", req.body.description, "..„");
-    Post.findByIdAndUpdate(req.params.id, req.body, function(err, post) {
+    Post.findByIdAndUpdate(req.params.id, req.body, { new: true }, function(err, post) {
       if (err || !post) {
-        res.json({
+        return res.json({
           success: false,
           message: "error!"
         });
-        return 0;
       }
 
-      res.json(post);
-      return 0;
+      return res.json(post);
 
     });
   },
   editAdmin: function(req, res, next) {
-    // if (!req.headers.lan) {
-    //   req.headers.lan = "fa";
-    // }
-    Post.findByIdAndUpdate(req.params.id, req.body, function(err, post) {
+    if (!req.headers.lan) {
+      req.headers.lan = "fa";
+    }
+    Post.findByIdAndUpdate(req.params.id, req.body, { new: true }, function(err, post) {
       if (err || !post) {
-        res.json({
+        return res.json({
           success: false,
           message: "error!"
         });
-        return 0;
       }
-      res.json(post);
-      return 0;
+      return res.json(post);
 
     });
   },

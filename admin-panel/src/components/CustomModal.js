@@ -69,9 +69,7 @@ function CustomModal(props) {
             <span>{name + " #" + index}</span>
             <Button onClick={onClose}><CloseRounded/></Button>
           </div>
-          <div className={"row"}>
             {children}
-          </div>
         </Card>
       </Slide>
     </Modal>

@@ -16,6 +16,7 @@ const PostSchema = new mongoose.Schema({
   kind: {type: String, default: 'post'},
   status: {type: String, default: 'processing'},
   photos: [],
+  thumbnail: String,
 
 });
 

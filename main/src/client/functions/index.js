@@ -3,7 +3,7 @@ import Types from "#c/functions/types";
 import store, { storeProducts, storeProduct,storePosts,storeAttrValue } from "#c/functions/store";
 import CONFIG from "#c/config";
 import { createContext } from "react";
-import { clearState, deleteData, getData, postData, putData } from "#c/functions/utils";
+import { clearState, deleteData, getData, postData, putData,PriceFormat } from "#c/functions/utils";
 import KeyboardArrowLeftIcon from "@mui/icons-material/KeyboardArrowLeft";
 
 const DataContext = createContext(null);
@@ -150,6 +150,43 @@ export const LevelCountriesData = (i = "") =>
       handleErr(err);
       return err;
     });
+export const handleTitles = (combination) => {
+  // const { t, options } = this.props;
+  let arr = [];
+
+  if (combination && combination.options) {
+    Object.keys(combination.options).forEach(function(op, index) {
+      arr.push(combination.options[op]);
+    });
+  }
+  if (arr.join(","))
+    return arr;
+};
+export const getMinPrice = (combinations) => {
+  let array_price = [];
+  if (combinations && combinations.length>0) {
+    let price = null;
+    let salePrice = null;
+    combinations.map((comb) => {
+      let pri=parseInt(comb.price);
+      let spri=parseInt(comb.salePrice);
+      if (comb.in_stock)
+        if (spri && spri != null && spri > 0)
+          array_price.push((spri));
+        else if (pri && pri != null && pri > 0)
+          array_price.push((pri));
+
+    });
+    // console.log(array_price);
+    // return 'از' + arrayMin(array_price);
+    let min = arrayMin(array_price);
+    if (min) {
+      price = PriceFormat(min);
+    }
+
+    return price;
+  }
+};
 export const getAllSidebarCategoriesData = (i = "") =>
   getData(`${ApiUrl}/category/all/0/300`, {}, true)
     .then(({ data }) => {
@@ -264,6 +301,37 @@ export const SidebarCategoriesData = (i = "") =>
       handleErr(err);
       return err;
     });
+export const getCombination = async (combinations,condition) =>
+{
+  let r=await combinations.forEach(async (comb)=>{
+    // console.log('condition',condition,Object.is(comb.options,condition));
+
+    if(await isEqual(comb.options,condition)){
+      console.log('comb',comb);
+      return comb;
+    }
+  })
+  console.log('r',r);
+};
+export const isEqual=(obj1, obj2)=> {
+  let props1 = Object.getOwnPropertyNames(obj1);
+  let props2 = Object.getOwnPropertyNames(obj2);
+  if (props1.length != props2.length) {
+    return false;
+  }
+  for (let i = 0; i < props1.length; i++) {
+    let val1 = obj1[props1[i]];
+    let val2 = obj2[props1[i]];
+    let isObjects = isObject(val1) && isObject(val2);
+    if (isObjects && !isEqual(val1, val2) || !isObjects && val1 !== val2) {
+      return false;
+    }
+  }
+  return true;
+}
+export const isObject=(object)=> {
+  return object != null && typeof object === 'object';
+}
 
 export const getMyPost = (_id) =>
   getData(`${ApiUrl}/course/myPost/${_id}`)

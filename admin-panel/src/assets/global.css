@@ -41,6 +41,24 @@ html, body {
 .the-color-popover{
     position: absolute;
     z-index: 2;
+
+}
+.the-color-popover,
+.the-color-popover *{
+}
+body .layout.rtl .the-color-popover,
+body .layout.rtl .the-color-popover *{
+    direction: ltr;
+    font-family: 'Roboto', sans-serif, IRANSans !important;
+    text-align: left;
+
+}
+.main-navbar__search  .frtyuioiuy .input-group-text{
+color:#000 !important;
+
+}
+.single-product .AddToCardButton button{
+    flex-direction: row-reverse;
 }
 .the-color-cover {
     position: fixed;
@@ -58,7 +76,8 @@ html, body {
 }
 .hytrdf.active {
     border-color: #2700ff;
-    border-width: 8px;
+    border-width: 3px;
+    border-style: solid;
 }
 
 .hytrdf {

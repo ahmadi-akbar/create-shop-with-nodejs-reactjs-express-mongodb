@@ -10,6 +10,7 @@ export default ()=>({
   "Change Language": "انتخاب زبان...",
   "English": "انگلیسی",
   "Arabic": "عربی",
+  "please choose combination": "لطفا انتخاب کنید",
   "WhatsApp": "واتس‌اپ",
   "SMS": "اس ام اس",
   "Wrong phone number?": "شماره موبایل اشتباه است",

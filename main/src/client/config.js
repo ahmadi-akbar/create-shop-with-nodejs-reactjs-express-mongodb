@@ -1,4 +1,4 @@
-const isSSR = typeof window === "undefined";
+export const isSSR = typeof window === "undefined";
 // if (isSSR) var window = {};
 // console.log('window.SHOP_URL',window.SHOP_URL);
 

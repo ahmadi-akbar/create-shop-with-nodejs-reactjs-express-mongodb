@@ -1,6 +1,6 @@
 import React from 'react';
 import {withTranslation} from 'react-i18next';
-import {addBookmark, arrayMin, getContactData} from '#c/functions/index';
+import {addBookmark, arrayMin, getContactData,getMinPrice} from '#c/functions/index';
 import {store} from "#c/functions/store";
 
 import {dFormat, PriceFormat} from '#c/functions/utils';
@@ -23,28 +23,10 @@ class Theprice extends React.PureComponent {
     let {price, salePrice, t, className, combinations, type} = this.props;
     if (price) price = PriceFormat(price);
     if (salePrice) salePrice = PriceFormat(salePrice);
+console.log('price',price)
+    price=getMinPrice(combinations);
+    console.log('price2',price)
 
-    let array_price = [];
-    if (combinations && combinations.length>0) {
-      price = null;
-      salePrice = null;
-      combinations.map((comb) => {
-        let pri=parseInt(comb.price);
-        let spri=parseInt(comb.salePrice);
-        if (comb.in_stock)
-          if (spri && spri != null && spri > 0)
-            array_price.push((spri));
-          else if (pri && pri != null && pri > 0)
-            array_price.push((pri));
-
-      });
-      // console.log(array_price);
-      // return 'از' + arrayMin(array_price);
-      let min = arrayMin(array_price);
-      if (min) {
-        price = PriceFormat(min);
-      }
-    }
     if(price==0 || price==null ){
       return <></>;
     }
@@ -53,8 +35,8 @@ class Theprice extends React.PureComponent {
         <div className={'only-price'}> {Boolean(!salePrice && price!=null) &&
           <div className={'wer  mt-2 pandnotsp'}>
                 <span className="card-non-title-item">
-                          {(type === 'variable' && 'از ')}
-                  {price + t(' UZS')}
+                          {(type === 'variable' && t("from"))}
+                  <span className={'mr-2'}>{price + t(' UZS')}</span>
                 </span>
           </div>
         }</div>

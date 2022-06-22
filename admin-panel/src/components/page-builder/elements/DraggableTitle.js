@@ -53,7 +53,8 @@ class DraggableTitle extends React.Component {
     return (
       <Draggable {...this.props} >
         <Toolbar  {...this.props} defaultForm={[
-          {label:"color",defaultValue:"#000",type:"color",name:"color"}
+          {label:"background color",defaultValue:"#000",type:"color",name:"backgroundColor"},
+          {label:"text color",defaultValue:"#fff",type:"color",name:"textColor"},
         ]} />
           <header style={{ background }}>
             {/*<button onClick={this.toggleColorPicker} className="color-picker">*/}

@@ -31,7 +31,6 @@ import {
   UploaderField,
   FormTabs,
   PageBuilder,
-
 } from "@/components";
 import { Val } from "@/Utils";
 import React ,{useEffect,useState,Fragment, useCallback} from "react";
@@ -285,7 +284,15 @@ const Form = ({ children, ...props }) => {
         <RichTextInput multiline fullWidth source="description" label={translate("resources.post.description")}/>
 
         <div className={"mb-20"}></div>
-
+        <UploaderField
+          label={translate("resources.product.photo")}
+          accept="image/*"
+          source="photos"
+          multiple={true}
+          thep={theP}
+          setPhotos={setPhotos}
+          inReturn={thel}
+        />
         <SelectInput
           label={translate("resources.post.kind")}
           defaultValue={"post"}

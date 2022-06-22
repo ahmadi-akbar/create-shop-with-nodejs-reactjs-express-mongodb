@@ -3,12 +3,14 @@ import { withTranslation } from "react-i18next";
 import { toast } from "react-toastify";
 import { addBookmark, getContactData } from "#c/functions/index";
 import Theprice from "#c/components/single-post/Theprice";
+import TheChip from "#c/components/single-post/combinations-type/TheChip";
+import TheList from "#c/components/single-post/combinations-type/TheList";
 
 import { Col, Row } from "shards-react";
 import store from "#c/functions/store";
 import AddToCardButton from "#c/components/components-overview/AddToCardButton";
-
 import { dFormat, PriceFormat } from "#c/functions/utils";
+import {isSSR} from "#c/config";
 
 class SidebarActions extends React.PureComponent {
   constructor(props) {
@@ -63,31 +65,8 @@ class SidebarActions extends React.PureComponent {
 
     this.setState({ optionsId: optionsId });
   };
-  handleOptions = (combination) => {
-    const { t, options } = this.props;
-    let arr = [];
-    if (combination && combination.options) {
-      Object.keys(combination.options).forEach(function(op, index) {
-        if (combination.options[op])
-          arr.push(<div className={"option-title"} key={index}>
-            <span>{op}</span><span>:</span><span>{combination.options[op]}</span>
-          </div>);
-      });
-    }
-    return arr;
-  };
-  handleTitles = (combination) => {
-    const { t, options } = this.props;
-    let arr = [];
 
-    if (combination && combination.options) {
-      Object.keys(combination.options).forEach(function(op, index) {
-        arr.push(combination.options[op]);
-      });
-    }
-    if (arr.join(","))
-      return arr;
-  };
+
 
   render() {
     const { phoneNumber, email, lan, optionsId, combinationsTemp } = this.state;
@@ -98,65 +77,13 @@ class SidebarActions extends React.PureComponent {
     if (salePrice) salePrice = PriceFormat(salePrice);
     let ti = dFormat(updatedAt, t);
     return (
-      [<Row key={0}>
+      [<div key={0}>
         {type == "variable" && combinations && <Col lg={12} md={12} sm={12} xs={12}>
-          <div>
+          <Row>
+            {Boolean(!isSSR && combinations.length>0) && <TheChip _id={_id} title={title} photos={photos} options={options} single={single} method={method} combinations={combinations} t={t} />}
+            {Boolean(isSSR && combinations.length>0) && <TheList _id={_id} title={title} photos={photos} options={options} single={single} method={method} combinations={combinations} t={t}/>}
 
-            {combinations.map((comp, key) => {
-              let inS = ((comp.in_stock == "0" || comp.in_stock == null) ? false : true);
-              if (!inS && !single)
-                return;
-              return (<div key={key} className={"option-wrap posrel"}>
-                <div className={"the-option-title"}>{this.handleOptions(comp)}</div>
-                <div className={"the-option-left-box"}>
-                  <div className={"the-option-price"}>
-                    <Theprice className={"single single-let " + comp.salePrice + " - " + comp.price} price={comp.price}
-                              in_stock={inS}
-                              salePrice={comp.salePrice}/>
-                  </div>
-                  {inS && method === "list" && !single && <>
-                    <div className={"the-option-actions " + inS}>
-                      <AddToCardButton item={{
-                        _id: _id + "DDD" + comp.id,
-                        title: {
-                          [lan]: title[lan] + " - " + this.handleTitles(comp)
-                        },
-                        // mainTitle: title,
-                        photos: photos,
-                        single: true,
-                        in_stock: inS,
-                        quantity: parseInt(comp.quantity),
-                        price: comp.price,
-                        type: "variable",
-                        // comb_id:comp.id,
-                        salePrice: comp.salePrice
-                      }}/>
-                    </div>
-                  </>}
-                  {single && <>
-                    <div className={"the-option-actions " + inS}>
-                      <AddToCardButton item={{
-                        _id: _id + "DDD" + comp.id,
-                        title: {
-                          [lan]: title[lan] + " - " + this.handleTitles(comp)
-                        },
-                        photos: photos,
-                        single: true,
-                        in_stock: inS,
-                        quantity: parseInt(comp.quantity),
-                        price: comp.price,
-                        type: "variable",
-                        // comb_id:comp.id,
-                        salePrice: comp.salePrice
-                      }}/>
-                    </div>
-                  </>}
-                </div>
-                <div className=" hr-bottom"></div>
-              </div>);
-            })}
-
-          </div>
+          </Row>
         </Col>}
         {type == "normal" &&
         <Col lg={12} md={12} sm={12} xs={12} className="mb-3 mt-3"><AddToCardButton item={{
@@ -171,7 +98,7 @@ class SidebarActions extends React.PureComponent {
         }}/></Col>
         }
 
-      </Row>]
+      </div>]
     );
   }
 }
