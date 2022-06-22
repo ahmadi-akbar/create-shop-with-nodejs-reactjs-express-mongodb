@@ -8,6 +8,7 @@ import fs from "fs";
 import moment from "moment-jalaali";
 import global from "#root/global";
 import mongoose from "mongoose";
+import CONFIG from "#c/config";
 
 let self = ({
   importproductsfromcsv: function(req, res, next) {
@@ -527,7 +528,7 @@ let self = ({
         console.log("price_stock", price_stock);
         modifedProducts.push({
           product_id: c._id,
-          page_url: "http://localhost:3001/p/" + c._id + "/" + encodeURIComponent(c.title.fa),
+          page_url: CONFIG.SHOP_URL+"/p/" + c._id + "/" + encodeURIComponent(c.title.fa),
           price: last_price,
           old_price: last_sale_price,
           availability: (price_stock.indexOf(true) >= 0 ? "instock" : "outofstock")

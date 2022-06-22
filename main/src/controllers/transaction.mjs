@@ -8,6 +8,7 @@ import request from "#root/request";
 import global from "#root/global";
 
 var TransactionsGUI = 1;  //счетчик транзакций
+import CONFIG from "#c/config";
 
 class AppError extends Error {
   constructor({ name, message, code, content, paymentCode, res }) {
@@ -267,7 +268,7 @@ var self = ({
         };
         // console.log(options);
         let $text;
-        $text = "customer is paying " + amount.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",") + " Toman" + "\n" + "order number: # " + order.orderNumber + "\n" + "https://admin.localhost:3001/#/order/" + order._id + "\n";
+        $text = "customer is paying " + amount.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",") + " Toman" + "\n" + "order number: # " + order.orderNumber + "\n" + "https://admin."+CONFIG.SHOP_URL+"/#/order/" + order._id + "\n";
         $text += "customer phone number: " + order.customer.phoneNumber;
 
         // global.sendSms('9120539945', $text,'300088103373');
@@ -841,7 +842,7 @@ var self = ({
                     }
                     // console.log('order', order);
                     let $text;
-                    $text = "customer payed: " + amount.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",") + " Toman" + "\n" + "order number: # " + order.orderNumber + "\n" + "https://admin.localhost:3001/#/order/" + order._id + "\n";
+                    $text = "customer payed: " + amount.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",") + " Toman" + "\n" + "order number: # " + order.orderNumber + "\n" + "https://admin."+CONFIG.SHOP_URL+"/#/order/" + order._id + "\n";
                     $text += "customer phone number: " + order.customer.phoneNumber;
 
                     // global.sendSms('9120539945', $text,'300088103373');
@@ -870,7 +871,7 @@ var self = ({
                       },
                       {
                         key: "myOrdersLink",
-                        value: "http://localhost:3001/my-account/"
+                        value: CONFIG.SHOP_URL+"/my-account/"
                       }], "300088103373", null, "98", "sms_submitOrderSuccessPaying");
 
                     global.publishToTelegram(objd);
