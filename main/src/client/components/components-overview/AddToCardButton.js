@@ -10,6 +10,13 @@ import {store} from "#c/functions/store";
 import {useSelector} from 'react-redux';
 import { useNavigate } from "react-router-dom"
 import {toast} from "react-toastify";
+<<<<<<< HEAD
+=======
+import CloseIcon from '@mui/icons-material/Close';
+import RemoveCircleOutlineIcon from '@mui/icons-material/RemoveCircleOutline';
+import AddCircleOutlineIcon from '@mui/icons-material/AddCircleOutline';
+import ShoppingBagIcon from '@mui/icons-material/ShoppingBag';
+>>>>>>> 496de9eb5f488a591bacfd6f8d28b7e365dbd606
 function AddToCardButton({item, text = '',variable=false,children, t}) {
   let [count, setcount] = useState(0);
   let [Navigate, SetNavigate] = useState(null);
@@ -51,11 +58,19 @@ function AddToCardButton({item, text = '',variable=false,children, t}) {
   }
   if ((item.single && !item.in_stock) || (item.single && !item.quantity)) {
     return <div className={'outOfStock '+item.type}>
+<<<<<<< HEAD
       <i className="material-icons">close</i>{t("out of stock")}</div>
   }
   if(item.type==='normal'){
     if(item.quantity===0 || !item.in_stock)
       return <div className={'outOfStock '+item.type}><i className="material-icons">close</i>{t("out of stock")}</div>
+=======
+      <CloseIcon/>{t("out of stock")}</div>
+  }
+  if(item.type==='normal'){
+    if(item.quantity===0 || !item.in_stock)
+      return <div className={'outOfStock '+item.type}><CloseIcon/>{t("out of stock")}</div>
+>>>>>>> 496de9eb5f488a591bacfd6f8d28b7e365dbd606
   }
 
   let mojud=false;
@@ -68,13 +83,18 @@ function AddToCardButton({item, text = '',variable=false,children, t}) {
       })
     }
     if(!mojud){
+<<<<<<< HEAD
       return <div className={'outOfStock variablestock'}><i className="material-icons">close</i>{t("out of stock")}</div>
+=======
+      return <div className={'outOfStock variablestock'}><CloseIcon/>{t("out of stock")}</div>
+>>>>>>> 496de9eb5f488a591bacfd6f8d28b7e365dbd606
     }
   }
 
   return (
     <div className="AddToCardButton">
       {(count !== 0) && <Button size="md" className={'kjhgfgh'} theme="primary">
+<<<<<<< HEAD
         <i className="material-icons left" onClick={(e) => {
           removeItem(item);
         }}>remove</i>
@@ -82,16 +102,30 @@ function AddToCardButton({item, text = '',variable=false,children, t}) {
         <i className="material-icons" onClick={(e) => {
           // console/.log('item',item);
           // return;
+=======
+        <RemoveCircleOutlineIcon className={"left"} onClick={(e) => {
+          removeItem(item);
+        }} />
+        {count}
+        <AddCircleOutlineIcon className={""} onClick={(e) => {
+>>>>>>> 496de9eb5f488a591bacfd6f8d28b7e365dbd606
           addItem(item).then((x)=>{
             toast(t('Added to cart successfully!'), {
               type: 'success'
             })
           });
+<<<<<<< HEAD
 
         }}>add</i>
       </Button>}
       {count === 0 &&
       <Button size="md" className={'kjhgfgh'} theme="primary" onClick={(e) => {
+=======
+        }} />
+      </Button>}
+      {count === 0 &&
+      <Button size="md" className={'kjhgfgh empty-card'} theme="primary" onClick={(e) => {
+>>>>>>> 496de9eb5f488a591bacfd6f8d28b7e365dbd606
         if (text && text === t('options') && !item.single) {
           let title=encodeURIComponent(item.title.fa.replace(/\\|\//g,''));
           SetNavigate('/p/' + item._id + '/' + title);
@@ -107,7 +141,11 @@ function AddToCardButton({item, text = '',variable=false,children, t}) {
         }
       }}>
         {!item.single && <span>{text}</span>}
+<<<<<<< HEAD
         {!item.single && <i className="material-icons center">shopping_cart</i>}
+=======
+        {!item.single && <ShoppingBagIcon className="center"/>}
+>>>>>>> 496de9eb5f488a591bacfd6f8d28b7e365dbd606
         {item.single && <span>{t("add to cart")}</span>}
       </Button>}
       {children}

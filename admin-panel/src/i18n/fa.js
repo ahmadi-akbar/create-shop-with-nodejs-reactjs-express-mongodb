@@ -174,7 +174,14 @@ const customFarsiMessages = {
     attributes: {
       slug: "نامک",
       name: "نام ویژگی",
+<<<<<<< HEAD
       values: "مقادیر"
+=======
+      values: "مقادیر",
+      type:"نوع",
+      normal:"عادی",
+      color:"رنگ"
+>>>>>>> 496de9eb5f488a591bacfd6f8d28b7e365dbd606
     },
     category: {
       slug: "نامک",

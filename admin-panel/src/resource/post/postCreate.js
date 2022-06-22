@@ -25,6 +25,7 @@ import {
   SimpleForm,
   SimpleImageField,
   UploaderField
+<<<<<<< HEAD
 } from "@/components";
 import { makeStyles } from "@mui/styles";
 import { Val } from "@/Utils";
@@ -170,6 +171,15 @@ const Form = ({ children, ...props }) => {
     </SimpleForm>
   );
 };
+=======
+
+} from "@/components";
+import { makeStyles } from "@mui/styles";
+import { Val } from "@/Utils";
+import Form from "./postForm";
+
+import React from "react";
+>>>>>>> 496de9eb5f488a591bacfd6f8d28b7e365dbd606
 
 
 const create = (props) => (

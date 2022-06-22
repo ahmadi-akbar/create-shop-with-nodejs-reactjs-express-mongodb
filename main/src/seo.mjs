@@ -1,12 +1,21 @@
 import path from "path";
 import fs from "fs";
+<<<<<<< HEAD
 import config from "../public_media/site_setting/config.js";
+=======
+
+import config from "#c/config";
+>>>>>>> 496de9eb5f488a591bacfd6f8d28b7e365dbd606
 
 let readFilePromise = function() {
   // let file = path///.join(__dirname, "/../public_media/site_setting/", "config.js");
 
   return new Promise(function(ok, notOk) {
+<<<<<<< HEAD
     let c=config();
+=======
+    let c=config;
+>>>>>>> 496de9eb5f488a591bacfd6f8d28b7e365dbd606
     // console.log(/'c',c);
 
     ok(c);
@@ -25,6 +34,7 @@ let readFilePromise = function() {
 
 let seo = {
   "readFilePromise": readFilePromise,
+<<<<<<< HEAD
   "home": {
     title: {
       fa: "آروند شاپ - فروش محصولات اپل، سرفیس و لوازم جانبی"
@@ -121,5 +131,7 @@ let seo = {
     }
   }
 
+=======
+>>>>>>> 496de9eb5f488a591bacfd6f8d28b7e365dbd606
 };
 export default seo;

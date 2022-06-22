@@ -19,6 +19,7 @@ let configHandle = (express, app) => {
   app.use(cookieParser());
   app.use(busboy());
   app.use(express.static(public_mediaFolder, { maxage: "1y" }));
+<<<<<<< HEAD
   app.use(express.static(buildFolder));
   // app.use(express.static(publicFolder, { maxage: "1y" }));
   app.set("view engine", "pug");
@@ -36,6 +37,11 @@ let configHandle = (express, app) => {
   // }
   //     next();
   // })
+=======
+  app.use(express.static(buildFolder,{  index: false}));
+  app.set("view engine", "pug");
+  // app.use(express.static(assetsFolder));
+>>>>>>> 496de9eb5f488a591bacfd6f8d28b7e365dbd606
   console.log("==> configHandle");
 };
 export default configHandle;

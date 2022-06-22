@@ -1,11 +1,21 @@
+<<<<<<< HEAD
 import CONFIG from "#config/config";
+=======
+import CONFIG from "#c/config";
+>>>>>>> 496de9eb5f488a591bacfd6f8d28b7e365dbd606
 import {isClient} from "../functions/index"
 
 // export const config = "../../..public_media/site_setting/"+ ("config.js");
 // export const url ="/site_setting/img/";
+<<<<<<< HEAD
 export let url =CONFIG().SHOP_URL;
 if(isClient){
   url="/site_setting/img/";
+=======
+export let url =CONFIG.SHOP_URL;
+if(isClient){
+  url+="site_setting/img/";
+>>>>>>> 496de9eb5f488a591bacfd6f8d28b7e365dbd606
 }
 // if (env === 'development') {
 //   url =VARIABLE.SHOP_URL;
@@ -13,11 +23,19 @@ if(isClient){
 //
 // }
 
+<<<<<<< HEAD
 // console.log("VARIABLE",VARIABLE//);
 export const defaultImg = url + ("not-found.png");
 
 export const SnapChatIcon = url + ("snapchat.svg");
 export const logoImg = url + "site_setting/" + ("logo.png") || url + "site_setting/" + ("logo.jpg");
+=======
+console.log("VARIABLE",CONFIG);
+export const defaultImg = url + ("not-found.png");
+
+export const SnapChatIcon = url + ("snapchat.svg");
+export const logoImg = url + ("logo.png");
+>>>>>>> 496de9eb5f488a591bacfd6f8d28b7e365dbd606
 export const payImg = url + ("pay.png");
 export const enamadImg = url + ("enamad.png");
 export const etmeImg = url + ("etme.jpeg");

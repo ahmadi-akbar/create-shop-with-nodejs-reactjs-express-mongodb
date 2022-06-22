@@ -10,7 +10,11 @@ export default ({}) => {
 
     return (
         <>
+<<<<<<< HEAD
           {record.title && <a target={'_blank'} href={'https://gameboss.shop/p/'+record._id+'/'+record.title[translate('lan')]}><TextField source={"title."+translate('lan')} label={translate('pos.title')} sortable={false}/></a>}
+=======
+          {record.title && <a target={'_blank'} href={'http://localhost:3001/p/'+record._id+'/'+record.title[translate('lan')]}><TextField source={"title."+translate('lan')} label={translate('pos.title')} sortable={false}/></a>}
+>>>>>>> 496de9eb5f488a591bacfd6f8d28b7e365dbd606
         </>
     );
 

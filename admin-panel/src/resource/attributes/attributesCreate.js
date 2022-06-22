@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import {
     ArrayInput,
     BooleanInput,
@@ -55,13 +56,37 @@ const Form = ({children, ...rest}) => {
             </ArrayInput>
         </SimpleForm>
     );
+=======
+import { ArrayInput, Create, SelectInput, SimpleFormIterator, TextInput, useTranslate } from "react-admin";
+import { Divider } from "@mui/material";
+import { List, SimpleForm, UploaderField } from "@/components";
+import useStyles from "@/styles";
+import { Val } from "@/Utils";
+import Form  from "./attributesForm";
+
+const defaultValues = {
+  values: [
+    {
+      name: {
+        fa: ""
+      },
+      slug: ""
+    }
+  ]
+>>>>>>> 496de9eb5f488a591bacfd6f8d28b7e365dbd606
 };
 
 
 const create = (props) => (
+<<<<<<< HEAD
     <Create {...props}>
         <Form/>
     </Create>
+=======
+  <Create {...props}>
+    <Form/>
+  </Create>
+>>>>>>> 496de9eb5f488a591bacfd6f8d28b7e365dbd606
 );
 
 export default create;

@@ -1,12 +1,25 @@
+<<<<<<< HEAD
+=======
+console.log("#f routeHandle");
+
+>>>>>>> 496de9eb5f488a591bacfd6f8d28b7e365dbd606
 import AdminRT from "#routes/admin/index";
 import CustomerRT from "#routes/customer/index";
 import PublicRT from "#routes/public/index";
 import BoyRT from "#routes/boy/index";
 import createError from "http-errors";
+<<<<<<< HEAD
 import config from "./../../public_media/site_setting/config";
 
 let routeHandle = (app) => {
   console.log("==> routeHandle");
+=======
+import {the_public_route} from "#routes/public/p";
+
+let routeHandle = (app) => {
+  console.log("==> routeHandle");
+
+>>>>>>> 496de9eb5f488a591bacfd6f8d28b7e365dbd606
   // if (config().set///////ting.BASE_URL) {
 
     // res.status(200);
@@ -26,6 +39,7 @@ let routeHandle = (app) => {
     keys = Object.keys(PublicRT);
     keys.forEach((x) => {
       // console.log('/'+x)
+<<<<<<< HEAD
       app.use("/" + x, PublicRT[x]);
 
     });
@@ -52,6 +66,38 @@ let routeHandle = (app) => {
       } else
         return res.render("error");
     });
+=======
+
+      app.use("/" + x, PublicRT[x]);
+
+    });
+  // app.use("/", (req,res,next)=>{
+  //   the_public_route(req,res,next);
+  // });
+    // app.use("/customer/settings", CustomerRT.settings);
+
+// catch 404 and forward to error handler
+//     app.use(function(req, res, next) {
+//
+//       next(createError(404));
+//     });
+
+
+// error handler
+//     app.use(function(err, req, res, next) {
+//       // set locals, only providing error in development
+//       res.locals.message = err.message;
+//       res.locals.error = req.app.get("env") === "development" ? err : {};
+//
+//       // render the error page
+//       res.status(err.status || 500);
+//       if (err.status === 404) {
+//         return res.redirect("/errors");
+//
+//       } else
+//         return res.render("error");
+//     });
+>>>>>>> 496de9eb5f488a591bacfd6f8d28b7e365dbd606
   // } else {
   //   app.get("/", function(err, req, res, next) {
   //     console.log("hell");

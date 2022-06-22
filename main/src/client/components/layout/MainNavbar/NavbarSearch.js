@@ -10,7 +10,12 @@ import store from "#c/functions/store";
 import {withTranslation} from 'react-i18next';
 import {toggleSearch} from '#c/functions/index';
 import {useSelector} from 'react-redux';
+<<<<<<< HEAD
 
+=======
+import CloseIcon from '@mui/icons-material/Close';
+import SearchIcon from '@mui/icons-material/Search';
+>>>>>>> 496de9eb5f488a591bacfd6f8d28b7e365dbd606
 // class NavbarSearch extends React.Component {
 // history = useNavigate();
 function NavbarSearch({className, type = 'prepend', t}) {
@@ -129,13 +134,18 @@ function NavbarSearch({className, type = 'prepend', t}) {
         }}>
 
           <InputGroupText>
+<<<<<<< HEAD
             <i className="material-icons">close</i>
+=======
+            <CloseIcon/>
+>>>>>>> 496de9eb5f488a591bacfd6f8d28b7e365dbd606
           </InputGroupText>
         </InputGroupAddon>}
         <InputGroupAddon className={'frtyuioiuy'} type="append" onClick={event => {
           console.log('event',event);
         }}>
           <InputGroupText>
+<<<<<<< HEAD
             <i className="material-icons black">search</i>
           </InputGroupText>
         </InputGroupAddon>
@@ -150,12 +160,24 @@ function NavbarSearch({className, type = 'prepend', t}) {
         {!load && loader}
         {load && data.length > 0 && [data.map((da, dai) => {
           // console.log('da', da);
+=======
+            <SearchIcon/>
+          </InputGroupText>
+        </InputGroupAddon>
+      </InputGroup>
+      {openBox && <div className={'sdfgde'}>
+        {!load && loader}
+        {load && data.length > 0 && [data.map((da, dai) => {
+>>>>>>> 496de9eb5f488a591bacfd6f8d28b7e365dbd606
           return (<div className={'search_item'} key={dai}>
             <NavLink exact tag={RouteNavLink} to={da.url} onClick={()=>{va();onCloseSearch()}}>
 
               {da.photo && <div className={'search_image'}><img src={da.photo}/></div>}
               <div className={'search_title'}> {da.title[lan]}</div>
+<<<<<<< HEAD
               {/*<div className={'search_type'}> {t(da.type[lan])}</div>*/}
+=======
+>>>>>>> 496de9eb5f488a591bacfd6f8d28b7e365dbd606
             </NavLink>
           </div>);
         }),<div className={'search_item textAlignCenter'}>
@@ -172,9 +194,13 @@ function NavbarSearch({className, type = 'prepend', t}) {
     </Form>
 
 
+<<<<<<< HEAD
   )
     ;
   // }
+=======
+  );
+>>>>>>> 496de9eb5f488a591bacfd6f8d28b7e365dbd606
 }
 
 export default withTranslation()(NavbarSearch);

@@ -88,7 +88,11 @@ const Home = (props) => {
 
   const loadProductItems = async (page, catId = catid,filter={}) => {
 
+<<<<<<< HEAD
     console.log("==> loadProductItems():", offset, search, catId,filter);
+=======
+    // console.log("==> loadProductItems():", offset, search, catId,filter);
+>>>>>>> 496de9eb5f488a591bacfd6f8d28b7e365dbd606
 
     // if(!loadingMoreItems){
     let newOffset = (await offset) + 24;
@@ -124,11 +128,14 @@ const Home = (props) => {
       setAttr(attr);
     if (value !== valueP)
       setValue(value);
+<<<<<<< HEAD
     console.log("attr", attr);
     console.log("value", value);
     // loadProductItems(0, catid,{
     //   attr,value
     // });
+=======
+>>>>>>> 496de9eb5f488a591bacfd6f8d28b7e365dbd606
 
   }
   useEffect(() => {
@@ -162,7 +169,11 @@ const Home = (props) => {
   const afterGetData = (resp) => {
     let trackss = [...tracks];
     if (resp.length < 24) sethasMoreItems(false);
+<<<<<<< HEAD
     console.log("resp", resp);
+=======
+    // console.log("resp", resp);
+>>>>>>> 496de9eb5f488a591bacfd6f8d28b7e365dbd606
     if (resp && resp.length) {
       resp.forEach((item) => {
         trackss.push(item);
@@ -333,7 +344,11 @@ const Home = (props) => {
 
       </div>}
 
+<<<<<<< HEAD
       {(showSlide) && <div className="relative mt-3 mb-3 p-3">
+=======
+      {(showSlide) && <div className="relative mt-3 p-3">
+>>>>>>> 496de9eb5f488a591bacfd6f8d28b7e365dbd606
         <Story/>
       </div>}
       <Row className={"m-0"}>

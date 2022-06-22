@@ -1,21 +1,37 @@
 import axios from "axios";
 import Types from "#c/functions/types";
 import store, { storeProducts, storeProduct,storePosts,storeAttrValue } from "#c/functions/store";
+<<<<<<< HEAD
 import CONFIG from "#config/config";
 import { createContext } from "react";
 import { clearState, deleteData, getData, postData, putData } from "#c/functions/utils";
+=======
+import CONFIG from "#c/config";
+import { createContext } from "react";
+import { clearState, deleteData, getData, postData, putData,PriceFormat } from "#c/functions/utils";
+import KeyboardArrowLeftIcon from "@mui/icons-material/KeyboardArrowLeft";
+>>>>>>> 496de9eb5f488a591bacfd6f8d28b7e365dbd606
 
 const DataContext = createContext(null);
 export const isClient = (typeof window !== "undefined");
 // clearState
+<<<<<<< HEAD
 console.log('CONFIG',CONFIG());
 export const MainUrl = CONFIG().BASE_URL;
+=======
+console.log('CONFIG',CONFIG);
+export const MainUrl = CONFIG.BASE_URL;
+>>>>>>> 496de9eb5f488a591bacfd6f8d28b7e365dbd606
 if(isClient){
 // import { createContext } from "react";
 
 }
 // export const MainUrl = "http://localhost:3003";
+<<<<<<< HEAD
 export const ApiUrl = CONFIG().FRONT_ROUTE;
+=======
+export const ApiUrl = CONFIG.BASE_URL+'/customer';
+>>>>>>> 496de9eb5f488a591bacfd6f8d28b7e365dbd606
 // console.log("REACT_APP_FRONT_ROUTE",process.env);
 // export const ApiUrl = "http://localhost:3003/customer";
 export const token = (typeof window === "undefined") ? null : store.getState().store.user.token;
@@ -149,6 +165,46 @@ export const LevelCountriesData = (i = "") =>
       handleErr(err);
       return err;
     });
+<<<<<<< HEAD
+=======
+export const handleTitles = (combination) => {
+  // const { t, options } = this.props;
+  let arr = [];
+
+  if (combination && combination.options) {
+    Object.keys(combination.options).forEach(function(op, index) {
+      arr.push(combination.options[op]);
+    });
+  }
+  if (arr.join(","))
+    return arr;
+};
+export const getMinPrice = (combinations) => {
+  let array_price = [];
+  if (combinations && combinations.length>0) {
+    let price = null;
+    let salePrice = null;
+    combinations.map((comb) => {
+      let pri=parseInt(comb.price);
+      let spri=parseInt(comb.salePrice);
+      if (comb.in_stock)
+        if (spri && spri != null && spri > 0)
+          array_price.push((spri));
+        else if (pri && pri != null && pri > 0)
+          array_price.push((pri));
+
+    });
+    // console.log(array_price);
+    // return 'از' + arrayMin(array_price);
+    let min = arrayMin(array_price);
+    if (min) {
+      price = PriceFormat(min);
+    }
+
+    return price;
+  }
+};
+>>>>>>> 496de9eb5f488a591bacfd6f8d28b7e365dbd606
 export const getAllSidebarCategoriesData = (i = "") =>
   getData(`${ApiUrl}/category/all/0/300`, {}, true)
     .then(({ data }) => {
@@ -160,9 +216,15 @@ export const getAllSidebarCategoriesData = (i = "") =>
           item.title = item.name;
 
           item.htmlAfter =
+<<<<<<< HEAD
             "<i class='material-icons'>keyboard_arrow_left</i>";
           item.htmlBefore =
             "<i class='material-icons'>keyboard_arrow_right</i>";
+=======
+            <KeyboardArrowLeftIcon/>;
+          item.htmlBefore =
+            <KeyboardArrowLeftIcon/>;
+>>>>>>> 496de9eb5f488a591bacfd6f8d28b7e365dbd606
         }
       });
       data.forEach((item1) => {
@@ -263,6 +325,40 @@ export const SidebarCategoriesData = (i = "") =>
       handleErr(err);
       return err;
     });
+<<<<<<< HEAD
+=======
+export const getCombination = async (combinations,condition) =>
+{
+  let r=await combinations.forEach(async (comb)=>{
+    // console.log('condition',condition,Object.is(comb.options,condition));
+
+    if(await isEqual(comb.options,condition)){
+      console.log('comb',comb);
+      return comb;
+    }
+  })
+  console.log('r',r);
+};
+export const isEqual=(obj1, obj2)=> {
+  let props1 = Object.getOwnPropertyNames(obj1);
+  let props2 = Object.getOwnPropertyNames(obj2);
+  if (props1.length != props2.length) {
+    return false;
+  }
+  for (let i = 0; i < props1.length; i++) {
+    let val1 = obj1[props1[i]];
+    let val2 = obj2[props1[i]];
+    let isObjects = isObject(val1) && isObject(val2);
+    if (isObjects && !isEqual(val1, val2) || !isObjects && val1 !== val2) {
+      return false;
+    }
+  }
+  return true;
+}
+export const isObject=(object)=> {
+  return object != null && typeof object === 'object';
+}
+>>>>>>> 496de9eb5f488a591bacfd6f8d28b7e365dbd606
 
 export const getMyPost = (_id) =>
   getData(`${ApiUrl}/course/myPost/${_id}`)
@@ -1001,9 +1097,15 @@ export const sendSms = (obj) => {
       });
   });
 };
+<<<<<<< HEAD
 export const buy = (_id, obj = {}) => {
   return new Promise(function(resolve, reject) {
     postData(`${ApiUrl}/transaction/buy/${_id}`, obj, true)
+=======
+export const buy = (_id, obj = {},price=0) => {
+  return new Promise(function(resolve, reject) {
+    postData(`${ApiUrl}/transaction/buy/${_id}/`+(price!=0 ? price : ''), obj, true)
+>>>>>>> 496de9eb5f488a591bacfd6f8d28b7e365dbd606
       .then((data) => {
         let mainD = data["data"];
 

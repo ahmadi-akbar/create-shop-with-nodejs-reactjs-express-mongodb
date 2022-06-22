@@ -160,7 +160,14 @@ const customEnglishMessages = {
     attributes: {
       slug: "slug",
       name: "attribute name",
+<<<<<<< HEAD
       values: "values"
+=======
+      values: "values",
+      type:"type",
+      normal:"normal",
+      color:"color"
+>>>>>>> 496de9eb5f488a591bacfd6f8d28b7e365dbd606
     },
     category: {
       menu_label:"categories",

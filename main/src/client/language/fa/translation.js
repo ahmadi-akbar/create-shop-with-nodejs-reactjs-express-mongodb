@@ -6,12 +6,25 @@ export default ()=>({
   "right": "right",
   " UZS": " تومان",
   "Right": "Right",
+<<<<<<< HEAD
   "Change Language": "انتخاب زبان...",
   "English": "انگلیسی",
   "Arabic": "عربی",
   "WhatsApp": "واتس‌اپ",
   "SMS": "اس ام اس",
   "cancel": "ببند!",
+=======
+  "Send code again?": "ارسال مجدد کد؟",
+  "Change Language": "انتخاب زبان...",
+  "English": "انگلیسی",
+  "Arabic": "عربی",
+  "please choose combination": "لطفا انتخاب کنید",
+  "WhatsApp": "واتس‌اپ",
+  "SMS": "اس ام اس",
+  "Wrong phone number?": "شماره موبایل اشتباه است",
+  "cancel": "ببند!",
+  "your phone number": "شماره موبایل شما",
+>>>>>>> 496de9eb5f488a591bacfd6f8d28b7e365dbd606
   "description": "توضیحات تکمیلی",
   "attributes": "مشخصات فنی",
   "comments": "امتیازات و نظرات",
@@ -27,6 +40,10 @@ export default ()=>({
   "You did not add anything to cart!": "شما چیزی به سبد خرید خود اضافه نکردید!",
   "search please...": "جستجو (برند، مدل، نام محصول...)",
   "Navigateing...": "در حال انتقال...",
+<<<<<<< HEAD
+=======
+  "Error...": "خطا...",
+>>>>>>> 496de9eb5f488a591bacfd6f8d28b7e365dbd606
   "Added to cart successfully!": "با موفقیت به کارت اضافه شد!",
   "Please enter address!": "لطفا آدرس خود را انتخاب کنید!",
   "Enter street address!": "لطفا آدرس دقیق را وارد کنید!",
@@ -38,6 +55,14 @@ export default ()=>({
   "Mellat payment gateway is not accessible!": "درگاه بانک ملت در دسترس نمی باشد. لطفا بانک دیگری را انتخاب نمایید.",
   "my posts": "آگهی های من",
   "logout": "خروج",
+<<<<<<< HEAD
+=======
+  "transaction authority": "شناسه تراکنش",
+  "status code": "کد وضعیت",
+  "amount": "مقدار پرداختی",
+  "salePrice": "قیمت با تخفیف",
+  "count": "تعداد",
+>>>>>>> 496de9eb5f488a591bacfd6f8d28b7e365dbd606
   "home": "خانه",
   "about us": "درباره ما",
   "zoomiroom Mag": "بلاگ زومی روم",
@@ -180,6 +205,11 @@ export default ()=>({
   "get contact": "دریافت شماره تماس",
   "bookmark": "بعدا میبینم",
   "Turkish": "ترکی",
+<<<<<<< HEAD
+=======
+  "Rial": "ریال",
+  "transaction list": "لیست ترانکش ها",
+>>>>>>> 496de9eb5f488a591bacfd6f8d28b7e365dbd606
   "Upload canceled!": "بارگزاری لغو شد!",
   "Recruitment questionnaire": "پرسشنامه استخدام",
   "Compressing image...": "در حال فشرده سازی...",

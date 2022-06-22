@@ -18,22 +18,39 @@
     "jalali-moment": "^3.3.11",
     "json-diff": "^0.7.4",
     "prettier": "^2.6.2",
+<<<<<<< HEAD
+=======
+    "pure-react-carousel": "^1.28.1",
+>>>>>>> 496de9eb5f488a591bacfd6f8d28b7e365dbd606
     "qrcode": "^1.5.0",
     "ra-i18n-polyglot": "^4.0.3",
     "ra-input-rich-text": "^4.1.0",
     "ra-language-farsi": "^4.0.0",
     "react": "^18.1.0",
     "react-admin": "^4.0.3",
+<<<<<<< HEAD
+=======
+    "react-admin-color-input": "^3.0.0-beta.0",
+>>>>>>> 496de9eb5f488a591bacfd6f8d28b7e365dbd606
     "react-chartjs-2": "^4.1.0",
     "react-color": "^2.19.3",
     "react-dom": "^18.1.0",
     "react-final-form": "^6.5.9",
     "react-input-color": "^4.0.0",
+<<<<<<< HEAD
+=======
+    "react-json-view": "^1.21.3",
+    "react-page-maker": "^1.1.31",
+>>>>>>> 496de9eb5f488a591bacfd6f8d28b7e365dbd606
     "react-redux": "^8.0.1",
     "react-router-dom": "^6.3.0",
     "react-router-redux": "^4.0.8",
     "react-scripts": "^5.0.1",
     "react-select": "^5.3.2",
+<<<<<<< HEAD
+=======
+    "reactstrap": "^9.1.1",
+>>>>>>> 496de9eb5f488a591bacfd6f8d28b7e365dbd606
     "recharts": "^2.1.9",
     "redux": "^4.2.0",
     "redux-devtools-extension": "^2.13.9",

@@ -6,6 +6,7 @@ import Sms from "#controllers/sms";
 import Action from "#controllers/action";
 import Customer from "#models/customer";
 import Settings from "#models/settings";
+<<<<<<< HEAD
 import VARIABLE from "#v/variables";
 import config from "#json/variables/config";
 
@@ -21,6 +22,18 @@ let global = {
   body:"",
   ip: VARIABLE.BASE_URL,
   domain: VARIABLE.BASE_URL,
+=======
+// import VARIABLE from "#v/variables";
+import config from "#json/variables/config";
+// import randtoken from "rand-token";
+
+let version = process.env.VERSION_NUM;
+
+let global = {
+  body:"",
+  ip: process.env.BASE_URL,
+  domain: process.env.BASE_URL,
+>>>>>>> 496de9eb5f488a591bacfd6f8d28b7e365dbd606
   config: (setting)=>(config),
   sendSms: function(to, text, From = "50004000004", customerId = null, countryCode = "98", findKey = false) {
     return new Promise(function(resolve, reject) {
@@ -49,13 +62,21 @@ let global = {
                 });
 
               }
+<<<<<<< HEAD
               sendmessage(countryCode, "300088103373", to, smstext, resolve, reject);
+=======
+              global.sendmessage(countryCode, "300088103373", to, smstext, resolve, reject);
+>>>>>>> 496de9eb5f488a591bacfd6f8d28b7e365dbd606
 
             }
           }
         );
       } else {
+<<<<<<< HEAD
         sendmessage(countryCode, "300088103373", to, text, resolve, reject);
+=======
+        global.sendmessage(countryCode, "300088103373", to, text, resolve, reject);
+>>>>>>> 496de9eb5f488a591bacfd6f8d28b7e365dbd606
       }
 
 
@@ -75,7 +96,11 @@ let global = {
         phoneNumber: to,
         from: From
       }).then((sms) => {
+<<<<<<< HEAD
         console.log("sss", sms);
+=======
+        // console.log("sss", sms);
+>>>>>>> 496de9eb5f488a591bacfd6f8d28b7e365dbd606
 
 
         let options = {
@@ -104,6 +129,7 @@ let global = {
             Sms.editByAdmin(sms._id, { status: "sent" });
 
           }
+<<<<<<< HEAD
           resolve({
             success: true,
             message: "کد برای شما ارسال شد!"
@@ -121,6 +147,20 @@ let global = {
 
         // reject(err);
 
+=======
+          return resolve({
+            success: true,
+            message: "کد برای شما ارسال شد!"
+          });
+        }).catch(function(err) {
+            console.log("err global sms:", err);
+            return reject({
+              success: true,
+              err:err,
+              message: "مشکل در ارسال اس ام اس!"
+            });
+          });
+>>>>>>> 496de9eb5f488a591bacfd6f8d28b7e365dbd606
       });
 
     } else {
@@ -250,6 +290,22 @@ let global = {
     });
 
   },
+<<<<<<< HEAD
+=======
+  generateUnid: function(arr, userIp) {
+
+      let abc = "abcdefghijklmnopqrstuvwxyz1234567890".split("");
+      var token="";
+      for(let i=0;i<32;i++){
+        token += abc[Math.floor(Math.random()*abc.length)];
+      }
+      // console.log('token is',token);
+      return token; //Will return a 32 bit "hash"
+
+    // return randtoken.generate(32);
+
+  },
+>>>>>>> 496de9eb5f488a591bacfd6f8d28b7e365dbd606
 
   addUnic: async function(arr, userIp) {
     return await new Promise(async function(resolve, reject) {

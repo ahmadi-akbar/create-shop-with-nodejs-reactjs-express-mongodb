@@ -70,7 +70,10 @@ typings/
 .yarn-integrity
 
 # dotenv environment variables file
+<<<<<<< HEAD
 .env
+=======
+>>>>>>> 496de9eb5f488a591bacfd6f8d28b7e365dbd606
 .env.test
 
 # parcel-bundler cache (https://parceljs.org/)
@@ -109,8 +112,16 @@ main/public_media/customer/*
 main/public_media/site_setting/*
 !main/public_media/site_setting/.blank
 babel-cache.json
+<<<<<<< HEAD
 main/.env
+=======
+>>>>>>> 496de9eb5f488a591bacfd6f8d28b7e365dbd606
 main/.env.local
 admin-panel/public/variables.js
 admin-panel/build/variables.js
 admin/variables.js
+<<<<<<< HEAD
+=======
+
+/**/*.map
+>>>>>>> 496de9eb5f488a591bacfd6f8d28b7e365dbd606

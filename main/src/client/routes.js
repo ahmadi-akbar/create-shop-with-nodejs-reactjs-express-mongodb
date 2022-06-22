@@ -115,13 +115,26 @@ export default [
     element: Product,
   },
   {
+<<<<<<< HEAD
+=======
+    path: '/post/:_id/:title/:bowl',
+    layout: DefaultLayout,
+    exact: true,
+    element: Post,
+  },
+  {
+>>>>>>> 496de9eb5f488a591bacfd6f8d28b7e365dbd606
     path: '/post/:_id/:title',
     layout: DefaultLayout,
     exact: true,
     element: Post,
   },
   {
+<<<<<<< HEAD
     path: '/post/:_id/:title/:bowl',
+=======
+    path: '/post/:_id',
+>>>>>>> 496de9eb5f488a591bacfd6f8d28b7e365dbd606
     layout: DefaultLayout,
     exact: true,
     element: Post,

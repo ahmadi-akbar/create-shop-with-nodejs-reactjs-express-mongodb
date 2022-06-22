@@ -31,6 +31,11 @@ import { toast } from "react-toastify";
 
 import { fNum } from "#c/functions/utils";
 
+<<<<<<< HEAD
+=======
+import CircularProgress from "@mui/material/CircularProgress";
+const globalTimerSet=60
+>>>>>>> 496de9eb5f488a591bacfd6f8d28b7e365dbd606
 class LoginForm extends React.Component {
   constructor(props) {
     super(props);
@@ -43,6 +48,10 @@ class LoginForm extends React.Component {
 
     this.state = {
       phoneNumber: null,
+<<<<<<< HEAD
+=======
+      thePhoneNumber: null,
+>>>>>>> 496de9eb5f488a591bacfd6f8d28b7e365dbd606
       activationCode: null,
       enterActivationCodeMode: false,
       showSecondForm: false,
@@ -60,7 +69,12 @@ class LoginForm extends React.Component {
       token: st.user.token,
       CameFromPost: st.CameFromPost,
       goToProduct: st.goToProduct,
+<<<<<<< HEAD
       goToCheckout: st.goToCheckout
+=======
+      goToCheckout: st.goToCheckout,
+      timer: globalTimerSet
+>>>>>>> 496de9eb5f488a591bacfd6f8d28b7e365dbd606
     };
     window.scrollTo(0, 0);
   }
@@ -72,23 +86,56 @@ class LoginForm extends React.Component {
   fc(d) {
     goToProduct(d);
   }
+<<<<<<< HEAD
 
   handleRegister = (e) => {
     e.preventDefault();
+=======
+  handleSendCodeAgain=(e)=>{
+    console.log('==> handleSendCodeAgain()')
+    this.handleRegister = (e)
+  }
+  handleRegister = (e) => {
+    e.preventDefault();
+    console.log('==> handleRegister()')
+
+>>>>>>> 496de9eb5f488a591bacfd6f8d28b7e365dbd606
     let fd = this.state.countryCode || "98";
     let number = this.state.phoneNumber || "0";
     if (!number || number == "" || number == 0) {
       alert("enter phone number!");
       return;
     }
+<<<<<<< HEAD
     console.log("number", number);
+=======
+    number = number.substring(number.length - 10);
+    console.log("number", number);
+    this.setState({
+      thePhoneNumber: number,
+      countryCode: fd,
+      phoneNumber: number
+    });
+>>>>>>> 496de9eb5f488a591bacfd6f8d28b7e365dbd606
     let phoneNumber = fd + fNum(number);
 
     register(phoneNumber, fd, this.state.loginMethod).then((r) => {
       // new user
       if (r.shallWeSetPass) {
+<<<<<<< HEAD
         this.setState({
           enterActivationCodeMode: true,
+=======
+        this.state.timer = globalTimerSet;
+        this.myInterval = setInterval(() => {
+          this.setState(({ timer }) => ({
+            timer: timer > 0 ? timer - 1 : (this.handleClearInterval())
+          }));
+        }, 1000);
+        this.setState({
+          enterActivationCodeMode: true,
+          activationCode:null,
+>>>>>>> 496de9eb5f488a591bacfd6f8d28b7e365dbd606
           isDisplay: false
         });
       } else if (!r.shallWeSetPass && r.userWasInDbBefore) {
@@ -99,6 +146,13 @@ class LoginForm extends React.Component {
       }
     });
   };
+<<<<<<< HEAD
+=======
+  handleClearInterval = () => {
+    clearInterval(this.myInterval);
+    return 0;
+  };
+>>>>>>> 496de9eb5f488a591bacfd6f8d28b7e365dbd606
   handlePassword = (e) => {
     e.preventDefault();
     let fd = this.state.countryCode || "98";
@@ -148,6 +202,24 @@ class LoginForm extends React.Component {
       // }
     });
   };
+<<<<<<< HEAD
+=======
+  handleWrongPhoneNumber = (e) => {
+    this.handleClearInterval();
+    e.preventDefault();
+    this.setState({
+      phoneNumber: null,
+      activationCode: null,
+      enterActivationCodeMode: false,
+      showSecondForm: false,
+      isDisplay: true,
+      setPassword: false,
+      getPassword: false,
+      goToProfile: false,
+      timer: globalTimerSet
+    });
+  };
+>>>>>>> 496de9eb5f488a591bacfd6f8d28b7e365dbd606
   savePasswordAndData = (e) => {
     e.preventDefault();
 
@@ -309,6 +381,17 @@ class LoginForm extends React.Component {
     });
   };
 
+<<<<<<< HEAD
+=======
+  componentDidMount() {
+
+  }
+
+  componentWillUnmount() {
+    clearInterval(this.myInterval);
+  }
+
+>>>>>>> 496de9eb5f488a591bacfd6f8d28b7e365dbd606
   render() {
     const {
       isDisplay,
@@ -324,11 +407,20 @@ class LoginForm extends React.Component {
       enterActivationCodeMode,
       internationalCodeClass,
       goToCheckout,
+<<<<<<< HEAD
       loginMethod
     } = this.state;
     const { t } = this.props;
     console.log("render Login form...", token, firstName, lastName, internationalCode, setPassword);
     console.log("did we come from a post while publishing?", CameFromPost);
+=======
+      loginMethod,
+      timer
+    } = this.state;
+    const { t } = this.props;
+    console.log("render Login form...", token, firstName, lastName, internationalCode, setPassword);
+    console.log("did we come from a post while publishing?", CameFromPost, timer);
+>>>>>>> 496de9eb5f488a591bacfd6f8d28b7e365dbd606
     if (token && !firstName && !lastName && !internationalCode) {
       // this.setState({setPassword: true});
       // return <Navigate to={'/login/'} />;
@@ -443,10 +535,35 @@ class LoginForm extends React.Component {
                   <Form onSubmit={this.handleActivation}>
                     <Row form>
                       <Col md="12" className="form-group">
+<<<<<<< HEAD
+=======
+                        <div className={"your-phone-number d-flex justify-content-sb"}>
+                          <div className={"flex-item "}>
+                            {t("your phone number") + ":"}
+                          </div>
+                          <div className={"flex-item ltr"}>
+                            {"+" + this.state.countryCode + this.state.thePhoneNumber}
+
+                          </div>
+                        </div>
+                        <div className={"your-timer"}>
+                          <div className={"flex-item "}>
+                            {Boolean(timer) && <div className={"flex-item-relative center "}>
+                              <CircularProgress className={'red-progress'} thickness={2} size={60} variant="determinate" value={parseInt((timer * 100) / globalTimerSet)}/>
+                              <div className={"flex-item-absolute "}>
+                                {timer}
+                              </div>
+                            </div>}
+
+                          </div>
+
+                        </div>
+>>>>>>> 496de9eb5f488a591bacfd6f8d28b7e365dbd606
                         <div
                           style={{
                             display: "flex",
                             flexDirection: "column",
+<<<<<<< HEAD
                             justifyContent: "center",
                             alignItems: "center"
                           }}>
@@ -455,6 +572,16 @@ class LoginForm extends React.Component {
                           </label>
                           <label
                             style={{ fontSize: 9 }}
+=======
+                            justifyContent: "start"
+                          }}>
+
+                          {/*<label htmlFor="feEmailAddress">*/}
+                          {/*{t("get enter code")}*/}
+                          {/*</label>*/}
+                          <label
+                            style={{ fontSize: 12 }}
+>>>>>>> 496de9eb5f488a591bacfd6f8d28b7e365dbd606
                             htmlFor="feEmailAddress">
                             {t("enter sent code")}
                           </label>
@@ -486,6 +613,25 @@ class LoginForm extends React.Component {
                       onClick={this.handleActivation}>
                       {t("login")}
                     </Button>
+<<<<<<< HEAD
+=======
+                    <Button
+                      outline={true}
+                      type="button"
+                      className="center btn-block outline the-less-important"
+                      onClick={this.handleWrongPhoneNumber}>
+                      {t("Wrong phone number?")}
+                    </Button>
+                    {Boolean(!timer) && <div className={"flex-item-relative center "}>
+                      <Button
+                        outline={true}
+                        type="button"
+                        className="center btn-block outline the-less-important the-no-border"
+                        onClick={(e)=>this.handleRegister(e)}>
+                        {t("Send code again?")}
+                      </Button>
+                    </div>}
+>>>>>>> 496de9eb5f488a591bacfd6f8d28b7e365dbd606
                   </Form>
                 </Col>
               </Row>
@@ -598,6 +744,17 @@ class LoginForm extends React.Component {
                   <Form onSubmit={this.handlePassword}>
                     <Row form>
                       <Col md="12" className="form-group">
+<<<<<<< HEAD
+=======
+                        <div className={"your-phone-number d-flex justify-content-sb"}>
+                          <div className={"flex-item "}>
+                            {t("your phone number") + ":"}
+                          </div>
+                          <div className={"flex-item ltr"}>
+                            {"+" + this.state.countryCode + this.state.thePhoneNumber}
+                          </div>
+                        </div>
+>>>>>>> 496de9eb5f488a591bacfd6f8d28b7e365dbd606
                         <label htmlFor="oiuytgpaswword">
                           {t("Enter password")}
                         </label>
@@ -632,6 +789,16 @@ class LoginForm extends React.Component {
                       onClick={this.handleForgotPass}>
                       {t("Forgot Password")}
                     </Button>
+<<<<<<< HEAD
+=======
+                    <Button
+                      outline={true}
+                      type="button"
+                      className="center btn-block outline the-less-important"
+                      onClick={this.handleWrongPhoneNumber}>
+                      {t("Wrong phone number?")}
+                    </Button>
+>>>>>>> 496de9eb5f488a591bacfd6f8d28b7e365dbd606
                   </Form>
                 </Col>
               </Row>

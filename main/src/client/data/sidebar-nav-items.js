@@ -8,6 +8,7 @@ export default function SidebarItem() {
 
   if (token) {
     return [
+<<<<<<< HEAD
       // {
       //   title: 'Products',
       //   htmlBefore: '<i class="material-icons mr-1">vertical_split</i>',
@@ -34,6 +35,8 @@ export default function SidebarItem() {
       //   htmlBefore: '<i class="material-icons">&#xE8B8;</i>',
       //   to: '/my-posts',
       // },
+=======
+>>>>>>> 496de9eb5f488a591bacfd6f8d28b7e365dbd606
       {
         title: 'my orders',
         htmlBefore: '<i class="material-icons mr-1">list_alt</i>',
@@ -42,6 +45,7 @@ export default function SidebarItem() {
     ];
   } else {
     return [
+<<<<<<< HEAD
       // {
       //   title: 'Products',
       //   htmlBefore: '<i class="material-icons mr-1">vertical_split</i>',
@@ -57,6 +61,8 @@ export default function SidebarItem() {
       //   htmlBefore: '<i class="material-icons mr-1">shopping_cart</i>',
       //   to: '/submit-order',
       // },
+=======
+>>>>>>> 496de9eb5f488a591bacfd6f8d28b7e365dbd606
     ];
   }
 }

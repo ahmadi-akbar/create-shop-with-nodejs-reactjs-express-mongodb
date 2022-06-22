@@ -14,7 +14,11 @@ import { SnapChatIcon } from "#c/assets/index";
 import Loading from "#c/components/Loading";
 import store from "../functions/store";
 import { useSelector } from "react-redux";
+<<<<<<< HEAD
 import CONFIG from "#config/config";
+=======
+import CONFIG from "#c/config";
+>>>>>>> 496de9eb5f488a591bacfd6f8d28b7e365dbd606
 import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import ShareIcon from "@mui/icons-material/Share";
@@ -22,6 +26,13 @@ import EditIcon from "@mui/icons-material/Edit";
 import BookmarkAddIcon from "@mui/icons-material/BookmarkAdd";
 // import { Link, useNavigate, useParams } from "react-router-dom";
 import RemoveRedEyeIcon from "@mui/icons-material/RemoveRedEye";
+<<<<<<< HEAD
+=======
+import DeliveryDiningIcon from '@mui/icons-material/DeliveryDining';
+import SupportAgentIcon from '@mui/icons-material/SupportAgent';
+import PaymentsIcon from '@mui/icons-material/Payments';
+import VerifiedIcon from '@mui/icons-material/Verified';
+>>>>>>> 496de9eb5f488a591bacfd6f8d28b7e365dbd606
 // let obj = ;
 import { toast } from "react-toastify";
 // let the_id='';
@@ -169,7 +180,11 @@ const Product = (props) => {
 
     [<Container className="main-content-container p-0 pb-4 kiuytyuioiu bg-white" key={0}>
 
+<<<<<<< HEAD
       <Row className={"limited posrel"}>
+=======
+      <Row className={"limited posrel justify-end"}>
+>>>>>>> 496de9eb5f488a591bacfd6f8d28b7e365dbd606
         <div className={"floating-tools"}>
           <ButtonGroup vertical>
             <Button className={"love-it"}
@@ -193,10 +208,17 @@ const Product = (props) => {
               <FavoriteBorderIcon className={"beforehov"}/><FavoriteIcon className={"hov"}/><Badge
               theme="info">{like}</Badge></Button>
 
+<<<<<<< HEAD
             {isClient && <RWebShare
               data={{
                 text: excerpt,
                 url: VARIABLE.SHOP_URL + "p/" + _id + "/" + encodeURIComponent(title[lan]),
+=======
+            {Boolean(isClient && title) && <RWebShare
+              data={{
+                text: excerpt,
+                url: CONFIG.SHOP_URL + "p/" + _id + "/" + encodeURIComponent(title[lan]),
+>>>>>>> 496de9eb5f488a591bacfd6f8d28b7e365dbd606
                 title: title[lan]
               }}
               sites={["whatsapp", "telegram", "linkedin", "copy"]}
@@ -237,6 +259,11 @@ const Product = (props) => {
               <EditIcon/></Button>}
           </ButtonGroup>
         </div>
+<<<<<<< HEAD
+=======
+      </Row>,
+      <Row className={"limited posrel"}>
+>>>>>>> 496de9eb5f488a591bacfd6f8d28b7e365dbd606
         <Col lg="6" md="12">
           <Row>
             <Col lg="12" md="12">
@@ -346,43 +373,75 @@ const Product = (props) => {
         <Col lg={12} md={12} sm={12} xs={12} className={"mt-3 mb-5"}>
 
           <Row>
+<<<<<<< HEAD
             <Col lg={3} md={3} sm={6} xs={6}>
               <div className={"pro-icons-wrapper"}>
                 <div className={"pro-icons"}>
                   <span className="material-icons">verified</span>
+=======
+            <Col lg={3} md={3} sm={6} xs={6} className={"mb-3"}>
+              <div className={"pro-icons-wrapper"}>
+                <div className={"pro-icons"}>
+                  <VerifiedIcon/>
+
+>>>>>>> 496de9eb5f488a591bacfd6f8d28b7e365dbd606
                 </div>
                 <div className={"pro-icons-title"}>
                   ضمانت اصالت و سلامت فیزیکی
                 </div>
               </div>
             </Col>
+<<<<<<< HEAD
             <Col lg={3} md={3} sm={6} xs={6}>
               <div className={"pro-icons-wrapper"}>
 
                 <div className={"pro-icons"}>
                   <span className="material-icons">payments</span>
+=======
+            <Col lg={3} md={3} sm={6} xs={6} className={"mb-3"}>
+              <div className={"pro-icons-wrapper"}>
+
+                <div className={"pro-icons"}>
+                  <PaymentsIcon/>
+>>>>>>> 496de9eb5f488a591bacfd6f8d28b7e365dbd606
                 </div>
                 <div className={"pro-icons-title"}>
                   پرداخت حضوری و غیرحضوری
                 </div>
               </div>
             </Col>
+<<<<<<< HEAD
             <Col lg={3} md={3} sm={6} xs={6}>
               <div className={"pro-icons-wrapper"}>
 
                 <div className={"pro-icons"}>
                   <span className="material-icons">delivery_dining</span>
+=======
+            <Col lg={3} md={3} sm={6} xs={6} className={"mb-3"}>
+              <div className={"pro-icons-wrapper"}>
+
+                <div className={"pro-icons"}>
+                  <DeliveryDiningIcon/>
+>>>>>>> 496de9eb5f488a591bacfd6f8d28b7e365dbd606
                 </div>
                 <div className={"pro-icons-title"}>
                   امکان ارسال فوری
                 </div>
               </div>
             </Col>
+<<<<<<< HEAD
             <Col lg={3} md={3} sm={6} xs={6}>
               <div className={"pro-icons-wrapper"}>
 
                 <div className={"pro-icons"}>
                   <span className="material-icons">support_agent</span>
+=======
+            <Col lg={3} md={3} sm={6} xs={6} className={"mb-3"}>
+              <div className={"pro-icons-wrapper"}>
+
+                <div className={"pro-icons"}>
+                  <SupportAgentIcon/>
+>>>>>>> 496de9eb5f488a591bacfd6f8d28b7e365dbd606
                 </div>
                 <div className={"pro-icons-title"}>
                   پشتیبانی ۲۴ ساعته

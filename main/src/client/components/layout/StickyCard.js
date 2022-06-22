@@ -4,7 +4,11 @@ import { withTranslation } from "react-i18next";
 import { useSelector } from "react-redux";
 import { store } from "#c/functions/store";
 import { toggleCardbar } from "#c/functions/index";
+<<<<<<< HEAD
 
+=======
+import ShoppingBagIcon from '@mui/icons-material/ShoppingBag';
+>>>>>>> 496de9eb5f488a591bacfd6f8d28b7e365dbd606
 const StickyCard = ({ t }) => {
   // console.clear();
   console.log("StickyCard");
@@ -36,7 +40,11 @@ const StickyCard = ({ t }) => {
     <div className="sticky-card " onClick={handleToggleCardbar}>
       <Button>
         <div className={"efcvedf"}>
+<<<<<<< HEAD
           <i className="material-icons ddds">shopping_cart</i>
+=======
+          <ShoppingBagIcon/>
+>>>>>>> 496de9eb5f488a591bacfd6f8d28b7e365dbd606
           {count}<span className={"ml-1 mr-2"}>{t("item")}</span>
         </div>
         <div className={"juytrftyu"}>

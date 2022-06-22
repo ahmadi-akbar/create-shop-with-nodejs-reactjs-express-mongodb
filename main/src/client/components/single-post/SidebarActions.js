@@ -3,12 +3,22 @@ import { withTranslation } from "react-i18next";
 import { toast } from "react-toastify";
 import { addBookmark, getContactData } from "#c/functions/index";
 import Theprice from "#c/components/single-post/Theprice";
+<<<<<<< HEAD
+=======
+import TheChip from "#c/components/single-post/combinations-type/TheChip";
+import TheList from "#c/components/single-post/combinations-type/TheList";
+>>>>>>> 496de9eb5f488a591bacfd6f8d28b7e365dbd606
 
 import { Col, Row } from "shards-react";
 import store from "#c/functions/store";
 import AddToCardButton from "#c/components/components-overview/AddToCardButton";
+<<<<<<< HEAD
 
 import { dFormat, PriceFormat } from "#c/functions/utils";
+=======
+import { dFormat, PriceFormat } from "#c/functions/utils";
+import {isSSR} from "#c/config";
+>>>>>>> 496de9eb5f488a591bacfd6f8d28b7e365dbd606
 
 class SidebarActions extends React.PureComponent {
   constructor(props) {
@@ -63,6 +73,7 @@ class SidebarActions extends React.PureComponent {
 
     this.setState({ optionsId: optionsId });
   };
+<<<<<<< HEAD
   handleOptions = (combination) => {
     const { t, options } = this.props;
     let arr = [];
@@ -88,6 +99,10 @@ class SidebarActions extends React.PureComponent {
     if (arr.join(","))
       return arr;
   };
+=======
+
+
+>>>>>>> 496de9eb5f488a591bacfd6f8d28b7e365dbd606
 
   render() {
     const { phoneNumber, email, lan, optionsId, combinationsTemp } = this.state;
@@ -98,6 +113,7 @@ class SidebarActions extends React.PureComponent {
     if (salePrice) salePrice = PriceFormat(salePrice);
     let ti = dFormat(updatedAt, t);
     return (
+<<<<<<< HEAD
       [<Row key={0}>
         {type == "variable" && combinations && <Col lg={12} md={12} sm={12} xs={12}>
           <div>
@@ -157,6 +173,15 @@ class SidebarActions extends React.PureComponent {
             })}
 
           </div>
+=======
+      [<div key={0}>
+        {type == "variable" && combinations && <Col lg={12} md={12} sm={12} xs={12}>
+          <Row>
+            {Boolean(!isSSR && combinations.length>0) && <TheChip _id={_id} title={title} photos={photos} options={options} single={single} method={method} combinations={combinations} t={t} />}
+            {Boolean(isSSR && combinations.length>0) && <TheList _id={_id} title={title} photos={photos} options={options} single={single} method={method} combinations={combinations} t={t}/>}
+
+          </Row>
+>>>>>>> 496de9eb5f488a591bacfd6f8d28b7e365dbd606
         </Col>}
         {type == "normal" &&
         <Col lg={12} md={12} sm={12} xs={12} className="mb-3 mt-3"><AddToCardButton item={{
@@ -171,7 +196,11 @@ class SidebarActions extends React.PureComponent {
         }}/></Col>
         }
 
+<<<<<<< HEAD
       </Row>]
+=======
+      </div>]
+>>>>>>> 496de9eb5f488a591bacfd6f8d28b7e365dbd606
     );
   }
 }

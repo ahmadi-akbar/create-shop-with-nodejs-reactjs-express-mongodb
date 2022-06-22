@@ -31,12 +31,17 @@ import { makeStyles } from "@mui/styles";
 import { Val } from "@/Utils";
 import React from "react";
 import { RichTextInput } from "ra-input-rich-text";
+<<<<<<< HEAD
+=======
+import Form from "./postForm";
+>>>>>>> 496de9eb5f488a591bacfd6f8d28b7e365dbd606
 
 export const postEdit = (props) => {
   console.log('props',props);
   const translate=useTranslate();
   return(
     <Edit {...props}>
+<<<<<<< HEAD
       <SimpleForm>
         <TextInput disabled source="id"/>
         <TextInput source={"title." + translate("lan")} fullWidth label={translate("resources.post.title")}
@@ -64,6 +69,9 @@ export const postEdit = (props) => {
           ]}
         />
       </SimpleForm>
+=======
+     <Form></Form>
+>>>>>>> 496de9eb5f488a591bacfd6f8d28b7e365dbd606
     </Edit>
   );
 }
