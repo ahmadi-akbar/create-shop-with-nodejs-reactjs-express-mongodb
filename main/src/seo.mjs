@@ -26,24 +26,5 @@ let readFilePromise = function() {
 
 let seo = {
   "readFilePromise": readFilePromise,
-  "home": {
-    title: {
-      fa: ""
-    },
-    description: {
-      fa: ""
-    },
-    image: {
-
-    },
-    url: {
-
-    },
-    width: "512",
-    height: "512",
-    name: {
-
-    }
-  }
 };
 export default seo;
