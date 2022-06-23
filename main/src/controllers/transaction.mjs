@@ -6,9 +6,9 @@ import Link from "#models/link";
 import request from "#root/request";
 
 import global from "#root/global";
+import CONFIG from "#c/config";
 
 var TransactionsGUI = 1;  //счетчик транзакций
-import CONFIG from "#c/config";
 
 class AppError extends Error {
   constructor({ name, message, code, content, paymentCode, res }) {
@@ -231,6 +231,7 @@ var self = ({
         success: false,
         message: "req.params._price"
       });
+    global.getSetting("ZIBAL_TOKEN").then((merchant)=>{
     Order.findById(req.params._id, "sum , orderNumber , amount",
       function(err, order) {
         if (err || !order) {
@@ -258,7 +259,7 @@ var self = ({
           method: "POST",
           url: "https://gateway.zibal.ir/v1/request",
           body: {
-            merchant: "624c13f118f93463f8c541b8",
+            merchant: merchant,
             amount: amount,
             callbackUrl: global.domain + "/" + "transaction",
             description: "سفارش #" + order.orderNumber,
@@ -335,7 +336,7 @@ var self = ({
         });
 
       }).populate("customer", "_id phoneNumber firstName lastName");
-
+    })
   },
   update: function(req, res, next) {
     // console.log('update buying...');
@@ -761,7 +762,9 @@ var self = ({
       return 0;
 
     }
-    Transaction.findOne({ Authority: req.body.Authority }, function(
+    global.getSetting("ZIBAL_TOKEN").then((merchant)=>{
+
+      Transaction.findOne({ Authority: req.body.Authority }, function(
       err,
       transaction
     ) {
@@ -789,7 +792,7 @@ var self = ({
         url:
           "https://gateway.zibal.ir/v1/verify",
         body: {
-          merchant: "624c13f118f93463f8c541b8",
+          merchant:merchant,
           trackId: req.body.Authority
         },
         json: true // Automatically stringifies the body to JSON
@@ -977,7 +980,7 @@ var self = ({
         });
 
     });
-    // });
+    });
   },
 
   verify: function(req, res, next) {

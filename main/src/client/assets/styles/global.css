@@ -96,7 +96,7 @@ color:#000;
 {
     box-shadow: inset 0 0 4px 1px #242424, 0 0 2px 2px #d2d2d2;
     cursor: pointer;
-    background-color: #ee811d !important;
+    background-color: var(--primary) !important;
     color:#fff;
 
     /*background-color: #;*/
@@ -378,7 +378,7 @@ color:#000;
 }
 
 .fffs:hover {
-    color: #ef811d !important;
+    color: var(--primary) !important;
 }
 
 .TextToCopydd {
@@ -455,7 +455,7 @@ color:#000;
     margin-top: 0 !important;
 }
 .input-group-text {
-    background-color:#ee811d;
+    background-color:var(--primary);
     color: #000;
     height: 100%;
 }
@@ -724,8 +724,8 @@ color:#000;
 }
 
 .kjhgfgh:hover {
-    background-color: #ef811d;
-    border-color: #ef811d;
+    background-color: var(--primary);
+    border-color: var(--primary);
 
 }
 
@@ -817,7 +817,7 @@ body .rtl .thePrice.rtl {
 
 body .ltr .sizeless.nav.sidecategories > .nav-item.active > a {
     background-color: #f5f5f5;
-    border-top: 2px solid #ef811d;
+    border-top: 2px solid var(--primary);
     border-bottom: 1px solid #eee;
 }
 
@@ -982,7 +982,7 @@ body .ltr .mobilenone .sizeless.nav.sidecategories .nav-item {
 .ad-card-main-div {
     border-radius: 3px;
     background-color: #fff;
-    /* border: solid #ef811dab;
+    /* border: solid var(--primary)ab;
     border-width: 0 0px 1px 0px; */
     /*border-bottom: 1px solid rgba(0, 0, 0, 0.1);*/
     /*cursor: pointer;*/
@@ -997,7 +997,7 @@ body .ltr .mobilenone .sizeless.nav.sidecategories .nav-item {
     /*transform: translate(0,-2px);*/
     box-shadow: 0px 1px 3px #cacaca;
 
-    /* border: solid #ef811d; */
+    /* border: solid var(--primary); */
     /* border-width: 0 0px 2px 0px; */
     /*box-shadow: 1px 2px 5px 0 rgb(0 0 0), 2px 1px 5px 0 rgb(0 0 0);*/
 }
@@ -1214,7 +1214,7 @@ body .ltr .mobilenone .sizeless.nav.sidecategories .nav-item {
 }
 
 .bg-color-full {
-    background-color: #ef811d;
+    background-color: var(--primary);
     border-radius: 5px;
     z-index: 0;
 }
@@ -1247,7 +1247,7 @@ body .ltr .mobilenone .sizeless.nav.sidecategories .nav-item {
 }
 
 .the-label:nth-child(3) {
-    background-color: #ef811d;
+    background-color: var(--primary);
 
 }
 
@@ -1532,7 +1532,7 @@ body .ltr .mobilenone .sizeless.nav.sidecategories .nav-item {
 }
 
 .show-options ul li:hover {
-    color: #ef811d;
+    color: var(--primary);
 }
 
 .show-options ul li:last-child {
@@ -1561,7 +1561,7 @@ body .ltr .mobilenone .sizeless.nav.sidecategories .nav-item {
     justify-content: center;
 }
 .thered {
-    background-color: #ef811d;
+    background-color: var(--primary);
 }
 
 .main-mobile .dropdown-menu {
@@ -1670,7 +1670,7 @@ span.badge {
 }
 
 .true i {
-    color: #ef811d;
+    color: var(--primary);
 }
 
 
@@ -1821,9 +1821,9 @@ i.locationab {
     cursor: pointer;
     left: 50%;
     top: 50%;
-    color: #ef811d;
+    color: var(--primary);
     margin-top: -20px;
-    text-shadow: 0 0 1px #ef811d;
+    text-shadow: 0 0 1px var(--primary);
     z-index: 99999;
     font-size: 40px;
     transform: translate(-50%, -50%);
@@ -1931,7 +1931,7 @@ body .ltr .kjhgfgh i.left {
     padding: 5px;
     border-bottom-left-radius: 10px;
     border-top-left-radius: 10px;
-    background-color: #ef811d;
+    background-color: var(--primary);
     font-size: 15px;
     text-align: center;
 
@@ -1975,7 +1975,7 @@ input.iuygfghuji::-webkit-outer-spin-button {
 .sticky-card button:focus {
     font-size: 15px;
     padding: 10px 5px;
-    background-color: #ef811d !important;
+    background-color: var(--primary) !important;
     border: none;
 }
 
@@ -2048,7 +2048,7 @@ input.iuygfghuji::-webkit-outer-spin-button {
 }
 
 .juytrftyu {
-    color: #ef811d;
+    color: var(--primary);
     margin-top: 10px;
     background-color: #fff;
     padding: 5px;
@@ -2123,7 +2123,7 @@ input.iuygfghuji::-webkit-outer-spin-button {
     text-align: center;
     font-size: 16px;
     font-family: 'Roboto';
-    color: #ef811d;
+    color: var(--primary);
 }
 
 .jhgfdfgh {
@@ -2147,7 +2147,7 @@ div.title {
 
 .pro-icons > svg {
     font-size: 40px;
-    color: #ef811d;
+    color: var(--primary);
 }
 
 .pro-icons-title {
@@ -2407,7 +2407,7 @@ del {
 }
 
 .jhgfdfg {
-    color: #ef811d;
+    color: var(--primary);
     font-size: 22px;
     line-height: 60px;
     padding-left: 10px;
@@ -2494,7 +2494,7 @@ del {
 }
 
 .orangeBack {
-    background-color: #ef811d !important;
+    background-color: var(--primary) !important;
     color: #fff !important;
     padding-right: 30px !important;
     padding-left: 30px !important;
@@ -2806,7 +2806,7 @@ img[alt="payment"] {
 
     .floating-tools .btn {
         margin: 0 10px;
-        color:#ef811d;
+        color:var(--primary);
 
         background-color: #fff;
         border:none !important;

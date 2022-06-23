@@ -35,7 +35,7 @@ const i18nProvider = polyglotI18nProvider(
 
 export default function App() {
   const translate = useTranslate();
-  const { Action,Attributes,Category,Configuration,Customer,MainDashboard,Media,Order,OrderCart,Post,Product,Settings,Sms,Transaction,User } = resources;
+  const { Action,Attributes,Category,Configuration,PrivateConfiguration,Customer,MainDashboard,Media,Order,OrderCart,Post,Product,Settings,Sms,Transaction,User } = resources;
   return (
     <Admin
       title={translate('websiteName')}
@@ -63,6 +63,7 @@ export default function App() {
       <Resource name="action" options={{ label: translate("pos.menu.actions") }} {...Action} />
       <CustomRoutes>
         <Route path="/configuration" element={<Configuration />} />
+        <Route path="/p-c" element={<PrivateConfiguration />} />
       {/*<Resource name="configuration" options={{ label: translate("pos.menu.actions") }} {...Configuration} />*/}
       </CustomRoutes>
     </Admin>

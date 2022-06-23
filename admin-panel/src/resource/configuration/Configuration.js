@@ -47,9 +47,9 @@ const Configuration = (props) => {
   // const login = useLogin();
   // const location = useLocation();
   const setTheColor = (t, e) => {
-    console.log(t, e.hex);
-    setValue(t, e.hex);
-    setCounter(counter++);
+    console.log(t, e);
+    setValue(t, e);
+    // setCounter(counter++);
     // console.log("getValuszses", getValues());
     // color[t] = e.hex;
     // console.log('{...color}',{...color});
@@ -111,20 +111,38 @@ const Configuration = (props) => {
       // setValue("title",data.title);
       setTheData(true);
       return data;
+    }).catch(e=>{
+      setLoading(false);
+      setTheData(true);
     });
   };
 
   const handleChange = (t, value) => {
     setValue(t, value);
-    // setTheData({ ...theData, title: event.target.value });
+    // let obj={ ...theData };
+    // obj[t]=value;
+    //
+    // setTheData(obj);
   };
 
   const onSubmit = (theData) => {
-    console.clear();
-    console.log("data", theData);
+    // console.clear();
+    let jso={
+      logo:theData.logo,
+      title:theData.title,
+      ZIBAL_TOKEN:theData.ZIBAL_TOKEN,
+      primaryColor:theData.primaryColor,
+      secondaryColor:theData.secondaryColor,
+      textColor:theData.textColor,
+      bgColor:theData.bgColor,
+      footerBgColor:theData.footerBgColor,
 
+    };
+    console.log("jso", jso);
+
+    // return;
     API.put("/settings/configuration", JSON.stringify(
-      theData
+      jso
     )).then(({ data = {} }) => {
       setLoading(false);
       // setTheData(data);
@@ -156,7 +174,7 @@ const Configuration = (props) => {
       ZIBAL_TOKEN
     } = getValues();
     return (
-      <Form onSubmit={handleSubmit(onSubmit)} noValidate {...props}>
+      <Form onSubmit={handleSubmit(onSubmit)} noValidate={true} redirect={false}>
         <Box>
           <Card sx={{ padding: "1em" }}>
             <Box>
@@ -207,61 +225,6 @@ const Configuration = (props) => {
               <Box>
                 <TextInput
                   autoFocus
-                  className={"ltr"}
-                  source="BASE_URL"
-                  label={("BASE_URL")}
-                  disabled={loading}
-                  // validate={required()}
-                  fullWidth
-                  defaultValue={window.BASE_URL || BASE_URL}
-
-                />
-              </Box>
-              <Box>
-                <TextInput
-                  autoFocus
-                  className={"ltr"}
-
-                  source="SHOP_URL"
-                  label={("SHOP_URL")}
-                  disabled={loading}
-                  // validate={required()}
-                  fullWidth
-                  defaultValue={window.SHOP_URL || SHOP_URL}
-
-                />
-              </Box>
-              <Box>
-                <TextInput
-                  autoFocus
-                  className={"ltr"}
-
-                  source="ADMIN_URL"
-                  label={("ADMIN_URL")}
-                  disabled={loading}
-                  // validate={required()}
-                  fullWidth
-                  defaultValue={window.ADMIN_URL || ADMIN_URL}
-
-                />
-              </Box>
-              <Box>
-                <TextInput
-                  autoFocus
-                  source="ADMIN_ROUTE"
-                  className={"ltr"}
-
-                  label={("ADMIN_ROUTE")}
-                  disabled={loading}
-                  // validate={required()}
-                  fullWidth
-                  defaultValue={window.ADMIN_ROUTE || ADMIN_ROUTE}
-
-                />
-              </Box>
-              <Box>
-                <TextInput
-                  autoFocus
                   source="ZIBAL_TOKEN"
                   className={"ltr"}
 
@@ -271,7 +234,7 @@ const Configuration = (props) => {
                   fullWidth
                   defaultValue={ZIBAL_TOKEN}
                   onChange={(event) => {
-                    handleChange("title", event.target.value);
+                    handleChange("ZIBAL_TOKEN", event.target.value);
                   }}
                 />
               </Box>
@@ -283,9 +246,9 @@ const Configuration = (props) => {
                       {translate("resources.settings.primaryColor")}
                     </label>
                     <ColorPicker
-                      className={"input-color"}
+                      className={"input-color"} source={"primaryColor"}
                       color={primaryColor}
-                      onChange={(e) => setTheColor("primaryColor", e)}
+                      onChangeComplete={(e) => setTheColor("primaryColor", e)}
 
                       placement="right"
                     />
@@ -296,10 +259,10 @@ const Configuration = (props) => {
                       {translate("resources.settings.secondaryColor")}
                     </label>
                     <ColorPicker
-                      className={"input-color"}
+                      className={"input-color"} source={"secondaryColor"}
 
                       color={secondaryColor}
-                      onChange={(e) => setTheColor("secondaryColor", e)}
+                      onChangeComplete={(e) => setTheColor("secondaryColor", e)}
 
                       placement="right"
                     />
@@ -309,9 +272,9 @@ const Configuration = (props) => {
                       {translate("resources.settings.textColor")}
                     </label>
                     <ColorPicker
-                      className={"input-color"}
+                      className={"input-color"} source={"textColor"}
                       color={textColor}
-                      onChange={(e) => setTheColor("textColor", e)}
+                      onChangeComplete={(e) => setTheColor("textColor", e)}
 
                       placement="right"
                     />
@@ -321,10 +284,10 @@ const Configuration = (props) => {
                       {translate("resources.settings.bgColor")}
                     </label>
                     <ColorPicker
-                      className={"input-color"}
+                      className={"input-color"} source={"bgColor"}
 
                       color={bgColor}
-                      onChange={(e) => setTheColor("bgColor", e)}
+                      onChangeComplete={(e) => setTheColor("bgColor", e)}
 
                       placement="right"
                     />
@@ -334,10 +297,10 @@ const Configuration = (props) => {
                       {translate("resources.settings.footerBgColor")}
                     </label>
                     <ColorPicker
-                      className={"input-color"}
+                      className={"input-color"} source={"footerBgColor"}
 
                       color={footerBgColor}
-                      onChange={(e) => setTheColor("footerBgColor", e)}
+                      onChangeComplete={(e) => setTheColor("footerBgColor", e)}
                       placement="right"
                     />
                   </div>
@@ -358,6 +321,7 @@ const Configuration = (props) => {
                 color="primary"
                 disabled={loading}
                 alwaysEnable
+                redirect={false}
                 // saving={onSubmit}
               >
                 {loading && (

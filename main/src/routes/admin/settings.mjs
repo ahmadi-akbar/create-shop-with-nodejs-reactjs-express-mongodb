@@ -39,6 +39,7 @@ router.post('/submitDerhamPrice/:price', settingsController.submitDerhamPrice);
 // router.post('/register', settingsController.register);
 router.post('/fileUpload', settingsController.fileUpload);
 router.put('/configuration', settingsController.updateConfiguration);
+router.put('/pc', settingsController.updatePrivateConfiguration);
 
 router.put('/:id', settingsController.edit);
 router.delete('/:id', settingsController.destroy);

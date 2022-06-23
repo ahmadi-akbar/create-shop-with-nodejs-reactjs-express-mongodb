@@ -13,10 +13,22 @@ import config from "#json/variables/config";
 let version = process.env.VERSION_NUM;
 
 let global = {
-  body:"",
+  body: "",
   ip: process.env.BASE_URL,
   domain: process.env.BASE_URL,
-  config: (setting)=>(config),
+  config: (setting) => (config),
+  getSetting: (name) => {
+    return new Promise(function(resolve, reject) {
+
+      Settings.findOne({}, name, function(err, setting) {
+        if(err || !setting){
+          return reject(err);
+
+        }
+        return resolve(setting);
+      });
+    });
+  },
   sendSms: function(to, text, From = "50004000004", customerId = null, countryCode = "98", findKey = false) {
     return new Promise(function(resolve, reject) {
 
@@ -104,13 +116,13 @@ let global = {
             message: "کد برای شما ارسال شد!"
           });
         }).catch(function(err) {
-            console.log("err global sms:", err);
-            return reject({
-              success: true,
-              err:err,
-              message: "مشکل در ارسال اس ام اس!"
-            });
+          console.log("err global sms:", err);
+          return reject({
+            success: true,
+            err: err,
+            message: "مشکل در ارسال اس ام اس!"
           });
+        });
       });
 
     } else {
@@ -242,13 +254,13 @@ let global = {
   },
   generateUnid: function(arr, userIp) {
 
-      let abc = "abcdefghijklmnopqrstuvwxyz1234567890".split("");
-      var token="";
-      for(let i=0;i<32;i++){
-        token += abc[Math.floor(Math.random()*abc.length)];
-      }
-      // console.log('token is',token);
-      return token; //Will return a 32 bit "hash"
+    let abc = "abcdefghijklmnopqrstuvwxyz1234567890".split("");
+    var token = "";
+    for (let i = 0; i < 32; i++) {
+      token += abc[Math.floor(Math.random() * abc.length)];
+    }
+    // console.log('token is',token);
+    return token; //Will return a 32 bit "hash"
 
     // return randtoken.generate(32);
 
@@ -295,16 +307,16 @@ let global = {
               success: true,
               activeCategory: setting.activeCategory
             });
-          } else if(setting && setting.siteActiveMessage && setting.activeCategory) {
+          } else if (setting && setting.siteActiveMessage && setting.activeCategory) {
             reject({
               success: false,
               message: setting.siteActiveMessage || "",
               activeCategory: setting.activeCategory
             });
 
-          }else{
+          } else {
             reject({
-              success: false,
+              success: false
             });
 
           }

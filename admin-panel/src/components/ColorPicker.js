@@ -14,7 +14,7 @@ const ColorPicker = (props) => {
   const onTheChange = ({ hex }) => setTheColor(hex);
   const handleChangeComplete = ({ hex }) => {
     onChangeComplete(hex);
-    setTheColor(hex);
+    setTheColor(hex); 
   };
 
 

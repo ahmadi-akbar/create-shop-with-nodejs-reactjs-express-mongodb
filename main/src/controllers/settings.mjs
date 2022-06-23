@@ -377,7 +377,7 @@ let self = ({
               }
               Settings.findOneAndUpdate({}, {
                 logo: photos[0].url
-              },{new:true}, function(err, setting) {
+              }, { new: true }, function(err, setting) {
 
 
                 if (err && !setting) {
@@ -409,6 +409,33 @@ let self = ({
       next();
     }
   },
+  getSetting: function(req, res, next) {
+    Settings.findOneAndUpdate({}, req.body, { new: true }, function(err, setting) {
+
+
+      if (err && !setting) {
+
+
+        res.json({
+          err: err,
+          success: false,
+          message: "error"
+        });
+
+      }
+      self.updateImportantFiles(res,setting);
+      self.updateCssFile(res,setting);
+
+
+      // file.pipe(fstream);
+      // fstream.on("close", function() {
+      //
+      // });
+      res.json({success:true})
+
+    });
+
+  },
   updateConfiguration: function(req, res, next) {
     Settings.findOneAndUpdate({}, req.body, { new: true }, function(err, setting) {
 
@@ -423,35 +450,135 @@ let self = ({
         });
 
       }
-      let filePath = path.join(__dirname, "/../../public_media/site_setting/", "config.js");
+      self.updateImportantFiles(res,setting);
+      self.updateCssFile(res,setting);
 
-      // let fstream = fs.createWriteStream(filePath);
-      // console.log('on file app mimetype', typeof filename.mimeType);
-      const writedata = global.config();
-
-      // writeFile(filename, writedata)
-      try {
-        fs.promises.writeFile(filePath, "export default ()=> (" + JSON.stringify(writedata, null, 4) + ")", "utf8");
-        console.log("data is written successfully in the file");
-        return res.json({
-          success:true
-        });
-
-      }
-      catch (err) {
-        console.log("not able to write data in the file ",err);
-        return res.json({
-          success:false,
-          err:err
-        });
-      }
 
       // file.pipe(fstream);
       // fstream.on("close", function() {
       //
       // });
+      res.json({success:true})
 
     });
+
+  },
+  updatePrivateConfiguration: function(req, res, next) {
+    console.log("updatePrivateConfiguration",req.body);
+    Settings.findOneAndUpdate({}, req.body, { new: true }, function(err, setting) {
+
+
+      if (err && !setting) {
+
+
+        res.json({
+          err: err,
+          success: false,
+          message: "error"
+        });
+
+      }
+      //update public/site_setting/config.js
+      //update build/site_setting/config.js
+      // const writedata = global.config();
+      self.updateImportantFiles(res,setting);
+
+        // file.pipe(fstream);
+      // fstream.on("close", function() {
+      //
+      // });
+      res.json({success:true})
+
+    });
+
+  },
+  updateImportantFiles: function(res,setting) {
+    self.updateFile(res,"/../../build/site_setting/","config.js",
+      "window.BASE_URL='"+setting.BASE_URL+"';\n" +
+      "window.SHOP_URL='"+setting.SHOP_URL+"';")
+
+    self.updateFile(res,"/../../public/site_setting/","config.js",
+      "window.BASE_URL='"+setting.BASE_URL+"';\n" +
+      "window.SHOP_URL='"+setting.SHOP_URL+"';")
+
+    self.updateFile(res,"/../../../admin/","variables.js",
+      "window.BASE_URL='"+setting.BASE_URL+"';\n" +
+      "window.ADMIN_ROUTE='"+setting.ADMIN_ROUTE+"';\n" +
+      "window.ADMIN_URL='"+setting.ADMIN_URL+"';\n" +
+      "window.SHOP_URL='"+setting.SHOP_URL+"';")
+
+    self.updateFile(res,"/../../../admin-panel/public/","variables.js",
+      "window.BASE_URL='"+setting.BASE_URL+"';\n" +
+      "window.ADMIN_ROUTE='"+setting.ADMIN_ROUTE+"';\n" +
+      "window.ADMIN_URL='"+setting.ADMIN_URL+"';\n" +
+      "window.SHOP_URL='"+setting.SHOP_URL+"';")
+  },
+  updateCssFile: function(res,setting) {
+    console.log("setting.primaryColor",setting.primaryColor);
+    // return;
+    var JSO=
+      ":root {"+
+      "--blue: #674eec;"+
+      "--primary: "+setting.primaryColor+";"+
+      "--indigo: #674eec;"+
+      "--purple: #8445f7;"+
+      "--pink: #ff4169;"+
+      "--red: #c4183c;"+
+      "--orange: #fb7906;"+
+      "--yellow: #ffb400;"+
+      "--green: #17c671;"+
+      "--teal: #1adba2;"+
+      "--cyan: #00b8d8;"+
+      "--white: #fff;"+
+      "--gray: #868e96;"+
+      "--gray-dark: #343a40;"+
+      "--secondary: "+setting.secondaryColor+";"+
+      "--success: #17c671;"+
+      "--info: #00b8d8;"+
+      "--warning: #ffb400;"+
+      "--danger: #c4183c;"+
+      "--light: #FBFBFB;"+
+      "--dark: #212529;"+
+      "--bg-color: "+setting.bgColor+";"+
+      "--footer-bg-color: "+setting.footerBgColor+";"+
+      "--text-color: "+setting.textColor+";"+
+      "--breakpoint-xs: 0;"+
+      "--breakpoint-sm: 576px;"+
+      "--breakpoint-md: 768px;"+
+      "--breakpoint-lg: 992px;"+
+      "--breakpoint-xl: 1200px;"+
+      "--font-family-sans-serif: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;"+
+      "--font-family-monospace: 'Roboto Mono', Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier New', monospace"+
+      "}";
+
+    self.updateFile(res,"/../../build/site_setting/","theme.css",JSO)
+
+    self.updateFile(res,"/../../public/site_setting/","theme.css",JSO)
+
+  },
+  updateFile: function(res, thePath,file_name,data) {
+    let filePath = path.join(__dirname, thePath, file_name);
+
+    // let fstream = fs.createWriteStream(filePath);
+    // console.log('on file app mimetype', typeof filename.mimeType);
+
+    // writeFile(filename, writedata)
+    try {
+      fs.promises.writeFile(filePath,data, "utf8");
+      console.log("data is written successfully in the file\n"+
+      "filePath: "+filePath + " "+ file_name);
+      // return res.json({
+      //   success: true
+      // });
+
+    }
+    catch (err) {
+      console.log("not able to write data in the file ", err);
+      // return res.json({
+      //   success: false,
+      //   err: err
+      // });
+    }
 
   }
 

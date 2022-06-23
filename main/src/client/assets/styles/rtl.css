@@ -84,7 +84,7 @@
 /*}*/
 
 /*body .rtl .open-file {*/
-/*border: 1px dashed #ef811d;*/
+/*border: 1px dashed --primary;*/
 /*background-color: white;*/
 /*position: relative;*/
 /*width: 100%;*/
@@ -732,7 +732,7 @@
 /*}*/
 
 /*.lyrics::-webkit-scrollbar-thumb {*/
-/*background: #ef811d;*/
+/*background: --primary;*/
 /*width: 5px;*/
 /*border-radius: 5px;*/
 /*}*/
@@ -1120,7 +1120,7 @@ body .rtl .MuiTableCell-sizeSmall {
 }
 
 .nav-item.active > a .leftbuttonmenu {
-  background-color: #ef811d;
+  background-color: --primary;
 }
 
 .nav-item.active > a .leftbuttonmenu i {
@@ -1213,7 +1213,7 @@ body .rtl .iconShow {
 }
 
 body .rtl .open-file {
-  border: 1px dashed #ef811d;
+  border: 1px dashed --primary;
   background-color: white;
   position: relative;
   width: 100%;
