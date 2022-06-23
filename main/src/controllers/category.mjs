@@ -9,11 +9,7 @@ var self = ( {
         // console.log('importcats');
         await request({
             method: 'GET',
-<<<<<<< HEAD
-                url: "http://arvandguarantee.shop/wp-json/akbar/v1/allcats",
-=======
                 url: "http://localhost:3001/wp-json/akbar/v1/allcats",
->>>>>>> 496de9eb5f488a591bacfd6f8d28b7e365dbd606
                 body: {},
             json: true
         }, function async (error, response, parsedBody) {

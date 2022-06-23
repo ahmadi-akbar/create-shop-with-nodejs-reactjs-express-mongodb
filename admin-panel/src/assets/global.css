@@ -14,8 +14,6 @@ html, body {
     box-sizing: border-box;
 
 }
-<<<<<<< HEAD
-=======
 .dropzone{
     background-color: #fff;
 }
@@ -25,7 +23,6 @@ html, body {
 .drag-item{
     background-color: #fff9f9;
 }
->>>>>>> 496de9eb5f488a591bacfd6f8d28b7e365dbd606
 .clear{
     clear: both;
     width: 100%;
@@ -44,8 +41,6 @@ html, body {
 .the-color-popover{
     position: absolute;
     z-index: 2;
-<<<<<<< HEAD
-=======
 
 }
 .the-color-popover,
@@ -64,7 +59,6 @@ color:#000 !important;
 }
 .single-product .AddToCardButton button{
     flex-direction: row-reverse;
->>>>>>> 496de9eb5f488a591bacfd6f8d28b7e365dbd606
 }
 .the-color-cover {
     position: fixed;
@@ -82,12 +76,8 @@ color:#000 !important;
 }
 .hytrdf.active {
     border-color: #2700ff;
-<<<<<<< HEAD
-    border-width: 8px;
-=======
     border-width: 3px;
     border-style: solid;
->>>>>>> 496de9eb5f488a591bacfd6f8d28b7e365dbd606
 }
 
 .hytrdf {
@@ -115,28 +105,16 @@ color:#000 !important;
     width: 100% !important;
 }
 
-<<<<<<< HEAD
-.col-md-6 {
-=======
 .col-md-6,.col-sm-6 {
->>>>>>> 496de9eb5f488a591bacfd6f8d28b7e365dbd606
     flex-basis: 50%;
     padding: 0 15px;
 }
 
-<<<<<<< HEAD
-.col-md-3 {
-    flex-basis: 25%;
-    padding: 0 15px;
-}
-.col-md-9 {
-=======
 .col-md-3,.col-sm-3 {
     flex-basis: 25%;
     padding: 0 15px;
 }
 .col-md-9 ,.col-sm-9{
->>>>>>> 496de9eb5f488a591bacfd6f8d28b7e365dbd606
     flex-basis: 75%;
     padding: 0 15px;
 }
@@ -145,11 +123,8 @@ color:#000 !important;
     padding: 0 15px;
 }
 
-<<<<<<< HEAD
-=======
 
 
->>>>>>> 496de9eb5f488a591bacfd6f8d28b7e365dbd606
 .the-label{
     display: block;
     margin-bottom: 10px;
@@ -204,11 +179,7 @@ color:#000 !important;
 .RaImageField-image{
     max-width: 200px;
 }
-<<<<<<< HEAD
-.col-md-4 {
-=======
 .col-md-4,.col-sm-4 {
->>>>>>> 496de9eb5f488a591bacfd6f8d28b7e365dbd606
     flex-basis: 33.3333%;
     padding: 0 15px;
 }
@@ -216,9 +187,6 @@ color:#000 !important;
     flex-basis: 40%;
     padding: 0 15px;
 }
-<<<<<<< HEAD
-
-=======
 .col-md-12,.col-sm-12 {
     flex-basis: 100%;
     padding: 0 15px;
@@ -339,7 +307,6 @@ body .layout.rtl .react-json-view *
     text-align: left;
     font-family: sans-serif,Arial,"IRANSans" !important;
 }
->>>>>>> 496de9eb5f488a591bacfd6f8d28b7e365dbd606
 .width100 {
     width: 100% !important;
 }

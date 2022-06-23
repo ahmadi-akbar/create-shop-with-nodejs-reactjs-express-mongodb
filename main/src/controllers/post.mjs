@@ -1,20 +1,12 @@
 import Post from "#models/post";
 import Media from "#models/media";
-<<<<<<< HEAD
-import global from '#root/global';
-=======
 import global from "#root/global";
->>>>>>> 496de9eb5f488a591bacfd6f8d28b7e365dbd606
 import requestIp from "request-ip";
 import _ from "lodash";
 
 var self = ({
   all: function(req, res, next) {
-<<<<<<< HEAD
-    console.log("kjhgfdsdfgh");
-=======
     // console.log("kjhgfdsdfgh");
->>>>>>> 496de9eb5f488a591bacfd6f8d28b7e365dbd606
     let offset = 0;
     if (req.params.offset) {
       offset = parseInt(req.params.offset);
@@ -35,11 +27,7 @@ var self = ({
         return 0;
       }
       Post.countDocuments(search, function(err, count) {
-<<<<<<< HEAD
-        console.log("countDocuments", count);
-=======
         // console.log("countDocuments", count);
->>>>>>> 496de9eb5f488a591bacfd6f8d28b7e365dbd606
         if (err || !count) {
           res.json({
             success: false,
@@ -60,11 +48,7 @@ var self = ({
     }).skip(offset).sort({ createdAt: -1 }).limit((req.params.limit));
   },
   allW: function(req, res, next) {
-<<<<<<< HEAD
-    console.log("jhgfdghjk", req.query.search);
-=======
     // conso/le.log("jhgfdghjk", req.query.search);
->>>>>>> 496de9eb5f488a591bacfd6f8d28b7e365dbd606
     let offset = 0;
     if (req.params.offset) {
       offset = parseInt(req.params.offset);
@@ -98,25 +82,15 @@ var self = ({
 
     }
 
-<<<<<<< HEAD
-    search["kind"]='post';
-    console.log(search);
-    Post.find(search, "_id title updatedAt createdAt status  excerpt", function(err, posts) {
-=======
     search["kind"] = "post";
     // console.log(search);
     Post.find(search, "_id title updatedAt createdAt status  excerpt thumbnail", function(err, posts) {
->>>>>>> 496de9eb5f488a591bacfd6f8d28b7e365dbd606
       if (err || !posts) {
         res.json([]);
         return 0;
       }
       Post.countDocuments(search, function(err, count) {
-<<<<<<< HEAD
-        console.log("countDocuments", count);
-=======
         // console.log("countDocuments", count);
->>>>>>> 496de9eb5f488a591bacfd6f8d28b7e365dbd606
         if (err || !count) {
           res.json([]);
           return 0;
@@ -135,11 +109,7 @@ var self = ({
   },
   allS: function(req, res, next) {
     return new Promise(function(resolve, reject) {
-<<<<<<< HEAD
-      console.log("jhgfdghjk", req.query.search);
-=======
       // console.log("jhgfdghjk", req.query.search);
->>>>>>> 496de9eb5f488a591bacfd6f8d28b7e365dbd606
       let offset = 0;
       if (req.params.offset) {
         offset = parseInt(req.params.offset);
@@ -175,22 +145,14 @@ var self = ({
       if (req.query.type) {
         search["type"] = req.query.type;
       }
-<<<<<<< HEAD
-      console.log(search);
-=======
       // console.log(search);
->>>>>>> 496de9eb5f488a591bacfd6f8d28b7e365dbd606
       Post.find(search, "_id title updatedAt status catChoosed firstCategory files price type", function(err, posts) {
         if (err || !posts) {
           resolve([]);
           return 0;
         }
         Post.countDocuments(search, function(err, count) {
-<<<<<<< HEAD
-          console.log("countDocuments", count);
-=======
           // console.log("countDocuments", count);
->>>>>>> 496de9eb5f488a591bacfd6f8d28b7e365dbd606
           if (err || !count) {
             resolve([]);
 
@@ -237,13 +199,8 @@ var self = ({
     });
   },
   postsByCat: function(req, res, next) {
-<<<<<<< HEAD
-    console.log("postsByCat...");
-    console.log("jhgfdghjk", req.query.search);
-=======
     // console.log("postsByCat...");
     // console.log("jhgfdghjk", req.query.search);
->>>>>>> 496de9eb5f488a591bacfd6f8d28b7e365dbd606
     let offset = 0;
     if (req.params.offset) {
       offset = parseInt(req.params.offset);
@@ -267,11 +224,7 @@ var self = ({
 
 
     }
-<<<<<<< HEAD
-    console.log(search);
-=======
     // console.log(search);
->>>>>>> 496de9eb5f488a591bacfd6f8d28b7e365dbd606
     search["title." + req.headers.lan] = {
       $exists: true
     };
@@ -294,11 +247,7 @@ var self = ({
         posts = [];
       }
       Post.countDocuments(search, function(err, count) {
-<<<<<<< HEAD
-        console.log("countDocuments", count);
-=======
         // console.log("countDocuments", count);
->>>>>>> 496de9eb5f488a591bacfd6f8d28b7e365dbd606
         if (err) {
           res.json([]);
           return 0;
@@ -367,11 +316,7 @@ var self = ({
 
 
       }
-<<<<<<< HEAD
-      console.log(search);
-=======
       // console.log(search);
->>>>>>> 496de9eb5f488a591bacfd6f8d28b7e365dbd606
       search["title." + req.headers.lan] = {
         $exists: true
       };
@@ -391,11 +336,7 @@ var self = ({
           posts = [];
         }
         Post.countDocuments(search, function(err, count) {
-<<<<<<< HEAD
-          console.log("countDocuments", count);
-=======
           // console.log("countDocuments", count);
->>>>>>> 496de9eb5f488a591bacfd6f8d28b7e365dbd606
           if (err) {
             resolve([]);
           }
@@ -441,11 +382,7 @@ var self = ({
     });
   },
   allWCustomer: function(req, res, next) {
-<<<<<<< HEAD
-    console.log("allWCustomer");
-=======
     // console.log("allWCustomer");
->>>>>>> 496de9eb5f488a591bacfd6f8d28b7e365dbd606
     let offset = 0;
     if (req.params.offset) {
       offset = parseInt(req.params.offset);
@@ -470,11 +407,7 @@ var self = ({
       }
 
       Post.countDocuments(search, function(err, count) {
-<<<<<<< HEAD
-        console.log("countDocuments", count);
-=======
         // console.log("countDocuments", count);
->>>>>>> 496de9eb5f488a591bacfd6f8d28b7e365dbd606
         if (err || !count) {
           res.json([]);
           return 0;
@@ -485,11 +418,7 @@ var self = ({
         );
 
         _.forEach(posts, (c) => {
-<<<<<<< HEAD
-          console.log(c.title);
-=======
           // console.log(c.title);
->>>>>>> 496de9eb5f488a591bacfd6f8d28b7e365dbd606
           // c.views = 0;
           c.title = c["title"][req.headers.lan];
           // console.log('views', c.views);
@@ -533,17 +462,6 @@ var self = ({
       }).lean();
   },
   viewOne: function(req, res, next) {
-<<<<<<< HEAD
-
-    Post.findById(req.params.id,
-      function(err, post) {
-        if (err || !post) {
-          res.json({
-            success: false,
-            message: "error!"
-          });
-          return 0;
-=======
     console.log("viewOne ", req.params.id);
     Post.findById(req.params.id,
       function(err, post) {
@@ -554,7 +472,6 @@ var self = ({
             success: false,
             message: "error!"
           });
->>>>>>> 496de9eb5f488a591bacfd6f8d28b7e365dbd606
         }
 
         let views = post.views;
@@ -566,10 +483,7 @@ var self = ({
           userIp: requestIp.getClientIp(req),
           createdAt: new Date()
         });
-<<<<<<< HEAD
-=======
         console.log("findByIdAndUpdate");
->>>>>>> 496de9eb5f488a591bacfd6f8d28b7e365dbd606
         Post.findByIdAndUpdate(req.params.id, {
             "$set": {
               // getContactData: post.getContactData,
@@ -580,12 +494,7 @@ var self = ({
             "fields": { "_id": 1 }
           }, function(err, updatedPost) {
             delete post.views;
-<<<<<<< HEAD
-            res.json(post);
-            return 0;
-=======
             return res.json(post);
->>>>>>> 496de9eb5f488a591bacfd6f8d28b7e365dbd606
           });
 
       }).lean();
@@ -693,19 +602,11 @@ var self = ({
       }).populate("customer", "email phoneNumber").lean();
   },
   viewOneMyPost: function(req, res, next) {
-<<<<<<< HEAD
-    console.log("web uiwgeh  efkv", req.params.id);
-    Post.findById(req.params.id,
-      function(err, post) {
-        console.log("post", post);
-        console.log("err", err);
-=======
     // console.log("web uiwgeh  efkv", req.params.id);
     Post.findById(req.params.id,
       function(err, post) {
         // console.log("post", post);
         // console.log("err", err);
->>>>>>> 496de9eb5f488a591bacfd6f8d28b7e365dbd606
         if (err || !post) {
           res.json({
             success: false,
@@ -740,11 +641,7 @@ var self = ({
     };
     // req.body.title[req.headers.lan]=title;
     // console.log()
-<<<<<<< HEAD
-    console.log("creating post...", req.body.description, "..„");
-=======
     // console.log("creating post...", req.body.description, "..„");
->>>>>>> 496de9eb5f488a591bacfd6f8d28b7e365dbd606
     req.body.status = "published";
     let code = Math.floor(100000 + Math.random() * 900000);
     req.body.postNumber = code;
@@ -774,15 +671,9 @@ var self = ({
       // $tz = req.headers.customer.phoneNumber + "\n";
       // $tz += $text;
       objd.message = $text;
-<<<<<<< HEAD
-      console.log("objd", objd);
-      global.notifateToTelegram(objd).then(function(f) {
-        console.log("f", f);
-=======
       // console.log("objd", objd);
       global.notifateToTelegram(objd).then(function(f) {
         // console.log("f", f);
->>>>>>> 496de9eb5f488a591bacfd6f8d28b7e365dbd606
         // res.json({success: true});
         // return 0;
       });
@@ -797,24 +688,13 @@ var self = ({
     // console.log('creating post...', req.body);
     Post.create(req.body, function(err, post) {
       if (err || !post) {
-<<<<<<< HEAD
-        res.json({
-=======
         return res.json({
->>>>>>> 496de9eb5f488a591bacfd6f8d28b7e365dbd606
           err: err,
           success: false,
           message: "error!"
         });
-<<<<<<< HEAD
-        return 0;
-      }
-      res.json(post);
-      return 0;
-=======
       }
       return res.json(post);
->>>>>>> 496de9eb5f488a591bacfd6f8d28b7e365dbd606
 
     });
   },
@@ -839,41 +719,11 @@ var self = ({
     );
   },
   edit: function(req, res, next) {
-<<<<<<< HEAD
-    req.body.status = "published";
-=======
     // req.body.status = "published";
->>>>>>> 496de9eb5f488a591bacfd6f8d28b7e365dbd606
     req.body.customer = req.headers.customer._id;
     if (!req.headers.lan) {
       req.headers.lan = "fa";
     }
-<<<<<<< HEAD
-    let { description, title } = req.body;
-    delete req.body.description;
-    req.body.description = {
-      [req.headers.lan]: description
-    };
-    delete req.body.title;
-    // req.body.description[req.headers.lan]=description;
-    req.body.title = {
-      [req.headers.lan]: title
-    };
-    // req.body.title[req.headers.lan]=title;
-    // console.log()
-    console.log("creating post...", req.body.description, "..„");
-    Post.findByIdAndUpdate(req.params.id, req.body, function(err, post) {
-      if (err || !post) {
-        res.json({
-          success: false,
-          message: "error!"
-        });
-        return 0;
-      }
-
-      res.json(post);
-      return 0;
-=======
     // let { description, title } = req.body;
     // delete req.body.description;
     // req.body.description = {
@@ -896,26 +746,10 @@ var self = ({
       }
 
       return res.json(post);
->>>>>>> 496de9eb5f488a591bacfd6f8d28b7e365dbd606
 
     });
   },
   editAdmin: function(req, res, next) {
-<<<<<<< HEAD
-    // if (!req.headers.lan) {
-    //   req.headers.lan = "fa";
-    // }
-    Post.findByIdAndUpdate(req.params.id, req.body, function(err, post) {
-      if (err || !post) {
-        res.json({
-          success: false,
-          message: "error!"
-        });
-        return 0;
-      }
-      res.json(post);
-      return 0;
-=======
     if (!req.headers.lan) {
       req.headers.lan = "fa";
     }
@@ -927,7 +761,6 @@ var self = ({
         });
       }
       return res.json(post);
->>>>>>> 496de9eb5f488a591bacfd6f8d28b7e365dbd606
 
     });
   },
@@ -954,15 +787,9 @@ var self = ({
           objd.media = post.files[0].url;
         }
       }
-<<<<<<< HEAD
-      console.log("objd", objd);
-      global.publishToTelegram(objd).then(function(f) {
-        console.log("f", f);
-=======
       // console.log("objd", objd);
       global.publishToTelegram(objd).then(function(f) {
         // console.log("f", f);
->>>>>>> 496de9eb5f488a591bacfd6f8d28b7e365dbd606
       });
 
 
@@ -993,11 +820,7 @@ var self = ({
   },
   count: function(req, res, next) {
     Post.countDocuments({}, function(err, count) {
-<<<<<<< HEAD
-      console.log("countDocuments", count);
-=======
       // console.log("countDocuments", count);
->>>>>>> 496de9eb5f488a591bacfd6f8d28b7e365dbd606
       if (err || !count) {
         res.json({
           success: false,
@@ -1038,11 +861,7 @@ var self = ({
           });
           return 0;
         }
-<<<<<<< HEAD
-        console.log("req.headers", req.headers);
-=======
         // console.log("req.headers", req.headers);
->>>>>>> 496de9eb5f488a591bacfd6f8d28b7e365dbd606
         if (req.headers.user && req.headers.token) {
           let action = {
             user: req.headers.user._id,
@@ -1091,11 +910,7 @@ var self = ({
     //
     //
     let photos = req.photo_all;
-<<<<<<< HEAD
-    console.log(photos, req.body);
-=======
     // console.log(photos, req.body);
->>>>>>> 496de9eb5f488a591bacfd6f8d28b7e365dbd606
 
     if (photos && photos[0]) {
       Media.create({

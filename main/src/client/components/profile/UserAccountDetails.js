@@ -5,10 +5,7 @@ import {withTranslation} from 'react-i18next';
 import store from '#c/functions/store';
 import {Logout, submitProfile} from '#c/functions/index';
 import {Navigate} from 'react-router-dom';
-<<<<<<< HEAD
-=======
 import { toast } from "react-toastify";
->>>>>>> 496de9eb5f488a591bacfd6f8d28b7e365dbd606
 
 // const UserAccountDetails  = ({ title }) => (
 class LoginForm extends React.PureComponent {
@@ -35,14 +32,10 @@ class LoginForm extends React.PureComponent {
         email,
         internationalCode,
       }).then((d) => {
-<<<<<<< HEAD
-        alert(t('successfully done!'));
-=======
         toast(t("successfully done!"), {
           type: "success"
         });
         return;
->>>>>>> 496de9eb5f488a591bacfd6f8d28b7e365dbd606
       });
     }
   };

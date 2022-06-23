@@ -28,22 +28,15 @@ export { default as TransactionPaymentStatusField } from './TransactionPaymentSt
 export { default as OrderStatus } from './OrderStatus';
 export { default as OrderTabs } from './OrderTabs';
 export { default as ProductType } from './product/ProductType';
-<<<<<<< HEAD
-=======
 export { default as AttrType } from './AttrType';
->>>>>>> 496de9eb5f488a591bacfd6f8d28b7e365dbd606
 export { default as TheImages } from './product/TheImages';
 export { default as ShowImageField } from './product/ShowImageField';
 export { default as Combinations } from './product/Combinations';
 export { default as FormTabs } from './product/FormTabs';
 export { default as StockStatus } from './StockStatus';
-<<<<<<< HEAD
-export { default as ColorPicker } from './ColorPicker';
-=======
 export { default as PageBuilder } from './page-builder/App';
 export { default as ColorPicker } from './ColorPicker';
 export { default as CustomModal } from './CustomModal';
 // export { default as DeleteElement } from './DeleteElement';
->>>>>>> 496de9eb5f488a591bacfd6f8d28b7e365dbd606
 // export { default as PostFilterButton } from './PostFilterButton';
 // export { default as PostFilterForm } from './PostFilterForm';

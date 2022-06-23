@@ -78,13 +78,8 @@ MainFooter.defaultProps = {
 
 
     {
-<<<<<<< HEAD
-      title: 'support@arvandguarantee.shop',
-      link: 'mailto:support@arvandguarantee.shop',
-=======
       title: 'support@localhost:3001',
       link: 'mailto:support@localhost:3001',
->>>>>>> 496de9eb5f488a591bacfd6f8d28b7e365dbd606
       icon: 'mail'
 
     },
@@ -106,11 +101,7 @@ MainFooter.defaultProps = {
     },
     {
       title: 'تهران،خیابان میرداماد،مجتمع کامپیوتر پایتخت،برج A،طبقه۹،واحد ۹۰۱',
-<<<<<<< HEAD
-      link: 'mailto:support@arvandguarantee.shop',
-=======
       link: 'mailto:support@localhost:3001',
->>>>>>> 496de9eb5f488a591bacfd6f8d28b7e365dbd606
       icon: 'room',
       style: {lineHieght: '20px'}
 

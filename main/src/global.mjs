@@ -6,23 +6,6 @@ import Sms from "#controllers/sms";
 import Action from "#controllers/action";
 import Customer from "#models/customer";
 import Settings from "#models/settings";
-<<<<<<< HEAD
-import VARIABLE from "#v/variables";
-import config from "#json/variables/config";
-
-// global.ip='https://api.shansebartar.com';
-let version = VARIABLE.VERSION_NUM;
-// global.ip='http://shansebartar.com:3002';
-// var Kavenegar from 'kavenegar');
-// var api = Kavenegar.KavenegarApi({
-//     // apikey: '45346A5273684F7951487067476C4B506D504E4A5A6939675A2B2F526D65686E6A754369754B59377158303D'
-//     apikey: ''
-// });
-let global = {
-  body:"",
-  ip: VARIABLE.BASE_URL,
-  domain: VARIABLE.BASE_URL,
-=======
 // import VARIABLE from "#v/variables";
 import config from "#json/variables/config";
 // import randtoken from "rand-token";
@@ -30,11 +13,22 @@ import config from "#json/variables/config";
 let version = process.env.VERSION_NUM;
 
 let global = {
-  body:"",
+  body: "",
   ip: process.env.BASE_URL,
   domain: process.env.BASE_URL,
->>>>>>> 496de9eb5f488a591bacfd6f8d28b7e365dbd606
-  config: (setting)=>(config),
+  config: (setting) => (config),
+  getSetting: (name) => {
+    return new Promise(function(resolve, reject) {
+
+      Settings.findOne({}, name, function(err, setting) {
+        if(err || !setting){
+          return reject(err);
+
+        }
+        return resolve(setting);
+      });
+    });
+  },
   sendSms: function(to, text, From = "50004000004", customerId = null, countryCode = "98", findKey = false) {
     return new Promise(function(resolve, reject) {
 
@@ -62,21 +56,13 @@ let global = {
                 });
 
               }
-<<<<<<< HEAD
-              sendmessage(countryCode, "300088103373", to, smstext, resolve, reject);
-=======
               global.sendmessage(countryCode, "300088103373", to, smstext, resolve, reject);
->>>>>>> 496de9eb5f488a591bacfd6f8d28b7e365dbd606
 
             }
           }
         );
       } else {
-<<<<<<< HEAD
-        sendmessage(countryCode, "300088103373", to, text, resolve, reject);
-=======
         global.sendmessage(countryCode, "300088103373", to, text, resolve, reject);
->>>>>>> 496de9eb5f488a591bacfd6f8d28b7e365dbd606
       }
 
 
@@ -96,11 +82,7 @@ let global = {
         phoneNumber: to,
         from: From
       }).then((sms) => {
-<<<<<<< HEAD
-        console.log("sss", sms);
-=======
         // console.log("sss", sms);
->>>>>>> 496de9eb5f488a591bacfd6f8d28b7e365dbd606
 
 
         let options = {
@@ -129,38 +111,18 @@ let global = {
             Sms.editByAdmin(sms._id, { status: "sent" });
 
           }
-<<<<<<< HEAD
-          resolve({
-            success: true,
-            message: "کد برای شما ارسال شد!"
-          });
-        })
-          .catch(function(err) {
-            console.log("err global sms:", err);
-            reject({
-              success: true,
-              message: "مشکل در ارسال اس ام اس!"
-            });
-          });
-      }).catch(err => {
-        console.log("sss err", err);
-
-        // reject(err);
-
-=======
           return resolve({
             success: true,
             message: "کد برای شما ارسال شد!"
           });
         }).catch(function(err) {
-            console.log("err global sms:", err);
-            return reject({
-              success: true,
-              err:err,
-              message: "مشکل در ارسال اس ام اس!"
-            });
+          console.log("err global sms:", err);
+          return reject({
+            success: true,
+            err: err,
+            message: "مشکل در ارسال اس ام اس!"
           });
->>>>>>> 496de9eb5f488a591bacfd6f8d28b7e365dbd606
+        });
       });
 
     } else {
@@ -290,22 +252,19 @@ let global = {
     });
 
   },
-<<<<<<< HEAD
-=======
   generateUnid: function(arr, userIp) {
 
-      let abc = "abcdefghijklmnopqrstuvwxyz1234567890".split("");
-      var token="";
-      for(let i=0;i<32;i++){
-        token += abc[Math.floor(Math.random()*abc.length)];
-      }
-      // console.log('token is',token);
-      return token; //Will return a 32 bit "hash"
+    let abc = "abcdefghijklmnopqrstuvwxyz1234567890".split("");
+    var token = "";
+    for (let i = 0; i < 32; i++) {
+      token += abc[Math.floor(Math.random() * abc.length)];
+    }
+    // console.log('token is',token);
+    return token; //Will return a 32 bit "hash"
 
     // return randtoken.generate(32);
 
   },
->>>>>>> 496de9eb5f488a591bacfd6f8d28b7e365dbd606
 
   addUnic: async function(arr, userIp) {
     return await new Promise(async function(resolve, reject) {
@@ -348,16 +307,16 @@ let global = {
               success: true,
               activeCategory: setting.activeCategory
             });
-          } else if(setting && setting.siteActiveMessage && setting.activeCategory) {
+          } else if (setting && setting.siteActiveMessage && setting.activeCategory) {
             reject({
               success: false,
               message: setting.siteActiveMessage || "",
               activeCategory: setting.activeCategory
             });
 
-          }else{
+          } else {
             reject({
-              success: false,
+              success: false
             });
 
           }

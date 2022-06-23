@@ -1,19 +1,12 @@
 import express from "express";
 import db from "#root/app/db";
 import path from "path";
-<<<<<<< HEAD
-import ssrHandle from "#root/app/ssrHandle";
-import configHandle from "#root/app/configHandle";
-import routeHandle from "#root/app/routeHandle";
-import headerHandle from "#root/app/headerHandle";
-=======
 // import ssrHandle from "#root/app/ssrHandle";
 import configHandle from "#root/app/configHandle";
 import routeHandle from "#root/app/routeHandle";
 import headerHandle from "#root/app/headerHandle";
 import { the_public_route } from "../routes/public/p";
 import router from "../routes/public/p";
->>>>>>> 496de9eb5f488a591bacfd6f8d28b7e365dbd606
 // import uploadHandle from "#root/app/uploadHandle";
 
 console.log("new date", new Date());
@@ -21,15 +14,6 @@ console.log("new date", new Date());
 let app = express();
 
 db();
-<<<<<<< HEAD
-headerHandle(app);
-
-ssrHandle(app);
-
-
-app.use(function(err, req, res, next) {
-  //console.log('here....');
-=======
 app.get("/", (req, res, next) => {
   console.log('#r home /')
   next();
@@ -41,7 +25,6 @@ configHandle(express, app);
 
 app.use(function(err, req, res, next) {
   console.log('here....');
->>>>>>> 496de9eb5f488a591bacfd6f8d28b7e365dbd606
   if (req.busboy) {
     req.pipe(req.busboy);
 
@@ -79,14 +62,9 @@ app.use(function(err, req, res, next) {
     next();
   }
 });
-<<<<<<< HEAD
-configHandle(express, app);
-routeHandle(app);
-=======
 // ssrHandle(app);
 
 routeHandle(app);
 // app.set("view engine", "pug");
->>>>>>> 496de9eb5f488a591bacfd6f8d28b7e365dbd606
 
 export default app;

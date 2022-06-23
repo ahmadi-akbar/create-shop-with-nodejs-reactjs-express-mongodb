@@ -142,8 +142,6 @@ object-assign
        * LICENSE file in the root directory of this source tree.
        */
 
-<<<<<<< HEAD
-=======
 /** @license React v17.0.2
  * react-is.production.min.js
  *
@@ -153,7 +151,6 @@ object-assign
  * LICENSE file in the root directory of this source tree.
  */
 
->>>>>>> 496de9eb5f488a591bacfd6f8d28b7e365dbd606
 //! moment.js
 
 //! moment.js locale configuration

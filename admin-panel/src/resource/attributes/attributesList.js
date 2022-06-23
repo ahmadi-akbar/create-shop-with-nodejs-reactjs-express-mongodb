@@ -20,10 +20,7 @@ import {
 import {CategoryRounded as Icon,ControlPointDuplicate} from '@mui/icons-material';
 import {Divider} from '@mui/material';
 import {List, SimpleForm, UploaderField} from '@/components';
-<<<<<<< HEAD
-=======
 
->>>>>>> 496de9eb5f488a591bacfd6f8d28b7e365dbd606
 import useStyles from '@/styles';
 import {Val} from '@/Utils';
 

@@ -35,10 +35,7 @@ router.get('/chapar', orderController.chapar);
 
 router.get('/view/:id', orderController.viewOneF);
 router.get('/myOrders/mine/:offset/:limit', orderController.allWOrders);
-<<<<<<< HEAD
-=======
 router.get('/myOrder/mine/:id', orderController.myOrder);
->>>>>>> 496de9eb5f488a591bacfd6f8d28b7e365dbd606
 router.get('/mySells/mine/:offset/:limit', orderController.allWSells);
 
 // router.put('/:id', orderController.edit);

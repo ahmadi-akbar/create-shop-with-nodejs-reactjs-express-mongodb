@@ -9,10 +9,7 @@ import SidebarCatItem from './SidebarCatItem';
 import { getAllSidebarCategoriesData, savePost } from '#c/functions/index';
 
 import navItems from '#c/data/sidebar-nav-items';
-<<<<<<< HEAD
-=======
 import KeyboardArrowLeftIcon from "@mui/icons-material/KeyboardArrowLeft";
->>>>>>> 496de9eb5f488a591bacfd6f8d28b7e365dbd606
 
 const SidebarNavItems = ({ t }) => {
   const appSelectedCats = useSelector((st) => st.store.selectedCats);
@@ -32,14 +29,7 @@ const SidebarNavItems = ({ t }) => {
           item.to = item._id;
           item.title = item.name;
 
-<<<<<<< HEAD
-          item.htmlAfter =
-            "<i class='material-icons'>keyboard_arrow_" +
-            t(item.back ? 'back' : 'right') +
-            '</i>';
-=======
           item.htmlAfter =<KeyboardArrowLeftIcon/>;
->>>>>>> 496de9eb5f488a591bacfd6f8d28b7e365dbd606
         }
       });
       res.forEach((item1) => {
@@ -109,11 +99,7 @@ const SidebarNavItems = ({ t }) => {
       return;
     }
 
-<<<<<<< HEAD
-    item.htmlAfter = "<i class='material-icons'>keyboard_arrow_"+t('right')+"</i>";
-=======
     item.htmlAfter = <KeyboardArrowLeftIcon/>;
->>>>>>> 496de9eb5f488a591bacfd6f8d28b7e365dbd606
     let selectedArray = [...selectedCats];
     let selectedParentArr = [...selectedParents];
     if (isParent) {

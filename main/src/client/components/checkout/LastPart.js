@@ -3,10 +3,7 @@ import {Button, ButtonGroup, Card, CardBody, CardFooter, CardHeader, Col, ListGr
 import {RadioGroup} from '@mui/material';
 
 import store from "#c/functions/store";
-<<<<<<< HEAD
-=======
 import PriceChunker from "./PriceChunker";
->>>>>>> 496de9eb5f488a591bacfd6f8d28b7e365dbd606
 // import State from "#c/data/state";
 import {withTranslation} from 'react-i18next';
 import {
@@ -48,11 +45,7 @@ class LastPart extends React.Component {
     console.log('theParams', theParams);
     let {address, setting, total, sum, deliveryPrice} = theParams;
     let {order_id, return_url, card, lan} = this.state;
-<<<<<<< HEAD
-
-=======
 let temp=total;
->>>>>>> 496de9eb5f488a591bacfd6f8d28b7e365dbd606
     return (
       <Card className="mb-3 pd-1">
         <CardHeader className={'pd-1'}>
@@ -162,8 +155,6 @@ let temp=total;
 
                   </div>]}
               </ListGroupItem>
-<<<<<<< HEAD
-=======
               {Boolean(total>50000000) && <ListGroupItem className={'d-flex px-3 border-0 '}>
 
                 {[<div className={'flex-1'}>
@@ -175,7 +166,6 @@ let temp=total;
 <PriceChunker price={total} onPlaceOrder={onPlaceOrder}/>
                   </div>]}
               </ListGroupItem>}
->>>>>>> 496de9eb5f488a591bacfd6f8d28b7e365dbd606
             </ListGroup>
             <Col className={"empty " + "height50"} sm={12} lg={12}>
 
@@ -183,35 +173,6 @@ let temp=total;
             <ListGroup>
               <ListGroupItem className={'d-flex px-3 border-0 '}>
                 <RadioGroup>
-<<<<<<< HEAD
-                  {/*<FormControlLabel*/}
-                  {/*className={'jhgfghj'}*/}
-                  {/*value={'zarinpal'}*/}
-                  {/*label={t('Zarinpal')}*/}
-                  {/*control={<Radio/>}*/}
-                  {/*// checked={ans === idx2}*/}
-                  {/*checked={paymentMethod === 'zarinpal'}*/}
-                  {/*onChange={() => {*/}
-                  {/*this.checkResponse('zarinpal');*/}
-
-                  {/*}}*/}
-                  {/*/>*/}
-                  {/*<FormControlLabel*/}
-                  {/*className={'jhgfghj'}*/}
-                  {/*value={'mellat'}*/}
-                  {/*label={t('Mellat')}*/}
-                  {/*control={<Radio/>}*/}
-                  {/*// checked={ans === idx2}*/}
-                  {/*checked={paymentMethod === 'mellat'}*/}
-                  {/*onChange={() => {*/}
-                  {/*this.checkResponse('mellat');*/}
-
-                  {/*}}*/}
-                  {/*/>*/}
-
-
-=======
->>>>>>> 496de9eb5f488a591bacfd6f8d28b7e365dbd606
                 </RadioGroup>
                 <form action="https://test.paycom.uz" method="POST" id="payme_form">
                   <input type="hidden" name="account[order_id]" value={order_id}/>
@@ -237,17 +198,10 @@ let temp=total;
           <ButtonGroup size="sm right">
             <Button className={''} left={"true"} onClick={onPrev}><i className="material-icons">{'chevron_right'}</i>{t('prev')}</Button>
           </ButtonGroup>
-<<<<<<< HEAD
-          <ButtonGroup size="sm left">
-            <Button className={''} left={"true"} onClick={onPlaceOrder}>{t('Place Order')}</Button>
-
-          </ButtonGroup>
-=======
           {Boolean(total<=50000000) && <ButtonGroup size="sm left">
             <Button className={''} left={"true"} onClick={()=>onPlaceOrder(0)}>{t('Place Order')}</Button>
 
           </ButtonGroup>}
->>>>>>> 496de9eb5f488a591bacfd6f8d28b7e365dbd606
 
         </CardFooter>
       </Card>

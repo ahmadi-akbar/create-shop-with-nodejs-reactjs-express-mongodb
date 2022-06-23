@@ -1,9 +1,3 @@
-<<<<<<< HEAD
-import axios from 'axios';
-
-export default (error, response, body) => {
-
-=======
 import axios from "axios";
 
 export default (options, callback=()=>({})) => {
@@ -32,7 +26,6 @@ export default (options, callback=()=>({})) => {
   //     },
   //   ],
   // })
->>>>>>> 496de9eb5f488a591bacfd6f8d28b7e365dbd606
 
 };
 

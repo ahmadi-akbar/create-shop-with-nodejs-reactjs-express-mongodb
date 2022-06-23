@@ -1,8 +1,5 @@
-<<<<<<< HEAD
-=======
 console.log("#f ssrHandle");
 
->>>>>>> 496de9eb5f488a591bacfd6f8d28b7e365dbd606
 import path from "path";
 import isbot from "isbot";
 // import app from "./index";
@@ -18,16 +15,6 @@ import routes from "#c/ssrRoutes";
 import { Provider } from "react-redux";
 
 import { persistor, store } from "#c/functions/store";
-<<<<<<< HEAD
-import config from "./../../public_media/site_setting/config";
-
-const __dirname = path.resolve();
-const viewsFolder = path.join(__dirname, "./views");
-
-
-const ssrHandle = (app) => {
-  const vars=config();
-=======
 import config from "#c/config";
 import {the_public_route} from "#routes/public/p";
 
@@ -37,59 +24,33 @@ import {the_public_route} from "#routes/public/p";
 
 const ssrHandle = (app) => {
   const vars=config;
->>>>>>> 496de9eb5f488a591bacfd6f8d28b7e365dbd606
   // const tars=JSON.parse(vars);
   // console.log("tars",vars);
   if (vars.BASE_URL) {
     console.log("base url found");
     app.get("/", (req, res, next) => {
-<<<<<<< HEAD
-      // console.log("here1", config());
-      //   console.log('let us get to wizard3');
-      //   console.log("we need to wizard3...");
-      //   next("/wizard");
-
-=======
       console.log("the /");
->>>>>>> 496de9eb5f488a591bacfd6f8d28b7e365dbd606
       ssrParse(req, res, next);
 
     });
     app.get("/p/:_id/:title", (req, res, next) => {
-<<<<<<< HEAD
-      console.log("here2");
-
-=======
       console.log("/p/:_id/:title");
->>>>>>> 496de9eb5f488a591bacfd6f8d28b7e365dbd606
       ssrParse(req, res, next);
     });
 
     app.get("/post/:_id/:title", (req, res, next) => {
-<<<<<<< HEAD
-      console.log("here3");
-=======
       console.log("/post/:_id/:title");
->>>>>>> 496de9eb5f488a591bacfd6f8d28b7e365dbd606
 
       ssrParse(req, res, next);
     });
 
     app.get("/page/:_id/:title", (req, res, next) => {
-<<<<<<< HEAD
-      console.log("here4");
-=======
       console.log("/page/:_id/:title");
->>>>>>> 496de9eb5f488a591bacfd6f8d28b7e365dbd606
 
       ssrParse(req, res, next);
     });
     app.get("/:_firstCategory/:_id", (req, res, next) => {
-<<<<<<< HEAD
-      console.log("here5");
-=======
       console.log("/:_firstCategory/:_id");
->>>>>>> 496de9eb5f488a591bacfd6f8d28b7e365dbd606
       ssrParse(req, res, next);
     });
   } else {
@@ -104,17 +65,10 @@ const ssrParse = (req, res, next) => {
   let ua = req.get("user-agent");
   if (!req.headers.lan)
     req.headers.lan = "fa";
-<<<<<<< HEAD
-  console.log("in home...");
-
-  if (isbot(ua)) {
-    console.log("we need SSR...");
-=======
   console.log("==> () ssrParse");
 
   if (isbot(ua)) {
     console.log("it is bot, we need SSR...");
->>>>>>> 496de9eb5f488a591bacfd6f8d28b7e365dbd606
 
     console.log("BOT => ", ua);
     fs.readFile(path.resolve("./build/index.html"), "utf8", (err, data) => {
@@ -164,18 +118,6 @@ const ssrParse = (req, res, next) => {
           "<div id=\"root\"></div>",
           `<div id="root">${renderedData}</div>`
         );
-<<<<<<< HEAD
-        // res.locals.body=data;
-        // console.log("res.locals.body",res.locals.body);
-        // req.headers.htmlSend='xxxs';
-        next();
-        //   return res.send(
-        //   ssrData
-        // );
-      });
-    });
-  } else {
-=======
         // return the_public_route(req,res,next);
         // res.locals.body=data;
         // console.log("res.locals.body",res.locals.body);
@@ -190,7 +132,6 @@ const ssrParse = (req, res, next) => {
     });
   }
   else {
->>>>>>> 496de9eb5f488a591bacfd6f8d28b7e365dbd606
     console.log("no need to ssr...");
     next();
   }

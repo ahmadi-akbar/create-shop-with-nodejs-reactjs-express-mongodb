@@ -21,11 +21,7 @@ var self = {
       Customer.findByIdAndUpdate(customer._id, { $set: { whatsapp: false } }, function(err, cus) {
         res.json({
           success: true,
-<<<<<<< HEAD
-          message: "https://arvandguarantee.shop\n خوش آمدید\n کد تایید شما:\n" + customer.activationCode,
-=======
           message: "\n خوش آمدید\n کد تایید شما:\n" + customer.activationCode,
->>>>>>> 496de9eb5f488a591bacfd6f8d28b7e365dbd606
           phoneNumber: customer.phoneNumber,
           method: "whatsapp"
         });
@@ -609,11 +605,7 @@ var self = {
     // console.log('body: ', req.body);
     // console.log('id: ', req.headers.customer_id);
     // console.log("token: ", req.headers.token);
-<<<<<<< HEAD
-    search = {
-=======
     let search = {
->>>>>>> 496de9eb5f488a591bacfd6f8d28b7e365dbd606
       "$or": [
         { "email": { "$regex": req.body.email, "$options": "i" } },
         { "phoneNumber": { "$regex": req.body.phoneNumber, "$options": "i" } }
@@ -1373,10 +1365,7 @@ var self = {
           } else {
             invitation_code = user.invitation_code;
           }
-<<<<<<< HEAD
-=======
           console.log('Token generated:',Token)
->>>>>>> 496de9eb5f488a591bacfd6f8d28b7e365dbd606
           Customer.findByIdAndUpdate(user._id, {
             activationCode: null,
             invitation_code: invitation_code,

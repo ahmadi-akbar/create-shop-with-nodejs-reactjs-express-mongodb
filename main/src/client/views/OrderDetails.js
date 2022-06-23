@@ -1,12 +1,3 @@
-<<<<<<< HEAD
-import React, { useState } from "react";
-import { Card, CardBody, Col, Container, Row } from "shards-react";
-import { withTranslation } from "react-i18next";
-import { Link, useParams } from "react-router-dom";
-
-import PageTitle from "#c/components/common/PageTitle";
-import { getMyOrder } from "#c/functions/index";
-=======
 import React, { useEffect, useState } from "react";
 import { Card, CardBody, Col, Container, Row } from "shards-react";
 import { withTranslation } from "react-i18next";
@@ -15,40 +6,12 @@ import { DataGrid } from "@mui/x-data-grid";
 import PageTitle from "#c/components/common/PageTitle";
 import { getMyOrder } from "#c/functions/index";
 import { store } from "#c/functions/store";
->>>>>>> 496de9eb5f488a591bacfd6f8d28b7e365dbd606
 
 import { dateFormat } from "#c/functions/utils";
 
 const OrderDetails = ({ t }) => {
   let params = useParams();
   let { _id } = params;
-<<<<<<< HEAD
-  console.log("params", params);
-  // constructor(props) {
-  //   super(props);
-  //   // let params = useParams();
-  //
-  //   console.log('props',props);
-  //   const { t, _id } = props;
-  //   this.state = {
-  //     dat: {},
-  //     redirect: false
-  //   };
-  //   this.getMyOrdersF(_id);
-  // }
-  //
-  // redirectTrue(_id) {
-  //   // getMyPost(_id).then((data) => {
-  //   //   console.log('set _id to edit:', data);
-  //   //   savePost(data);
-  //   this.props.history.push("/order/" + _id);
-  //   // this.setState({
-  //   //   redirect: true
-  //   // })
-  //   // });
-  // }
-  let [dat, setDat] = useState({});
-=======
   let [dat, setDat] = useState({});
   let [card, setCard] = useState([]);
   let [lan, setLan] = useState(store.getState().store.lan || "fa");
@@ -73,7 +36,6 @@ const OrderDetails = ({ t }) => {
       label: t("price")
     }
   ]);
->>>>>>> 496de9eb5f488a591bacfd6f8d28b7e365dbd606
   const getMyOrdersF = (_id) => {
     getMyOrder(_id).then((post) => {
       if (post.createdAt) post.createdAt = dateFormat(post.createdAt);
@@ -169,11 +131,6 @@ const OrderDetails = ({ t }) => {
             break;
         }
       }
-<<<<<<< HEAD
-
-
-      setDat(...dat);
-=======
       post.card.forEach((item, key) => {
         post.card[key]["id"] = item._id;
         post.card[key]["title"] = item.title[lan];
@@ -186,14 +143,10 @@ const OrderDetails = ({ t }) => {
       setCard(post.card);
       setDat({ ...dat, ...post });
 
->>>>>>> 496de9eb5f488a591bacfd6f8d28b7e365dbd606
       return 0;
 
     });
   };
-<<<<<<< HEAD
-  getMyOrdersF(_id);
-=======
   useEffect(() => {
 
     getMyOrdersF(_id);
@@ -209,7 +162,6 @@ const OrderDetails = ({ t }) => {
     { field: "salePrice", headerName: t("salePrice"), sortable: false, width: 120 }
   ];
 
->>>>>>> 496de9eb5f488a591bacfd6f8d28b7e365dbd606
   return (
     <Container fluid className="main-content-container px-4">
       {/* Page Header */}
@@ -233,55 +185,6 @@ const OrderDetails = ({ t }) => {
                   <div className={"the-order mb-3"}>
                     <div className={"the-order-purple p-4"}>
                       <div className={"the-order-title"}>
-<<<<<<< HEAD
-                        <div className={"the-order-number"}> {t("Order #") + dat.orderNumber}</div>
-                        <div className={"the-order-status "}><Link
-                          className={"gfdsdf"} to={"/"}>{t("view items")}</Link></div>
-                      </div>
-                      <div className={"the-order-body"}>
-                        <div className={"the-order-body-line"}>
-                          {t("Order Date")}
-                          :
-                          {dat.updatedAt}
-                        </div>
-                        <div className={"the-order-body-line"}>
-                          {t("Order Status")}
-                          :
-                          <span className={dat.status_cl}><span
-                            className={"gfdsdf"}>{t(dat.status)}</span></span>
-                        </div>
-                        <div className={"the-order-body-line"}>
-                          {t("Payment Status")}
-                          :
-                          <span className={dat.paymentStatus_cl}> {dat.paymentStatus}</span>
-                        </div>
-                        <div className={"the-order-body-line"}>
-                          {t("Card Price")}
-                          :
-                          {dat.sum}
-                        </div>
-                        <div className={"the-order-body-line"}>
-                          {t("Delivery Price")}
-                          :
-                          {dat.deliveryPrice}
-                        </div>
-                        <div className={"the-order-body-line"}>
-                          {t("Total Price")}
-                          :
-                          {dat.amount}
-                        </div>
-                        {dat.deliveryDay && dat.deliveryDay.description && <div className={"the-order-body-line"}>
-                          {t("Delivery Time")}
-                          :
-                          {dat.deliveryDay.description}
-                        </div>}
-                        {dat.billingAddress && <div className={"the-order-body-line"}>
-                          {t("Address")}
-                          :
-                          {dat.billingAddress.StreetAddress}
-                        </div>}
-                      </div>
-=======
                         <div className={"the-order-number"}>
                           <div>{t("Order #") + dat.orderNumber}</div>
                           <div className={"mb-2"}>  {t("Order Date")}:{dat.updatedAt}</div>
@@ -387,7 +290,6 @@ const OrderDetails = ({ t }) => {
                         </div>
                       </div>
 
->>>>>>> 496de9eb5f488a591bacfd6f8d28b7e365dbd606
                     </div>
                   </div>
                 </Col>

@@ -69,11 +69,7 @@ export default (apiUrl) => ({
       if (json && json[0]) {
         // console.log(json.map((r, t) => ({ ...r, id: r._id, t })));
 
-<<<<<<< HEAD
-        var x= ({
-=======
         var x = ({
->>>>>>> 496de9eb5f488a591bacfd6f8d28b7e365dbd606
           data: json.map((r, t) => ({ ...r, id: r._id, t })),
           total
         });
@@ -142,12 +138,8 @@ export default (apiUrl) => ({
       method: "PUT",
       body: JSON.stringify(params.data)
     }).then(({ json = [] }) => ({
-<<<<<<< HEAD
-      data: json.map((r) => ({ ...r, id: r._id }))
-=======
       data: { id: json._id,...json}
       // data: json.map((r) => ({ ...r, id: r._id }))
->>>>>>> 496de9eb5f488a591bacfd6f8d28b7e365dbd606
     })),
 
   // json-server doesn't handle filters on UPDATE route, so we fallback to calling UPDATE n times instead

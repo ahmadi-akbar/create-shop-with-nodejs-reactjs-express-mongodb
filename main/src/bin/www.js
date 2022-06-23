@@ -5,21 +5,13 @@
 import app from '../app/index.mjs';
 // import debugLib from 'debug';
 import http from 'http';
-<<<<<<< HEAD
-import VARIABLE from '#v/variables';
-=======
 // import VARIABLE from '#v/variables';
->>>>>>> 496de9eb5f488a591bacfd6f8d28b7e365dbd606
 // const debug = debugLib('your-project-name:server');
 
 /**
  * Get port from environment and store in Express.
  */
-<<<<<<< HEAD
-var port = normalizePort(VARIABLE.SERVER_PORT);
-=======
 var port = normalizePort( process.env.SERVER_PORT);
->>>>>>> 496de9eb5f488a591bacfd6f8d28b7e365dbd606
 app.set('port', port);
 
 /**

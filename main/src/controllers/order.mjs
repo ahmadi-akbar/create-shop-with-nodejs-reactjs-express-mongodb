@@ -234,8 +234,6 @@ var self = ( {
 
         }).populate('customer', 'nickname phoneNumber firstName lastName');
     },
-<<<<<<< HEAD
-=======
   myOrder: function(req, res, next) {
       // console.log('hgfgh');
       Order.findOne({
@@ -255,7 +253,6 @@ var self = ( {
 
         }).populate('customer', 'nickname phoneNumber firstName lastName').populate('transaction', 'Authority amount statusCode status');
     },
->>>>>>> 496de9eb5f488a591bacfd6f8d28b7e365dbd606
     viewOneF: function(req, res, next) {
       console.log('viewOneF', req.headers.customer_id.toString());
       Order.findOne({
@@ -297,11 +294,7 @@ var self = ( {
       let search = {};
       search['customer'] = req.headers.customer_id;
       // search['status']='published';
-<<<<<<< HEAD
-      Order.find(search, '_id updatedAt createdAt card sum amount deliveryPrice orderNumber status paymentStatus deliveryDay customer_data billingAddress', function(err, orders) {
-=======
       Order.find(search, '_id updatedAt createdAt card sum amount deliveryPrice orderNumber status paymentStatus deliveryDay customer_data billingAddress transaction', function(err, orders) {
->>>>>>> 496de9eb5f488a591bacfd6f8d28b7e365dbd606
         if (err || !orders) {
           res.json([]);
           return 0;

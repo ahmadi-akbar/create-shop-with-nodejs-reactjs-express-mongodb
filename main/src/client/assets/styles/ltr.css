@@ -80,11 +80,7 @@ body .ltr .MuiTableCell-sizeSmall {
 }
 
 .nav-item.active > a .rightbuttonmenu {
-<<<<<<< HEAD
-  background-color: #ef811d;
-=======
   background-color: #dddddd;
->>>>>>> 496de9eb5f488a591bacfd6f8d28b7e365dbd606
 }
 
 .nav-item.active > a .rightbuttonmenu i {

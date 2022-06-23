@@ -8,10 +8,7 @@ import fs from "fs";
 import moment from "moment-jalaali";
 import global from "#root/global";
 import mongoose from "mongoose";
-<<<<<<< HEAD
-=======
 import CONFIG from "#c/config";
->>>>>>> 496de9eb5f488a591bacfd6f8d28b7e365dbd606
 
 let self = ({
   importproductsfromcsv: function(req, res, next) {
@@ -531,11 +528,7 @@ let self = ({
         console.log("price_stock", price_stock);
         modifedProducts.push({
           product_id: c._id,
-<<<<<<< HEAD
-          page_url: "https://arvandguarantee.shop/p/" + c._id + "/" + encodeURIComponent(c.title.fa),
-=======
           page_url: CONFIG.SHOP_URL+"/p/" + c._id + "/" + encodeURIComponent(c.title.fa),
->>>>>>> 496de9eb5f488a591bacfd6f8d28b7e365dbd606
           price: last_price,
           old_price: last_sale_price,
           availability: (price_stock.indexOf(true) >= 0 ? "instock" : "outofstock")
@@ -1220,11 +1213,7 @@ let self = ({
     search["slug"] = {
       $exists: true
     };
-<<<<<<< HEAD
-    console.log(search);
-=======
     // console.log(search);
->>>>>>> 496de9eb5f488a591bacfd6f8d28b7e365dbd606
 
 // console.log('req.params',req.query.include);
     Product.find(search, "_id title options firstCategory secondCategory thirdCategory photos price salePrice type quantity in_stock thumbnail combinations labels views slug")
@@ -1734,20 +1723,12 @@ let self = ({
           // });
           delete product.data;
           delete product.transaction;
-<<<<<<< HEAD
-=======
           console.log(" product.keywords" ,  product.keywords);
->>>>>>> 496de9eb5f488a591bacfd6f8d28b7e365dbd606
           let obj = {
             product_price: product_price || "",
             product_old_price: product_old_price || "",
             availability: in_stock || "",
             image: product.thumbnail || product.photos[0] || "",
-<<<<<<< HEAD
-            keywords: product.keywords[req.headers.lan],
-            metadescription: product.metadescription[req.headers.lan],
-          };
-=======
             keywords: "",
             metadescription: "",
           };
@@ -1759,7 +1740,6 @@ let self = ({
             obj["metadescription"] = product["metadescription"][req.headers.lan] || product["metadescription"];
 
           }
->>>>>>> 496de9eb5f488a591bacfd6f8d28b7e365dbd606
           if (product["title"]) {
             obj["title"] = product["title"][req.headers.lan] || product["title"];
           } else {

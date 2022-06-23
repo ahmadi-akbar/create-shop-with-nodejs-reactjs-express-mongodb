@@ -141,12 +141,9 @@ body .layout.rtl .MuiButtonGroup-grouped:not(:first-of-type) {
     border-bottom-left-radius: 4px;
 }
 
-<<<<<<< HEAD
-=======
 body .layout.rtl .dropzone-placeholder {
     text-align: center;
 }
->>>>>>> 496de9eb5f488a591bacfd6f8d28b7e365dbd606
 body .layout.rtl .hytrdf {
     float: right
 }

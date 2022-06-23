@@ -17,16 +17,10 @@ import {
 } from "#c/functions/index";
 import { SnapChatIcon } from "#c/assets/index";
 import Loading from "#c/components/Loading";
-<<<<<<< HEAD
-import store from "../functions/store";
-import { useSelector } from "react-redux";
-import CONFIG from "#config/config";
-=======
 import PageBuilder from "#c/components/page-builder/PageBuilder";
 import store from "../functions/store";
 import { useSelector } from "react-redux";
 import CONFIG from "#c/config";
->>>>>>> 496de9eb5f488a591bacfd6f8d28b7e365dbd606
 import ShareIcon from "@mui/icons-material/Share";
 // import { Link, useNavigate, useParams } from "react-router-dom";
 import RemoveRedEyeIcon from "@mui/icons-material/RemoveRedEye";
@@ -65,10 +59,7 @@ const Post = (props) => {
           catChoosed: d.catChoosed,
           countryChoosed: d.countryChoosed,
           categories: d.categories,
-<<<<<<< HEAD
-=======
           elements: d.elements,
->>>>>>> 496de9eb5f488a591bacfd6f8d28b7e365dbd606
           mainCategory: d.mainCategory
         });
         resolve({
@@ -79,10 +70,7 @@ const Post = (props) => {
           _id: d._id,
           updatedAt: d.updatedAt,
           kind: d.kind,
-<<<<<<< HEAD
-=======
           elements: d.elements,
->>>>>>> 496de9eb5f488a591bacfd6f8d28b7e365dbd606
           thumbnail: d.thumbnail,
           excerpt: d.excerpt,
           views: d.views
@@ -130,11 +118,7 @@ const Post = (props) => {
     thumbnail,
     excerpt,
     enableAdmin = false,
-<<<<<<< HEAD
-    views = null
-=======
     views = null,elements=null
->>>>>>> 496de9eb5f488a591bacfd6f8d28b7e365dbd606
   } = state;
   if (redirect && isClient) return <Navigate to={redirect}/>;
   if (!load && isClient) return <Loading/>;
@@ -151,11 +135,7 @@ console.log('isClient',isClient);
              <RWebShare
               data={{
                 text: excerpt,
-<<<<<<< HEAD
-                url: VARIABLE.SHOP_URL + "p/" + _id + "/" + encodeURIComponent(title[lan]),
-=======
                 url: CONFIG.SHOP_URL + "p/" + _id + "/" + encodeURIComponent(title[lan]),
->>>>>>> 496de9eb5f488a591bacfd6f8d28b7e365dbd606
                 title: title[lan]
               }}
               sites={["whatsapp", "telegram", "linkedin", "copy"]}
@@ -215,11 +195,7 @@ console.log('isClient',isClient);
 
       </Row>
 
-<<<<<<< HEAD
-
-=======
       <PageBuilder elements={elements}/>
->>>>>>> 496de9eb5f488a591bacfd6f8d28b7e365dbd606
     </Container>
   );
 };
